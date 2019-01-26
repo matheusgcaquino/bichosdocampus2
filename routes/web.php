@@ -12,6 +12,7 @@
 */
 
 $this->group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
+  $this->get('admin/animais/adicionar', 'AddAnimalController@index')->name('admin.animais.adicionar');
   $this->get('admin/animais', 'AnimaisController@index')->name('admin.animais');
   $this->get('admin', 'AdminController@index')->name('admin.home');
 });

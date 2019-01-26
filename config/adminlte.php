@@ -58,7 +58,7 @@ return [
     |
     */
 
-    'layout' => null,
+    'layout' => 'top-nav',
 
     /*
     |--------------------------------------------------------------------------
@@ -118,6 +118,13 @@ return [
             'text' => 'Animais',
             'url'  => 'admin/animais',
             'icon'  => 'paw',
+            'submenu' => [
+                [
+                    'text' => 'Adicionar Animal',
+                    'url' => 'admin/animais/adicionar',
+                    'icon' => 'plus'
+                ]
+            ]
         ]
     ],
 
