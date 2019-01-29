@@ -120,6 +120,11 @@ return [
             'icon'  => 'paw',
             'submenu' => [
                 [
+                    'text' => 'Ver Animais',
+                    'url' => 'admin/animais/ver',
+                    'icon' => 'paw'
+                ],
+                [
                     'text' => 'Adicionar Animal',
                     'url' => 'admin/animais/adicionar',
                     'icon' => 'plus'

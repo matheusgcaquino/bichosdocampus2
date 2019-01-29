@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Adicionar Animais - Bichos do Campus')
+@section('title', 'Editar Animal - Bichos do Campus')
 
 @section('content_header')
 @stop
@@ -9,38 +9,41 @@
 <section class="content">
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Adicinar Novos Animais</h3>
+      <h3 class="box-title">Editar Animal</h3>
     </div>
     
     <div class="box-body">
       <div class="form-group col-md-6">
         <label for="name">Nome </label>
-        <input type="text" class="form-control" id="name" placeholder="Nome do Animal">
+        <input type="text" class="form-control" id="name" placeholder="Nome do Animal" value="Frajola">
       </div>
       
       <div class="form-group col-md-6">
         <label for="race">Raça </label>
-        <input type="text" class="form-control" id="race" placeholder="Raça do Animal">
+        <input type="text" class="form-control" id="race" placeholder="Raça do Animal" value="Gato">
       </div>
       
       <div class="form-group col-md-6">
         <label for="race">Idade </label>
-        <input type="text" class="form-control" id="idade" placeholder="Idade do Animal">
+        <input type="text" class="form-control" id="idade" placeholder="Idade do Animal" value="6 meses">
       </div>
       
       <div class="form-group col-md-6">
         <label>Pelagem</label>
-        <textarea class="form-control" rows="2" id="pelagem" placeholder="Pelagem do Animal"></textarea>
+        <textarea class="form-control" rows="2" id="pelagem" 
+        placeholder="Pelagem do Animal">Pelagem mista de preto e branco.</textarea>
       </div>
 
       <div class="form-group col-md-6">
         <label>Comportamento</label>
-        <textarea class="form-control" rows="2" id="comportamento" placeholder="Comportamento do Animal"></textarea>
+        <textarea class="form-control" rows="2" id="comportamento" 
+        placeholder="Comportamento do Animal">Dócil</textarea>
       </div>
 
       <div class="form-group col-md-6">
           <label>Descrição</label>
-          <textarea class="form-control" rows="3" id="descricao" placeholder="Descrição do Animal"></textarea>
+          <textarea class="form-control" rows="3" id="descricao" 
+          placeholder="Descrição do Animal">Pequeno.</textarea>
       </div>
 
       <div class="form-group col-md-6">
@@ -78,18 +81,18 @@
       </div>
 
       <div class="form-group">
-          <div class="pull-left">
-              <img class="profile-user-img img-responsive img-circle" 
-              src="{{asset('images/cat-profile.png')}}" alt="User profile picture">
-          </div>
-          <label for="foto">Adicionar Imagem</label>
+        <div class="pull-left">
+            <img class="profile-user-img img-responsive img-circle" 
+            src="{{asset('images/gato7.jpg')}}" alt="User profile picture">
+        </div>
+          <label for="foto">Alterar Imagem</label>
           <input type="file" id="foto">
       </div>
 
     </div>
     
     <div class="box-footer with-border">
-      <button type="submit" class="btn btn-primary">Enviar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
       <button type="submit" class="btn btn-default">Cancel</button> 
     </div>
   
