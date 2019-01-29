@@ -19,5 +19,6 @@ $this->group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 });
 
 $this->get('/', 'Site\SiteController@index')->name('home');
+$this->get('/adocao', 'Site\FormAdocaoController@index')->name('site.adocao');
 
 Auth::routes();

@@ -50,7 +50,7 @@
         <label>Sexo</label>
         <div class="radio">
           <label>
-            <input type="radio" name=sexo" id="sexo1" value="macho" checked="">
+            <input type="radio" name="sexo" id="sexo1" value="macho" checked="">
             Macho
           </label>
         </div>

@@ -130,6 +130,10 @@ return [
                     'icon' => 'plus'
                 ]
             ]
+        ],
+        [
+            'text' => 'Adoção',
+            'url' => '/adocao',
         ]
     ],
 
