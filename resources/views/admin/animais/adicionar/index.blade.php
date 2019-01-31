@@ -6,102 +6,106 @@
 @stop
 
 @section('content')
-<section class="content">
-  <div class="box">
-    <div class="box-header">
-      <h3 class="box-title">Adicinar Novos Animais</h3>
-    </div>
-    
-    <div class="box-body">
-      <div class="form-group col-md-6">
-        <label for="name">Nome </label>
-        <input type="text" class="form-control" id="name" placeholder="Nome do Animal">
+
+<form action = "{{ route('adicionar.animais') }}" method="POST">
+
+  {{ csrf_field() }}
+
+  <section class="content">
+    <div class="box">
+
+      <div class="box-header">
+        <h3 class="box-title"> Adicinar Novos Animais </h3>
       </div>
       
-      <div class="form-group col-md-6">
-        <label for="race">Raça </label>
-        <input type="text" class="form-control" id="race" placeholder="Raça do Animal">
-      </div>
-      
-      <div class="form-group col-md-6">
-        <label>Idade</label><br>
-        <div class="form-input col-md-3">
-          <input type="number" class="form-control" id="idade">
+      <div class="box-body">
+        <div class="form-group col-md-6">
+          <label for="nome"> Nome </label>
+          <input type="text" class="form-control" name="nome" placeholder="Nome do Animal">
         </div>
         
-        <div class="form-input col-md-6">
-          <select class="form-control">
-            <option>Messes</option>
-            <option>Ano</option>
-          </select>
-        </div>
-      </div>
-      
-      <div class="form-group col-md-6">
-        <label>Pelagem</label>
-        <textarea class="form-control" rows="2" id="pelagem" placeholder="Pelagem do Animal"></textarea>
-      </div>
-
-      <div class="form-group col-md-6">
-        <label>Comportamento</label>
-        <textarea class="form-control" rows="2" id="comportamento" placeholder="Comportamento do Animal"></textarea>
-      </div>
-
-      <div class="form-group col-md-6">
-          <label>Descrição</label>
-          <textarea class="form-control" rows="3" id="descricao" placeholder="Descrição do Animal"></textarea>
-      </div>
-
-      <div class="form-group col-md-6">
-        <label>Sexo</label>
-        <div class="radio">
-          <label>
-            <input type="radio" name="sexo" id="sexo1" value="macho" checked="">
-            Macho
-          </label>
+        <div class="form-group col-md-6">
+          <label for="raca"> Raça </label>
+          <input type="text" class="form-control" name="raca" placeholder="Raça do Animal">
         </div>
         
-        <div class="radio">
-          <label>
-            <input type="radio" name="sexo" id="sexo2" value="femea">
-            Fêmea
-          </label>
-        </div>
-      </div>
-
-      <div class="form-group col-md-6">
-        <label>Castrado</label>
-        <div class="radio">
-          <label>
-            <input type="radio" name="castrado" id="castrado1" value="True" checked="">
-            Sim
-          </label>
-        </div>
-        
-        <div class="radio">
-          <label>
-            <input type="radio" name="castrado" id="castrado2" value="False">
-            Não
-          </label>
-        </div>
-      </div>
-
-      <div class="form-group">
-          <div class="pull-left">
-              <img class="profile-user-img img-responsive img-circle" 
-              src="{{asset('images/cat-profile.png')}}" alt="User profile picture">
+        <div class="form-group col-md-6">
+          <label> Idade </label><br>
+          <div class="form-input col-md-3">
+            <input type="number" class="form-control" name="numeroidade">
           </div>
-          <label for="foto">Adicionar Imagem</label>
-          <input type="file" id="foto">
-      </div>
+          
+          <div class="form-input col-md-6">
+            <select class="form-control" name="tipoidade">
+              <option> Meses </option>
+              <option> Ano </option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group col-md-6">
+            <label for="pelagem"> Pelagem </label>
+          <input class="form-control" rows="2" name="pelagem" placeholder="Pelagem do Animal"></textarea>
+        </div>
 
-    </div>
+        <div class="form-group col-md-6">
+            <label for="comportamento"> Comportamento </label>
+          <input class="form-control" rows="2" name="comportamento" placeholder="Comportamento do Animal"></textarea>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="descricao"> Descrição </label>
+            <input class="form-control" rows="3" name="descricao" placeholder="Descrição do Animal"></textarea>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="sexo"> Sexo </label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="sexo" value="M" checked=""> Macho
+            </label>
+          </div>
+          
+          <div class="radio">
+            <label>
+              <input type="radio" name="sexo" value="F"> Fêmea
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label> Castrado </label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="castrado" value="1" checked=""> Sim
+            </label>
+          </div>
+          
+          <div class="radio">
+            <label>
+              <input type="radio" name="castrado" value="0"> Não
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <div class="pull-left">
+                <img class="profile-user-img img-responsive img-circle" 
+                src="{{asset('images/cat-profile.png')}}" alt="User profile picture">
+            </div>
+            <label for="foto"> Adicionar Imagem </label>
+            <input type="file" name="foto">
+        </div>
+
+      </div>
+      
+      <div class="box-footer with-border">
+        <button type="submit" class="btn btn-primary"> Enviar </button>
+        <button type="submit" class="btn btn-default"> Cancel </button> 
+      </div>
     
-    <div class="box-footer with-border">
-      <button type="submit" class="btn btn-primary">Enviar</button>
-      <button type="submit" class="btn btn-default">Cancel</button> 
     </div>
-  
-  </div>
   </section>
+
+</form>
 @stop

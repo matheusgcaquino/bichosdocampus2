@@ -17,6 +17,8 @@
         </div>
       </div>
       <div class="box-body">
+
+        <<!-- Gato 1 -->
         <div class="col-md-3">
           <div class="box box-primary">
             <div class="box-body box-profile">
@@ -47,6 +49,7 @@
           </div>
         </div>
         
+        <<!-- Gato 2 -->
         <div class="col-md-3">
           <div class="box box-primary">
             <div class="box-body box-profile">

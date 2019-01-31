@@ -13,6 +13,7 @@ class CreateAdotantesTable extends Migration
      */
     public function up()
     {
+        // Cria a tabela adotante -> [EiKE]
         Schema::create('adotantes', function (Blueprint $table) {
             $table->increments('id_adotante');
             $table->string('nome_adotante', 60);
