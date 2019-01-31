@@ -24,8 +24,17 @@
       </div>
       
       <div class="form-group col-md-6">
-        <label for="race">Idade </label>
-        <input type="text" class="form-control" id="idade" placeholder="Idade do Animal">
+        <label>Idade</label><br>
+        <div class="form-input col-md-3">
+          <input type="number" class="form-control" id="idade">
+        </div>
+        
+        <div class="form-input col-md-6">
+          <select class="form-control">
+            <option>Messes</option>
+            <option>Ano</option>
+          </select>
+        </div>
       </div>
       
       <div class="form-group col-md-6">

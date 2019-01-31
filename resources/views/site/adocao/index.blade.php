@@ -37,7 +37,7 @@
         <label>Telefone </label>
         <div class="input-group">
           <input type="text" class="form-control" id="telefone"
-            data-inputmask='"mask": ["(99)99999-9999", "(99)9999-9999"]' data-mask="">
+            data-inputmask='"mask": "(999) 999-9999"' data-mask="">
         </div>
         <!-- /.input group -->
       </div>
@@ -68,4 +68,8 @@
   
   </div>
   </section>
+
+  <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+  <script src="{{asset('js/jquery.inputmask.js')}}"></script>
+  <script src="{{asset('js/jquery.inputmask.extensions.js')}}"></script>
 @stop

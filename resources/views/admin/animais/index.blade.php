@@ -39,7 +39,7 @@
 
               </ul>
               <a href="animais/perfil" class="btn btn-success btn-block"><b>+ Mais Informaçoes</b></a>
-              <a href="animais/editar" class="btn btn-primary btn-block"><b>Editar</b></a>
+              <a href="editar" class="btn btn-primary btn-block"><b>Editar</b></a>
               <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-danger">
                 <b>Excluir</b>
               </button>
