@@ -1231,22 +1231,3 @@ a {
   font-style: bold;
 }
 
-.button{
-  background-color:#f23a2e;
-  border: none;
-  border-radius: 20px;
-  width: 30%;
-  margin-top: 5%;
-  color: white;
-
-}
-
-button:hover{
-background-color: rgba(242, 58, 46, 0.7);
-}
-
-.img-perfil{
-  width: 150px;
-  height: 150px;
-  border-radius: 100px;
-}

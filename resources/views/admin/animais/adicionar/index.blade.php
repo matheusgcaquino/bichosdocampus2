@@ -9,7 +9,7 @@
 <section class="content">
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Adicinar Novos Animais</h3>
+      <h3 class="box-title">Adicionar Novos Animais</h3>
     </div>
     
     <div class="box-body">
