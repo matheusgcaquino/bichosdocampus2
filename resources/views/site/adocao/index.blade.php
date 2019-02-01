@@ -2,10 +2,8 @@
 
 @section('title', 'Fomulário de Adoção - Bichos do Campus')
 
-@section('content_header')
-@stop
-
 @section('content')
+
 <section class="content">
   <div class="box-body">
     <h1>COMO ADOTAR?</h1>

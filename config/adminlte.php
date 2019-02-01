@@ -85,7 +85,7 @@ return [
     |
     */
 
-    'dashboard_url' => '/admin',
+    'dashboard_url' => '/',
 
     'logout_url' => 'logout',
 
@@ -93,7 +93,7 @@ return [
 
     'login_url' => 'login',
 
-    'register_url' => 'register',
+    'register_url' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -111,22 +111,22 @@ return [
         'MENU',
         [
             'text' => 'Home',
-            'url'  => 'admin',
+            'url'  => '/',
             'icon'  => 'home',
         ],
         [
             'text' => 'Animais',
-            'url'  => 'admin/animais',
+            'url'  => 'animais',
             'icon'  => 'paw',
             'submenu' => [
                 [
                     'text' => 'Ver Animais',
-                    'url' => 'admin/animais/ver',
+                    'url' => 'animais/ver',
                     'icon' => 'paw'
                 ],
                 [
                     'text' => 'Adicionar Animal',
-                    'url' => 'admin/animais/adicionar',
+                    'url' => 'animais/adicionar',
                     'icon' => 'plus'
                 ]
             ]
