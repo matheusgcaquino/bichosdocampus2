@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Animal extends Model
 {
-    public $timestamps = false;
-    //
+    protected $fillable = ['nome_animal', 'raca_animal', 'idade_animal', 'sexo_animal', 'pelagem_animal', 'comportamento_animal', 'castracao_animal', 'descricao_animal', 'foto_animal', 'status'];
+
+    public $timestamps = true;
 }

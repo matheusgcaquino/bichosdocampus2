@@ -6,6 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Adotante extends Model
 {
-    public $timestamps = false;
-    //private $table = '';
+    public $timestamps = true;
 }
