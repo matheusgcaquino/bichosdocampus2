@@ -12,14 +12,15 @@
 */
 
 $this->group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
-  $this->post('admin/animais/adicionar', 'AddAnimalController@adicionar')->name('adicionar.animais');
-  $this->get('admin/animais/adicionar', 'AddAnimalController@index')->name('admin.animais.adicionar');
-  $this->get('admin/animais/editar', 'EditAnimalController@index')->name('admin.animais.editar');
-  $this->get('admin/animais/ver', 'AnimaisController@index')->name('admin.animais');
-  $this->get('admin', 'AdminController@index')->name('admin.home');
+  $this->post('animais/adicionar', 'AddAnimalController@adicionar')->name('adicionar.animais');
+  $this->get('animais/adicionar', 'AddAnimalController@index')->name('admin.animais.adicionar');
+  $this->get('animais/editar', 'EditAnimalController@index')->name('admin.animais.editar');
 });
 
-$this->get('/', 'Site\SiteController@index')->name('home');
-$this->get('/adocao', 'Site\FormAdocaoController@index')->name('site.adocao');
+$this->group(['namespace' => 'Site'], function(){
+  $this->get('/', 'SiteController@index')->name('site.home');
+  $this->get('animais/ver', 'AnimaisController@index')->name('site.animais');
+  $this->get('adocao', 'FormAdocaoController@index')->name('site.adocao');
+});
 
 Auth::routes();
