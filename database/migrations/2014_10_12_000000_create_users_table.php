@@ -13,12 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        // Cria a tabela Usuarios -> [AdminLTE]
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('image', 100)->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
