@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'title' => 'Bichos do Campus',
+    'title' => 'BICHOS DO CAMPUS',
 
-    'title_prefix' => '',
+    'title_prefix' => ' ',
 
     'title_postfix' => '',
 
@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Bichos do Campus</b>',
+    'logo' => 'BICHOS DO <strong>CAMPUS</strong>',
 
-    'logo_mini' => '<b>Bichos</b>dC',
+    'logo_mini' => 'BICHOS DO <strong>CAMPUS</strong>',
 
     /*
     |--------------------------------------------------------------------------
@@ -134,6 +134,7 @@ return [
         [
             'text' => 'Adoção',
             'url' => '/adocao',
+            'icon'  => 'heart'
         ]
     ],
 
