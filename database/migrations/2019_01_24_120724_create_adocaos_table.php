@@ -13,11 +13,13 @@ class CreateAdocaosTable extends Migration
      */
     public function up()
     {
+        // Cria tabela adocao -> [EiKE]
         Schema::create('adocaos', function (Blueprint $table) {
             $table->increments('id_adocao');
             $table->integer('id_adotante')->unsigned();            
             $table->integer('id_animal')->unsigned();
             $table->date('data_adocao');
+            $table->boolean('status_adocao');
             $table->timestamps();
 
             $table->foreign('id_adotante')->references('id_adotante')->on('adotantes')->onDelete('cascade');
