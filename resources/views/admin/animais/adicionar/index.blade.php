@@ -6,14 +6,9 @@
 @stop
 
 @section('content')
-
-<form action = "{{ route('adicionar.animais') }}" method="POST">
-
-  {{ csrf_field() }}
-
-  <section class="content">
+  <form action = "{{ route('adicionar.animais') }}" method="POST">
+    {{ csrf_field() }}
     <div class="box">
-
       <div class="box-header">
         <h3 class="box-title"> Adicinar Novos Animais </h3>
       </div>
@@ -103,9 +98,6 @@
         <button type="submit" class="btn btn-primary"> Enviar </button>
         <button type="submit" class="btn btn-default"> Cancel </button> 
       </div>
-    
     </div>
-  </section>
-
-</form>
+  </form>
 @stop

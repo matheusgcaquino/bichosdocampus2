@@ -3,8 +3,6 @@
 @section('title', 'Fomulário de Adoção - Bichos do Campus')
 
 @section('content')
-
-<section class="content">
   <div class="box-body">
     <h1>COMO ADOTAR?</h1>
         <div class="col-md-3 col-sm-6 col-xs-12">
@@ -57,8 +55,7 @@
         <!-- /.col -->
       
   </div>
-</section>
-<section class="content">
+
   <div class="box">
     <div class="box-header">
       <h3 class="box-title">Fomulário de Adoção</h3>
@@ -117,11 +114,9 @@
       <button type="submit" class="btn btn-primary">Enviar</button>
       <button type="submit" class="btn btn-default">Cancel</button> 
     </div>
-  
   </div>
-  </section>
-
-  <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
-  <script src="{{asset('js/jquery.inputmask.js')}}"></script>
-  <script src="{{asset('js/jquery.inputmask.extensions.js')}}"></script>
 @stop
+
+@push('css')
+
+@push('js')

@@ -20,7 +20,7 @@ $this->group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 $this->group(['namespace' => 'Site'], function(){
   $this->get('/', 'SiteController@index')->name('site.home');
   $this->get('animais/ver', 'AnimaisController@index')->name('site.animais');
-  $this->get('adocao', 'FormAdocaoController@index')->name('site.adocao');
+  $this->get('/animais/adocao', 'FormAdocaoController@index')->name('site.adocao');
 });
 
 Auth::routes();
