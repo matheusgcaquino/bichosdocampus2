@@ -58,19 +58,155 @@
       
   </div>
 </section>
+
 <section class="content">
   <div class="box">
-    <div class="box-header">
-      <h3 class="box-title">Fomulário de Adoção</h3>
-    </div>
+
+      <div class="col-md-3">
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              <img class="profile-user-img img-responsive img-circle" src="{{asset('images/gato6.jpg')}}" alt="User profile picture">
+
+              <h3 class="profile-username text-center">Arya Stark</h3>
+
+              <p class="text-muted text-center">Gato Munchkin</p>
+
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Sexo</b> <a class="pull-right">Fêmea</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Castrado</b> <a class="pull-right">SIM</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Idade</b> <a class="pull-right">3 meses</a>
+                </li>
+
+              </ul>
+
+              <a href="animais/perfil" class="btn btn-success btn-block"><b>+ Mais Informaçoes</b></a>
+              <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-danger">
+              <span class="fa fa-heart"></span> Adotar
+              </button>
+            </div>
+          </div>
+        </div>
+
+              <div class="col-md-3">
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              <img class="profile-user-img img-responsive img-circle" src="{{asset('images/gato6.jpg')}}" alt="User profile picture">
+
+              <h3 class="profile-username text-center">Arya Stark</h3>
+
+              <p class="text-muted text-center">Gato Munchkin</p>
+
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Sexo</b> <a class="pull-right">Fêmea</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Castrado</b> <a class="pull-right">SIM</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Idade</b> <a class="pull-right">3 meses</a>
+                </li>
+
+              </ul>
+
+              <a href="animais/perfil" class="btn btn-success btn-block"><b>+ Mais Informaçoes</b></a>
+              <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-danger">
+              <span class="fa fa-heart"></span> Adotar
+              </button>
+            </div>
+          </div>
+        </div>
+
+              <div class="col-md-3">
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              <img class="profile-user-img img-responsive img-circle" src="{{asset('images/gato6.jpg')}}" alt="User profile picture">
+
+              <h3 class="profile-username text-center">Arya Stark</h3>
+
+              <p class="text-muted text-center">Gato Munchkin</p>
+
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Sexo</b> <a class="pull-right">Fêmea</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Castrado</b> <a class="pull-right">SIM</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Idade</b> <a class="pull-right">3 meses</a>
+                </li>
+
+              </ul>
+
+              <a href="animais/perfil" class="btn btn-success btn-block"><b>+ Mais Informaçoes</b></a>
+              <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-danger">
+              <span class="fa fa-heart"></span> Adotar
+              </button>
+            </div>
+          </div>
+        </div>
+
+              <div class="col-md-3">
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              <img class="profile-user-img img-responsive img-circle" src="{{asset('images/gato6.jpg')}}" alt="User profile picture">
+
+              <h3 class="profile-username text-center">Arya Stark</h3>
+
+              <p class="text-muted text-center">Gato Munchkin</p>
+
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Sexo</b> <a class="pull-right">Fêmea</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Castrado</b> <a class="pull-right">SIM</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Idade</b> <a class="pull-right">3 meses</a>
+                </li>
+
+              </ul>
+
+              <a href="animais/perfil" class="btn btn-success btn-block"><b>+ Mais Informaçoes</b></a>
+              <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-danger">
+              <span class="fa fa-heart"></span> Adotar
+              </button>
+            </div>
+          </div>
+        </div>
+  </div>
+  
+    <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"> × 
+              </span>
+            </button>
+            <h4 class="modal-title"> Fomulário de Adoção 
+            </h4>
+          </div>
+          <div class="modal-body">
+              <div class="box-header">
+              </div>
     
-    <div class="box-body">
-      <div class="form-group col-md-6">
-        <label for="name">Nome Completo </label>
-        <input type="text" class="form-control" id="name" placeholder="Nome Completo">
-      </div>
+          <div class="box-body">
+            <div class="form-group col-md-6">
+              <label for="name"> 
+                Nome Completo 
+              </label>
+              <input type="text" class="form-control" id="name" placeholder="Nome Completo">
+            </div>
       
-      <div class="form-group col-md-6">
+            <div class="form-group col-md-6">
         <label for="race">Logradouro </label>
         <input type="text" class="form-control" id="logradouro" placeholder="Logradouro">
       </div>
@@ -112,14 +248,21 @@
       </div>
 
     </div>
-    
-    <div class="box-footer with-border">
-      <button type="submit" class="btn btn-primary">Enviar</button>
-      <button type="submit" class="btn btn-default">Cancel</button> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-outline">Confirmar</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
     </div>
-  
-  </div>
   </section>
+
+
+
+        
 
   <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
   <script src="{{asset('js/jquery.inputmask.js')}}"></script>
