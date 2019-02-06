@@ -15,9 +15,9 @@ class CreateAnimalsTable extends Migration
     {
         // Cria a tabela animal no banco de dados -> [EikE]
         Schema::create('animals', function (Blueprint $table) {
-            $table->increments('id_animal');
-            $table->integer('user_id') -> unsigned();            
+            $table->increments('id_animal');      
             $table->string('nome_animal', 60);
+            $table->string('especie_animal', 60);
             $table->string('raca_animal', 30);
             $table->date('idade_animal');
             $table->enum('sexo_animal', ['M', 'F']);
@@ -28,8 +28,6 @@ class CreateAnimalsTable extends Migration
             $table->string('foto_animal', 150);
             $table->boolean('status_animal');
             $table->timestamps();
-
-            $table->foreign('user_id') -> references('id') -> on('users') -> onDelete('cascade');
         });
     }
 

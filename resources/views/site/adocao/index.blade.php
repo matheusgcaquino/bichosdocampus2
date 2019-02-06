@@ -181,29 +181,32 @@
             </div>
           </div>
         </div>
-
-
-
   </div>
-       <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
+  
+    <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span></button>
-            <h4 class="modal-title">Fomulário de Adoção</h4>
+              <span aria-hidden="true"> × 
+              </span>
+            </button>
+            <h4 class="modal-title"> Fomulário de Adoção 
+            </h4>
           </div>
           <div class="modal-body">
-                <div class="box-header">
-    </div>
+              <div class="box-header">
+              </div>
     
-    <div class="box-body">
-      <div class="form-group col-md-6">
-        <label for="name">Nome Completo </label>
-        <input type="text" class="form-control" id="name" placeholder="Nome Completo">
-      </div>
+          <div class="box-body">
+            <div class="form-group col-md-6">
+              <label for="name"> 
+                Nome Completo 
+              </label>
+              <input type="text" class="form-control" id="name" placeholder="Nome Completo">
+            </div>
       
-      <div class="form-group col-md-6">
+            <div class="form-group col-md-6">
         <label for="race">Logradouro </label>
         <input type="text" class="form-control" id="logradouro" placeholder="Logradouro">
       </div>
