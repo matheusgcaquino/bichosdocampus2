@@ -9,8 +9,8 @@ use Carbon\Carbon;
 
 class AddAnimalController extends Controller
 {
-  public function index(){
-
+  public function index()
+  {
     return view('admin.animais.adicionar.index');
   }
 
@@ -63,8 +63,6 @@ class AddAnimalController extends Controller
       'castracao_animal'      => $request -> castrado,
       'descricao_animal'      => $request -> descricao,
       'foto_animal'           => "{$id}.{$extensao}"    
-    ]) ;
-
-    
+    ]) ;    
   }
 }

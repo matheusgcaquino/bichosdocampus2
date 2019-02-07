@@ -258,11 +258,7 @@
       </div>
       <!-- /.modal-dialog -->
     </div>
-  </section>
-
-
-
-        
+  </section>        
 
   <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
   <script src="{{asset('js/jquery.inputmask.js')}}"></script>
