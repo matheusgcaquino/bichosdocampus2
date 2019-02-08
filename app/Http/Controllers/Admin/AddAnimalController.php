@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Http\Requests\AnimalValidacaoFormRequest;
 
 class AddAnimalController extends Controller
 {
@@ -15,7 +16,7 @@ class AddAnimalController extends Controller
   }
 
   // Adicionando no banco de dados -> [EikE]
-  public function adicionar(Request $request)
+  public function adicionar(AnimalValidacaoFormRequest $request)
   { 
     // Teste
     //dd($request -> all());
@@ -52,7 +53,7 @@ class AddAnimalController extends Controller
     }
 
     // Atualiza a foto do animal
-    DB::table('animals')-> WHERE('id_animal', $id) -> update([      
+    $adicionar = DB::table('animals')-> WHERE('id_animal', $id) -> update([      
       'nome_animal'           => $request -> nome,
       'especie_animal'        => $request -> especie,
       'raca_animal'           => $request -> raca,
@@ -64,5 +65,30 @@ class AddAnimalController extends Controller
       'descricao_animal'      => $request -> descricao,
       'foto_animal'           => "{$id}.{$extensao}"    
     ]) ;    
+
+    // Retorna mensagem de adicionar ou não
+    if ($adicionar)
+    {
+      $response['success'] = true;
+      $response['message'] = 'Sucesso ao adicionar.';
+    } 
+    else 
+    {
+      $response['success'] = false;
+      $response['message'] = 'Erro ao adicionar.';
+    }
+    
+    if ($response['success'])
+    {
+      return redirect() 
+                        -> route('adicionar.animais')
+                        -> with('success', $response['message']);
+    }
+    else 
+    {
+      return redirect()
+                        -> route('adicionar.animais')
+                        -> with('error', $response['message']);
+    }
   }
 }

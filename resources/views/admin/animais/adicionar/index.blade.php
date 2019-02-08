@@ -18,6 +18,9 @@
         <h3 class="box-title"> Adicinar Novos Animais </h3>
       </div>
       
+      <!-- Mensagem de Alerta -->
+      @include('admin.includes.alerts')
+
       <div class="box-body">
 
         <div class="form-group col-md-6">
