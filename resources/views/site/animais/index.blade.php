@@ -19,13 +19,12 @@
       <div class="box-body">
 
           <div>
-              <h1>Listagem das categorias:</h1>
            
               @foreach ($results as $result)
               <div class="col-md-3">
                   <div class="box box-primary">
                     <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="{{ url('storage/app/animals/'.$result->foto_animal) }}" alt="User profile picture">
+                    <img class="profile-user-img img-responsive img-circle" src="{{ url('storage/animals/'.$result->foto_animal) }}" alt="User profile picture">
         
                       <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
         
