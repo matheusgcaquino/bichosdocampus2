@@ -40,7 +40,7 @@ class AnimalValidacaoFormRequest extends FormRequest
             'comportamento' => 'bail| required | max:150 |',
             'castrado'      => 'bail| required |',
             'descricao'     => 'bail| max:150 |',
-            'foto'          => 'bail| max:150 |'
+            'foto'          => 'bail| max:2000 |'
         ];
     }
 }

@@ -25,7 +25,7 @@ class CreateAnimalsTable extends Migration
             $table->string('comportamento_animal', 50);
             $table->boolean('castracao_animal');
             $table->string('descricao_animal', 150);
-            $table->string('foto_animal', 150);
+            $table->string('foto_animal', 1200);
             $table->boolean('status_animal');
             $table->timestamps();
         });
