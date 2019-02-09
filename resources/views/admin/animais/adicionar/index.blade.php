@@ -15,7 +15,7 @@
     <div class="box">
 
       <div class="box-header">
-        <h3 class="box-title"> Adicinar Novos Animais </h3>
+        <h3 class="box-title">ADICIONAR ANIMAL</h3>
       </div>
       
       <!-- Mensagem de Alerta -->
@@ -29,7 +29,7 @@
         </div>
 
         <div class="form-group col-md-6">
-            <label for="especie"> Especie </label>
+            <label for="especie"> Espécie </label>
             <input type="text" class="form-control" name="especie" placeholder="Especie do Animal">
           </div>
         
@@ -41,14 +41,13 @@
         <div class="form-group col-md-6">
           <label> Idade </label><br>
 
-          <div class="form-input col-md-3">
-            <input type="number" placeholder="Meses" min="0" class="form-control" name="numeromeses">
+          <div class="col-xs-6">
+            <input type="number" placeholder="Anos" min="0" class="form-control" name="numeroano">
           </div>
 
-          <div class="form-input col-md-3">
-              <input type="number" placeholder="Anos" min="0" class="form-control" name="numeroano">
-            </div>
-          
+          <div class="col-xs-6">
+            <input type="number" placeholder="Meses" min="0" class="form-control" name="numeromeses"> 
+          </div>  
         </div>
         
         <div class="form-group col-md-6">
@@ -98,21 +97,24 @@
 
         <div class="form-group">
             <div class="pull-left">
-                <img class="profile-user-img img-responsive img-circle" 
-                src="{{asset('images/cat-profile.png')}}" alt="User profile picture">
+                <img class="profile-user-img img-circle" 
+                src="{{asset('images/foto-icon.png')}}" alt="User profile picture">
             </div>
+            <div class="pull-left" style="margin-left: 1%">
             <label for="foto"> Adicionar Imagem </label>
             <input type="file" name="foto">
+            </div>
         </div>
+      </div>
+
+      <div class="box-footer">
+        <button type="button" class="btn btn-success btn-lg pull-right" data-toggle="modal" data-target="#modal-danger" style="margin-left: 1%"> Enviar </button>
+        <button type="button" onclick="window.location='{{ route ('site.home') }}'" class="btn btn-danger btn-lg pull-right"> Cancelar </button> 
+      </div>
 
       </div>
       
-      <div class="box-footer with-border">
-        <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-danger"> Enviar </button>
-        <button type="button" onclick="window.location='{{ route ('site.home') }}'" class="btn btn-default"> Cancel </button> 
-      </div>
     
-    </div>
 
     <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
         <div class="modal-dialog">
