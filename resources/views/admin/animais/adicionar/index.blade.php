@@ -6,9 +6,9 @@
 @stop
 
 @section('content')
-  <form action = "{{ route('adicionar.animais') }}" method="POST">
-    {{ csrf_field() }}
-    <div class="box">
+  <div class="box">
+    <form action="{{route('adicionar.animais')}}" method="POST" id="formulario">
+      {{ csrf_field() }}
       <div class="box-header">
         <h3 class="box-title"> Adicinar Novos Animais </h3>
       </div>
@@ -16,45 +16,45 @@
       <div class="box-body">
         <div class="form-group col-md-6">
           <label for="nome"> Nome </label>
-          <input type="text" class="form-control" name="nome" placeholder="Nome do Animal">
+          <input type="text" class="form-control" name="nome" placeholder="Nome do Animal" required>
         </div>
         
         <div class="form-group col-md-6">
           <label for="raca"> Raça </label>
-          <input type="text" class="form-control" name="raca" placeholder="Raça do Animal">
+          <input type="text" class="form-control" name="raca" placeholder="Raça do Animal" required>
         </div>
         
         <div class="form-group col-md-6">
           <label> Idade </label><br>
           <div class="form-input col-md-3">
-            <input type="number" class="form-control" name="numeroidade">
+            <input type="number" placeholder="Anos" min="0" class="form-control" name="numeroano">
           </div>
-          
-          <div class="form-input col-md-6">
-            <select class="form-control" name="tipoidade">
-              <option> Meses </option>
-              <option> Ano </option>
-            </select>
+        
+          <div class="form-input col-md-3">
+            <input type="number" placeholder="Meses" min="0" class="form-control" name="numeromeses">
           </div>
         </div>
         
         <div class="form-group col-md-6">
-            <label for="pelagem"> Pelagem </label>
-          <input class="form-control" rows="2" name="pelagem" placeholder="Pelagem do Animal"></textarea>
+          <label for="pelagem"> Pelagem </label>
+          <input class="form-control" rows="2" name="pelagem" 
+            placeholder="Pelagem do Animal" required></textarea>
         </div>
 
         <div class="form-group col-md-6">
-            <label for="comportamento"> Comportamento </label>
-          <input class="form-control" rows="2" name="comportamento" placeholder="Comportamento do Animal"></textarea>
+          <label for="comportamento"> Comportamento </label>
+          <input class="form-control" rows="2" name="comportamento" 
+            placeholder="Comportamento do Animal" required></textarea>
         </div>
 
         <div class="form-group col-md-6">
-            <label for="descricao"> Descrição </label>
-            <input class="form-control" rows="3" name="descricao" placeholder="Descrição do Animal"></textarea>
+          <label for="descricao"> Descrição </label>
+          <input class="form-control" rows="3" name="descricao" 
+            placeholder="Descrição do Animal"></textarea>
         </div>
 
         <div class="form-group col-md-6">
-            <label for="sexo"> Sexo </label>
+          <label for="sexo"> Sexo </label>
           <div class="radio">
             <label>
               <input type="radio" name="sexo" value="M" checked=""> Macho
@@ -83,6 +83,14 @@
           </div>
         </div>
 
+        <div class="form-group col-md-6">
+          <label> Status </label>
+          <select class="form-control" id="status">
+            <option value="True">Ativado</option>
+            <option value="False">Disativado</option>
+          </select>
+        </div>
+
         <div class="form-group">
             <div class="pull-left">
                 <img class="profile-user-img img-responsive img-circle" 
@@ -95,9 +103,9 @@
       </div>
       
       <div class="box-footer with-border">
-        <button type="submit" class="btn btn-primary"> Enviar </button>
-        <button type="submit" class="btn btn-default"> Cancel </button> 
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <a href="/animais/ver" class="btn btn-default">Cancelar</a> 
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 @stop
