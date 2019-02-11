@@ -108,12 +108,6 @@ return [
     */
 
     'menu' => [
-        'MENU',
-        [
-            'text' => 'Home',
-            'url'  => '/',
-            'icon'  => 'home',
-        ],
         [
             'text' => 'Animais',
             'url'  => 'animais',
@@ -127,14 +121,10 @@ return [
                 [
                     'text' => 'Adicionar Animal',
                     'url' => 'animais/adicionar',
-                    'icon' => 'plus'
+                    'icon' => 'plus',
+                    'can' => 'auth'
                 ]
             ]
-        ],
-        [
-            'text' => 'Adotar',
-            'url' => '/adocao',
-            'icon'  => 'heart'
         ]
     ],
 

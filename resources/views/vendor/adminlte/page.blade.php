@@ -77,7 +77,7 @@
                                     </form>
                                 @endif
                             @else
-                                <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('login') }}"><i class="fa fa-fw fa-sign-in"></i> Login</a>
                             @endauth
 
                         </li>
