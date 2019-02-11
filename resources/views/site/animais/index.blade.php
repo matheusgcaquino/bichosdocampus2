@@ -18,38 +18,46 @@
       </div>
       <div class="box-body">
 
-        <<!-- Gato 1 -->
-        <div class="col-md-3">
-          <div class="box box-primary">
-            <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="{{asset('images/gato7.jpg')}}" alt="User profile picture">
-
-              <h3 class="profile-username text-center">Frajola</h3>
-
-              <p class="text-muted text-center">Gato Munchkin</p>
-
-              <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                  <b>Sexo</b> <a class="pull-right">Macho</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Castrado</b> <a class="pull-right">SIM</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Idade</b> <a class="pull-right">5 meses</a>
-                </li>
-
-              </ul>
-              <a href="animais/perfil" class="btn btn-success btn-block"><b>+ Mais Informaçoes</b></a>
-              <a href="editar" class="btn btn-primary btn-block"><b>Editar</b></a>
-              <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-danger">
-                <b>Excluir</b>
-              </button>
-            </div>
-          </div>
-        </div>
+          <div>
+           
+              @foreach ($results as $result)
+              <div class="col-md-3">
+                  <div class="box box-primary">
+                    <div class="box-body box-profile">
+                    <img class="profile-user-img img-responsive img-circle" src="{{ url('storage/animals/'.$result->foto_animal) }}" alt="User profile picture">
         
-        <<!-- Gato 2 -->
+                      <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
+        
+                      <p class="text-muted text-center">{{$result->raca_animal}}</p>
+        
+                      <ul class="list-group list-group-unbordered">
+                        <li class="list-group-item">
+                          <b>Sexo</b> <a class="pull-right">{{$result->sexo_animal}}</a>
+                        </li>
+                        <li class="list-group-item">
+                          <b>Castrado</b> <a class="pull-right">{{$result->castracao_animal}}</a>
+                        </li>
+                        <li class="list-group-item">
+                          <b>Idade</b> <a class="pull-right">{{$result->idade_animal}}</a>
+                        </li>
+        
+                      </ul>
+                      <a href="animais/perfil" class="btn btn-success btn-block"><b>+ Mais Informaçoes</b></a>
+                      <a href="editar" class="btn btn-primary btn-block"><b>Editar</b></a>
+                      <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-danger">
+                        <b>Excluir</b>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              @endforeach
+          </div>
+
+        <!--        
+        Gato 1 
+        
+        
+         Gato 2 
         <div class="col-md-3">
           <div class="box box-primary">
             <div class="box-body box-profile">
@@ -82,6 +90,7 @@
         </div>
       </div>  
     </div>
+    -->
 
     <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
       <div class="modal-dialog">

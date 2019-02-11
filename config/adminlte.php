@@ -132,7 +132,7 @@ return [
             ]
         ],
         [
-            'text' => 'Adoção',
+            'text' => 'Adotar',
             'url' => '/adocao',
             'icon'  => 'heart'
         ]
