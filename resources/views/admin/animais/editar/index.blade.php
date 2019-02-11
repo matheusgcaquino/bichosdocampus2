@@ -6,7 +6,6 @@
 @stop
 
 @section('content')
-<section class="content">
   <div class="box">
     <div class="box-header">
       <h3 class="box-title">Editar Animal</h3>
@@ -95,7 +94,5 @@
       <button type="submit" class="btn btn-primary">Salvar</button>
       <button type="submit" class="btn btn-default">Cancel</button> 
     </div>
-  
   </div>
-  </section>
 @stop
