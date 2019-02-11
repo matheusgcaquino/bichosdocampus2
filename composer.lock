@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "555e18b7e552c96cf26aca20b4606744",
+    "content-hash": "5a354644eba6821ba2e7dbb7728ac961",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1568,7 +1568,11 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2019-01-16T20:31:39+00:00"
+=======
+            "time": "2019-01-16T09:39:14+00:00"
+>>>>>>> dev
         },
         {
             "name": "symfony/debug",
@@ -1628,6 +1632,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
+<<<<<<< HEAD
             "version": "v4.2.3",
             "source": {
                 "type": "git",
@@ -1638,6 +1643,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/bd09ad265cd50b2b9d09d65ce6aba2d29bc81fe1",
                 "reference": "bd09ad265cd50b2b9d09d65ce6aba2d29bc81fe1",
+=======
+            "version": "v3.4.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "ed5be1663fa66623b3a7004d5d51a14c4045399b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/ed5be1663fa66623b3a7004d5d51a14c4045399b",
+                "reference": "ed5be1663fa66623b3a7004d5d51a14c4045399b",
+>>>>>>> dev
                 "shasum": ""
             },
             "require": {
@@ -1688,7 +1705,11 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2019-01-16T20:35:37+00:00"
+=======
+            "time": "2019-01-16T13:27:11+00:00"
+>>>>>>> dev
         },
         {
             "name": "symfony/finder",
@@ -2186,6 +2207,7 @@
         },
         {
             "name": "symfony/translation",
+<<<<<<< HEAD
             "version": "v4.2.3",
             "source": {
                 "type": "git",
@@ -2196,6 +2218,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation/zipball/23fd7aac70d99a17a8e6473a41fec8fab3331050",
                 "reference": "23fd7aac70d99a17a8e6473a41fec8fab3331050",
+=======
+            "version": "v3.4.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/translation.git",
+                "reference": "81cfcd6935cb7505640153576c1f9155b2a179c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/81cfcd6935cb7505640153576c1f9155b2a179c1",
+                "reference": "81cfcd6935cb7505640153576c1f9155b2a179c1",
+>>>>>>> dev
                 "shasum": ""
             },
             "require": {
@@ -2255,7 +2289,11 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2019-01-27T23:11:39+00:00"
+=======
+            "time": "2019-01-25T10:00:44+00:00"
+>>>>>>> dev
         },
         {
             "name": "symfony/var-dumper",
