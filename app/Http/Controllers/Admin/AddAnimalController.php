@@ -25,6 +25,11 @@ class AddAnimalController extends Controller
     $data = Carbon::today();
     $data -> subMonth((int)$request -> numeromeses);
     $data -> subYear((int)$request -> numeroano);
+    if ($request -> status == 'Ativado'){
+      $status = 1;
+    }else{
+      $status = 0;
+    }
 
     // Insere os dados armazenando o ID
     $id = DB::table('animals') -> insertGetId(array(
@@ -37,7 +42,8 @@ class AddAnimalController extends Controller
       'comportamento_animal'  => $request -> comportamento,
       'castracao_animal'      => $request -> castrado,
       'descricao_animal'      => $request -> descricao,
-      'foto_animal'           => $request -> foto
+      'foto_animal'           => $request -> foto,
+      'status_animal'         => $status
     ));    
 
     // Modifica o nome da foto
