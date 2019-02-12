@@ -37,7 +37,6 @@
         <div class="info-box">
           <span class="info-box-icon bg-yellow"><i class="fa fa-check"></i></span>
 
-<<<<<<< HEAD
           <div class="info-box-content">
             <span class="info-box-number" style="text-align: center;">AGUARDE A APROVAÇÃO DA ADOÇÃO!</span>
           </div>
@@ -120,57 +119,14 @@
           </div>
         </div>
       @endforeach
+
+      
+
       <!-- Gato 1 -->
       <div class="col-md-3">
         <div class="box box-primary">
           <div class="box-body box-profile">
             <img class="profile-user-img img-responsive img-circle" src="{{asset('images/gato7.jpg')}}" alt="User profile picture">
-=======
-          <div>
-           
-              @foreach ($results as $result)
-              <div class="col-md-3">
-                  <div class="box box-primary">
-                    <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="{{ url('storage/animals/'.$result->foto_animal) }}" alt="User profile picture">
-        
-                      <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
-        
-                      <p class="text-muted text-center">{{$result->raca_animal}}</p>
-        
-                      <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">
-                          <b>Sexo</b> <a class="pull-right">{{$result->sexo_animal}}</a>
-                        </li>
-                        <li class="list-group-item">
-                          <b>Castrado</b> <a class="pull-right">{{$result->castracao_animal}}</a>
-                        </li>
-                        <li class="list-group-item">
-                          <b>Idade</b> <a class="pull-right">{{$result->idade_animal}}</a>
-                        </li>
-        
-                      </ul>
-                      <a href="animais/perfil" class="btn btn-success btn-block"><b>+ Mais Informaçoes</b></a>
-                      <a href="editar" class="btn btn-primary btn-block"><b>Editar</b></a>
-                      <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-danger">
-                        <b>Excluir</b>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              @endforeach
-          </div>
-
-        <!--        
-        Gato 1 
-        
-        
-         Gato 2 
-        <div class="col-md-3">
-          <div class="box box-primary">
-            <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="{{asset('images/gato6.jpg')}}" alt="User profile picture">
->>>>>>> dev
 
             <h3 class="profile-username text-center">Frajola</h3>
 
@@ -213,7 +169,6 @@
             @endauth
           </div>
         </div>
-<<<<<<< HEAD
       </div>
       
       <!-- Gato 2 -->
@@ -223,11 +178,6 @@
             <img class="profile-user-img img-responsive img-circle" src="{{asset('images/gato6.jpg')}}" alt="User profile picture">
 
             <h3 class="profile-username text-center">Arya Stark</h3>
-=======
-      </div>  
-    </div>
-    -->
->>>>>>> dev
 
             <p class="text-muted text-center">Gato Munchkin</p>
 
@@ -269,7 +219,11 @@
           </div>
         </div>
       </div>
-    </div>  
+    </div>
+    
+    <div class="box-footer">
+       {{-- $results->links()--}} 
+    </div>
   </div>
 
 
