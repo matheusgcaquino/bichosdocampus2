@@ -6,20 +6,9 @@
 @stop
 
 @section('content')
-<<<<<<< HEAD
   <div class="box">
-    <form action="{{route('adicionar.animais')}}" method="POST" id="formulario">
+    <form action = "{{ route('adicionar.animais') }}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
-=======
-
-<form action = "{{ route('adicionar.animais') }}" method="POST" enctype="multipart/form-data">
-
-  {{ csrf_field() }}
-
-  <section class="content">
-    <div class="box">
-
->>>>>>> dev
       <div class="box-header">
         <h3 class="box-title">ADICIONAR ANIMAL</h3>
       </div>
@@ -46,23 +35,13 @@
         
         <div class="form-group col-md-6">
           <label> Idade </label><br>
-<<<<<<< HEAD
           <div class="form-input col-md-3">
             <input type="number" placeholder="Anos" min="0" class="form-control" name="numeroano">
           </div>
         
           <div class="form-input col-md-3">
             <input type="number" placeholder="Meses" min="0" class="form-control" name="numeromeses">
-=======
-
-          <div class="col-xs-6">
-            <input type="number" placeholder="Anos" min="0" class="form-control" name="numeroano">
->>>>>>> dev
-          </div>
-
-          <div class="col-xs-6">
-            <input type="number" placeholder="Meses" min="0" class="form-control" name="numeromeses"> 
-          </div>  
+          </div> 
         </div>
         
         <div class="form-group col-md-6">
@@ -131,14 +110,7 @@
             <input type="file" name="foto">
             </div>
         </div>
-      </div>
-
-      <div class="box-footer">
-        <button type="button" class="btn btn-success btn-lg pull-right" data-toggle="modal" data-target="#modal-danger" style="margin-left: 1%"> Enviar </button>
-        <button type="button" onclick="window.location='{{ route ('site.home') }}'" class="btn btn-danger btn-lg pull-right"> Cancelar </button> 
-      </div>
-<<<<<<< HEAD
-      
+      </div>      
       <div class="box-footer with-border">
         <button type="submit" class="btn btn-primary">Enviar</button>
         <a href="/animais/ver" class="btn btn-default">Cancelar</a> 
@@ -146,35 +118,3 @@
     </form>
   </div>
 @stop
-=======
-
-      </div>
-      
-    
-
-    <div class="modal modal-danger fade" id="modal-danger" style="display: none;">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span></button>
-              <h4 class="modal-title">Excluir animal</h4>
-            </div>
-            <div class="modal-body">
-              <p> Deseja adicionar o animal? </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-outline"> Confirmar </button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-
-  </section>
-
-</form>
-@stop
->>>>>>> dev
