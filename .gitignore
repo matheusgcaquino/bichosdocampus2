@@ -10,5 +10,5 @@ npm-debug.log
 yarn-error.log
 .env
 /public/vendor
-/public/storage/animal
+/public/storage/animals
 composer.lock

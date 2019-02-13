@@ -12,6 +12,7 @@
 */
 
 $this->group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
+  $this->post('/animais/ver', 'DeleteAnimalController@deletar')->name('deletar.animais');
   $this->post('animais/adicionar', 'AddAnimalController@adicionar')->name('adicionar.animais');
   $this->get('animais/adicionar', 'AddAnimalController@index')->name('admin.animais.adicionar');
   $this->get('animais/editar', 'EditAnimalController@index')->name('admin.animais.editar');
@@ -19,7 +20,7 @@ $this->group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 
 $this->group(['namespace' => 'Site'], function(){
   $this->get('/', 'SiteController@index')->name('site.home');
-  $this->get('animais/ver', 'AnimaisController@index')->name('site.animais');
+  $this->get('/animais/ver', 'AnimaisController@index')->name('site.animais');
   $this->get('/animais/adocao', 'FormAdocaoController@index')->name('site.adocao');
 });
 

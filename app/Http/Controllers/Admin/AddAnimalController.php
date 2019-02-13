@@ -25,7 +25,7 @@ class AddAnimalController extends Controller
     $data = Carbon::today();
     $data -> subMonth((int)$request -> numeromeses);
     $data -> subYear((int)$request -> numeroano);
-    if ($request -> status == 'Ativado'){
+    if ($request -> status){
       $status = 1;
     }else{
       $status = 0;
@@ -42,35 +42,27 @@ class AddAnimalController extends Controller
       'comportamento_animal'  => $request -> comportamento,
       'castracao_animal'      => $request -> castrado,
       'descricao_animal'      => $request -> descricao,
-      'foto_animal'           => $request -> foto,
       'status_animal'         => $status
     ));    
-
     // Modifica o nome da foto
-    $extensao = ($request -> foto -> extension());
-    $nome = "{$id}.{$extensao}";
+    /*$extensao = ($request -> foto -> extension());
     $nameArquivo = "{$id}.{$extensao}";
 
     $upload = $request -> foto -> storeAs('animals', $nameArquivo);
 
+    
+
     if(!$upload)
     {
       return redirect() -> back() -> with('error', 'Falha ao fazer o upload da imagem');
-    }
+    }*/
 
-    // Atualiza a foto do animal
-    $adicionar = DB::table('animals')-> WHERE('id_animal', $id) -> update([      
-      'nome_animal'           => $request -> nome,
-      'especie_animal'        => $request -> especie,
-      'raca_animal'           => $request -> raca,
-      'idade_animal'          => $data,
-      'sexo_animal'           => $request -> sexo,
-      'pelagem_animal'        => $request -> pelagem,
-      'comportamento_animal'  => $request -> comportamento,
-      'castracao_animal'      => $request -> castrado,
-      'descricao_animal'      => $request -> descricao,
-      'foto_animal'           => "{$id}.{$extensao}"    
-    ]) ;    
+    $path = $request-> foto ->store('animals');
+
+    $adicionar = DB::table('fotos')->insert([
+      'id_animal'     => $id, 
+      'foto_animal'   => $path 
+    ]);    
 
     // Retorna mensagem de adicionar ou não
     if ($adicionar)

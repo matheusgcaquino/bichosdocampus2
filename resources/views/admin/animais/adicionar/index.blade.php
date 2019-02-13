@@ -94,9 +94,9 @@
 
         <div class="form-group col-md-6">
           <label> Status </label>
-          <select class="form-control" id="status">
-            <option value="True">Ativado</option>
-            <option value="False">Disativado</option>
+          <select class="form-control" name="status">
+            <option value="TRUE">Ativado</option>
+            <option value="FALSE">Disativado</option>
           </select>
         </div>
 

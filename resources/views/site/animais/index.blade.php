@@ -84,7 +84,7 @@
           <div class="box box-primary">
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" 
-                src="{{ url('storage/animals/'.$result->foto_animal) }}" alt="User profile picture">
+                src="{{ url('storage/'.$result->foto_animal) }}" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
 
@@ -168,13 +168,14 @@
             <h4 class="modal-title" id="exampleModalLabel"></h4>
         </div>
 
-        <form>
+        <form action="{{route('deletar.animais')}}" method="POST">
+          {{ csrf_field() }}
           <div class="modal-body">
             <input type="hidden" name="idAnimal" id="idAnimal"/>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-outline">Confirmar</button>
+            <button type="submit" class="btn btn-outline">Confirmar</button>
           </div>
         </form>
       </div>
