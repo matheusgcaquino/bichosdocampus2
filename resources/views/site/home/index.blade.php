@@ -120,7 +120,7 @@
           <li>Caso você more em apartamento, é necessário ter as janelas teladas.</li>
           <li>Outros.</li>
         </ul></br>
-        <button class="btn bg-orange">QUERO ADOTAR</button>
+        <button onclick="window.location='{{ route ('site.animais') }}'" class="btn bg-orange">QUERO ADOTAR</button>
       </div>
     </div>
 

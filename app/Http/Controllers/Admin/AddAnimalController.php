@@ -25,6 +25,7 @@ class AddAnimalController extends Controller
     $data = Carbon::today();
     $data -> subMonth((int)$request -> numeromeses);
     $data -> subYear((int)$request -> numeroano);
+    
     if ($request -> status){
       $status = 1;
     }else{
@@ -44,13 +45,12 @@ class AddAnimalController extends Controller
       'descricao_animal'      => $request -> descricao,
       'status_animal'         => $status
     ));    
+
     // Modifica o nome da foto
     /*$extensao = ($request -> foto -> extension());
     $nameArquivo = "{$id}.{$extensao}";
 
-    $upload = $request -> foto -> storeAs('animals', $nameArquivo);
-
-    
+    $upload = $request -> foto -> storeAs('animals', $nameArquivo);    
 
     if(!$upload)
     {
@@ -59,7 +59,7 @@ class AddAnimalController extends Controller
 
     $path = $request-> foto ->store('animals');
 
-    $adicionar = DB::table('fotos')->insert([
+    $adicionar = DB::table('foto_animals')->insert([
       'id_animal'     => $id, 
       'foto_animal'   => $path 
     ]);    

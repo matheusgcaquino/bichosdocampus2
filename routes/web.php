@@ -11,7 +11,7 @@
 |
 */
 
-$this->group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
+$this->group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){  
   $this->post('/animais/ver', 'DeleteAnimalController@deletar')->name('deletar.animais');
   $this->post('animais/adicionar', 'AddAnimalController@adicionar')->name('adicionar.animais');
   $this->get('animais/adicionar', 'AddAnimalController@index')->name('admin.animais.adicionar');

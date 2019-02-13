@@ -13,13 +13,12 @@ class CreateFotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('fotos', function (Blueprint $table) {
-            $table->increments('id_foto');
+        Schema::create('foto_animals', function (Blueprint $table) {
+            $table->increments('id_foto_animals');
             $table->integer('id_animal')->unsigned();
             $table->string('foto_animal', 1200);
 
-            $table->foreign('id_animal')->references('id_animal')->on('animals')
-                ->onDelete('cascade');
+            $table->foreign('id_animal')->references('id_animal')->on('animals')->onDelete('cascade');
         });
     }
 

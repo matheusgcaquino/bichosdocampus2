@@ -97,9 +97,17 @@
                 <li class="list-group-item">
                   <b>Castrado</b> <a class="pull-right">{{$result->castracao_animal}}</a>
                 </li>
-                <li class="list-group-item">
-                  <b>Idade</b> <a class="pull-right">{{$result->idade_animal}}</a>
-                </li>
+
+                @if(\Carbon\Carbon:: today() -> diffInMonths($result->idade_animal) == 1)                  
+                  <li class="list-group-item">
+                    <b>Idade</b> <a class="pull-right">{{ \Carbon\Carbon:: today() -> diffInMonths($result->idade_animal)}} Mês</a>
+                  </li>
+                @else
+                  <li class="list-group-item">
+                    <b>Idade</b> <a class="pull-right">{{ \Carbon\Carbon:: today() -> diffInMonths($result->idade_animal)}} Meses</a>
+                  </li>
+                @endif
+
                 @if ($result->status_animal)
                   <li class="list-group-item">
                     <b>Status</b> <a class="pull-right"><span class="bg-green">
@@ -116,8 +124,14 @@
               </ul>
 
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" 
-                data-target="#information" data-solict-idade="{{$result->idade_animal}}" 
-                data-solict-nome="{{$result->nome_animal}}" data-solict-raca="{{$result->raca_animal}}"
+                data-target="#information" 
+                @if(\Carbon\Carbon:: today() -> diffInMonths($result->idade_animal) == 1) 
+                data-solict-idade="{{ \Carbon\Carbon:: today() -> diffInMonths($result->idade_animal)}} Mês" 
+                @else
+                data-solict-idade="{{ \Carbon\Carbon:: today() -> diffInMonths($result->idade_animal)}} Meses"
+                @endif
+                data-solict-nome="{{$result->nome_animal}}" 
+                data-solict-raca="{{$result->raca_animal}}"
                 data-solict-pelagem="{{$result->pelagem_animal}}" 
                 data-solict-comportamento="{{$result->comportamento_animal}}" 
                 data-solict-sexo="{{$result->sexo_animal}}"
@@ -185,6 +199,7 @@
   </div>
 
   <div class="modal modal-default fade" id="adotar" style="display: none;">
+      
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -275,7 +290,7 @@
               <label for="race">Raça </label>
               <input type="text" class="form-control" id="raca" disabled>
             </div>
-            
+
             <div class="form-group col-md-6">
               <label for="race">Idade </label>
               <input type="text" class="form-control" id="idade" disabled>
