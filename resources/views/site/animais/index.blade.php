@@ -69,22 +69,28 @@
     <div class="box-body">
       @forelse ($results as $result)
         @php
-          if($result->sexo_animal == 'M'){
-            $result->sexo_animal = "Macho";
+          ($sexo_animal = $result->sexo_animal == 'M' ? "Macho" : "Fêmea");
+          
+          ($castracao_animal = $result->castracao_animal ? "Sim" : "Não");
+          
+          $idade = \Carbon\Carbon:: today() -> diffInMonths($result->idade_animal);
+          ($idade = $idade == 1 ? $idade." Mês" : $idade." Meses");
+          
+          if($result->foto_animal){
+            if(Storage::disk('local')->exists('storage/'.$result->foto_animal)){
+              $foto = 'storage/'.$result->foto_animal;
+            }else{
+              $foto = "images/foto-icon.png";
+            }
           }else{
-            $result->sexo_animal = "Fêmea";
-          }
-          if($result->castracao_animal){
-            $result->castracao_animal = "Sim";
-          }else{
-            $result->castracao_animal = "Não";
+            $foto = "images/foto-icon.png";
           }
         @endphp
         <div class="col-md-3">
           <div class="box box-primary">
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" 
-                src="{{ url('storage/'.$result->foto_animal) }}" alt="User profile picture">
+                src="{{ url($foto)}}" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
 
@@ -92,54 +98,45 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Sexo</b> <a class="pull-right">{{$result->sexo_animal}}</a>
+                  <b>Sexo</b> <a class="pull-right">{{$sexo_animal}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Castrado</b> <a class="pull-right">{{$result->castracao_animal}}</a>
+                  <b>Castrado</b> <a class="pull-right">{{$castracao_animal}}</a>
+                </li>                
+                <li class="list-group-item">
+                  <b>Idade</b> <a class="pull-right">{{$idade}}</a>
                 </li>
 
-                @if(\Carbon\Carbon:: today() -> diffInMonths($result->idade_animal) == 1)                  
-                  <li class="list-group-item">
-                    <b>Idade</b> <a class="pull-right">{{ \Carbon\Carbon:: today() -> diffInMonths($result->idade_animal)}} Mês</a>
-                  </li>
-                @else
-                  <li class="list-group-item">
-                    <b>Idade</b> <a class="pull-right">{{ \Carbon\Carbon:: today() -> diffInMonths($result->idade_animal)}} Meses</a>
-                  </li>
-                @endif
-
-                @if ($result->status_animal)
-                  <li class="list-group-item">
-                    <b>Status</b> <a class="pull-right"><span class="bg-green">
-                      Ativado
-                    </span></a>
-                  </li>
-                @else
-                  <li class="list-group-item">
-                    <b>Status</b> <a class="pull-right"><span class="bg-red">
-                      Desativado
-                    </span></a>
-                  </li>
-                @endif
+                @auth
+                  @if ($result->status_animal)
+                    <li class="list-group-item">
+                      <b>Status</b> <a class="pull-right"><span class="bg-green">
+                        Ativado
+                      </span></a>
+                    </li>
+                  @else
+                    <li class="list-group-item">
+                      <b>Status</b> <a class="pull-right"><span class="bg-red">
+                        Desativado
+                      </span></a>
+                    </li>
+                  @endif
+                @endauth
               </ul>
 
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" 
                 data-target="#information" 
-                @if(\Carbon\Carbon:: today() -> diffInMonths($result->idade_animal) == 1) 
-                data-solict-idade="{{ \Carbon\Carbon:: today() -> diffInMonths($result->idade_animal)}} Mês" 
-                @else
-                data-solict-idade="{{ \Carbon\Carbon:: today() -> diffInMonths($result->idade_animal)}} Meses"
-                @endif
+                data-solict-idade="{{$idade}}" 
                 data-solict-nome="{{$result->nome_animal}}" 
                 data-solict-raca="{{$result->raca_animal}}"
                 data-solict-pelagem="{{$result->pelagem_animal}}" 
                 data-solict-comportamento="{{$result->comportamento_animal}}" 
-                data-solict-sexo="{{$result->sexo_animal}}"
+                data-solict-sexo="{{$sexo_animal}}"
                 data-solict-descricao="{{$result->descricao_animal}}"
-                data-solict-castrado="{{$result->castracao_animal}}"><b>+ Mais Informações</b>
+                data-solict-castrado="{{$castracao_animal}}"><b>+ Mais Informações</b>
               </button>
               @auth
-                <a href="editar" class="btn btn-primary btn-block">
+                <a href="editar/{{$result->id_animal}}" class="btn btn-primary btn-block">
                 <span class="fa fa-edit"></span><b> Editar</b></a>
 
                 <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
@@ -342,7 +339,7 @@
           var modal = $(this)
           modal.find('.modal-title').text("Deseja excluir " + name + "?")
           $('#idAnimal').val(id)
-    })
+    });
 
     $('#adotar').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
@@ -351,7 +348,7 @@
           var modal = $(this)
           modal.find('.modal-title').text(name + " - Fomulário de Adoção")
           $('#idAnimal').val(id)
-    })
+    });
 
     $('#information').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
@@ -373,6 +370,6 @@
           $('#descricao').val(descricao)
           $('#sexo').val(sexo)
           $('#castrado').val(castrado)
-    })
+    });
   </script>
 @stop

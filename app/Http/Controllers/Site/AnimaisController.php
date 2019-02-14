@@ -11,7 +11,7 @@ class AnimaisController extends Controller
     public function index()
     { 
         $results = DB::table('bichosdocampus.animals as animals')
-            ->join('bichosdocampus.foto_animals as fotos', 
+            ->leftJoin('bichosdocampus.foto_animals as fotos', 
                 'animals.id_animal', '=', 'fotos.id_animal')
             ->select('animals.*', 'fotos.foto_animal')
             ->get();
