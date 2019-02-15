@@ -11,18 +11,20 @@
 |
 */
 
-$this->group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){  
-  $this->post('animais/ver', 'DeleteAnimalController@deletar')->name('deletar.animais');
-  $this->post('animais/adicionar', 'AddAnimalController@adicionar')->name('adicionar.animais');
-  $this->get('animais/adicionar', 'AddAnimalController@index')->name('admin.animais.adicionar');
-  $this->post('/', 'EditAnimalController@atualizar')->name('atualizar.animais');
-  $this->get('animais/editar/{id}', 'EditAnimalController@index')->name('admin.animais.editar');
+Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){ 
+  Route::post('animais/editar/atualizar', 'EditAnimalController@atualizar')->name('atualizar.animais'); 
+  Route::post('animais/deletar', 'DeleteAnimalController@deletar')->name('deletar.animais');
+  Route::post('animais/adicionar', 'AddAnimalController@adicionar')->name('adicionar.animais');
+  Route::get('animais/adicionar', 'AddAnimalController@index')->name('adicionar.animais.index');
+  Route::get('animais/editar/{id}', 'EditAnimalController@index')->name('editar.animais.index');
 });
 
-$this->group(['namespace' => 'Site'], function(){
-  $this->get('/', 'SiteController@index')->name('site.home');
-  $this->get('/animais/ver', 'AnimaisController@index')->name('site.animais');
-  $this->get('/animais/adocao', 'FormAdocaoController@index')->name('site.adocao');
+Route::group(['namespace' => 'Site'], function(){
+  Route::get('/', 'SiteController@index');
+  Route::get('animais/ver', 'AnimaisController@index')->name('site.animais');
+  Route::get('animais/adocao', 'FormAdocaoController@index')->name('site.adocao');
 });
+
+Route::get('/teste', 'Suporte\DataController@getData');
 
 Auth::routes();

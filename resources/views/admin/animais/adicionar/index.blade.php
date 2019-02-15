@@ -24,9 +24,9 @@
         </div>
 
         <div class="form-group col-md-6">
-            <label for="especie"> Espécie </label>
-            <input type="text" class="form-control" name="especie" placeholder="Especie do Animal">
-          </div>
+          <label for="especie"> Espécie </label>
+          <input type="text" class="form-control" name="especie" placeholder="Especie do Animal">
+        </div>
         
         <div class="form-group col-md-6">
           <label for="raca"> Raça </label>

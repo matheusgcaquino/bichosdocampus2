@@ -5,26 +5,20 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 use App\Http\Requests\AnimalValidacaoFormRequest;
+use App\Http\Controllers\Suporte\DataController;
 
 class AddAnimalController extends Controller
 {
-  public function index()
-  {
+  public function index(){
     return view('admin.animais.adicionar.index');
   }
 
   // Adicionando no banco de dados -> [EikE]
-  public function adicionar(AnimalValidacaoFormRequest $request)
-  { 
-    // Teste
-    //dd($request -> all());
+  public function adicionar(AnimalValidacaoFormRequest $request){ 
 
     // Calcula a data do animal 
-    $data = Carbon::today();
-    $data -> subMonth((int)$request -> numeromeses);
-    $data -> subYear((int)$request -> numeroano);
+    $data = DataController::putData([$request -> numeromeses, $request -> numeroano]);
 
     // Insere os dados armazenando o ID
     $id = DB::table('animals') -> insertGetId(array(

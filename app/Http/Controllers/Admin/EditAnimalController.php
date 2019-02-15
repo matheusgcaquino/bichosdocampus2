@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use App\Http\Controllers\Suporte\DataController;
 use App\Http\Requests\AnimalValidacaoFormRequest;
 
 class EditAnimalController extends Controller
@@ -17,18 +17,15 @@ class EditAnimalController extends Controller
           ->select('animals.*', 'fotos.foto_animal')
           ->where('animals.id_animal', '=', $id)
           ->get();
-    return view('admin.animais.editar.index') -> with("results", $results[0]);
+    return view('admin.animais.editar.index') -> with("result", $results[0]);
   }
 
     // Atualizando no banco de dados -> [EikE]
-  public function atualizar(AnimalValidacaoFormRequest $request)
-  { 
+  public function atualizar(Request $request){ 
     // Calcula a data do animal 
-    $data = Carbon::today();
-    $data -> subMonth((int)$request -> numeromeses);
-    $data -> subYear((int)$request -> numeroano);
+    $data = DataController::putData([$request -> numeromeses, $request -> numeroano]);
     
-    DB::table('animals')
+    $reposta = DB::table('animals')
       ->where('id_animal', $request -> id)
       ->update([
         'nome_animal'           => $request -> nome,
@@ -42,7 +39,7 @@ class EditAnimalController extends Controller
         'descricao_animal'      => $request -> descricao,
         'status_animal'         => $request -> status
       ]);
-
+    
     if($request-> foto){
       $path = $request-> foto ->store('animals');
 

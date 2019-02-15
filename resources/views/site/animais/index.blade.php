@@ -60,6 +60,9 @@
     </div>
   @endguest
 
+  @php
+    use App\Http\Controllers\Suporte\DataController;   
+  @endphp
 
   <div class="box">
     <div class="box-header">
@@ -73,24 +76,18 @@
           
           ($castracao_animal = $result->castracao_animal ? "Sim" : "Não");
           
-          $idade = \Carbon\Carbon:: today() -> diffInMonths($result->idade_animal);
-          ($idade = $idade == 1 ? $idade." Mês" : $idade." Meses");
+          $idade = DataController::convertData($result->idade_animal);
           
-          if($result->foto_animal){
-            if(Storage::disk('local')->exists('storage/'.$result->foto_animal)){
-              $foto = 'storage/'.$result->foto_animal;
-            }else{
-              $foto = "images/foto-icon.png";
-            }
-          }else{
-            $foto = "images/foto-icon.png";
+          $foto = url("images/foto-icon.png");
+          if($result->foto_animal && Storage::disk('local')->exists("storage/".$result->foto_animal)){
+            $foto = url("storage/".$result->foto_animal);
           }
         @endphp
         <div class="col-md-3">
           <div class="box box-primary">
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" 
-                src="{{ url($foto)}}" alt="User profile picture">
+                src="{{$foto}}" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
 
@@ -128,6 +125,7 @@
                 data-target="#information" 
                 data-solict-idade="{{$idade}}" 
                 data-solict-nome="{{$result->nome_animal}}" 
+                data-solict-especie="{{$result->especie_animal}}"
                 data-solict-raca="{{$result->raca_animal}}"
                 data-solict-pelagem="{{$result->pelagem_animal}}" 
                 data-solict-comportamento="{{$result->comportamento_animal}}" 
@@ -282,6 +280,11 @@
               <label for="name">Nome </label>
               <input type="text" class="form-control" id="nome" disabled>
             </div>
+
+            <div class="form-group col-md-6">
+              <label for="especie"> Espécie </label>
+              <input type="text" class="form-control" id="especie" disabled>
+            </div>
             
             <div class="form-group col-md-6">
               <label for="race">Raça </label>
@@ -355,6 +358,7 @@
           var nome = button.data('solict-nome')
           var idade = button.data('solict-idade')
           var raca = button.data('solict-raca')
+          var especie = button.data('solict-especie')
           var pelagem = button.data('solict-pelagem')
           var comportamento = button.data('solict-comportamento')
           var descricao = button.data('solict-descricao')
@@ -365,6 +369,7 @@
           $('#nome').val(nome)
           $('#idade').val(idade)
           $('#raca').val(raca)
+          $('#especie').val(especie)
           $('#pelagem').val(pelagem)
           $('#comportamento').val(comportamento)
           $('#descricao').val(descricao)
