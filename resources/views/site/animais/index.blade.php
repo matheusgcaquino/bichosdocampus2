@@ -203,35 +203,36 @@
             <h4 class="modal-title" id="exampleModalLabel"> </h4>
         </div>
 
-        <form>
+        <form action="{{route('adotar.animais')}}" method="POST">
+          {{ csrf_field() }}
           <div class="modal-body">
             <div class="box-body">
-              <input type="hidden" name="idAnimal" id="idAnimal"/>
+              <input type="hidden" name="idAnimal2" id="idAnimal2"/>
 
               <div class="form-group col-md-6">
                 <label for="name">Nome Completo </label>
-                <input type="text" class="form-control" id="name" placeholder="Nome Completo">
+                <input type="text" class="form-control" name="name" placeholder="Nome Completo">
               </div>
               
               <div class="form-group col-md-6">
                 <label for="race">Logradouro </label>
-                <input type="text" class="form-control" id="logradouro" placeholder="Logradouro">
+                <input type="text" class="form-control" name="logradouro" placeholder="Logradouro">
               </div>
               
               <div class="form-group col-md-6">
                 <label for="race">Bairro </label>
-                <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+                <input type="text" class="form-control" name="bairro" placeholder="Bairro">
               </div>
               
               <div class="form-group col-md-6">
                 <label>E-mail</label>
-                <input type="text" class="form-control" id="email" placeholder="E-mail">
+                <input type="text" class="form-control" name="email" placeholder="E-mail">
               </div>
 
               <div class="form-group col-md-6">
                 <label>Telefone </label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="telefone"
+                  <input type="text" class="form-control" name="telefone"
                     data-inputmask='"mask": "(999) 999-9999"' data-mask="">
                 </div>
                 <!-- /.input group -->
@@ -257,7 +258,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-success">Confirmar</button>
+            <button type="submit" class="btn btn-success">Confirmar</button>
           </div>
         </form>
       </div>
@@ -350,7 +351,7 @@
           var id = button.data('solict-id')
           var modal = $(this)
           modal.find('.modal-title').text(name + " - Fomulário de Adoção")
-          $('#idAnimal').val(id)
+          $('#idAnimal2').val(id)
     });
 
     $('#information').on('show.bs.modal', function (event) {
