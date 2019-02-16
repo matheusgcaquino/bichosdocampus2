@@ -11,4 +11,5 @@ yarn-error.log
 .env
 /public/vendor
 /public/storage/animals
+/public/uploads
 composer.lock

@@ -61,7 +61,7 @@
   @endguest
 
   @php
-    use App\Http\Controllers\Suporte\DataController;   
+    use App\Http\Controllers\Suporte\DataController;  
   @endphp
 
   <div class="box">
@@ -79,8 +79,9 @@
           $idade = DataController::convertData($result->idade_animal);
           
           $foto = url("images/foto-icon.png");
-          if($result->foto_animal && Storage::disk('local')->exists("storage/".$result->foto_animal)){
-            $foto = url("storage/".$result->foto_animal);
+
+          if($result->foto_animal && Storage::disk('public_uploads')->exists($result->foto_animal)){
+            $foto = url("uploads/".$result->foto_animal);
           }
         @endphp
         <div class="col-md-3">
@@ -159,9 +160,12 @@
         @endauth
         </center>
       @endforelse
+    </div>
     
     <div class="box-footer">
-       {{-- $results->links()--}} 
+      <div class="pull-right">
+          {{$results->links()}}
+      </div>
     </div>
   </div>
 

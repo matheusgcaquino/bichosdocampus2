@@ -14,7 +14,8 @@ class AnimaisController extends Controller
             ->leftJoin('bichosdocampus.foto_animals as fotos', 
                 'animals.id_animal', '=', 'fotos.id_animal')
             ->select('animals.*', 'fotos.foto_animal')
-            ->get();
+            ->orderBy('animals.status_animal', 'desc')
+            ->paginate(12);
         return view('site.animais.index') -> with("results", $results);
     }
 }

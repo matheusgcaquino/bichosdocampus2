@@ -35,7 +35,8 @@ class AddAnimalController extends Controller
     ));    
 
     if($request-> foto){
-      $path = $request-> foto ->store('animals');
+      $path = $request-> foto ->store('animais/'.$id);
+      
 
       $adicionar = DB::table('foto_animals')->insert([
         'id_animal'     => $id, 
