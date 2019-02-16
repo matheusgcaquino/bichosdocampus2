@@ -5,26 +5,20 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 use App\Http\Requests\AnimalValidacaoFormRequest;
+use App\Http\Controllers\Suporte\DataController;
 
 class AddAnimalController extends Controller
 {
-  public function index()
-  {
+  public function index(){
     return view('admin.animais.adicionar.index');
   }
 
   // Adicionando no banco de dados -> [EikE]
-  public function adicionar(AnimalValidacaoFormRequest $request)
-  { 
-    // Teste
-    //dd($request -> all());
+  public function adicionar(AnimalValidacaoFormRequest $request){ 
 
     // Calcula a data do animal 
-    $data = Carbon::today();
-    $data -> subMonth((int)$request -> numeromeses);
-    $data -> subYear((int)$request -> numeroano);
+    $data = DataController::putData([$request -> numeromeses, $request -> numeroano]);
 
     // Insere os dados armazenando o ID
     $id = DB::table('animals') -> insertGetId(array(
@@ -37,45 +31,31 @@ class AddAnimalController extends Controller
       'comportamento_animal'  => $request -> comportamento,
       'castracao_animal'      => $request -> castrado,
       'descricao_animal'      => $request -> descricao,
-      'foto_animal'           => $request -> foto
+      'status_animal'         => $request -> status
     ));    
 
-    // Modifica o nome da foto
-    $extensao = ($request -> foto -> extension());
-    $nome = "{$id}.{$extensao}";
-    $nameArquivo = "{$id}.{$extensao}";
+    if($request-> foto){
+      $path = $request-> foto ->store('animals');
 
-    $upload = $request -> foto -> storeAs('animals', $nameArquivo);
+      $adicionar = DB::table('foto_animals')->insert([
+        'id_animal'     => $id, 
+        'foto_animal'   => $path 
+      ]);    
 
-    if(!$upload)
-    {
-      return redirect() -> back() -> with('error', 'Falha ao fazer o upload da imagem');
-    }
-
-    // Atualiza a foto do animal
-    $adicionar = DB::table('animals')-> WHERE('id_animal', $id) -> update([      
-      'nome_animal'           => $request -> nome,
-      'especie_animal'        => $request -> especie,
-      'raca_animal'           => $request -> raca,
-      'idade_animal'          => $data,
-      'sexo_animal'           => $request -> sexo,
-      'pelagem_animal'        => $request -> pelagem,
-      'comportamento_animal'  => $request -> comportamento,
-      'castracao_animal'      => $request -> castrado,
-      'descricao_animal'      => $request -> descricao,
-      'foto_animal'           => "{$id}.{$extensao}"    
-    ]) ;    
-
-    // Retorna mensagem de adicionar ou não
-    if ($adicionar)
-    {
+      // Retorna mensagem de adicionar ou não
+      if ($adicionar)
+      {
+        $response['success'] = true;
+        $response['message'] = 'Sucesso ao adicionar.';
+      } 
+      else 
+      {
+        $response['success'] = false;
+        $response['message'] = 'Erro ao adicionar.';
+      }
+    }else{
       $response['success'] = true;
       $response['message'] = 'Sucesso ao adicionar.';
-    } 
-    else 
-    {
-      $response['success'] = false;
-      $response['message'] = 'Erro ao adicionar.';
     }
     
     if ($response['success'])

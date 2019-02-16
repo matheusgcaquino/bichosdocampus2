@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->boolean('nivel'); // 0 - Normal, 1 - Funcionario, 2 - Administrador
             $table->rememberToken();
             $table->timestamps();
         });

@@ -11,6 +11,8 @@
     <div class="slide-one-item home-slider owl-carousel">
       <div class="site-blocks-cover" style="background-image: url(images/home.png);" data-aos="fade" data-stellar-background-ratio="0.5">
       </div>
+      <div class="site-blocks-cover" style="background-image: url(images/home2.png);" data-aos="fade" data-stellar-background-ratio="0.5">
+      </div>
       <div class="site-blocks-cover" style="background-image: url(images/gato.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       </div>
 
@@ -120,7 +122,7 @@
           <li>Caso você more em apartamento, é necessário ter as janelas teladas.</li>
           <li>Outros.</li>
         </ul></br>
-        <button class="btn bg-orange">QUERO ADOTAR</button>
+        <button onclick="window.location='{{ route ('site.animais') }}'" class="btn bg-orange">QUERO ADOTAR</button>
       </div>
     </div>
 

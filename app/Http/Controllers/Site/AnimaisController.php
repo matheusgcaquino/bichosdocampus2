@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\DB;
 class AnimaisController extends Controller
 {
     public function index()
-    {
-        $results = DB::select('SELECT * FROM `bichosdocampus`.`animals` ORDER BY `id_animal` ASC LIMIT 1000;'); 
+    { 
+        $results = DB::table('bichosdocampus.animals as animals')
+            ->leftJoin('bichosdocampus.foto_animals as fotos', 
+                'animals.id_animal', '=', 'fotos.id_animal')
+            ->select('animals.*', 'fotos.foto_animal')
+            ->get();
         return view('site.animais.index') -> with("results", $results);
     }
 }

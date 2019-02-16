@@ -60,6 +60,9 @@
     </div>
   @endguest
 
+  @php
+    use App\Http\Controllers\Suporte\DataController;   
+  @endphp
 
   <div class="box">
     <div class="box-header">
@@ -67,12 +70,24 @@
     </div>
 
     <div class="box-body">
-      @foreach ($results as $result)
+      @forelse ($results as $result)
+        @php
+          ($sexo_animal = $result->sexo_animal == 'M' ? "Macho" : "Fêmea");
+          
+          ($castracao_animal = $result->castracao_animal ? "Sim" : "Não");
+          
+          $idade = DataController::convertData($result->idade_animal);
+          
+          $foto = url("images/foto-icon.png");
+          if($result->foto_animal && Storage::disk('local')->exists("storage/".$result->foto_animal)){
+            $foto = url("storage/".$result->foto_animal);
+          }
+        @endphp
         <div class="col-md-3">
           <div class="box box-primary">
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" 
-                src="{{ url('storage/animals/'.$result->foto_animal) }}" alt="User profile picture">
+                src="{{$foto}}" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
 
@@ -80,27 +95,46 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Sexo</b> <a class="pull-right">{{$result->sexo_animal}}</a>
+                  <b>Sexo</b> <a class="pull-right">{{$sexo_animal}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Castrado</b> <a class="pull-right">{{$result->castracao_animal}}</a>
-                </li>
+                  <b>Castrado</b> <a class="pull-right">{{$castracao_animal}}</a>
+                </li>                
                 <li class="list-group-item">
-                  <b>Idade</b> <a class="pull-right">{{$result->idade_animal}}</a>
+                  <b>Idade</b> <a class="pull-right">{{$idade}}</a>
                 </li>
+
+                @auth
+                  @if ($result->status_animal)
+                    <li class="list-group-item">
+                      <b>Status</b> <a class="pull-right"><span class="bg-green">
+                        Ativado
+                      </span></a>
+                    </li>
+                  @else
+                    <li class="list-group-item">
+                      <b>Status</b> <a class="pull-right"><span class="bg-red">
+                        Desativado
+                      </span></a>
+                    </li>
+                  @endif
+                @endauth
               </ul>
 
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" 
-                data-target="#information" data-solict-idade="{{$result->idade_animal}}" 
-                data-solict-nome="{{$result->nome_animal}}" data-solict-raca="{{$result->raca_animal}}"
+                data-target="#information" 
+                data-solict-idade="{{$idade}}" 
+                data-solict-nome="{{$result->nome_animal}}" 
+                data-solict-especie="{{$result->especie_animal}}"
+                data-solict-raca="{{$result->raca_animal}}"
                 data-solict-pelagem="{{$result->pelagem_animal}}" 
                 data-solict-comportamento="{{$result->comportamento_animal}}" 
-                data-solict-sexo="{{$result->sexo_animal}}" 
+                data-solict-sexo="{{$sexo_animal}}"
                 data-solict-descricao="{{$result->descricao_animal}}"
-                data-solict-castrado="{{$result->castracao_animal}}"><b>+ Mais Informações</b>
+                data-solict-castrado="{{$castracao_animal}}"><b>+ Mais Informações</b>
               </button>
               @auth
-                <a href="editar" class="btn btn-primary btn-block">
+                <a href="editar/{{$result->id_animal}}" class="btn btn-primary btn-block">
                 <span class="fa fa-edit"></span><b> Editar</b></a>
 
                 <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
@@ -118,108 +152,13 @@
             </div>
           </div>
         </div>
-      @endforeach
-
-      
-
-      <!-- Gato 1 -->
-      <div class="col-md-3">
-        <div class="box box-primary">
-          <div class="box-body box-profile">
-            <img class="profile-user-img img-responsive img-circle" src="{{asset('images/gato7.jpg')}}" alt="User profile picture">
-
-            <h3 class="profile-username text-center">Frajola</h3>
-
-            <p class="text-muted text-center">Gato Munchkin</p>
-
-            <ul class="list-group list-group-unbordered">
-              <li class="list-group-item">
-                <b>Sexo</b> <a class="pull-right">Macho</a>
-              </li>
-              <li class="list-group-item">
-                <b>Castrado</b> <a class="pull-right">SIM</a>
-              </li>
-              <li class="list-group-item">
-                <b>Idade</b> <a class="pull-right">5 meses</a>
-              </li>
-
-            </ul>
-            <button type="button" class="btn btn-info btn-block" data-toggle="modal" 
-              data-target="#information" data-solict-idade="6 meses" 
-              data-solict-nome="Frajola" data-solict-raca="Gato"
-              data-solict-pelagem="Pelagem mista de preto e branco." 
-              data-solict-comportamento="Dócil" 
-              data-solict-sexo="Macho" 
-              data-solict-descricao="Pequeno."
-              data-solict-castrado="Sim"><span class="fa fa-plus"></span><b> Mais Informações</b>
-            </button>
-            @auth
-              <a href="editar" class="btn btn-primary btn-block">
-              <span class="fa fa-edit"></span><b> Editar</b></a>
-              
-              <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
-                data-target="#excluir" data-solict-id="1" data-solict-name="Frajola">
-                <span class="fa fa-minus-circle"></span><b> Excluir</b>
-              </button>
-            @else
-              <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
-                data-target="#adotar" data-target="#excluir" data-solict-id="1" data-solict-name="Frajola">
-                <span class="fa fa-heart"></span><b> Adotar</b>
-              </button>
-            @endauth
-          </div>
-        </div>
-      </div>
-      
-      <!-- Gato 2 -->
-      <div class="col-md-3">
-        <div class="box box-primary">
-          <div class="box-body box-profile">
-            <img class="profile-user-img img-responsive img-circle" src="{{asset('images/gato6.jpg')}}" alt="User profile picture">
-
-            <h3 class="profile-username text-center">Arya Stark</h3>
-
-            <p class="text-muted text-center">Gato Munchkin</p>
-
-            <ul class="list-group list-group-unbordered">
-              <li class="list-group-item">
-                <b>Sexo</b> <a class="pull-right">Fêmea</a>
-              </li>
-              <li class="list-group-item">
-                <b>Castrado</b> <a class="pull-right">SIM</a>
-              </li>
-              <li class="list-group-item">
-                <b>Idade</b> <a class="pull-right">3 meses</a>
-              </li>
-
-            </ul>
-            <button type="button" class="btn btn-info btn-block" data-toggle="modal" 
-              data-target="#information" data-solict-idade="3 meses" 
-              data-solict-nome="Arya Stark" data-solict-raca="Gato Munchkin"
-              data-solict-pelagem="Pelagem mista de preto e branco." 
-              data-solict-comportamento="Dócil" 
-              data-solict-sexo="Fêmea" 
-              data-solict-descricao="Pequeno."
-              data-solict-castrado="Não"><span class="fa fa-plus"></span><b> Mais Informações</b>
-            </button>
-            @auth
-              <a href="editar" class="btn btn-primary btn-block">
-              <span class="fa fa-edit"></span><b> Editar</b></a>
-
-              <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
-                data-target="#excluir" data-solict-id="2" data-solict-name="Arya Stark">
-                <span class="fa fa-minus-circle"></span><b> Excluir</b>
-              </button>
-            @else
-              <button type="button" class="btn btn-danger btn-block" data-toggle="modal"
-                data-solict-id="2" data-solict-name="Arya Stark" data-target="#adotar">
-                <span class="fa fa-heart"></span><b> Adotar</b>
-              </button>
-            @endauth
-          </div>
-        </div>
-      </div>
-    </div>
+      @empty
+      <center><h3>Não há animais cadastrados!</h3></br>
+        @auth
+          <h4>Para cadastra um novo animal <a href="/animais/adicionar">CLIQUE AQUI!</a>
+        @endauth
+        </center>
+      @endforelse
     
     <div class="box-footer">
        {{-- $results->links()--}} 
@@ -238,13 +177,14 @@
             <h4 class="modal-title" id="exampleModalLabel"></h4>
         </div>
 
-        <form>
+        <form action="{{route('deletar.animais')}}" method="POST">
+          {{ csrf_field() }}
           <div class="modal-body">
             <input type="hidden" name="idAnimal" id="idAnimal"/>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-outline">Confirmar</button>
+            <button type="submit" class="btn btn-outline">Confirmar</button>
           </div>
         </form>
       </div>
@@ -254,6 +194,7 @@
   </div>
 
   <div class="modal modal-default fade" id="adotar" style="display: none;">
+      
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -262,35 +203,36 @@
             <h4 class="modal-title" id="exampleModalLabel"> </h4>
         </div>
 
-        <form>
+        <form action="{{route('adotar.animais')}}" method="POST">
+          {{ csrf_field() }}
           <div class="modal-body">
             <div class="box-body">
-              <input type="hidden" name="idAnimal" id="idAnimal"/>
+              <input type="hidden" name="idAnimal2" id="idAnimal2"/>
 
               <div class="form-group col-md-6">
                 <label for="name">Nome Completo </label>
-                <input type="text" class="form-control" id="name" placeholder="Nome Completo">
+                <input type="text" class="form-control" name="name" placeholder="Nome Completo">
               </div>
               
               <div class="form-group col-md-6">
                 <label for="race">Logradouro </label>
-                <input type="text" class="form-control" id="logradouro" placeholder="Logradouro">
+                <input type="text" class="form-control" name="logradouro" placeholder="Logradouro">
               </div>
               
               <div class="form-group col-md-6">
                 <label for="race">Bairro </label>
-                <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+                <input type="text" class="form-control" name="bairro" placeholder="Bairro">
               </div>
               
               <div class="form-group col-md-6">
                 <label>E-mail</label>
-                <input type="text" class="form-control" id="email" placeholder="E-mail">
+                <input type="text" class="form-control" name="email" placeholder="E-mail">
               </div>
 
               <div class="form-group col-md-6">
                 <label>Telefone </label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="telefone"
+                  <input type="text" class="form-control" name="telefone"
                     data-inputmask='"mask": "(999) 999-9999"' data-mask="">
                 </div>
                 <!-- /.input group -->
@@ -316,7 +258,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-success">Confirmar</button>
+            <button type="submit" class="btn btn-success">Confirmar</button>
           </div>
         </form>
       </div>
@@ -339,12 +281,17 @@
               <label for="name">Nome </label>
               <input type="text" class="form-control" id="nome" disabled>
             </div>
+
+            <div class="form-group col-md-6">
+              <label for="especie"> Espécie </label>
+              <input type="text" class="form-control" id="especie" disabled>
+            </div>
             
             <div class="form-group col-md-6">
               <label for="race">Raça </label>
               <input type="text" class="form-control" id="raca" disabled>
             </div>
-            
+
             <div class="form-group col-md-6">
               <label for="race">Idade </label>
               <input type="text" class="form-control" id="idade" disabled>
@@ -396,7 +343,7 @@
           var modal = $(this)
           modal.find('.modal-title').text("Deseja excluir " + name + "?")
           $('#idAnimal').val(id)
-    })
+    });
 
     $('#adotar').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
@@ -404,14 +351,15 @@
           var id = button.data('solict-id')
           var modal = $(this)
           modal.find('.modal-title').text(name + " - Fomulário de Adoção")
-          $('#idAnimal').val(id)
-    })
+          $('#idAnimal2').val(id)
+    });
 
     $('#information').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget) // Button that triggered the modal
           var nome = button.data('solict-nome')
           var idade = button.data('solict-idade')
           var raca = button.data('solict-raca')
+          var especie = button.data('solict-especie')
           var pelagem = button.data('solict-pelagem')
           var comportamento = button.data('solict-comportamento')
           var descricao = button.data('solict-descricao')
@@ -422,11 +370,12 @@
           $('#nome').val(nome)
           $('#idade').val(idade)
           $('#raca').val(raca)
+          $('#especie').val(especie)
           $('#pelagem').val(pelagem)
           $('#comportamento').val(comportamento)
           $('#descricao').val(descricao)
           $('#sexo').val(sexo)
           $('#castrado').val(castrado)
-    })
+    });
   </script>
 @stop
