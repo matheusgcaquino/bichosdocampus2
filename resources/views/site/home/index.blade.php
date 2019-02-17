@@ -6,20 +6,39 @@
 @stop
 
 @section('content')
-        
-  <div>
-    <div class="slide-one-item home-slider owl-carousel">
-      <div class="site-blocks-cover" style="background-image: url(images/home.png);" data-aos="fade" data-stellar-background-ratio="0.5">
-      </div>
-      <div class="site-blocks-cover" style="background-image: url(images/home2.png);" data-aos="fade" data-stellar-background-ratio="0.5">
-      </div>
-      <div class="site-blocks-cover" style="background-image: url(images/gato.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-      </div>
 
-      <div class="site-blocks-cover" style="background-image: url(images/gato3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+  <div class="col-md-12">
+    <div class="slide-one-item home-slider owl-carousel">
+      <div class="site-blocks-cover" style="background-image: url(images/home2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-7 text-center" data-aos="fade">
+              <h1 style="color:  #c0392b; font-size: 80px;">SEJA BEM-<strong>VINDO</strong></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="site-blocks-cover" style="background-image: url(images/home.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-7 text-center" data-aos="fade">
+              <h1 style="color:   #d35400; font-size: 80px;">BICHOS DO <strong>CAMPUS</strong></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="site-blocks-cover" style="background-image: url(images/home1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-7 text-center" data-aos="fade">
+              <h1 style="color:  #f39c12; font-size: 80px;">APOIE ESSA <strong>CAUSA</strong></h1>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
+    </div>
+  <div class="col-md-12">
     <div class="box" style="padding: 5%; font-size: 16px;">
       <div class="row no-gutters">
         <div class="col-md-6 col-lg-3">
@@ -43,13 +62,14 @@
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="w-100 h-100 block-feature p-5">
-            <h2 style="font-size: 18px;">CUIDE</h2>
+            <h2 style="font-size: 18px; font-style: bold;">CUIDE</h2>
             <p style="text-orientation: inherit;">Ter um animal de estimação é bom pra você e pra ele támbem.</p>
           </div>
         </div>
       </div>
     </div> <!-- .block-feature -->
-  </div>
+    </div>
+  
 
 
     <div class="box-body" style="text-align: center;">
@@ -102,29 +122,11 @@
       </div>
       <!-- /.col -->    
     </div>
-    <div class="callout callout-danger" style="padding: 5%;text-align: center;">
-      <div class="box-body">
-        <div>
-          <h2 class="mb-3 text-uppercase">QUEM <strong>SOMOS</strong>?</h2>
-          <p class="lead">A <strong>BICHOS DO CAMPUS</strong> é text text text
-          text text text tex  text tex te tet x et xtet </p>
-        </div>
-      </div>
-    </div>
 
-    <div class="callout callout-success" style="padding: 5%; font-size: 18px;text-align: center;">
-      <div class="box-body">
-        <h2 class="mb-3 text-uppercase">O QUE EU PRECISO PARA <strong>ADOTAR</strong>?</h2>
-        <p>A Bichos do Campus tem um processo de adoção seguindo alguns critérios.</p>
-        <p>Este processo é feito para garantir o conforto do animal e evitar possíveis problemas.</p>
-        <ul>
-          <li>É preciso não ter histórico de abandono.</li>
-          <li>Caso você more em apartamento, é necessário ter as janelas teladas.</li>
-          <li>Outros.</li>
-        </ul></br>
-        <button onclick="window.location='{{ route ('site.animais') }}'" class="btn bg-orange">QUERO ADOTAR</button>
-      </div>
-    </div>
+
+  <footer style="text-align: center;"><p>BICHOS DO CAMPUS - 2019</p></footer>
+
+
 
 @stop
 
@@ -136,6 +138,7 @@
   <link rel="stylesheet" href="css/owl.carousel.min.css">
   <link rel="stylesheet" href="css/owl.theme.default.min.css">
   <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/bootstrap/bootstrap-grid.css">
   <link rel="stylesheet" href="css/animate.css">
 @stop
 

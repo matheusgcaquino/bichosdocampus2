@@ -70,6 +70,7 @@
     </div>
 
     <div class="box-body">
+      
       @forelse ($results as $result)
         @php
           ($sexo_animal = $result->sexo_animal == 'M' ? "Macho" : "Fêmea");
@@ -87,8 +88,9 @@
         <div class="col-md-3">
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" 
-                src="{{$foto}}" alt="User profile picture">
+              <div class="im">
+              <img  
+                src="{{$foto}}" alt="User profile picture" ></div>
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
 
@@ -382,4 +384,22 @@
           $('#castrado').val(castrado)
     });
   </script>
+@stop
+
+@section('css')
+<style type="text/css">
+.im {
+      max-width: 100%;
+      background-repeat: no-repeat;
+      padding: 5%;
+      display:flex;
+      align-items: center;
+      justify-content: center;}
+
+div img {
+  max-width: 100%;
+  height: 150px;
+ 
+}
+</style>
 @stop
