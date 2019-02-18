@@ -78,8 +78,10 @@
           
           $idade = DataController::convertData($result->idade_animal);
           
-          $foto = url("images/foto-icon.png");
-          if($result->foto_animal && Storage::disk('local')->exists("storage/".$result->foto_animal)){
+          $foto = url("storage/".$result->foto_animal);
+          //$foto = url("images/foto-icon.png");
+          
+          if($result->foto_animal && Storage::disk('public')->exists("storage/".$result->foto_animal)){
             $foto = url("storage/".$result->foto_animal);
           }
         @endphp
