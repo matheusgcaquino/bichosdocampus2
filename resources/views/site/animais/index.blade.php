@@ -34,6 +34,7 @@
     <div class="box-body">
       @forelse ($results as $result)
         @php
+
           ($sexo_animal = $result->sexo_animal == 'M' ? "Macho" : "Fêmea");
           
           ($castracao_animal = $result->castracao_animal ? "Sim" : "Não");
@@ -42,8 +43,8 @@
           
           $foto = url("images/foto-icon.png");
 
-          if($result->foto_animal && Storage::disk('public_uploads')->exists($result->foto_animal)){
-            $foto = url("uploads/".$result->foto_animal);
+          if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
+            $foto = url("uploads/".$result->foto_perfil);
           }
         @endphp
         <div class="col-md-3">

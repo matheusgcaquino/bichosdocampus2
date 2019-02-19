@@ -21,7 +21,7 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 
 Route::group(['namespace' => 'Site'], function(){
   Route::get('/', 'SiteController@index')->name('home');
-  Route::get('animais/buscar', 'AnimaisController@buscar')->name('buscar.animais');
+  Route::any('animais/buscar', 'AnimaisController@buscar')->name('buscar.animais');
   Route::post('animais/adotar', 'AdotarAnimalController@adotar')->name('adotar.animais');
   Route::get('animais', 'AnimaisController@index')->name('site.animais');
   Route::get('animais/adocao', 'FormAdocaoController@index');
