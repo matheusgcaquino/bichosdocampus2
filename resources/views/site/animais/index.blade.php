@@ -126,6 +126,7 @@
 
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" 
                 data-target="#information" 
+                data-solict-foto="{{$foto}}"
                 data-solict-idade="{{$idade}}" 
                 data-solict-nome="{{$result->nome_animal}}" 
                 data-solict-especie="{{$result->especie_animal}}"
@@ -273,7 +274,7 @@
     <!-- /.modal-dialog -->
   </div>
 
-  <div class="modal modal-default fade" id="information" style="display: none;">
+  <div class="modal modal-info fade" id="information" style="display: none;">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -371,6 +372,7 @@
           var descricao = button.data('solict-descricao')
           var sexo = button.data('solict-sexo')
           var castrado = button.data('solict-castrado')
+          var foto = button.data('solict-foto')
           var modal = $(this)
           modal.find('.modal-title').text("Informações de " + nome)
           $('#nome').val(nome)
@@ -382,6 +384,7 @@
           $('#descricao').val(descricao)
           $('#sexo').val(sexo)
           $('#castrado').val(castrado)
+          $('#foto').val(foto)
     });
   </script>
 @stop
