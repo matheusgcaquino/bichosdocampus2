@@ -15,21 +15,19 @@ class CreateAnimalsTable extends Migration
     {
         // Cria a tabela animal no banco de dados -> [EikE]
         Schema::create('animals', function (Blueprint $table) {
-            $table->increments('id_animal');
-            $table->integer('user_id') -> unsigned();            
-            $table->string('nome_animal', 60);
-            $table->string('raca_animal', 30);
-            $table->date('idade_animal');
-            $table->enum('sexo_animal', ['M', 'F']);
-            $table->string('pelagem_animal', 50);
-            $table->string('comportamento_animal', 50);
-            $table->boolean('castracao_animal');
-            $table->string('descricao_animal', 150);
-            $table->string('foto_animal', 150);
-            $table->boolean('status_animal');
+            $table->increments('id_animal');      
+            $table->string('nome_animal', 60)->nullable(false);
+            $table->string('especie_animal', 60)->nullable(false);
+            $table->string('raca_animal', 30)->nullable(false);
+            $table->date('idade_animal')->nullable(false);
+            $table->enum('sexo_animal', ['M', 'F'])->nullable(false);
+            $table->string('pelagem_animal', 50)->nullable(false);
+            $table->string('comportamento_animal', 50)->nullable(false);
+            $table->boolean('castracao_animal')->nullable(false);
+            $table->string('descricao_animal', 300)->nullable(true);
+            $table->string('foto_perfil', 1200)->nullable(true);            
+            $table->boolean('status_animal')->nullable(false); // 0 - Ativo, 1 - Inativo, 2 - Excluido
             $table->timestamps();
-
-            $table->foreign('user_id') -> references('id') -> on('users') -> onDelete('cascade');
         });
     }
 
@@ -38,8 +36,9 @@ class CreateAnimalsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down(){
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('animals');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

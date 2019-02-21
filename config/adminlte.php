@@ -108,33 +108,10 @@ return [
     */
 
     'menu' => [
-        'MENU',
-        [
-            'text' => 'Home',
-            'url'  => '/',
-            'icon'  => 'home',
-        ],
         [
             'text' => 'Animais',
             'url'  => 'animais',
             'icon'  => 'paw',
-            'submenu' => [
-                [
-                    'text' => 'Ver Animais',
-                    'url' => 'animais/ver',
-                    'icon' => 'paw'
-                ],
-                [
-                    'text' => 'Adicionar Animal',
-                    'url' => 'animais/adicionar',
-                    'icon' => 'plus'
-                ]
-            ]
-        ],
-        [
-            'text' => 'Adoção',
-            'url' => '/adocao',
-            'icon'  => 'heart'
         ]
     ],
 
