@@ -112,19 +112,6 @@ return [
             'text' => 'Animais',
             'url'  => 'animais',
             'icon'  => 'paw',
-            'submenu' => [
-                [
-                    'text' => 'Ver Animais',
-                    'url' => 'animais/ver',
-                    'icon' => 'paw'
-                ],
-                [
-                    'text' => 'Adicionar Animal',
-                    'url' => 'animais/adicionar',
-                    'icon' => 'plus',
-                    'can' => 'auth'
-                ]
-            ]
         ]
     ],
 

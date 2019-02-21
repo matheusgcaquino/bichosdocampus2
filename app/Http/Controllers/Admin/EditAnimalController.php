@@ -7,65 +7,56 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Suporte\DataController;
 use App\Http\Requests\AnimalValidacaoFormRequest;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Animal;
 
-class EditAnimalController extends Controller
-{
+class EditAnimalController extends Controller{
   public function index($id){
-    $results = DB::table('bichosdocampus.animals as animals')
-          ->leftJoin('bichosdocampus.foto_animals as fotos', 
-              'animals.id_animal', '=', 'fotos.id_animal')
-          ->select('animals.*', 'fotos.foto_animal')
-          ->where('animals.id_animal', '=', $id)
-          ->get();
-    return view('admin.animais.editar.index') -> with("result", $results[0]);
+    $animal = Animal::find($id);
+    return view('admin.animais.editar.index') -> with("result", $animal);
   }
 
     // Atualizando no banco de dados -> [EikE]
-  public function atualizar(Request $request){ 
+  public function atualizar(Request $request){
+    $animal = Animal::find($request->id);
+    
     // Calcula a data do animal 
-    $data = DataController::putData([$request -> numeromeses, $request -> numeroano]);
+    $data = DataController::putData([$request->numeromeses, $request->numeroano]);
     
-    $reposta = DB::table('animals')
-      ->where('id_animal', $request -> id)
-      ->update([
-        'nome_animal'           => $request -> nome,
-        'especie_animal'        => $request -> especie,
-        'raca_animal'           => $request -> raca,
-        'idade_animal'          => $data,
-        'sexo_animal'           => $request -> sexo,
-        'pelagem_animal'        => $request -> pelagem,
-        'comportamento_animal'  => $request -> comportamento,
-        'castracao_animal'      => $request -> castrado,
-        'descricao_animal'      => $request -> descricao,
-        'status_animal'         => $request -> status
-      ]);
+    $animal->nome_animal == $request->nome ?: $animal->nome_animal = $request->nome;
+
+    $animal->especie_animal == $request->especie ?: $animal->especie_animal = $request->especie;
+
+    $animal->raca_animal == $request->raca ?: $animal->raca_animal = $request->raca;
+
+    $animal->idade_animal == $data ?: $animal->idade_animal = $data;
+
+    $animal->sexo_animal == $request->sexo ?: $animal->sexo_animal = $request->sexo;
+
+    $animal->pelagem_animal == $request->pelagem ?: $animal->pelagem_animal = $request->pelagem;
+
+    $animal->comportamento_animal == $request->comportamento ?: 
+        $animal->comportamento_animal = $request->comportamento;
+
+    $animal->castracao_animal == $request->castrado ?: $animal->castracao_animal = $request->castrado;
+
+    $animal->descricao_animal == $request->descricao ?: $animal->descricao_animal = $request->descricao;
+
+    $animal->status_animal == $request->status ?: $animal->status_animal = $request->status;
     
-    if($request-> foto){
-      $path = $request-> foto ->store('animals');
-
-      $adicionar = DB::table('foto_animals')
-        ->where('id_animal', $request -> id)
-        ->update([
-          'id_animal'     => $id, 
-          'foto_animal'   => $path 
-        ]);  
-
-      // Retorna mensagem de adicionar ou não
-      if ($adicionar)
-      {
-        $response['success'] = true;
-        $response['message'] = 'Sucesso ao adicionar.';
-      } 
-      else 
-      {
-        $response['success'] = false;
-        $response['message'] = 'Erro ao adicionar.';
+    if($request->foto || $request->excluirFoto){
+      Storage::delete($animal->foto_perfil);
+      if($request->foto){
+        $path = $request->foto->store('animais/'.$animal->id_animal);
+        $animal->foto_perfil = $path;
+      }else{
+        $animal->foto_perfil = null;
       }
-    }else{
-      $response['success'] = true;
-      $response['message'] = 'Sucesso ao adicionar.';
-    }   
+    }
     
+
+    $animal->save();
+
     return redirect() -> route('site.animais');
   }
 }

@@ -24,7 +24,8 @@ class CreateAnimalsTable extends Migration
             $table->string('pelagem_animal', 50)->nullable(false);
             $table->string('comportamento_animal', 50)->nullable(false);
             $table->boolean('castracao_animal')->nullable(false);
-            $table->string('descricao_animal', 300)->nullable(true);            
+            $table->string('descricao_animal', 300)->nullable(true);
+            $table->string('foto_perfil', 1200)->nullable(true);            
             $table->boolean('status_animal')->nullable(false); // 0 - Ativo, 1 - Inativo, 2 - Excluido
             $table->timestamps();
         });
@@ -35,8 +36,9 @@ class CreateAnimalsTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down(){
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('animals');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

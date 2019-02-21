@@ -113,7 +113,7 @@
       </div>      
       <div class="box-footer with-border">
         <button type="submit" class="btn btn-primary">Enviar</button>
-        <a href="/animais/ver" class="btn btn-default">Cancelar</a> 
+        <a href="{{route('site.animais')}}" class="btn btn-default">Cancelar</a> 
       </div>
     </form>
   </div>
