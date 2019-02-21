@@ -13,11 +13,16 @@
 
   <div class="box">
     <div class="box-header">
+
+      <!-- Mensagem de Alerta -->
+      @include('admin.includes.alerts')
+
       @auth
         <div class="form-group col-md-6">
           <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">Adicionar Novo Animal</a>
         </div> 
       @endauth
+      
       <form action="{{route('buscar.animais')}}" method="POST" role="search">
         {{ csrf_field() }}
         <div class="input-group pull-right col-md-3">
@@ -174,53 +179,77 @@
           {{ csrf_field() }}
           <div class="modal-body">
             <div class="box-body">
-              <input type="hidden" name="idAnimal2" id="idAnimal2"/>
+              <input type="hidden" name="id_animal_adocao" id="id_animal_adocao"/>
 
               <div class="form-group col-md-6">
                 <label for="name">Nome Completo </label>
-                <input type="text" class="form-control" name="name" placeholder="Nome Completo">
-              </div>
-              
-              <div class="form-group col-md-6">
-                <label for="race">Logradouro </label>
-                <input type="text" class="form-control" name="logradouro" placeholder="Logradouro">
-              </div>
-              
-              <div class="form-group col-md-6">
-                <label for="race">Bairro </label>
-                <input type="text" class="form-control" name="bairro" placeholder="Bairro">
-              </div>
-              
-              <div class="form-group col-md-6">
-                <label>E-mail</label>
-                <input type="text" class="form-control" name="email" placeholder="E-mail">
+                <input type="text" class="form-control" name="nome_adocao" placeholder="Nome Completo">
               </div>
 
               <div class="form-group col-md-6">
                 <label>Telefone </label>
                 <div class="input-group">
-                  <input type="text" class="form-control" name="telefone"
-                    data-inputmask='"mask": "(999) 999-9999"' data-mask="">
+                  <input type="text" class="form-control" name="telefone_adocao" placeholder="Telefone"
+                    data-inputmask='"mask": "(99) 9999-9999"' data-mask="">
                 </div>
-                <!-- /.input group -->
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>E-mail</label>
+                <input type="text" class="form-control" name="email_adocao" placeholder="E-mail">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>CPF </label>
+                <div class="input-group">
+                  <input type="text" class="form-control" name="cpf_adocao" placeholder="CPF"
+                    data-inputmask='"mask": "999.999.999-99' data-mask="">
+                </div>
+              </div>
+              
+              <div class="form-group col-md-6">
+                <label for="race">Logradouro </label>
+                <input type="text" class="form-control" name="logradouro_adocao" placeholder="Logradouro">
+              </div>
+              
+              <div class="form-group col-md-6">
+                <label for="race">Bairro </label>
+                <input type="text" class="form-control" name="bairro_adocao" placeholder="Bairro">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="race">CEP </label>
+                <input type="text" class="form-control" name="cep_adocao" placeholder="CEP"
+                    data-inputmask='"mask": "99.999-999' data-mask="">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="race">Cidade </label>
+                <input type="text" class="form-control" name="cidade_adocao" placeholder="Cidade">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="race">Estado </label>
+                <input type="text" class="form-control" name="estado_adocao" placeholder="Estado">
               </div>
 
               <div class="form-group col-md-6">
                 <label>Moro em </label>
                 <div class="radio">
                   <label>
-                    <input type="radio" name="moro" id="moro1" value="casa" checked="">
+                    <input type="radio" name="moro_adocao" id="moro1" value="casa" checked="">
                     Casa
                   </label>
                 </div>
                 
                 <div class="radio">
                   <label>
-                    <input type="radio" name="moro" id="moro2" value="apartamento">
+                    <input type="radio" name="moro_adocao" id="moro2" value="apartamento">
                     Apartamento
                   </label>
                 </div>
-              </div>
+              </div>           
+
             </div>
           </div>
           <div class="modal-footer">
@@ -229,9 +258,7 @@
           </div>
         </form>
       </div>
-      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
   </div>
 
   <div class="modal modal-default fade" id="information" style="display: none;">
@@ -318,7 +345,7 @@
           var id = button.data('solict-id')
           var modal = $(this)
           modal.find('.modal-title').text(name + " - Fomulário de Adoção")
-          $('#idAnimal2').val(id)
+          $('#id_animal_adocao').val(id)
     });
 
     $('#information').on('show.bs.modal', function (event) {

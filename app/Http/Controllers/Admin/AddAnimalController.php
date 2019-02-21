@@ -41,10 +41,33 @@ class AddAnimalController extends Controller{
         
         $animal->foto_perfil = $path;
         
-        $animal->save();
+        $animal->save();        
       }
     }
 
-    return redirect()->route('adicionar.animais');
+    // Retorna mensagem de adicionar ou não
+    if ($animal)
+    {
+      $response['success'] = true;
+      $response['message'] = 'Sucesso ao adicionar.';
+    } 
+    else 
+    {
+      $response['success'] = false;
+      $response['message'] = 'Erro ao adicionar.';
+    }  
+  
+    if ($response['success'])
+    {
+      return redirect() 
+                      -> route('adicionar.animais')
+                      -> with('success', $response['message']);
+    }
+    else 
+    {
+      return redirect()
+                      -> route('adicionar.animais')
+                      -> with('error', $response['message']);
+    }
   }
 }
