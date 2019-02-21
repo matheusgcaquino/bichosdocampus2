@@ -22,18 +22,15 @@
           <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">Adicionar Novo Animal</a>
         </div> 
       @endauth
-      
-      <form action="{{route('buscar.animais')}}" method="POST" role="search">
-        {{ csrf_field() }}
-        <div class="input-group pull-right col-md-3">
-          <input type="text" class="form-control" name="buscar" id="buscar"
-              placeholder="Buscar Animais"> <span class="input-group-btn">
-              <button type="submit" class="btn btn-default">
-                  <span class="glyphicon glyphicon-search"></span>
-              </button>
-          </span>
-        </div>
-      </form>
+      <div class="input-group pull-right col-md-3">
+        <input type="text" class="form-control" name="buscar" id="buscar" 
+      value="{{(isset($buscar) ? $buscar : '')}}"
+            placeholder="Buscar Animais"> <span class="input-group-btn">
+            <button id="btn-buscar" type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+      </div>
     </div>   
 
     <div class="box-body">
@@ -376,6 +373,35 @@
           $('#castrado').val(castrado)
           $('#foto').val(foto)
     });
+
+    $(this).on('keyup', function (e) {
+        if (e.keyCode == 13) {
+          if ($('#buscar').val() !== '') {
+            let busca = $('#buscar').val();
+            // console.log(window.location.href);
+            window.location.href = getBaseAnimalUrl() + '/buscar/' + busca;
+          }else{
+            window.location.href = getBaseAnimalUrl();
+          }
+        }
+    });
+
+    $('#btn-buscar').on('click', function () {
+      let busca = $('#buscar').val();
+      // console.log(window.location.href);
+      if ($('#buscar').val() !== '') {
+        let busca = $('#buscar').val();
+        // console.log(window.location.href);
+        window.location.href = getBaseAnimalUrl() + '/buscar/' + busca;
+      }else{
+        window.location.href = getBaseAnimalUrl();
+      }
+      
+    });
+
+    function getBaseAnimalUrl() {
+      return '/animais';
+    }
   </script>
 @stop
 
