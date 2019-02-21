@@ -14,10 +14,16 @@ class AdotaValidacaoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'bail| required | max:60 |',
-            'logradouro'    => 'bail| required | max:150 |',
-            'email'         => 'bail| required | max:30 |',
-            'telefone'      => 'bail| required | min:10 | max:14 '
+            'nome_adocao'       => 'bail| required | max:60 |',
+            'telefone_adocao'   => 'bail| required |',
+            'email_adocao'      => 'bail| required | max:60 |',
+            'cpf_adocao'        => 'bail| required |',
+            'logradouro_adocao' => 'bail| required | max:150 |',
+            'bairro_adocao'     => 'bail| required | max:50 |',
+            'cep_adocao'        => 'bail| required |',
+            'cidade_adocao'     => 'bail| required | max:60 |',
+            'estado_adocao'     => 'bail| required | max:60 |',
+            'moro_adocao'       => 'bail| required |'
         ];
     }
 }

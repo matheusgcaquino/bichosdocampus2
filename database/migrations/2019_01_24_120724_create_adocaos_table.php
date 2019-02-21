@@ -22,7 +22,6 @@ class CreateAdocaosTable extends Migration
             $table->string('endereco_adocao', 150)->nullable(false);
             $table->string('telefone_adocao', 12)->nullable(false);
             $table->string('email_adocao', 50)->nullable(false);
-            $table->date('data_adocao')->nullable(false);
             $table->boolean('status_adocao')->nullable(false); // 0 - Pedido, 1 - Confirmado, 2 - Cancelado
             $table->string('codigo_adocao')->nullable(false);
             $table->timestamps();
