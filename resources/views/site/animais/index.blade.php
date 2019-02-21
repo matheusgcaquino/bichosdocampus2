@@ -6,59 +6,6 @@
 @stop
 
 @section('content')
-  @guest
-    <div class="box-body">
-      <h1>COMO ADOTAR?</h1>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-aqua"><i class="fa fa-paw"></i></span>
-
-          <div class="info-box-content"> 
-            <span class="info-box-number" style="text-align: center;">ESCOLHA PET IDEAL PARA VOCÊ!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-green"><i class="fa fa-file-text"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-number" style="text-align: center;">PREENCHA O FORMULÁRIO DE ADOÇÃO!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-yellow"><i class="fa fa-check"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-number" style="text-align: center;">AGUARDE A APROVAÇÃO DA ADOÇÃO!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-red"><i class="fa fa-heart"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-number" style="text-align: center;">SEJA FELIZ COM SEU PET!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-    </div>
-  @endguest
 
   @php
     use App\Http\Controllers\Suporte\DataController;  
@@ -66,13 +13,31 @@
 
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Perfil dos Animais</h3>
-    </div>
+
+      <!-- Mensagem de Alerta -->
+      @include('admin.includes.alerts')
+
+      @auth
+        <div class="form-group col-md-6">
+          <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">Adicionar Novo Animal</a>
+        </div> 
+      @endauth
+      <div class="input-group pull-right col-md-3">
+        <input type="text" class="form-control" name="buscar" id="buscar" 
+      value="{{(isset($buscar) ? $buscar : '')}}"
+            placeholder="Buscar Animais"> <span class="input-group-btn">
+            <button id="btn-buscar" type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+      </div>
+    </div>   
 
     <div class="box-body">
       
       @forelse ($results as $result)
         @php
+
           ($sexo_animal = $result->sexo_animal == 'M' ? "Macho" : "Fêmea");
           
           ($castracao_animal = $result->castracao_animal ? "Sim" : "Não");
@@ -81,8 +46,8 @@
           
           $foto = url("images/foto-icon.png");
 
-          if($result->foto_animal && Storage::disk('public_uploads')->exists($result->foto_animal)){
-            $foto = url("uploads/".$result->foto_animal);
+          if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
+            $foto = url("uploads/".$result->foto_perfil);
           }
         @endphp
         <div class="col-md-3">
@@ -138,8 +103,8 @@
                 data-solict-castrado="{{$castracao_animal}}"><b>+ Mais Informações</b>
               </button>
               @auth
-                <a href="editar/{{$result->id_animal}}" class="btn btn-primary btn-block">
-                <span class="fa fa-edit"></span><b> Editar</b></a>
+                <a href="{{route('editar.animais.index', ['id' => $result->id_animal])}}" 
+                class="btn btn-primary btn-block"><span class="fa fa-edit"></span><b> Editar</b></a>
 
                 <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
                   data-target="#excluir" data-solict-id="{{$result->id_animal}}" 
@@ -157,9 +122,9 @@
           </div>
         </div>
       @empty
-      <center><h3>Não há animais cadastrados!</h3></br>
+      <center><h3>Nenhum Animal encontrado!</h3></br>
         @auth
-          <h4>Para cadastra um novo animal <a href="/animais/adicionar">CLIQUE AQUI!</a>
+          <h4>Para cadastrar um novo animal <a href="{{route('adicionar.animais.index')}}">CLIQUE AQUI!</a>
         @endauth
         </center>
       @endforelse
@@ -214,53 +179,77 @@
           {{ csrf_field() }}
           <div class="modal-body">
             <div class="box-body">
-              <input type="hidden" name="idAnimal2" id="idAnimal2"/>
+              <input type="hidden" name="id_animal_adocao" id="id_animal_adocao"/>
 
               <div class="form-group col-md-6">
                 <label for="name">Nome Completo </label>
-                <input type="text" class="form-control" name="name" placeholder="Nome Completo">
-              </div>
-              
-              <div class="form-group col-md-6">
-                <label for="race">Logradouro </label>
-                <input type="text" class="form-control" name="logradouro" placeholder="Logradouro">
-              </div>
-              
-              <div class="form-group col-md-6">
-                <label for="race">Bairro </label>
-                <input type="text" class="form-control" name="bairro" placeholder="Bairro">
-              </div>
-              
-              <div class="form-group col-md-6">
-                <label>E-mail</label>
-                <input type="text" class="form-control" name="email" placeholder="E-mail">
+                <input type="text" class="form-control" name="nome_adocao" placeholder="Nome Completo">
               </div>
 
               <div class="form-group col-md-6">
                 <label>Telefone </label>
                 <div class="input-group">
-                  <input type="text" class="form-control" name="telefone"
-                    data-inputmask='"mask": "(999) 999-9999"' data-mask="">
+                  <input type="text" class="form-control" name="telefone_adocao" placeholder="Telefone"
+                    data-inputmask='"mask": "(99) 9999-9999"' data-mask="">
                 </div>
-                <!-- /.input group -->
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>E-mail</label>
+                <input type="text" class="form-control" name="email_adocao" placeholder="E-mail">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label>CPF </label>
+                <div class="input-group">
+                  <input type="text" class="form-control" name="cpf_adocao" placeholder="CPF"
+                    data-inputmask='"mask": "999.999.999-99' data-mask="">
+                </div>
+              </div>
+              
+              <div class="form-group col-md-6">
+                <label for="race">Logradouro </label>
+                <input type="text" class="form-control" name="logradouro_adocao" placeholder="Logradouro">
+              </div>
+              
+              <div class="form-group col-md-6">
+                <label for="race">Bairro </label>
+                <input type="text" class="form-control" name="bairro_adocao" placeholder="Bairro">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="race">CEP </label>
+                <input type="text" class="form-control" name="cep_adocao" placeholder="CEP"
+                    data-inputmask='"mask": "99.999-999' data-mask="">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="race">Cidade </label>
+                <input type="text" class="form-control" name="cidade_adocao" placeholder="Cidade">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="race">Estado </label>
+                <input type="text" class="form-control" name="estado_adocao" placeholder="Estado">
               </div>
 
               <div class="form-group col-md-6">
                 <label>Moro em </label>
                 <div class="radio">
                   <label>
-                    <input type="radio" name="moro" id="moro1" value="casa" checked="">
+                    <input type="radio" name="moro_adocao" id="moro1" value="casa" checked="">
                     Casa
                   </label>
                 </div>
                 
                 <div class="radio">
                   <label>
-                    <input type="radio" name="moro" id="moro2" value="apartamento">
+                    <input type="radio" name="moro_adocao" id="moro2" value="apartamento">
                     Apartamento
                   </label>
                 </div>
-              </div>
+              </div>           
+
             </div>
           </div>
           <div class="modal-footer">
@@ -269,9 +258,7 @@
           </div>
         </form>
       </div>
-      <!-- /.modal-content -->
     </div>
-    <!-- /.modal-dialog -->
   </div>
 
   <div class="modal modal-info fade" id="information" style="display: none;">
@@ -358,7 +345,7 @@
           var id = button.data('solict-id')
           var modal = $(this)
           modal.find('.modal-title').text(name + " - Fomulário de Adoção")
-          $('#idAnimal2').val(id)
+          $('#id_animal_adocao').val(id)
     });
 
     $('#information').on('show.bs.modal', function (event) {
@@ -386,6 +373,35 @@
           $('#castrado').val(castrado)
           $('#foto').val(foto)
     });
+
+    $(this).on('keyup', function (e) {
+        if (e.keyCode == 13) {
+          if ($('#buscar').val() !== '') {
+            let busca = $('#buscar').val();
+            // console.log(window.location.href);
+            window.location.href = getBaseAnimalUrl() + '/buscar/' + busca;
+          }else{
+            window.location.href = getBaseAnimalUrl();
+          }
+        }
+    });
+
+    $('#btn-buscar').on('click', function () {
+      let busca = $('#buscar').val();
+      // console.log(window.location.href);
+      if ($('#buscar').val() !== '') {
+        let busca = $('#buscar').val();
+        // console.log(window.location.href);
+        window.location.href = getBaseAnimalUrl() + '/buscar/' + busca;
+      }else{
+        window.location.href = getBaseAnimalUrl();
+      }
+      
+    });
+
+    function getBaseAnimalUrl() {
+      return '/animais';
+    }
   </script>
 @stop
 

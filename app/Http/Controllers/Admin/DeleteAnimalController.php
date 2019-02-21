@@ -6,22 +6,17 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Animal;
 
-class DeleteAnimalController extends Controller
-{
+class DeleteAnimalController extends Controller{
     public function deletar(Request $request){
-        $results = DB::table('bichosdocampus.foto_animals')
-            ->select('foto_animal')
-            ->where('id_animal', '=', $request -> idAnimal)
-            ->get();
+        $animal = Animal::select("foto_perfil")
+                        ->find($request->idAnimal);
         
-        foreach($results as $result){
-            Storage::delete($result -> foto_animal);
+        if($animal->foto_perfil){
+            Storage::delete($animal->foto_perfil);
         }
-
-        DB::table('bichosdocampus.animals')
-            ->where('id_animal', '=', $request -> idAnimal)->delete();
-
+        Animal::destroy($request->idAnimal);
         return redirect()-> route('site.animais');
     }
 }
