@@ -6,50 +6,39 @@
 @stop
 
 @section('content')
-        
-  <div>
-    <div class="slide-one-item home-slider owl-carousel">
-      <div class="site-blocks-cover" style="background-image: url(images/home.png);" data-aos="fade" data-stellar-background-ratio="0.5">
-      </div>
-      <div class="site-blocks-cover" style="background-image: url(images/home2.png);" data-aos="fade" data-stellar-background-ratio="0.5">
-      </div>
-      <div class="site-blocks-cover" style="background-image: url(images/gato.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-      </div>
-
-      <div class="site-blocks-cover" style="background-image: url(images/gato3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-      </div>
-    </div>
-
-    <div class="box" style="padding: 5%; font-size: 16px;">
-      <div class="row no-gutters">
-        <div class="col-md-6 col-lg-3">
-          <div class="w-100 h-100 block-feature p-5 bg-light">
-            <h2 style="font-size: 18px;">ADOTE</h2>
-            <p style="text-orientation: inherit;">Existem cerca de 250 gatos abandonados, vivendo na Universidade Federal de Sergipe.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="w-100 h-100 block-feature p-5">
-            <h2 style="font-size: 18px;">DOE</h2>
-            <p style="text-orientation: inherit;">A alimentação dos animais é feita somente com doações.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="w-100 h-100 block-feature p-5 bg-light">
-
-            <h2 style="font-size: 18px;">NÃO ABANDONE</h2>
-            <p style="text-orientation: inherit;">O número de animais abandonados cresce diariamente.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="w-100 h-100 block-feature p-5">
-            <h2 style="font-size: 18px;">CUIDE</h2>
-            <p style="text-orientation: inherit;">Ter um animal de estimação é bom pra você e pra ele támbem.</p>
-          </div>
-        </div>
-      </div>
-    </div> <!-- .block-feature -->
+<div class="container-fluid bg-1 text-center">
+  <div class="jumbotron" style=" background-image: url(images/home2.jpg);background-size: cover; box-shadow: 5px 5px 5px rgba(0,0,0,0.5);">
+    <img src="images/logo.png" style="padding: 5%" class="img-responsive">
   </div>
+</div>
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header with-border" style="background-color: #f53a0c;">
+        <h3 class="box-title" style="color: white;">PRECISO DE UM LAR!</h3></div>
+          <div class="box-body">
+        <div class="col-sm-4">
+          <img src="images/05.jpg" class="img-responsive margin">
+        </div>
+        <div class="col-sm-4">
+          <img src="images/06.jpg" class="img-responsive margin">
+        </div>
+        <div class="col-sm-4">
+          <img src="images/07.jpg" class="img-responsive margin">
+        </div>
+         <div class="col-sm-4">
+          <img src="images/08.jpg" class="img-responsive margin">
+        </div>
+        <div class="col-sm-4">
+          <img src="images/09.jpg" class="img-responsive margin">
+        </div>
+        <div class="col-sm-4">
+          <img src="images/10.jpg" class="img-responsive margin">
+        </div>
+    </div>
+    </div>
+  </div>
+    </div>
+  
 
 
     <div class="box-body" style="text-align: center;">
@@ -102,54 +91,17 @@
       </div>
       <!-- /.col -->    
     </div>
-    <div class="callout callout-danger" style="padding: 5%;text-align: center;">
-      <div class="box-body">
-        <div>
-          <h2 class="mb-3 text-uppercase">QUEM <strong>SOMOS</strong>?</h2>
-          <p class="lead">A <strong>BICHOS DO CAMPUS</strong> é text text text
-          text text text tex  text tex te tet x et xtet </p>
-        </div>
-      </div>
-    </div>
 
-    <div class="callout callout-success" style="padding: 5%; font-size: 18px;text-align: center;">
-      <div class="box-body">
-        <h2 class="mb-3 text-uppercase">O QUE EU PRECISO PARA <strong>ADOTAR</strong>?</h2>
-        <p>A Bichos do Campus tem um processo de adoção seguindo alguns critérios.</p>
-        <p>Este processo é feito para garantir o conforto do animal e evitar possíveis problemas.</p>
-        <ul>
-          <li>É preciso não ter histórico de abandono.</li>
-          <li>Caso você more em apartamento, é necessário ter as janelas teladas.</li>
-          <li>Outros.</li>
-        </ul></br>
-        <button onclick="window.location='{{ route ('site.animais') }}'" class="btn bg-orange">QUERO ADOTAR</button>
-      </div>
-    </div>
-
-@stop
-
-@section('css')
-  <link rel="stylesheet" href="fonts/icomoon/style.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
-  <link rel="stylesheet" href="css/jquery-ui.css">
-  <link rel="stylesheet" href="css/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-  <link rel="stylesheet" href="css/animate.css">
-@stop
-
-@section('js')
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/bootstrap-datepicker.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/main.js"></script>
+<div class="box-footer" style="background-color: #f53a0c;">
+  <div class="col-md-6" style="text-align: left;">
+    <h3 style="color: white;">QUEM SOMOS?</h3>
+    <h4 style="color: white;"> texto texto texto texto texto</h4>
+  </div>
+  <div class="col-md-6" style="text-align: right;">
+    <h3 style="color: white;">SIGA-NOS</h3>
+    <a href="https://pt-br.facebook.com/pages/category/Community/Bichos-do-Campus-1525354857687682/" class="btn btn-social-icon btn-facebook">
+      <i class="fa fa-facebook"></i></a>
+    <a href="https://instagram.com/bichosdocampus"class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></a>
+  </div>
+</div>
 @stop
