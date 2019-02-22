@@ -12,14 +12,15 @@
     $idade = DataController::getData($result->idade_animal);
     
     $foto = url("images/foto-icon.png");
-    if($result->foto_animal && Storage::disk('local')->exists("storage/".$result->foto_animal)){
-      $foto = url("storage/".$result->foto_animal);
+
+    if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
+      $foto = url("uploads/".$result->foto_perfil);
     }
   @endphp
   <div class="box">
     <form action = "{{route('atualizar.animais')}}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
-      <input type="hidden" id="id" name="id" value="{{$result->id_animal}}">
+      <input type="hidden" name="id" value="{{$result->id_animal}}">
       <div class="box-header">
         <h3 class="box-title">Editar Animal</h3>
       </div>
@@ -27,7 +28,7 @@
       <div class="box-body">
         <div class="form-group col-md-6">
           <label for="name">Nome </label>
-          <input type="text" class="form-control" id="name" name="nome" value="{{$result->nome_animal}}">
+          <input type="text" class="form-control" name="nome" value="{{$result->nome_animal}}">
         </div>
         
         <div class="form-group col-md-6">
@@ -152,16 +153,22 @@
           <div class="pull-left">
               <img class="profile-user-img img-responsive img-circle" 
               src="{{$foto}}" alt="User profile picture">
-          </div>
+          
+            </div>
             <label for="foto">Alterar Imagem</label>
             <input type="file" id="foto" name="foto">
-        </div>
+          </div>
 
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="excluirFoto"> Excluir Foto
+            </label>
+          </div>
       </div>
       
       <div class="box-footer with-border">
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="/animais/ver" class="btn btn-default">Cancelar</a>
+        <a href="{{route('site.animais')}}" class="btn btn-default">Cancelar</a>
       </div>
     </form>
   </div>

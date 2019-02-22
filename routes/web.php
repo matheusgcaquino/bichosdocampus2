@@ -20,11 +20,12 @@ Route::group(['middleware' => ['auth'], 'namespace' => 'Admin'], function(){
 });
 
 Route::group(['namespace' => 'Site'], function(){
-  Route::get('/', 'SiteController@index');
-  Route::get('animais/ver', 'AnimaisController@index')->name('site.animais');
-  Route::get('animais/adocao', 'FormAdocaoController@index')->name('site.adocao');
+  Route::get('/', 'SiteController@index')->name('home');
+  Route::any('animais/buscar', 'AnimaisController@buscar')->name('buscar.animais');
+  Route::post('animais/adotar', 'AdotarAnimalController@adotar')->name('adotar.animais');
+  Route::get('animais', 'AnimaisController@index')->name('site.animais');
+  Route::get('animais/adocao', 'FormAdocaoController@index');
+  Route::fallback('_404Controller@index');
 });
-
-Route::get('/teste', 'Suporte\DataController@getData');
 
 Auth::routes();

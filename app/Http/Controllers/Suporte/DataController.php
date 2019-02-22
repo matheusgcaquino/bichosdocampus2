@@ -48,7 +48,7 @@ class DataController extends Controller
         }elseif (isset($mes)) {
             return $mes;
         }else{
-            return "dias";
+            return "Recém Nascido";
         }
     }
 }

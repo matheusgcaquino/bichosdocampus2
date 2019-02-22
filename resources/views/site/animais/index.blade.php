@@ -6,83 +6,45 @@
 @stop
 
 @section('content')
-  @guest
-    <div class="box-body">
-      <h1>COMO ADOTAR?</h1>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-aqua"><i class="fa fa-paw"></i></span>
-
-          <div class="info-box-content"> 
-            <span class="info-box-number" style="text-align: center;">ESCOLHA PET IDEAL PARA VOCÊ!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-green"><i class="fa fa-file-text"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-number" style="text-align: center;">PREENCHA O FORMULÁRIO DE ADOÇÃO!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-yellow"><i class="fa fa-check"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-number" style="text-align: center;">AGUARDE A APROVAÇÃO DA ADOÇÃO!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-red"><i class="fa fa-heart"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-number" style="text-align: center;">SEJA FELIZ COM SEU PET!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-    </div>
-  @endguest
 
   @php
-    use App\Http\Controllers\Suporte\DataController;   
+    use App\Http\Controllers\Suporte\DataController;  
   @endphp
 
   <div class="box">
     <div class="box-header">
-      <h3 class="box-title">Perfil dos Animais</h3>
-    </div>
+      @auth
+        <div class="form-group col-md-6">
+          <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">Adicionar Novo Animal</a>
+        </div> 
+      @endauth
+      <form action="{{route('buscar.animais')}}" method="POST" role="search">
+        {{ csrf_field() }}
+        <div class="input-group pull-right col-md-3">
+          <input type="text" class="form-control" name="buscar" id="buscar"
+              placeholder="Buscar Animais"> <span class="input-group-btn">
+              <button type="submit" class="btn btn-default">
+                  <span class="glyphicon glyphicon-search"></span>
+              </button>
+          </span>
+        </div>
+      </form>
+    </div>   
 
     <div class="box-body">
       @forelse ($results as $result)
         @php
+
           ($sexo_animal = $result->sexo_animal == 'M' ? "Macho" : "Fêmea");
           
           ($castracao_animal = $result->castracao_animal ? "Sim" : "Não");
           
           $idade = DataController::convertData($result->idade_animal);
           
-          $foto = url("storage/".$result->foto_animal);
-          //$foto = url("images/foto-icon.png");
-          
-          if($result->foto_animal && Storage::disk('public')->exists("storage/".$result->foto_animal)){
-            $foto = url("storage/".$result->foto_animal);
+          $foto = url("images/foto-icon.png");
+
+          if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
+            $foto = url("uploads/".$result->foto_perfil);
           }
         @endphp
         <div class="col-md-3">
@@ -136,8 +98,8 @@
                 data-solict-castrado="{{$castracao_animal}}"><b>+ Mais Informações</b>
               </button>
               @auth
-                <a href="editar/{{$result->id_animal}}" class="btn btn-primary btn-block">
-                <span class="fa fa-edit"></span><b> Editar</b></a>
+                <a href="{{route('editar.animais.index', ['id' => $result->id_animal])}}" 
+                class="btn btn-primary btn-block"><span class="fa fa-edit"></span><b> Editar</b></a>
 
                 <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
                   data-target="#excluir" data-solict-id="{{$result->id_animal}}" 
@@ -155,15 +117,18 @@
           </div>
         </div>
       @empty
-      <center><h3>Não há animais cadastrados!</h3></br>
+      <center><h3>Nenhum Animal encontrado!</h3></br>
         @auth
-          <h4>Para cadastra um novo animal <a href="/animais/adicionar">CLIQUE AQUI!</a>
+          <h4>Para cadastrar um novo animal <a href="{{route('adicionar.animais.index')}}">CLIQUE AQUI!</a>
         @endauth
         </center>
       @endforelse
+    </div>
     
     <div class="box-footer">
-       {{-- $results->links()--}} 
+      <div class="pull-right">
+          {{$results->links()}}
+      </div>
     </div>
   </div>
 
@@ -205,35 +170,36 @@
             <h4 class="modal-title" id="exampleModalLabel"> </h4>
         </div>
 
-        <form>
+        <form action="{{route('adotar.animais')}}" method="POST">
+          {{ csrf_field() }}
           <div class="modal-body">
             <div class="box-body">
-              <input type="hidden" name="idAnimal" id="idAnimal"/>
+              <input type="hidden" name="idAnimal2" id="idAnimal2"/>
 
               <div class="form-group col-md-6">
                 <label for="name">Nome Completo </label>
-                <input type="text" class="form-control" id="name" placeholder="Nome Completo">
+                <input type="text" class="form-control" name="name" placeholder="Nome Completo">
               </div>
               
               <div class="form-group col-md-6">
                 <label for="race">Logradouro </label>
-                <input type="text" class="form-control" id="logradouro" placeholder="Logradouro">
+                <input type="text" class="form-control" name="logradouro" placeholder="Logradouro">
               </div>
               
               <div class="form-group col-md-6">
                 <label for="race">Bairro </label>
-                <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+                <input type="text" class="form-control" name="bairro" placeholder="Bairro">
               </div>
               
               <div class="form-group col-md-6">
                 <label>E-mail</label>
-                <input type="text" class="form-control" id="email" placeholder="E-mail">
+                <input type="text" class="form-control" name="email" placeholder="E-mail">
               </div>
 
               <div class="form-group col-md-6">
                 <label>Telefone </label>
                 <div class="input-group">
-                  <input type="text" class="form-control" id="telefone"
+                  <input type="text" class="form-control" name="telefone"
                     data-inputmask='"mask": "(999) 999-9999"' data-mask="">
                 </div>
                 <!-- /.input group -->
@@ -259,7 +225,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-success">Confirmar</button>
+            <button type="submit" class="btn btn-success">Confirmar</button>
           </div>
         </form>
       </div>
@@ -352,7 +318,7 @@
           var id = button.data('solict-id')
           var modal = $(this)
           modal.find('.modal-title').text(name + " - Fomulário de Adoção")
-          $('#idAnimal').val(id)
+          $('#idAnimal2').val(id)
     });
 
     $('#information').on('show.bs.modal', function (event) {
