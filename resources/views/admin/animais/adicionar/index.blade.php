@@ -6,6 +6,7 @@
 @stop
 
 @section('content')
+
   <div class="box">
     <form action = "{{ route('adicionar.animais') }}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
@@ -19,17 +20,17 @@
       <div class="box-body">
 
         <div class="form-group col-md-6">
-          <label for="nome"> Nome </label>
+          <label for="nome"> Nome  <font color="red"> * <font color="black"> </label>
           <input type="text" class="form-control" name="nome" placeholder="Nome do Animal" required>
         </div>
 
         <div class="form-group col-md-6">
-          <label for="especie"> Espécie </label>
+          <label for="especie"> Espécie <font color="red"> * <font color="black"> </label>
           <input type="text" class="form-control" name="especie" placeholder="Especie do Animal">
         </div>
         
         <div class="form-group col-md-6">
-          <label for="raca"> Raça </label>
+          <label for="raca"> Raça <font color="red"> * <font color="black"> </label>
           <input type="text" class="form-control" name="raca" placeholder="Raça do Animal" required>
         </div>
         
@@ -45,13 +46,13 @@
         </div>
         
         <div class="form-group col-md-6">
-          <label for="pelagem"> Pelagem </label>
+          <label for="pelagem"> Pelagem <font color="red"> * <font color="black"> </label>
           <input class="form-control" rows="2" name="pelagem" 
             placeholder="Pelagem do Animal" required></textarea>
         </div>
 
         <div class="form-group col-md-6">
-          <label for="comportamento"> Comportamento </label>
+          <label for="comportamento"> Comportamento <font color="red"> * <font color="black"> </label>
           <input class="form-control" rows="2" name="comportamento" 
             placeholder="Comportamento do Animal" required></textarea>
         </div>
