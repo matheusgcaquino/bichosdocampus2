@@ -112,6 +112,18 @@ return [
             'text' => 'Animais',
             'url'  => 'animais',
             'icon'  => 'paw',
+        ],
+        [
+            'text' => 'Adoções',
+            'url'  => 'adoções',
+            'icon'  => 'heart',
+            'can'   =>  'auth',
+        ],
+        [
+            'text' => 'Usuários',
+            'url'  => 'usuários',
+            'icon'  => 'user',
+            'can'   =>  'auth',
         ]
     ],
 
