@@ -3,18 +3,20 @@
 namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Animal;
 
 class AnimaisController extends Controller{
-    public function index(){ 
+    
+    public function index(){
+        
         $animal = Animal::paginate(12);
-        return view('site.animais.index') -> with("results", $animal);
+            return view('site.animais.index', ["results"   =>  $animal]);
     }
 
-    public function buscar(Request $request){
-        $buscar = $request->buscar;
+    public function buscar($buscar){
         if($buscar != ""){
             $animal = Animal::where('nome_animal', 'LIKE', '%' . $buscar . '%' )
                             ->orWhere('especie_animal', 'LIKE', '%' . $buscar . '%')
@@ -22,6 +24,10 @@ class AnimaisController extends Controller{
         }else{
             $animal = Animal::paginate(12);
         }
-        return view('site.animais.index') -> with("results", $animal);
+        return view('site.animais.index',
+            [
+                "results"   =>  $animal,
+                "buscar"    =>  $buscar
+            ]);
     }
 }
