@@ -20,9 +20,9 @@ class AnimaisController extends Controller{
         if($buscar != ""){
             $animal = Animal::where('nome_animal', 'LIKE', '%' . $buscar . '%' )
                             ->orWhere('especie_animal', 'LIKE', '%' . $buscar . '%')
-                            ->paginate(1);
+                            ->paginate(12);
         }else{
-            $animal = Animal::paginate(1);
+            $animal = Animal::paginate(12);
         }
         return view('site.animais.index',
             [
