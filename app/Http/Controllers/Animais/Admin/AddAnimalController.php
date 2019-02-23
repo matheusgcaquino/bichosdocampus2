@@ -69,5 +69,7 @@ class AddAnimalController extends Controller{
                       -> route('adicionar.animais')
                       -> with('error', $response['message']);
     }
+
+    return redirect()->route('adicionar.animais');
   }
 }

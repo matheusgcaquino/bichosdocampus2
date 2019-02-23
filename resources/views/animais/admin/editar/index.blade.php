@@ -27,17 +27,17 @@
       
       <div class="box-body">
         <div class="form-group col-md-6">
-          <label for="name">Nome </label>
+          <label for="name">Nome <font color="red"> * <font color="black"> </label>
           <input type="text" class="form-control" name="nome" value="{{$result->nome_animal}}">
         </div>
         
         <div class="form-group col-md-6">
-          <label for="especie"> Espécie </label>
+          <label for="especie"> Espécie <font color="red"> * <font color="black"> </label>
           <input type="text" class="form-control" name="especie" value="{{$result->especie_animal}}">
         </div>
 
         <div class="form-group col-md-6">
-          <label for="race">Raça </label>
+          <label for="race">Raça <font color="red"> * <font color="black"> </label>
           <input type="text" class="form-control" id="raca" name="raca" value="{{$result->raca_animal}}">
         </div>
         
@@ -53,19 +53,19 @@
         </div>
         
         <div class="form-group col-md-6">
-          <label>Pelagem</label>
+          <label> Pelagem <font color="red"> * <font color="black"> </label>
           <textarea class="form-control" rows="2" id="pelagem" name="pelagem" 
           placeholder="Pelagem do Animal">{{$result->pelagem_animal}}</textarea>
         </div>
 
         <div class="form-group col-md-6">
-          <label>Comportamento</label>
+          <label> Comportamento <font color="red"> * <font color="black"> </label>
           <textarea class="form-control" rows="2" id="comportamento" name="comportamento"
           placeholder="Comportamento do Animal">{{$result->comportamento_animal}}</textarea>
         </div>
 
         <div class="form-group col-md-6">
-            <label>Descrição</label>
+            <label> Descrição </label>
             <textarea class="form-control" rows="3" id="descricao" name="descricao"
             placeholder="Descrição do Animal">{{$result->descricao_animal}}</textarea>
         </div>
