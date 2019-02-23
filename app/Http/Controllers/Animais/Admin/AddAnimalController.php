@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Animais\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +12,7 @@ use App\Models\Animal;
 class AddAnimalController extends Controller{
   
   public function index(){
-    return view('admin.animais.adicionar.index');
+    return view('animais.admin.adicionar.index');
   }
 
   // Adicionando no banco de dados

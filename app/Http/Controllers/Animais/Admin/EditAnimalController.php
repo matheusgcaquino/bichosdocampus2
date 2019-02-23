@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Animais\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,7 +13,7 @@ use App\Models\Animal;
 class EditAnimalController extends Controller{
   public function index($id){
     $animal = Animal::find($id);
-    return view('admin.animais.editar.index') -> with("result", $animal);
+    return view('animais.admin.editar.index') -> with("result", $animal);
   }
 
     // Atualizando no banco de dados -> [EikE]
