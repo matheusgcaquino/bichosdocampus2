@@ -107,7 +107,7 @@ class UserTableSeeder extends Seeder
           ],
           //11
           ['nome_animal' => 'Mary Jane', 'especie_animal' => 'Gato', 'raca_animal' => 'Sem Raça' , 
-            'foto_perfil'=>'animais/11/animal_11.jpg','idade_animal' => '2018-10-15', 'sexo_animal' => 'F', 
+            'foto_perfil'=>'animais/11/animal_11.jpg','idade_animal' => '2017-10-15', 'sexo_animal' => 'F', 
             'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Dócil e brincalhão',
             'castracao_animal' => 1, 'descricao_animal' =>'É um gata amigável e diposnivel para adoção', 
             'status_animal' => 1
