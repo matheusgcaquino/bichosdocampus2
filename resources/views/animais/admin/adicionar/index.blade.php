@@ -14,7 +14,7 @@
       </div>
       
       <!-- Mensagem de Alerta -->
-      @include('admin.includes.alerts')
+      @include('site.includes.alerts')
 
       <div class="box-body">
 

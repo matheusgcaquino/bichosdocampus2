@@ -15,7 +15,7 @@
     <div class="box-header">
 
       <!-- Mensagem de Alerta -->
-      @include('admin.includes.alerts')
+      @include('site.includes.alerts')
 
       @auth
         <div class="form-group col-md-6">
