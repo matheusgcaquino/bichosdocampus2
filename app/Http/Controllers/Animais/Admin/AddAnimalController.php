@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Animais\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use App\Http\Requests\AnimalValidacaoFormRequest;
 use App\Http\Controllers\Suporte\DataController;
 use App\Models\Animal;

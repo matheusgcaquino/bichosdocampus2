@@ -12,8 +12,4 @@ class AdoçõesController extends Controller{
         $adocao = Adocao::paginate(15);
             return view('adoções.admin.home.index', ["results"   =>  $adocao]);
     }
-
-    public function animal(){
-        $this->belongsto('Animal');
-    }
 }

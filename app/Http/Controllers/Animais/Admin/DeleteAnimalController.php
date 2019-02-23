@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Animais\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Animal;
 

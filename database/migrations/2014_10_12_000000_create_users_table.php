@@ -15,11 +15,12 @@ class CreateUsersTable extends Migration
     {
         // Cria a tabela Usuarios -> [AdminLTE]
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+            $table->increments('id_user');
+            $table->string('name_user');
             $table->string('email')->unique();
             $table->string('password');
-            $table->boolean('nivel'); // 0 - Normal, 1 - Funcionario, 2 - Administrador
+            $table->boolean('nivel_user');
+            $table->boolean('status_user')->nullable(false);
             $table->rememberToken();
             $table->timestamps();
         });

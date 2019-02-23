@@ -15,4 +15,8 @@ class Adocao extends Model{
     'status_adocao', 'codigo_adocao'];
 
     public $timestamps = true;
+
+    public function animal(){
+        $this->belongsto('Animal');
+    }
 }

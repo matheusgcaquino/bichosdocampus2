@@ -26,7 +26,7 @@ class CreateAnimalsTable extends Migration
             $table->boolean('castracao_animal')->nullable(false);
             $table->string('descricao_animal', 300)->nullable(true);
             $table->string('foto_perfil', 1200)->nullable(true);            
-            $table->boolean('status_animal')->nullable(false); // 0 - Ativo, 1 - Inativo, 2 - Excluido
+            $table->boolean('status_animal')->nullable(false);
             $table->timestamps();
         });
     }

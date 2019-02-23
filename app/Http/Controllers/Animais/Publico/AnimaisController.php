@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Animais\Publico;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use App\Models\Animal;
 use Illuminate\Support\Facades\Gate;
 

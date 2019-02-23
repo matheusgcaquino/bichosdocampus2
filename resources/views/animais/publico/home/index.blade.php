@@ -115,7 +115,7 @@
                 <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
                   data-target="#adotar" data-solict-id="{{$result->id_animal}}" 
                   data-solict-name="{{ $result->nome_animal }}"><span class="fa fa-heart"></span>
-                  <b>Adotar</b>
+                  <b>Requisitar Adoção</b>
                 </button>
               @endauth
             </div>
@@ -146,12 +146,13 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span></button>
-            <h4 class="modal-title" id="exampleModalLabel"></h4>
+            <h4 class="modal-title" id="exampleModalLabel">Deletar Animais</h4>
         </div>
 
         <form action="{{route('deletar.animais')}}" method="POST">
           {{ csrf_field() }}
           <div class="modal-body">
+            <h4 id="excluir_frase"></h4>
             <input type="hidden" name="idAnimal" id="idAnimal"/>
           </div>
           <div class="modal-footer">
@@ -172,86 +173,17 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span></button>
-            <h4 class="modal-title" id="exampleModalLabel"> </h4>
+            <h4 class="modal-title" id="exampleModalLabel">Requisição de Adoção</h4>
         </div>
-
-        <form action="{{route('adotar.animais')}}" method="POST">
-          {{ csrf_field() }}
+        <form action="{{route('adotar.info')}}" method="POST">
+            {{ csrf_field() }}
           <div class="modal-body">
             <div class="box-body">
-              <input type="hidden" name="id_animal_adocao" id="id_animal_adocao"/>
-
-              <div class="form-group col-md-6">
-                <label for="name"> Nome Completo <font color="red"> * <font color="black"> </label>
-                <input type="text" class="form-control" name="nome_adocao" placeholder="Nome Completo">
-              </div>
-
-              <div class="form-group col-md-6">
-                <label> Telefone <font color="red"> * <font color="black"> </label>
-                <div class="input-group">
-                  <input type="text" class="form-control" name="telefone_adocao" placeholder="Telefone"
-                    data-inputmask='"mask": "(99) 9999-9999"' data-mask="">
-                </div>
-              </div>
-
-              <div class="form-group col-md-6">
-                <label> E-mail <font color="red"> * <font color="black"> </label>
-                <input type="text" class="form-control" name="email_adocao" placeholder="E-mail">
-              </div>
-
-              <div class="form-group col-md-6">
-                <label> CPF <font color="red"> * <font color="black"> </label>
-                <div class="input-group">
-                  <input type="text" class="form-control" name="cpf_adocao" placeholder="CPF"
-                    data-inputmask='"mask": "999.999.999-99' data-mask="">
-                </div>
-              </div>
-              
-              <div class="form-group col-md-6">
-                <label for="race"> Logradouro <font color="red"> * <font color="black"> </label>
-                <input type="text" class="form-control" name="logradouro_adocao" placeholder="Logradouro">
-              </div>
-              
-              <div class="form-group col-md-6">
-                <label for="race"> Bairro <font color="red"> * <font color="black"> </label>
-                <input type="text" class="form-control" name="bairro_adocao" placeholder="Bairro">
-              </div>
-
-              <div class="form-group col-md-6">
-                <label for="race"> CEP <font color="red"> * <font color="black"> </label>
-                <input type="text" class="form-control" name="cep_adocao" placeholder="CEP"
-                    data-inputmask='"mask": "99.999-999' data-mask="">
-              </div>
-
-              <div class="form-group col-md-6">
-                <label for="race"> Cidade <font color="red"> * <font color="black"> </label>
-                <input type="text" class="form-control" name="cidade_adocao" placeholder="Cidade">
-              </div>
-
-              <div class="form-group col-md-6">
-                <label for="race"> Estado <font color="red"> * <font color="black"> </label>
-                <input type="text" class="form-control" name="estado_adocao" placeholder="Estado">
-              </div>
-
-              <div class="form-group col-md-6">
-                <label>Moro em </label>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="moro_adocao" id="moro1" value="casa" checked="">
-                    Casa
-                  </label>
-                </div>
-                
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="moro_adocao" id="moro2" value="apartamento">
-                    Apartamento
-                  </label>
-                </div>
-              </div>           
-
+              <h4 id="adotar_frase"></h4>
+              <input type="hidden" name="id_animal" id="id_animal_adocao"/>
             </div>
           </div>
+  
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-success">Confirmar</button>
@@ -335,7 +267,8 @@
           var name = button.data('solict-name')
           var id = button.data('solict-id')
           var modal = $(this)
-          modal.find('.modal-title').text("Deseja excluir " + name + "?")
+          // modal.find('.modal-title').text("Deseja excluir " + name + "?")
+          $('#excluir_frase').text("Tem certeza que deseja excluir " + name + "?")
           $('#idAnimal').val(id)
     });
 
@@ -344,7 +277,8 @@
           var name = button.data('solict-name')
           var id = button.data('solict-id')
           var modal = $(this)
-          modal.find('.modal-title').text(name + " - Fomulário de Adoção")
+          // modal.find('.modal-title').text(name + " - Fomulário de Adoção")
+          $('#adotar_frase').text("Desaja fazer o requerimento de adoção para " + name + "?")
           $('#id_animal_adocao').val(id)
     });
 
