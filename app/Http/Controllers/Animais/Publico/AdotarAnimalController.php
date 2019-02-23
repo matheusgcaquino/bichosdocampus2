@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace App\Http\Controllers\Animais\Publico;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -9,10 +9,9 @@ use App\Http\Requests\AdotaValidacaoFormRequest;
 use App\Http\Controllers\Suporte\DataController;
 use App\Models\Adocao;
 
-class AdotarAnimalController extends Controller
-{
-  public function adotar(AdotaValidacaoFormRequest $request)
-  { 
+class AdotarAnimalController extends Controller{
+  
+  public function adotar(AdotaValidacaoFormRequest $request){ 
     // Insere os dados
     $adocao = Adocao::create(
     [

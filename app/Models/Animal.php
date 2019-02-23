@@ -18,6 +18,10 @@ class Animal extends Model{
     public $timestamps = true;
 
     public function foto(){
-        return $this->hasMany('foto_animals');
+        return $this->hasMany('Foto_animals');
+    }
+
+    public function adocao(){
+        return $this->hasMany('Adocao');
     }
 }
