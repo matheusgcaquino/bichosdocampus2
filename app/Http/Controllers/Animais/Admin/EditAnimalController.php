@@ -8,14 +8,17 @@ use App\Http\Controllers\Suporte\DataController;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Animal;
 
-class EditAnimalController extends Controller{
-  public function index($id){
+class EditAnimalController extends Controller
+{
+  public function index($id)
+  {
     $animal = Animal::find($id);
     return view('animais.admin.editar.index') -> with("result", $animal);
   }
 
     // Atualizando no banco de dados -> [EikE]
-  public function atualizar(Request $request){
+  public function atualizar(Request $request)
+  {
     $animal = Animal::find($request->id);
     
     // Calcula a data do animal 

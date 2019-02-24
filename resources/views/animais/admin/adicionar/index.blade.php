@@ -21,7 +21,8 @@
 
         <div class="form-group col-md-6">
           <label for="nome"> Nome  <font color="red"> * <font color="black"> </label>
-          <input type="text" class="form-control" name="nome" placeholder="Nome do Animal" required>
+          <input type="text" class="form-control" name="nome" placeholder="Nome do Animal"
+          autofocus required>
         </div>
 
         <div class="form-group col-md-6">

@@ -18,7 +18,7 @@ class UserTableSeeder extends Seeder
           'email' => 'admin@bichosdocampus.ufs.br',
           'password' => bcrypt('admin'),
           'nivel_user' => 0,
-          'status_user' => 0
+          'status_user' => 1
         ]);
     }
 }

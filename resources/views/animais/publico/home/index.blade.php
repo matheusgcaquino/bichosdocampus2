@@ -19,7 +19,8 @@
 
       @auth
         <div class="form-group col-md-6">
-          <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">Adicionar Novo Animal</a>
+          <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">
+            Adicionar Novo Animal</a>
         </div> 
       @endauth
       <div class="input-group pull-right col-md-3">
@@ -267,8 +268,10 @@
           var name = button.data('solict-name')
           var id = button.data('solict-id')
           var modal = $(this)
-          // modal.find('.modal-title').text("Deseja excluir " + name + "?")
-          $('#excluir_frase').text("Tem certeza que deseja excluir " + name + "?")
+          var frase = document.getElementById("excluir_frase");
+            // modal.find('.modal-title').text("Deseja excluir " + name + "?")
+          frase.innerHTML = "Deseja excluir <b>" + name + "</b>?";
+          // $('#excluir_frase').text("Tem certeza que deseja excluir " + name + "?")
           $('#idAnimal').val(id)
     });
 
