@@ -1,3 +1,6 @@
+@php
+    dd($results->all());
+@endphp
 @extends('adminlte::page')
 
 @section('title', 'Adoções de Animais - Bichos do Campus')
@@ -12,33 +15,30 @@
 
         <div class="box-body">
             @if(!$results->isEmpty())
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Animal</th>
-                            <th>Telefone</th>
-                            <th>E-mail</th>
-                            <th>Data</th>
-                            <th>Status</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>
+                @foreach($results as $result)
+                    @php                     
+                        $foto = url("images/foto-icon.png");
+            
+                        if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
+                            $foto = url("uploads/".$result->foto_perfil);
+                        }
+                    @endphp
+                    <div class="col-md-3">
+                        <div class="box box-primary">
+                            <div class="box-body box-profile">
+                                <div class="im">
+                                    <img  src="{{$foto}}" alt="User profile picture" >
+                                </div>
+                
+                                <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
                     
-                    <tbody>
-                        @foreach($results as $dummy)
-                        <tr>
-                            <td>{{$dummy->nome_adocao}}</td>
-                            <td>{{$dummy->cpf_adocao}}</td>
-                            <td>{{$dummy->endereco_adocao}}</td>
-                            <td>{{$dummy->telefone_adocao}}</td>
-                            <td>{{$dummy->email_adocao}}</td>
-                            <td>{{$dummy->data_adocao}}</td>
-                            <td>{{$dummy->status_adocao}}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                                <p class="text-muted text-center">{{$result->raca_animal}}</p>
+                    
+                                <ul class="list-group list-group-unbordered">
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             @else
                 <center><h3>Nenhuma Adoção encontrada!</h3></br>
             @endif

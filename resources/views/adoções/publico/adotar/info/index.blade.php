@@ -1,3 +1,4 @@
+
 @extends('adminlte::page')
 
 @section('title', 'Requisitar Adoção - Bichos do Campus')
@@ -13,7 +14,7 @@
 
         <form action="{{route('adotar.form')}}" method="POST">
             {{ csrf_field() }}
-            <input type="hidden" name="id" value="{{$results->id_animal}}">
+            <input type="hidden" name="id_animal" value="{{$results->id_animal}}">
             <div class="box-body">
            
             </div>

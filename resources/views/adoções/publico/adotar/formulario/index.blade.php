@@ -14,7 +14,8 @@
       <form action="{{route('adotar.animal')}}" method="POST">
         {{ csrf_field() }}
         <div class="box-body">
-        <input type="hidden" name="id_animal_adocao" value="{{$id}}"/>
+          
+        <input type="hidden" name="id_animal" value="{{($id)}}"/>
 
           <div class="form-group col-md-6">
             <label for="name"> Nome Completo <font color="red"> * <font color="black"> </label>
@@ -88,6 +89,7 @@
               Apartamento
             </label>
           </div>
+        </div>
         </div>
 
         <div class="box-footer">

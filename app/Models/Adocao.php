@@ -30,6 +30,6 @@ class Adocao extends Model{
     public $timestamps = true;
 
     public function animal(){
-        $this->belongsto('Animal');
+        return $this->belongsto('App\Models\Animal', 'id_animal');
     }
 }

@@ -55,8 +55,8 @@
           <div class="box box-primary">
             <div class="box-body box-profile">
               <div class="im">
-              <img  
-                src="{{$foto}}" alt="User profile picture" ></div>
+                <img  src="{{$foto}}" alt="User profile picture" >
+              </div>
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
 

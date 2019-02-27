@@ -6,7 +6,6 @@ Route::prefix('animais')->group(function(){
         Route::get('/', 'AnimaisController@index')->name('site.animais');
         Route::get('/buscar/{buscar}', 'AnimaisController@buscar')->where(['buscar' => '[a-z]+'])
                                                                   ->name('buscar.animais');
-        Route::post('/adotar', 'AdotarAnimalController@adotar')->name('adotar.animais');
     });
     //Rotas do Administrador
     Route::group(['middleware' => ['auth'], 'namespace' => 'Animais\Admin'], function(){ 

@@ -10,6 +10,7 @@ use App\Http\Requests\AdotaValidacaoFormRequest;
 use App\Models\Adocao;
 use App\Models\Animal;
 use DateTime;
+use App\Http\Controllers\Suporte\CpfController;
 
 class AdotarAnimalController extends Controller
 {
@@ -30,93 +31,11 @@ class AdotarAnimalController extends Controller
     // Adicionando no banco de dados
     public function adotar(AdotaValidacaoFormRequest $request)
     { 
-        // Verifica o CPF
-        $resultcpf = true;
-
-        $cpf = preg_replace('/\D/', '', $request  ->  cpf_adocao);
-        $num = array();
- 
-        // Cria um array
-        for($i=0; $i<(strlen($cpf)); $i++) {
- 
-            $num[]=$cpf[$i];
-        }
- 
-        if(count($num)!=11) 
-        {
-          $resultcpf = false;
-        }
-        else
-        {        
-          // Filtra os cpfs 0000 1111 2222 .....    
-          for($i=0; $i<10; $i++)
-          {
-            if ($num[0]==$i && $num[1]==$i && $num[2]==$i
-                && $num[3]==$i && $num[4]==$i && $num[5]==$i
-                && $num[6]==$i && $num[7]==$i && $num[8]==$i)
-                {
-                  $resultcpf = false;
-                  break;
-                }
-          }
-        }
-        
-        if($resultcpf)
-        {
-          // Calcula e Compara o primeiro digito
-          $j=10;
-          for($i=0; $i<9; $i++)
-          {
-            $multiplica[$i] = $num[$i]*$j;
-            $j--;
-          }
-
-          $soma = array_sum($multiplica);
-          $resto = $soma%11;
-
-          if($resto<2)
-          {
-            $dg=0;
-          }
-          else
-          {
-            $dg=11-$resto;
-          }
-
-          if($dg!=$num[9])
-          {
-            $resultcpf = false;
-          }
-          
-          //Calcula e Compara o segundo digito
-          $j=11;
-          for($i=0; $i<10; $i++)
-          {
-            $multiplica[$i]=$num[$i]*$j;
-            $j--;
-          }
-
-          $soma = array_sum($multiplica);
-          $resto = $soma%11;
-
-          if($resto<2)
-          {
-            $dg=0;
-          }
-          else
-          {
-            $dg=11-$resto;
-          }
-
-          if($dg!=$num[10])
-          {
-            $resultcpf = false;
-          }
-        }
+      
+      
 
         // Se resultcpf for false, quer dizer que o cpf é invalido.
-        if (!$resultcpf)
-        {
+        if (!CpfController::validar($request->cpf_adocao)){
           $response['success'] = false;
           $response['message'] = 'CPF invalido!';
 
@@ -125,13 +44,13 @@ class AdotarAnimalController extends Controller
                           -> with('error', $response['message']);
         } 
 
-        $nome = $request  ->  nome_adocao;
+        $nome = $request->nome_adocao;
         $email = $request  ->  email_adocao;
 
           // Insere os dados da adocao
           $adocao = Adocao::create(
             [
-              'id_animal'         =>  $request  ->  id_animal_adocao,
+              'id_animal'         =>  $request  ->  id_animal,
               'nome_adocao'       =>  $request  ->  nome_adocao,
               'nascimento_adocao' =>  $request  ->  nascimento_adocao,
               'telefone_adocao'   =>  $request  ->  telefone_adocao,
