@@ -10,9 +10,22 @@ class Adocao extends Model{
 
     protected $primaryKey = 'id_adocao';
 
-    protected $fillable = ['id_animal','nome_adocao', 'cpf_adocao', 
-    'endereco_adocao', 'telefone_adocao', 'email_adocao', 'data_adocao', 
-    'status_adocao', 'codigo_adocao'];
+    protected $fillable = 
+    [
+        'id_animal',
+        'nome_adocao',
+        'nascimento_adocao',
+        'telefone_adocao',
+        'email_adocao',
+        'cpf_adocao',
+        'logradouro_adocao',
+        'bairro_adocao',
+        'cidade_adocao',
+        'estado_adocao',
+        'cep_adocao',
+        'status_adocao',
+        'codigo_adocao'
+    ];
 
     public $timestamps = true;
 

@@ -17,8 +17,13 @@
         <input type="hidden" name="id_animal_adocao" value="{{$id}}"/>
 
           <div class="form-group col-md-6">
-          <label for="name"> Nome Completo <font color="red"> * <font color="black"> </label>
-          <input type="text" class="form-control" name="nome_adocao" placeholder="Nome Completo">
+            <label for="name"> Nome Completo <font color="red"> * <font color="black"> </label>
+            <input type="text" class="form-control" name="nome_adocao" placeholder="Nome Completo">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="name"> Data de Nascimento <font color="red"> * <font color="black"> </label>
+            <input type="text" class="form-control" name="nascimento_adocao" placeholder="dd/mm/aaaa">
           </div>
 
           <div class="form-group col-md-6">
