@@ -27,7 +27,7 @@ class CreateAdocaosTable extends Migration
             $table->string('cidade_adocao', 150)->nullable(false);
             $table->string('estado_adocao', 150)->nullable(false);
             $table->string('cep_adocao', 150)->nullable(false);
-            $table->boolean('status_adocao')->nullable(false); // 0 - Pedido, 1 - Confirmado, 2 - Cancelado
+            $table->boolean('status_adocao')->nullable(false); // 0 - Novo, 1 - Analisando, 2 - Documentacao, 3 - Adotado, 4 - Cancelado
             $table->string('codigo_adocao')->nullable(true);
             $table->timestamps();
 
