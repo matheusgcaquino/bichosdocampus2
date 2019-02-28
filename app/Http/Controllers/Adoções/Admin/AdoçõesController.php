@@ -4,14 +4,12 @@ namespace App\Http\Controllers\Adoções\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Adocao;
+use App\Models\Animal;
 
 class AdoçõesController extends Controller{
     
     public function index(){
-        $adocao = Adocao::with(['animal' => function($query) {
-            $query->addSelect('nome_animal');
-        }])->paginate(15);
+        $adocao = Animal::has('adocao')->with('adocao')->paginate(15);
             return view('adoções.admin.home.index', ["results"   =>  $adocao]);
     }
 }

@@ -264,51 +264,51 @@
 @section('js')
   <script>
     $('#excluir').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget) // Button that triggered the modal
-          var name = button.data('solict-name')
-          var id = button.data('solict-id')
-          var modal = $(this)
-          var frase = document.getElementById("excluir_frase");
-            // modal.find('.modal-title').text("Deseja excluir " + name + "?")
-          frase.innerHTML = "Deseja excluir <b>" + name + "</b>?";
-          // $('#excluir_frase').text("Tem certeza que deseja excluir " + name + "?")
-          $('#idAnimal').val(id)
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var name = button.data('solict-name')
+      var id = button.data('solict-id')
+      var modal = $(this)
+      var frase = document.getElementById("excluir_frase");
+        // modal.find('.modal-title').text("Deseja excluir " + name + "?")
+      frase.innerHTML = "Deseja excluir <b>" + name + "</b>?";
+      // $('#excluir_frase').text("Tem certeza que deseja excluir " + name + "?")
+      $('#idAnimal').val(id)
     });
 
     $('#adotar').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget) // Button that triggered the modal
-          var name = button.data('solict-name')
-          var id = button.data('solict-id')
-          var modal = $(this)
-          // modal.find('.modal-title').text(name + " - Fomulário de Adoção")
-          $('#adotar_frase').text("Desaja fazer o requerimento de adoção para " + name + "?")
-          $('#id_animal_adocao').val(id)
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var name = button.data('solict-name')
+      var id = button.data('solict-id')
+      var modal = $(this)
+      // modal.find('.modal-title').text(name + " - Fomulário de Adoção")
+      $('#adotar_frase').text("Desaja fazer o requerimento de adoção para " + name + "?")
+      $('#id_animal_adocao').val(id)
     });
 
     $('#information').on('show.bs.modal', function (event) {
-          var button = $(event.relatedTarget) // Button that triggered the modal
-          var nome = button.data('solict-nome')
-          var idade = button.data('solict-idade')
-          var raca = button.data('solict-raca')
-          var especie = button.data('solict-especie')
-          var pelagem = button.data('solict-pelagem')
-          var comportamento = button.data('solict-comportamento')
-          var descricao = button.data('solict-descricao')
-          var sexo = button.data('solict-sexo')
-          var castrado = button.data('solict-castrado')
-          var foto = button.data('solict-foto')
-          var modal = $(this)
-          modal.find('.modal-title').text("Informações de " + nome)
-          $('#nome').val(nome)
-          $('#idade').val(idade)
-          $('#raca').val(raca)
-          $('#especie').val(especie)
-          $('#pelagem').val(pelagem)
-          $('#comportamento').val(comportamento)
-          $('#descricao').val(descricao)
-          $('#sexo').val(sexo)
-          $('#castrado').val(castrado)
-          $('#foto').val(foto)
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var nome = button.data('solict-nome')
+      var idade = button.data('solict-idade')
+      var raca = button.data('solict-raca')
+      var especie = button.data('solict-especie')
+      var pelagem = button.data('solict-pelagem')
+      var comportamento = button.data('solict-comportamento')
+      var descricao = button.data('solict-descricao')
+      var sexo = button.data('solict-sexo')
+      var castrado = button.data('solict-castrado')
+      var foto = button.data('solict-foto')
+      var modal = $(this)
+      modal.find('.modal-title').text("Informações de " + nome)
+      $('#nome').val(nome)
+      $('#idade').val(idade)
+      $('#raca').val(raca)
+      $('#especie').val(especie)
+      $('#pelagem').val(pelagem)
+      $('#comportamento').val(comportamento)
+      $('#descricao').val(descricao)
+      $('#sexo').val(sexo)
+      $('#castrado').val(castrado)
+      $('#foto').val(foto)
     });
 
     $(this).on('keyup', function (e) {
