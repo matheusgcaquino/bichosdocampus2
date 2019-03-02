@@ -117,13 +117,13 @@ return [
             'text' => 'Adoções',
             'url'  => 'adoções',
             'icon'  => 'heart',
-            'can'   =>  'auth',
+            'can'   =>  'gerencia',
         ],
         [
             'text' => 'Usuários',
             'url'  => 'usuários',
             'icon'  => 'user',
-            'can'   =>  'auth',
+            'can'   =>  'admin-only',
         ]
     ],
 

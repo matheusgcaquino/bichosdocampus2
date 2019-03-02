@@ -10,6 +10,6 @@ class AdoçõesController extends Controller{
     
     public function index(){
         $adocao = Animal::has('adocao')->with('adocao')->paginate(15);
-            return view('adoções.admin.home.index', ["results"   =>  $adocao]);
+            return view('adoções.admin.home.index')->with("results", $adocao);
     }
 }
