@@ -4,7 +4,7 @@
 Route::group(['namespace' => 'Site'], function(){
   Route::get('/', 'SiteController@index')->name('home');
   Route::fallback('_404Controller@index');
-    
+
 });
 
     //Rotas de Animais
@@ -17,3 +17,6 @@ include "adoções/rotas_adoções.php";
 include "usuarios/rotas_usuarios.php";
 
 Auth::routes();
+
+
+Route::get('/session', 'Usuarios\UsuariosController@show')->name('info');

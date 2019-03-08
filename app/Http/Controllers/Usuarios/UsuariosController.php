@@ -7,9 +7,16 @@ use App\Http\Controllers\Controller;
 use App\User;
 
 class UsuariosController extends Controller{
-    
+
     public function index(){
         $usuarios = User::paginate(15);
             return view('usuarios.home.index', ["results"   =>  $usuarios]);
+    }
+
+    public function show(Request $request)
+    {
+        $value = $request->session()->get('user_id', 'default');
+
+        return $value;
     }
 }
