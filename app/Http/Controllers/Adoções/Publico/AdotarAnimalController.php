@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Adoções\Publico;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Mail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdotaValidacaoFormRequest;
@@ -20,12 +19,12 @@ class AdotarAnimalController extends Controller
         // dd($animal);
         $animal = Animal::find($request->id_animal);
         
-        return view('adoções.publico.adotar.info.index', ["results"   =>  $animal]);
+        return view('adoções.publico.adotar.info.index')->with("results", $animal);
     }
 
     public function form(Request $request)
     {
-        return view('adoções.publico.adotar.formulario.index', ["id"   =>  $request->id_animal]);
+        return view('adoções.publico.adotar.formulario.index')->with("id", $request->id_animal );
     }
 
     // Adicionando no banco de dados
@@ -66,9 +65,8 @@ class AdotarAnimalController extends Controller
             ]);
     
             //Gerando codigo da adocao
-            if($adocao)
-            {
-              $codigo = Hash::make($adocao->id_adocao . $adocao->id_animal_adocao . $adocao->nome_adocao);
+            if($adocao){
+              $codigo = md5($adocao->id_adocao . $adocao->id_animal_adocao . $adocao->nome_adocao);
     
               $adocao->save();      
             }
@@ -76,8 +74,7 @@ class AdotarAnimalController extends Controller
           // Retorna mensagem de adicionar ou não
           if ($adocao)
           {
-            Mail::send('mail.treinaweb', ['nome_adocao' => $nome], function($m) use ($email, $nome)
-            {
+            Mail::send('mail.treinaweb', ['nome_adocao' => $nome], function($m) use ($email, $nome){
               $m -> from('bichusufs@gmail.com', "Bichos do Campus");
               $m -> to($email, $nome) -> Subject('Pedido de Adoção'); 
             });
