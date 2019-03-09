@@ -11,6 +11,6 @@ class DeleteUsuarioController extends Controller
     public function index(Request $request)
     {
         User::destroy($request->idUser);
-        return redirect()-> route('site.usuarios');
+        return redirect()->route('site.usuarios');
     }
 }

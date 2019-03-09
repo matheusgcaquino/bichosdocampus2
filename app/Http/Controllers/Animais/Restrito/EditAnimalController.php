@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Animais\Admin;
+namespace App\Http\Controllers\Animais\Restrito;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,7 +13,7 @@ class EditAnimalController extends Controller
   public function index($id)
   {
     $animal = Animal::find($id);
-    return view('animais.admin.editar.index') -> with("result", $animal);
+    return view('animais.restrito.editar.index') -> with("result", $animal);
   }
 
     // Atualizando no banco de dados -> [EikE]
@@ -54,10 +54,8 @@ class EditAnimalController extends Controller
         $animal->foto_perfil = null;
       }
     }
-    
-
     $animal->save();
 
-    return redirect() -> route('site.animais');
+    return redirect()->route('site.animais');
   }
 }

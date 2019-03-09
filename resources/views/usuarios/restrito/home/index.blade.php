@@ -7,6 +7,9 @@
 
 @section('content')
     <div class="box">
+            
+        @include('site.includes.alerts')
+        
         <div class="box-header">
             <div class="form-group col-md-6">
                 <button  type="button" class="btn btn-success" data-toggle="modal" 
@@ -168,17 +171,19 @@
                     <h4 class="modal-title" id="exampleModalLabel">Adicionar Novo Usuário</h4>
                 </div>
 
-                <div class="modal-body">
-                    <div class="form-group">
-                        <a href="{{route('novo.usuarios.agora')}}" class="btn btn-success">
-                            Adicionar Agora</a>
-                    </div> 
+                <center>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <a href="{{route('novo.usuarios.agora')}}" class="btn btn-primary">
+                                Adicionar Agora</a>
+                        </div> 
 
-                    <div class="form-group">
-                        <a href="{{route('novo.usuarios.convite')}}" class="btn btn-success">
-                            Mandar Convite</a>
-                    </div> 
-                </div>
+                        <div class="form-group">
+                            <a href="{{route('novo.usuarios.convite')}}" class="btn btn-success">
+                                Mandar Convite</a>
+                        </div> 
+                    </div>
+                </center>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" 

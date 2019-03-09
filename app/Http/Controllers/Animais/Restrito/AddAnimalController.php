@@ -1,20 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Animais\Admin;
+namespace App\Http\Controllers\Animais\Restrito;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnimalValidacaoFormRequest;
 use App\Http\Controllers\Suporte\DataController;
 use App\Models\Animal;
 
-class AddAnimalController extends Controller{
+class AddAnimalController extends Controller
+{
   
-  public function index(){
-    return view('animais.admin.adicionar.index');
+  public function index()
+  {
+    return view('animais.restrito.adicionar.index');
   }
 
   // Adicionando no banco de dados
-  public function adicionar(AnimalValidacaoFormRequest $request){ 
+  public function adicionar(AnimalValidacaoFormRequest $request)
+  { 
 
     // Calcula a data do animal 
     $data = DataController::putData([$request->numeromeses, $request->numeroano]);
@@ -38,36 +41,14 @@ class AddAnimalController extends Controller{
         $path = $request->foto->store('animais/'.$animal->id_animal);
         
         $animal->foto_perfil = $path;
+        $animal->save();
         
-        $animal->save();        
+        $mensagem = 'Sucesso ao adicionar.';
+        return redirect()->route('adicionar.animais.index')->with('success', $response['message']);
       }
+    }else{
+      $mensagem = 'Erro ao adicionar.';
+      return redirect()->route('adicionar.animais.index')->with('error', $response['message']);
     }
-
-    // Retorna mensagem de adicionar ou não
-    if ($animal)
-    {
-      $response['success'] = true;
-      $response['message'] = 'Sucesso ao adicionar.';
-    } 
-    else 
-    {
-      $response['success'] = false;
-      $response['message'] = 'Erro ao adicionar.';
-    }  
-  
-    if ($response['success'])
-    {
-      return redirect() 
-                      -> route('adicionar.animais')
-                      -> with('success', $response['message']);
-    }
-    else 
-    {
-      return redirect()
-                      -> route('adicionar.animais')
-                      -> with('error', $response['message']);
-    }
-
-    return redirect()->route('adicionar.animais');
   }
 }

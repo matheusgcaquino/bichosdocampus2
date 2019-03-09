@@ -7,15 +7,16 @@
 
 @section('content')
 
+  <!-- Mensagem de Alerta -->
+  @include('site.includes.alerts')
+
   @php
     use App\Http\Controllers\Suporte\DataController;  
   @endphp
 
   <div class="box">
-    <div class="box-header">
 
-      <!-- Mensagem de Alerta -->
-      @include('site.includes.alerts')
+    <div class="box-header">
 
       @auth
         <div class="form-group col-md-6">
@@ -46,7 +47,6 @@
           $idade = DataController::convertData($result->idade_animal);
           
           $foto = url("images/foto-icon.png");
-
           if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
             $foto = url("uploads/".$result->foto_perfil);
           }

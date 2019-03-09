@@ -6,16 +6,16 @@
 @stop
 
 @section('content')
-
+  <!-- Mensagem de Alerta -->
+  @include('site.includes.alerts')
+  
   <div class="box">
+
     <form action = "{{ route('adicionar.animais') }}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="box-header">
         <h3 class="box-title">ADICIONAR ANIMAL</h3>
       </div>
-      
-      <!-- Mensagem de Alerta -->
-      @include('site.includes.alerts')
 
       <div class="box-body">
 

@@ -24,7 +24,8 @@ class Adocao extends Model{
         'estado_adocao',
         'cep_adocao',
         'status_adocao',
-        'codigo_adocao'
+        'codigo_adocao',
+        'residencia_adocao'
     ];
 
     public $timestamps = true;

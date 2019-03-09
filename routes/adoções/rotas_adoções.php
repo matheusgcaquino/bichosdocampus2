@@ -9,8 +9,10 @@ Route::prefix('adoções')->group(function(){
     });
     
     //Rotas Restritas
-    Route::group(['middleware' => ['auth'], 'namespace' => 'Adoções\Admin'], function(){
+    Route::group(['middleware' => ['auth'], 'namespace' => 'Adoções\Restrito'], function(){
         Route::get('/', 'AdoçõesController@index')->name('site.adocoes');
+        Route::get('/{id}', 'RequisiçãoController@index')->where(['id' => '[0-9]+'])
+            ->name('adocoes.requisição');
     });
 
 });

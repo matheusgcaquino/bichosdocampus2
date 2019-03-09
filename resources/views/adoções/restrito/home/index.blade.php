@@ -40,12 +40,9 @@
                                     </li>
                                 </ul>
 
-                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" 
-                                    data-target="#requisicoes" 
-                                    data-solict-id="{{$result->id_animal}}"
-                                    data-solict-name="{{$result->nome_animal}}">
-                                    <b>Mostrar Requisições</b>
-                                </button>
+                                <a href="{{route('adocoes.requisição', ['id' => $result->id_animal])}}" 
+                                    class="btn btn-block btn-primary">Mostrar Requisições
+                                </a>
                             </div>
                         </div>
                     </div>

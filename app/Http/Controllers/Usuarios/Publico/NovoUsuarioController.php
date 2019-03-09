@@ -21,11 +21,11 @@ class NovoUsuarioController extends Controller
         $convite = Convite::find($request->id_convite);
 
         $users = User::create([
-            'name_user' => $request->nome,
-            'email' => $convite->email,
-            'password' => bcrypt($request->senha),
-            'nivel_user' => $convite->nivel_user,
-            'status_user' => $convite->status_user
+            'name_user'     =>  $request->nome,
+            'email'         =>  $convite->email,
+            'password'      =>  bcrypt($request->senha),
+            'nivel_user'    =>  $convite->nivel_user,
+            'status_user'   =>  $convite->status_user
         ]);
 
         return redirect()->route('home');
