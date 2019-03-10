@@ -6,14 +6,27 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\Convite;
+use DateTime;
 
 class NovoUsuarioController extends Controller
 {
     public function convidado($key)
     {
         $convite = Convite::where('key', '=', $key)->first();
-
-        return view('usuarios.publico.adicionar.convidado.index')->with('results', $convite);
+        if($convite){
+            $hoje = new DateTime('now');
+            $vencimento = $convite->created_at;
+            $vencimento->modify('+2 days');
+            if($hoje > $vencimento){
+                $convite->delete();
+                return view('usuarios.publico.adicionar.convidado.index')->with('vencido', true);
+            } else {
+                return view('usuarios.publico.adicionar.convidado.index')->with('results', $convite);
+            }
+        }else{
+            return view('usuarios.publico.adicionar.convidado.index')->with('vencido', true);
+        }
+        
     }
 
     public function add_convidado(Request $request)

@@ -10,7 +10,7 @@ Route::prefix('usuários')->group(function(){
     });
 
     //Rotas Restritas
-    Route::group(['middleware' => ['auth'], 'namespace' => 'Usuarios\Restrito'], function(){ 
+    Route::group(['middleware' => ['auth', 'CheckNivel:0'], 'namespace' => 'Usuarios\Restrito'], function(){ 
         Route::get('/', 'UsuariosController@index')->name('site.usuarios');
 
         Route::get('novo/agora', 'NovoUsuarioController@agora')->name('novo.usuarios.agora');
