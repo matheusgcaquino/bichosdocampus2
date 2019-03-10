@@ -19,9 +19,9 @@
     <div class="box-header">
 
       @auth
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6"> 
           <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">
-            Adicionar Novo Animal</a>
+           <span class="fa fa-plus"></span> ADICIONAR</a>
         </div> 
       @endauth
       <div class="input-group pull-right col-md-3">

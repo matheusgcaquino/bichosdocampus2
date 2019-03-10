@@ -7,21 +7,21 @@
 
 @section('content')
     <div class="box">
-        <div class="box-header">
-            <h3 class="text-center">Animal: {{$animal->nome_animal}}</h3>
-        </div>
-
-        <div class="box-body">
-            @if(!$results->isEmpty())
+       @if(!$results->isEmpty())
                 @php
                     $foto = url("images/foto-icon.png");
                     if($animal->foto_perfil && Storage::disk('public_uploads')->exists($animal->foto_perfil)){
                         $foto = url("uploads/".$animal->foto_perfil);
                     }
                 @endphp
-                {{-- <div class="im">
-                    <img  src="{{$foto}}" alt="User profile picture" >
-                </div> --}}
+        <div class = "box-header with-border" style="background-color: #e5e7e9; padding: 0;">
+              <div class="img">
+                <img src="{{$foto}}" alt="User profile picture">
+                 <b class="tit">   Solicitações de Adoção do {{$animal->nome_animal}}</b>
+                </img>
+              </div>
+        </div>
+        <div class="box-body">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -197,12 +197,25 @@
       padding: 5%;
       display:flex;
       align-items: center;
-      justify-content: center;}
+      margin-top: 0px;
+      text-align: center;    
+    }
 
 div img {
   max-width: 100%;
   height: 150px;
- 
+  margin-top: 0px;
+  background-color: #f39c12;
+  text-align: center;  
+}
+.tit {
+  text-align: center;
+  color:  #a93226 ;
+  font-size: 3vw;
+  text-shadow: black;
+  align-self:center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 </style>
 @stop

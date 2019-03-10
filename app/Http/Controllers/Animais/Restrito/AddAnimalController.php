@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers\Animais\Restrito;
-
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnimalValidacaoFormRequest;
 use App\Http\Controllers\Suporte\DataController;
 use App\Models\Animal;
-
 class AddAnimalController extends Controller
 {
   
@@ -14,14 +11,11 @@ class AddAnimalController extends Controller
   {
     return view('animais.restrito.adicionar.index');
   }
-
   // Adicionando no banco de dados
   public function adicionar(AnimalValidacaoFormRequest $request)
   { 
-
     // Calcula a data do animal 
     $data = DataController::putData([$request->numeromeses, $request->numeroano]);
-
     // Insere os dados
     $animal = Animal::create([
       'nome_animal'           => $request->nome,
