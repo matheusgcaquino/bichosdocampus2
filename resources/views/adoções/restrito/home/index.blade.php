@@ -40,7 +40,7 @@
                                     </li>
                                 </ul>
 
-                                <a href="{{route('adocoes.requisição', ['id' => $result->id_animal])}}" 
+                                <a href="{{route('adocoes.requisições', ['id' => $result->id_animal])}}" 
                                     class="btn btn-block btn-primary">Mostrar Requisições
                                 </a>
                             </div>

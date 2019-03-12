@@ -13,7 +13,6 @@ class CreateAdocaosTable extends Migration
      */
     public function up()
     {
-        // Cria tabela adocao -> [EiKE]
         Schema::create('adocaos', function (Blueprint $table) {
             $table->increments('id_adocao');         
             $table->integer('id_animal')->unsigned()->nullable(false);
@@ -27,7 +26,6 @@ class CreateAdocaosTable extends Migration
             $table->string('cidade_adocao', 150)->nullable(false);
             $table->string('estado_adocao', 150)->nullable(false);
             $table->string('cep_adocao', 150)->nullable(false);
-            $table->boolean('status_adocao')->nullable(false); // 0 - Novo, 1 - Analisando, 2 - Documentacao, 3 - Adotado, 4 - Cancelado
             $table->string('codigo_adocao')->nullable(true);
             $table->string('residencia_adocao', 150)->nullable(false);
             $table->timestamps();

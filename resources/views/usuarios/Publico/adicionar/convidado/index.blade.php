@@ -6,76 +6,84 @@
 @stop
 
 @section('content')
-    @php
-        $nivel = ($results->nivel_user == 0) ? 'Administrador' : 'Gerência';
-    @endphp
-
     <div class="box">
-        <form action = "{{ route('novo.usuarios.convidado.adicionar') }}" method="POST" 
-        autocomplete="off" id="formulario">
-            {{ csrf_field() }}
-            <div class="box-header">
-                <h3 class="box-title">CADASTRA-SE</h3>
-            </div>
-            
-            <!-- Mensagem de Alerta -->
-            @include('site.includes.alerts')
+        @if(!isset($vencido))
+            @php
+                $nivel = ($results->nivel_user == 0) ? 'Administrador' : 'Gerência';
+            @endphp
+            <form action = "{{ route('novo.usuarios.convidado.adicionar') }}" method="POST" 
+                autocomplete="off" id="formulario">
+                {{ csrf_field() }}
+                <div class="box-header">
+                    <h3 class="box-title">CADASTRA-SE</h3>
+                </div>
+                
+                <!-- Mensagem de Alerta -->
+                @include('site.includes.alerts')
 
+                <div class="box-body">
+
+                    <input type="hidden" name="id_convite" value="{{$results->id_convite}}">
+
+                    <div class="form-group col-md-6">
+                        <label for="nome"> Nome  </label>
+                        <input type="text" class="form-control" name="nome" autocomplete="off" 
+                            autofocus required>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="email"> E-mail </label>
+                        <input type="text" class="form-control" value="{{$results->email}}" disabled>
+                    </div>
+                    
+                    <div class="form-group col-md-7">
+                        <label for="senha"> Senha </label>
+                        <a data-toggle="tooltip">
+                            <input type="password" class="form-control" name="senha" id="senha" 
+                            maxlength="16" onKeyUp="testaSenha(this.value);" autocomplete="off" required>
+                        </a>
+                    </div>
+                    
+                    <div class="form-group col-md-5">
+                        <label>Nível de segurança da senha </label> 
+                        <div id='seguranca'>
+                            <i class="fa fa-spinner"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group col-md-7">
+                        <label for="senha"> Confirmar Senha </label>
+                        <input type="password" class="form-control" name="senha2" id="senha2" 
+                        maxlength="16" onKeyUp="testaSenha2(this.value);" autocomplete="off" required>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label> Confirmação </label> 
+                        <div id='confirmar'>
+                            <i class="fa fa-spinner"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label> Nivel de Acesso </label>
+                        <input type="text" class="form-control" value="{{$nivel}}" disabled>
+                    </div>
+            
+                </div>
+                
+                <div class="box-footer with-border">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <a href="{{route('site.usuarios')}}" class="btn btn-default">Cancelar</a> 
+                </div>
+            </form>  
+        @else
             <div class="box-body">
-
-                <input type="hidden" name="id_convite" value="{{$results->id_convite}}">
-
-                <div class="form-group col-md-6">
-                    <label for="nome"> Nome  </label>
-                    <input type="text" class="form-control" name="nome" autocomplete="off" 
-                        autofocus required>
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label for="email"> E-mail </label>
-                    <input type="text" class="form-control" value="{{$results->email}}" disabled>
-                </div>
-                
-                <div class="form-group col-md-7">
-                    <label for="senha"> Senha </label>
-                    <a data-toggle="tooltip">
-                        <input type="password" class="form-control" name="senha" id="senha" 
-                        maxlength="16" onKeyUp="testaSenha(this.value);" autocomplete="off" required>
-                    </a>
-                </div>
-                
-                <div class="form-group col-md-5">
-                    <label>Nível de segurança da senha </label> 
-                    <div id='seguranca'>
-                        <i class="fa fa-spinner"></i>
-                    </div>
-                </div>
-                
-                <div class="form-group col-md-7">
-                    <label for="senha"> Confirmar Senha </label>
-                    <input type="password" class="form-control" name="senha2" id="senha2" 
-                    maxlength="16" onKeyUp="testaSenha2(this.value);" autocomplete="off" required>
-                </div>
-
-                <div class="col-md-5">
-                    <label> Confirmação </label> 
-                    <div id='confirmar'>
-                        <i class="fa fa-spinner"></i>
-                    </div>
-                </div>
-
-                <div class="form-group col-md-6">
-                    <label> Nivel de Acesso </label>
-                    <input type="text" class="form-control" value="{{$nivel}}" disabled>
-                </div>
-        
-            </div>
-            
-            <div class="box-footer with-border">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-                <a href="{{route('site.usuarios')}}" class="btn btn-default">Cancelar</a> 
-            </div>
-        </form>
+                <center>
+                    <h3>Seu convite foi expirado!</h3>
+                    <h4>Entre em contato com o Administrador para conseguir um novo.</h4>
+                </center>
+            </div> 
+        @endif
     </div>
 @stop
 
