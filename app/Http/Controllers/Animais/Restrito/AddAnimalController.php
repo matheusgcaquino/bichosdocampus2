@@ -39,16 +39,15 @@ class AddAnimalController extends Controller
     if($animal){
       if($request->foto){
         $path = $request->foto->store('animais/'.$animal->id_animal);
-        
         $animal->foto_perfil = $path;
-        $animal->save();
-        
-        $mensagem = 'Sucesso ao adicionar.';
-        return redirect()->route('adicionar.animais.index')->with('success', $response['message']);
+        $animal->save(); 
       }
     }else{
       $mensagem = 'Erro ao adicionar.';
-      return redirect()->route('adicionar.animais.index')->with('error', $response['message']);
+      return redirect()->route('adicionar.animais.index')->with('error', $mensagem);
     }
+
+    $mensagem = 'Sucesso ao adicionar.';
+    return redirect()->route('adicionar.animais.index')->with('success', $mensagem);
   }
 }

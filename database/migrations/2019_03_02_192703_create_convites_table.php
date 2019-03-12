@@ -17,8 +17,8 @@ class CreateConvitesTable extends Migration
             $table->increments('id_convite');
             $table->string('key')->unique();
             $table->string('email')->unique();
-            $table->boolean('nivel_user');
-            $table->boolean('status_user');
+            $table->tinyInteger('nivel_user');
+            $table->tinyInteger('status_user');
             $table->timestamps();
         });
     }

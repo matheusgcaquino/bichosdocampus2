@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AdotaValidacaoFormRequest;
 use App\Http\Controllers\Suporte\CpfController;
 use App\Models\Adocao;
+use App\Models\StatusAdocao;
 use App\Models\Animal;
 use App\Mail\AdocaoConfirmada;
 use DateTime;
@@ -52,10 +53,14 @@ class AdotarAnimalController extends Controller
       'cidade_adocao'     =>  $request->cidade_adocao,
       'estado_adocao'     =>  $request->estado_adocao,
       'residencia_adocao' =>  $request->moro_adocao,
-      'status_adocao'     =>  0,
     ]);
 
     if($adocao){
+      $status = StatusAdocao::create([
+        'id_user'   =>  $user->id_user
+        'id_adocao' =>  $adocao->id_adocao,
+      ];)
+
       $adocao->codigo_adocao = md5($adocao->id_adocao.$adocao->id_animal_adocao.$adocao->nome_adocao);
       $adocao->save();   
 
