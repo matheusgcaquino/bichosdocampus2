@@ -57,9 +57,8 @@ class AdotarAnimalController extends Controller
 
     if($adocao){
       $status = StatusAdocao::create([
-        'id_user'   =>  $user->id_user
         'id_adocao' =>  $adocao->id_adocao,
-      ];)
+      ]);
 
       $adocao->codigo_adocao = md5($adocao->id_adocao.$adocao->id_animal_adocao.$adocao->nome_adocao);
       $adocao->save();   

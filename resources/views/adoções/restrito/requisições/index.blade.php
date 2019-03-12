@@ -5,6 +5,11 @@
 @section('content_header')
 @stop
 
+@php
+    use App\Http\Controllers\Suporte\StatusController;
+@endphp
+
+
 @section('content')
     <div class="box">
         <div class="box-header">
@@ -36,21 +41,13 @@
                     <tbody>
                         @foreach($results as $result)
                             @php
-                                switch($result->status_adocao){
-                                    case 0:
-                                        $status_user = 'Novo';
-                                        break;
-                                    
-                                    default:
-                                        $status_user = 'Novo';
-                                        break;
-                                }
+                                $stat = StatusController::last_status($result->status);
                             @endphp
                             <tr>
                                 <td>{{$result->nome_adocao}}</td>
                                 <td>{{$result->email_adocao}}</td>
                                 <td>{{$result->created_at->format('d/m/y')}}</td>
-                                <td>{{$status_user}}</td>
+                                <td>{{$stat}}</td>
                                 <td>
                                     <a href="{{route('adocoes.requisição', 
                                         ['codigo' => $result->codigo_adocao])}}" 

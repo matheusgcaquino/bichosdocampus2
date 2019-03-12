@@ -6,7 +6,7 @@ Route::prefix('adoções')->group(function(){
         Route::post('info', 'AdotarAnimalController@index')->name('adotar.info');
         Route::post('info/form', 'AdotarAnimalController@form')->name('adotar.form');
         Route::post('info/form/adotar', 'AdotarAnimalController@adotar')->name('adotar.animal');
-        Route::get('/requisição/{codigo}', 'RequisiçãoController@index')
+        Route::get('requisição/{codigo}', 'RequisiçãoController@index')
             ->name('adocoes.requisição');
     });
     

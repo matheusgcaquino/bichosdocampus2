@@ -4,7 +4,7 @@
 Pedido de adoção feita com sucesso.
 
 @component('mail::button', [
-    'url' => url("/adoção/{$adocao->codigo_adocao}")])
+    'url' => url("/adoção/requisição/{$adocao->codigo_adocao}")])
 Button Text
 @endcomponent
 

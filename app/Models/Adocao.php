@@ -38,7 +38,7 @@ class Adocao extends Model
 
     public function status()
     {
-        return $this->hasMany('App\Models\StatusAdoção', 'id_adocao');
+        return $this->hasMany('App\Models\StatusAdocao', 'id_adocao');
     }
 
 }

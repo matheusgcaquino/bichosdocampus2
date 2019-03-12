@@ -5,6 +5,10 @@
 @section('content_header')
 @stop
 
+@php
+    use App\Http\Controllers\Suporte\StatusController;
+@endphp
+
 @section('content')
     <div class="box">
         <div class="box-header">
@@ -22,15 +26,7 @@
 
                     $moro = ($results->residencia_adocao == 0) ? 'Casa' : 'Apartamento';
 
-                    switch($results->status_adocao){
-                        case 0:
-                            $status = 'Novo';
-                            break;
-                        
-                        default:
-                            $status = 'Novo';
-                            break;
-                    }
+                    $stat = StatusController::last_status($results->status);
                 @endphp
                 <div class="im">
                     <img  src="{{$foto}}" alt="User profile picture" >
@@ -43,7 +39,7 @@
 
                 <div class="form-group col-md-6">
                     <label>Status</label>
-                    <input type="text" class="form-control" value="{{$status}}" disabled>
+                    <input type="text" class="form-control" value="{{$stat}}" disabled>
                 </div>
 
                 @gerencia('local')
