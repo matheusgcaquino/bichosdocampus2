@@ -21,6 +21,6 @@ class AdocaoConfirmada extends Mailable
 
     public function build()
     {
-        return $this->markdown('emails.adocao.index');
+        return $this->markdown('emails.adocao.index')->subject('BICHOS DO CAMPUS - Seu requerimento de adoção foi enviado!');
     }
 }
