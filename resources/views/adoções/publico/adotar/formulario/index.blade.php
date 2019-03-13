@@ -5,7 +5,8 @@
 @section('content_header')
 @stop
 
-@section('content')
+@section('content')  
+
     <div class="box">
       <div class="box-header">
         <h4><b>Requerimento de Adoção</b></h4>
@@ -29,10 +30,7 @@
 
           <div class="form-group col-md-6">
           <label> Telefone <font color="red"> * <font color="black"> </label>
-          <div class="input-group">
-              <input type="text" class="form-control" name="telefone_adocao" placeholder="Telefone"
-              data-inputmask='"mask": "(99) 9999-9999"' data-mask="">
-          </div>
+              <input type="text" class="form-control" name="telefone_adocao" placeholder="(__) _____-____">
           </div>
 
           <div class="form-group col-md-6">
@@ -42,10 +40,7 @@
 
           <div class="form-group col-md-6">
           <label> CPF <font color="red"> * <font color="black"> </label>
-          <div class="input-group">
-              <input type="text" class="form-control" name="cpf_adocao" placeholder="CPF"
-              data-inputmask='"mask": "999.999.999-99' data-mask="">
-          </div>
+              <input type="text" class="form-control" name="cpf_adocao" placeholder="___.___.___-__">
           </div>
           
           <div class="form-group col-md-6">
@@ -60,8 +55,7 @@
 
           <div class="form-group col-md-6">
           <label for="race"> CEP <font color="red"> * <font color="black"> </label>
-          <input type="text" class="form-control" name="cep_adocao" placeholder="CEP"
-              data-inputmask='"mask": "99.999-999' data-mask="">
+          <input type="text" class="form-control" name="cep_adocao" placeholder="__.___-___">
           </div>
 
           <div class="form-group col-md-6">
@@ -97,5 +91,18 @@
           <a href="{{route('site.animais')}}" class="btn btn-default">Cancelar</a>
         </div>
       </form>
+
+      <script src="{{asset('js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
+  <script src="{{asset('js/jquery.mask.js')}}" type="text/javascript"></script>
+
+  <script>
+    $(document).ready(function($) {
+      $('input[name="nascimento_adocao"]').mask('00/00/0000');
+      $('input[name="telefone_adocao"]').mask('(00) #0000-0000');
+      $('input[name="cpf_adocao"]').mask('000.000.000-00');
+      $('input[name="cep_adocao"]').mask('00.000-000');
+    });
+  </script>
+
     </div>
 @stop
