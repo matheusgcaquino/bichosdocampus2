@@ -18,5 +18,4 @@ include "usuarios/rotas_usuarios.php";
 
 Auth::routes();
 
-
 Route::get('/session', 'Usuarios\UsuariosController@show')->name('info');

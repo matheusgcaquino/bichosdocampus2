@@ -13,6 +13,7 @@ class UsuariosController extends Controller{
             return view('usuarios.home.index', ["results"   =>  $usuarios]);
     }
 
+    // testando a exibição de dados da sessao
     public function show(Request $request)
     {
         $value = $request->session()->get('user_id', 'default');
