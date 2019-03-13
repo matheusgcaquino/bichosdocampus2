@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Animais\Publico;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use App\Models\Animal;
 use Illuminate\Support\Facades\Gate;
 
-class AnimaisController extends Controller{
+class AnimaisController extends Controller
+{
     
-    public function index(){
+    public function index()
+    {
         if(Gate::allows('auth')){
             $animal = Animal::paginate(12);
         }else{
@@ -21,7 +22,8 @@ class AnimaisController extends Controller{
             return view('animais.publico.home.index', ["results"   =>  $animal]);
     }
 
-    public function buscar($buscar){
+    public function buscar($buscar)
+    {
         if($buscar != ""){
             if(Gate::allows('auth')){
                 $animal = Animal::where('nome_animal', 'LIKE', '%' . $buscar . '%' )
@@ -36,10 +38,9 @@ class AnimaisController extends Controller{
         }else{
             $this->index();
         }
-        return view('animais.publico.home.index',
-            [
-                "results"   =>  $animal,
-                "buscar"    =>  $buscar
-            ]);
+        return view('animais.publico.home.index',[
+            "results"   =>  $animal,
+            "buscar"    =>  $buscar
+        ]);
     }
 }
