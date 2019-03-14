@@ -21,7 +21,7 @@
       @gerencia('local')
         <div class="form-group col-md-6">
           <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">
-            Adicionar Novo Animal</a>
+           <span class="fa fa-plus"></span> ADICIONAR</a>
         </div> 
       @endgerencia
       <div class="input-group pull-right col-md-3">
