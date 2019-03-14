@@ -7,7 +7,7 @@ FORNECIDAS PARA CONTATÁ-LO.</h4>
 	<h4>VOCÊ PODERÁ ACOMPANHAR O ANDAMENTO DA SUA REQUISIÇÃO CLICANDO NO BOTÃO ABAIXO.</h4>
 	
 @component('mail::button', [
-    'url' => url("/adoção/{$adocao->codigo_adocao}")])
+    'url' => url("/adoções/requisição/{$adocao->codigo_adocao}")])
 ACOMPANHAR ADOÇÃO
 @endcomponent
 <div>
