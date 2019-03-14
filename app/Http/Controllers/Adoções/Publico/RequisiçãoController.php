@@ -14,7 +14,7 @@ class RequisiçãoController extends Controller
     {
         $adocao = Adocao::where('codigo_adocao', '=', $codigo)->with(['animal', 'status'])->first();
         // dd($adocao);
-        if($adocao->status->count() == 1){
+        if(Auth::check() && $adocao->status->count() == 1){
             StatusAdocao::create([
                 'id_adocao'     =>  $adocao->id_adocao,
                 'id_user'       =>  Auth::user()->id_user,
