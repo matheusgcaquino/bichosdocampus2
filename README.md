@@ -54,3 +54,8 @@ Para povoar o banco basta ir no terminal e digitar o comando "php artisan db:see
 ![alt text](https://i.imgur.com/aI6k3ot.png)
 
 E pronto seu banco de dados já esta funcionando.
+
+### Problema 04: Atualizando o jQuery
+
+Para atualizar o jQuery é necessario no terminal digitar o comando "npm install".
+

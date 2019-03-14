@@ -8,7 +8,8 @@ use DateTime;
 
 class DataController extends Controller
 {
-    public static function getData($data){
+    public static function getData($data)
+    {
         // $data = date("2017-04-14");
         $born = new DateTime($data);
         $today = new DateTime(date("Y-m-d"));
@@ -16,7 +17,8 @@ class DataController extends Controller
         return [$idade->y, $idade->m];
     }
 
-    public static function putData($data){
+    public static function putData($data)
+    {
         // $data = [0, 1];
         $idade = new DateTime(date("Y-m-d"));
         if($data[0] > 0){
@@ -30,7 +32,8 @@ class DataController extends Controller
         return $idade->format('Y-m-d');
     }
 
-    public static function convertData($data){
+    public static function convertData($data)
+    {
         $born = new DateTime($data);
         $today = new DateTime(date("Y-m-d"));
         $idade = $today->diff($born);
