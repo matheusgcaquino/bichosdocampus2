@@ -7,22 +7,23 @@
 
 @section('content')
 
+  <!-- Mensagem de Alerta -->
+  @include('site.includes.alerts')
+
   @php
     use App\Http\Controllers\Suporte\DataController;  
   @endphp
 
   <div class="box">
+
     <div class="box-header">
 
-      <!-- Mensagem de Alerta -->
-      @include('site.includes.alerts')
-
-      @auth
+      @gerencia('local')
         <div class="form-group col-md-6">
           <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">
-            Adicionar Novo Animal</a>
+           <span class="fa fa-plus"></span> ADICIONAR</a>
         </div> 
-      @endauth
+      @endgerencia
       <div class="input-group pull-right col-md-3">
         <input type="text" class="form-control" name="buscar" id="buscar" 
       value="{{(isset($buscar) ? $buscar : '')}}"
@@ -46,7 +47,6 @@
           $idade = DataController::convertData($result->idade_animal);
           
           $foto = url("images/foto-icon.png");
-
           if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
             $foto = url("uploads/".$result->foto_perfil);
           }
@@ -73,7 +73,7 @@
                   <b>Idade</b> <a class="pull-right">{{$idade}}</a>
                 </li>
 
-                @auth
+                @gerencia('local')
                   @if ($result->status_animal)
                     <li class="list-group-item">
                       <b>Status</b> <a class="pull-right"><span class="bg-green">
@@ -87,7 +87,7 @@
                       </span></a>
                     </li>
                   @endif
-                @endauth
+                @endgerencia
               </ul>
 
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" 
@@ -103,7 +103,7 @@
                 data-solict-descricao="{{$result->descricao_animal}}"
                 data-solict-castrado="{{$castracao_animal}}"><b>+ Mais Informações</b>
               </button>
-              @auth
+              @gerencia('local')
                 <a href="{{route('editar.animais.index', ['id' => $result->id_animal])}}" 
                 class="btn btn-primary btn-block"><span class="fa fa-edit"></span><b> Editar</b></a>
 
@@ -118,15 +118,15 @@
                   data-solict-name="{{ $result->nome_animal }}"><span class="fa fa-heart"></span>
                   <b>Requisitar Adoção</b>
                 </button>
-              @endauth
+              @endgerencia
             </div>
           </div>
         </div>
       @empty
       <center><h3>Nenhum Animal encontrado!</h3></br>
-        @auth
+        @gerencia('local')
           <h4>Para cadastrar um novo animal <a href="{{route('adicionar.animais.index')}}">CLIQUE AQUI!</a>
-        @endauth
+        @endgerencia
         </center>
       @endforelse
     </div>

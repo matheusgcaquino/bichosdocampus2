@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Adocao extends Model{
+class Adocao extends Model
+{
 
     protected $table = 'adocaos';
 
@@ -24,12 +25,20 @@ class Adocao extends Model{
         'estado_adocao',
         'cep_adocao',
         'status_adocao',
-        'codigo_adocao'
+        'codigo_adocao',
+        'residencia_adocao'
     ];
 
     public $timestamps = true;
 
-    public function animal(){
+    public function animal()
+    {
         return $this->belongsto('App\Models\Animal', 'id_animal');
     }
+
+    public function status()
+    {
+        return $this->hasMany('App\Models\StatusAdocao', 'id_adocao');
+    }
+
 }

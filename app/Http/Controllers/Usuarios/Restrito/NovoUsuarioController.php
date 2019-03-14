@@ -24,11 +24,11 @@ class NovoUsuarioController extends Controller
     public function adicionar(Request $request)
     {
         $users = User::create([
-            'name_user' => $request->nome,
-            'email' => $request->email,
-            'password' => bcrypt($request->senha),
-            'nivel_user' => $request->nivel,
-            'status_user' => $request->status
+            'name_user'     =>  $request->nome,
+            'email'         =>  $request->email,
+            'password'      =>  bcrypt($request->senha),
+            'nivel_user'    =>  $request->nivel,
+            'status_user'   =>  $request->status
         ]);
 
         return redirect()->route('site.usuarios');
@@ -39,10 +39,10 @@ class NovoUsuarioController extends Controller
         $key = md5($request->email);
 
         $convite = Convite::create([
-            'key' => $key,
-            'email' => $request->email,
-            'nivel_user' => $request->nivel,
-            'status_user' => $request->status
+            'key'           =>  $key,
+            'email'         =>  $request->email,
+            'nivel_user'    =>  $request->nivel,
+            'status_user'   =>  $request->status
         ]);
 
         Mail::to($request->email)->send(new UserConvite($convite));

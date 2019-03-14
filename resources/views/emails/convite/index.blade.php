@@ -4,7 +4,7 @@
 Você foi convidade a se cadastrar no site do Bichos do Campus.
 
 @component('mail::button', [
-    'url' => 'http://bicho-no-campus.test/usuários/novo/convidado/'.$convite->key])
+    'url' => url("/usuários/novo/convidado/{$convite->key}")])
 Cadastra-se
 @endcomponent
 

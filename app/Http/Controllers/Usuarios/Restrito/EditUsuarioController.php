@@ -24,8 +24,6 @@ class EditUsuarioController extends Controller
             $user->save();
 
             return redirect()->route('site.usuarios');
-        }else{
-            echo "Ocorreu um error";
         }
         
     }

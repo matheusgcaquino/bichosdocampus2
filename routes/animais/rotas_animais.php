@@ -9,7 +9,7 @@ Route::prefix('animais')->group(function(){
     });
     
     //Rotas Restritas
-    Route::group(['middleware' => ['auth'], 'namespace' => 'Animais\Admin'], function(){
+    Route::group(['middleware' => ['auth', 'CheckNivel:1'], 'namespace' => 'Animais\Restrito'], function(){
         Route::post('/editar/atualizar', 'EditAnimalController@atualizar')
                 ->name('atualizar.animais'); 
         Route::post('/deletar', 'DeleteAnimalController@deletar')->name('deletar.animais');

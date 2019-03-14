@@ -7,10 +7,13 @@
 
 @section('content')
     <div class="box">
+            
+        @include('site.includes.alerts')
+        
         <div class="box-header">
             <div class="form-group col-md-6">
                 <button  type="button" class="btn btn-success" data-toggle="modal" 
-                data-target="#adicionar">Adicionar Novo Usuário</button>
+                data-target="#adicionar"><span class="fa fa-plus"></span> ADICIONAR</button>
             </div> 
         </div>
         
@@ -168,17 +171,18 @@
                     <h4 class="modal-title" id="exampleModalLabel">Adicionar Novo Usuário</h4>
                 </div>
 
-                <div class="modal-body">
-                    <div class="form-group">
-                        <a href="{{route('novo.usuarios.agora')}}" class="btn btn-success">
-                            Adicionar Agora</a>
-                    </div> 
-
-                    <div class="form-group">
-                        <a href="{{route('novo.usuarios.convite')}}" class="btn btn-success">
-                            Mandar Convite</a>
-                    </div> 
-                </div>
+                <center>
+                    <div class="modal-body">
+                       <div class="form-group">
+                        <h3>PARA CADASTRAR UM USUÁRIO AGORA CLIQUE EM:</h3>
+                        <a href="{{route('novo.usuarios.agora')}}" class="btn btn-primary">
+                               <span class="fa fa-plus" /> ADICIONAR</a>
+                        <h3>PARA ENVIAR UM CONVITE DE CADASTRO CLIQUE EM:</h3>   
+                            <a href="{{route('novo.usuarios.convite')}}" class="btn btn-success">
+                              <span class="fa fa-send" /> CONVIDAR</a>
+                        </div> 
+                    </div>
+                </center>
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-left" 
