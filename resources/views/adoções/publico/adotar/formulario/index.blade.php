@@ -25,7 +25,7 @@
 
           <div class="form-group col-md-6">
             <label for="name"> Data de Nascimento <font color="red"> * <font color="black"> </label>
-            <input type="date" class="form-control" name="nascimento_adocao" placeholder="dd/mm/aaaa">
+            <input type="text" class="form-control" name="nascimento_adocao" placeholder="dd/mm/aaaa">
           </div>
 
           <div class="form-group col-md-6">
@@ -35,7 +35,7 @@
 
           <div class="form-group col-md-6">
           <label> E-mail <font color="red"> * <font color="black"> </label>
-          <input type="email" class="form-control" name="email_adocao" placeholder="E-mail">
+          <input type="text" class="form-control" name="email_adocao" placeholder="E-mail">
           </div>
 
           <div class="form-group col-md-6">
