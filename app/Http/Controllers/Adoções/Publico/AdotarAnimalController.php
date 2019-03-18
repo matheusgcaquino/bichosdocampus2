@@ -47,7 +47,8 @@ class AdotarAnimalController extends Controller
       'telefone_adocao'   =>  $request->telefone_adocao,
       'email_adocao'      =>  $request->email_adocao,
       'cpf_adocao'        =>  $request->cpf_adocao,
-      'logradouro_adocao' =>  $request->logradouro_adocao,
+      'rua_adocao'        =>  $request->logradouro_adocao,
+      'numero_adocao'     =>  $request->numero_adocao,
       'bairro_adocao'     =>  $request->bairro_adocao,
       'cep_adocao'        =>  $request->cep_adocao,
       'cidade_adocao'     =>  $request->cidade_adocao,
@@ -67,7 +68,7 @@ class AdotarAnimalController extends Controller
 
       $mensagem = 'Requisição para adoção feita com sucesso.';
       return redirect()->route('site.animais')->with('success', $mensagem);
-    }else {
+    } else {
       $mensagem = 'Erro na requisição para adoção.';
       return redirect()->route('site.animais')->with('error', $mensagem);
     }
