@@ -119,7 +119,8 @@
       </div>
     </form>
 
-    <script src="{{asset('js/modulos/adocao/formulario/formulario.js')}}"></script>
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/modulos/animais/formulario/formulario.js')}}"></script>
     
   </div>
 @stop

@@ -167,9 +167,13 @@
       </div>
       
       <div class="box-footer with-border">
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="submit" id="btnConfirmar" class="btn btn-primary">Salvar</button>
         <a href="{{route('site.animais')}}" class="btn btn-default">Cancelar</a>
       </div>
     </form>
+
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/modulos/animais/formulario/formulario.js')}}"></script>
+
   </div>
 @stop
