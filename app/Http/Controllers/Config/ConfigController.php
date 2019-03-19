@@ -11,4 +11,14 @@ class ConfigController extends Controller
     {
         return view('config.home.index');
     }
+
+    public function excluir(Request $request)
+    {
+        //
+    }
+
+    public function editar(Request $request)
+    {
+        //
+    }
 }

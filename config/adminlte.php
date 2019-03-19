@@ -128,7 +128,7 @@ return [
         [
             'text' => 'Configurações',
             'url'  => 'config',
-            'icon'  => 'bomb',
+            'icon'  => 'cog',
             'can'   =>  'admin-only',
         ],
     ],
