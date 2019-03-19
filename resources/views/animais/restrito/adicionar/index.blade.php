@@ -21,46 +21,46 @@
 
         <div class="form-group col-md-6">
           <label for="nome"> Nome  <font color="red"> * <font color="black"> </label>
-          <input type="text" class="form-control" name="nome" placeholder="Nome do Animal"
+          <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Animal"
           autofocus required>
         </div>
 
         <div class="form-group col-md-6">
           <label for="especie"> Espécie <font color="red"> * <font color="black"> </label>
-          <input type="text" class="form-control" name="especie" placeholder="Especie do Animal">
+          <input type="text" class="form-control" id="especie" name="especie" placeholder="Especie do Animal">
         </div>
         
         <div class="form-group col-md-6">
           <label for="raca"> Raça <font color="red"> * <font color="black"> </label>
-          <input type="text" class="form-control" name="raca" placeholder="Raça do Animal" required>
+          <input type="text" class="form-control" id="raca" name="raca" placeholder="Raça do Animal" required>
         </div>
         
         <div class="form-group col-md-6">
           <label> Idade </label><br>
           <div class="form-input col-md-3">
-            <input type="number" placeholder="Anos" min="0" class="form-control" name="numeroano">
+            <input type="number" placeholder="Anos" min="0" class="form-control" id="numeroano" name="numeroano">
           </div>
         
           <div class="form-input col-md-3">
-            <input type="number" placeholder="Meses" min="0" class="form-control" name="numeromeses">
+            <input type="number" placeholder="Meses" min="0" class="form-control" id="numeromeses" name="numeromeses">
           </div> 
         </div>
         
         <div class="form-group col-md-6">
           <label for="pelagem"> Pelagem <font color="red"> * <font color="black"> </label>
-          <input class="form-control" rows="2" name="pelagem" 
+          <input class="form-control" rows="2" id="pelagem" name="pelagem" 
             placeholder="Pelagem do Animal" required></textarea>
         </div>
 
         <div class="form-group col-md-6">
           <label for="comportamento"> Comportamento <font color="red"> * <font color="black"> </label>
-          <input class="form-control" rows="2" name="comportamento" 
+          <input class="form-control" rows="2" id="comportamento" name="comportamento" 
             placeholder="Comportamento do Animal" required></textarea>
         </div>
 
         <div class="form-group col-md-6">
           <label for="descricao"> Descrição </label>
-          <input class="form-control" rows="3" name="descricao" 
+          <input class="form-control" rows="3" id="descricao" name="descricao" 
             placeholder="Descrição do Animal"></textarea>
         </div>
 
@@ -68,13 +68,13 @@
           <label for="sexo"> Sexo </label>
           <div class="radio">
             <label>
-              <input type="radio" name="sexo" value="M" checked=""> Macho
+              <input type="radio" id="sexo1" name="sexo" value="M" checked=""> Macho
             </label>
           </div>
           
           <div class="radio">
             <label>
-              <input type="radio" name="sexo" value="F"> Fêmea
+              <input type="radio" id="sexo2" name="sexo" value="F"> Fêmea
             </label>
           </div>
         </div>
@@ -83,20 +83,20 @@
           <label> Castrado </label>
           <div class="radio">
             <label>
-              <input type="radio" name="castrado" value="1" checked=""> Sim
+              <input type="radio" id="castrado1" name="castrado" value="1" checked=""> Sim
             </label>
           </div>
           
           <div class="radio">
             <label>
-              <input type="radio" name="castrado" value="0"> Não
+              <input type="radio" id="castrado2" name="castrado" value="0"> Não
             </label>
           </div>
         </div>
 
         <div class="form-group col-md-6">
           <label> Status </label>
-          <select class="form-control" name="status">
+          <select class="form-control" id="status" name="status">
             <option value="1">Ativado</option>
             <option value="0">Desativado</option>
           </select>
@@ -109,14 +109,17 @@
             </div>
             <div class="pull-left" style="margin-left: 1%">
             <label for="foto"> Adicionar Imagem </label>
-            <input type="file" name="foto">
+            <input type="file" id="foto" name="foto">
             </div>
         </div>
       </div>      
       <div class="box-footer with-border">
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="submit" id="btnConfirmar" class="btn btn-primary">Enviar</button>
         <a href="{{route('site.animais')}}" class="btn btn-default">Cancelar</a> 
       </div>
     </form>
+
+    <script src="{{asset('js/modulos/adocao/formulario/formulario.js')}}"></script>
+    
   </div>
 @stop

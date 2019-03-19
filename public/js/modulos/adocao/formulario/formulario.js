@@ -3,10 +3,8 @@ $(document).ready(function () {
 	$('#btnConfirmar').click(function () {
 
 		// Verifica se a NOME é valido.
-		var nome = document.getElementById("nome_adocao");
-		console.log(nome.value);
-		
-		if (!verificaTamanho(1, 10, nome.value)) {
+		var nome = document.getElementById("nome_adocao");		
+		if (!verificaTamanho(1, 60, nome.value)) {
 			nome.setCustomValidity("Nome com até 60 caracteres.");
 		}
 		nome.oninput = function (e) {
@@ -56,15 +54,6 @@ $(document).ready(function () {
 		}
 		cep.oninput = function (e) {
 			cep.setCustomValidity("");
-		}
-
-		// Verifica se a EMAIL é valido.
-		var email = document.getElementById("email_adocao");
-		if (!verificaTamanho(1, 50, email.value)) {
-			email.setCustomValidity("E-mail com até 50 caracteres.");
-		}
-		email.oninput = function (e) {
-			email.setCustomValidity("");
 		}
 
 		// Verifica se a RUA é valido.

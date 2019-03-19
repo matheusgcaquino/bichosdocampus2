@@ -31,9 +31,14 @@ class AdotarAnimalController extends Controller
   public function adotar(AdotaValidacaoFormRequest $request)
   { 
     // Se resultcpf for false, quer dizer que o cpf é invalido.
-    if (!CpfController::validar($request->cpf_adocao)){
+    if (!AdocaoController::validarCPF($request->cpf_adocao)){
       $mensagem = 'CPF Invalido!';
-      return redirect()->route('site.animais')->with('error', $mensagem);
+      return redirect()->route('site.animais')->with('error', $mensagem)->withInput(Input::all());
+    }
+    // Se resultdata for false, quer dizer que a data é invalido.
+    if (!AdocaoController::validarData($request->nascimento_adocao)){
+      $mensagem = 'Data invalida!';
+      return redirect()->route('site.animais')->with('error', $mensagem)->withInput(Input::all());
     } 
 
     $nome = $request->nome_adocao;
@@ -70,7 +75,7 @@ class AdotarAnimalController extends Controller
       return redirect()->route('site.animais')->with('success', $mensagem);
     } else {
       $mensagem = 'Erro na requisição para adoção.';
-      return redirect()->route('site.animais')->with('error', $mensagem);
+      return redirect()->route('site.animais')->with('error', $mensagem)->withInput(Input::all());
     }
   }      
 }
