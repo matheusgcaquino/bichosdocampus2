@@ -25,8 +25,8 @@
                         }
                     @endphp
                     <div class="col-md-3">
-                        <div class="box box-primary">
-                            <div class="box-body box-profile">
+                        <div class="box box-primary" style="border: solid 2px #f1f1f1; border-top: 2px solid #dd4b39;">
+                            <div class="box-body box-profile" style="border: solid 2px #f1f1f1;">
                                 <div class="im">
                                     <img  src="{{$foto}}" alt="User profile picture" >
                                 </div>

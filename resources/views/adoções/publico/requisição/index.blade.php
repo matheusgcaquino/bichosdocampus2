@@ -11,11 +11,11 @@
 
 @section('content')
     <div class="box">
-        <div class="box-header">
-            <h3 class="text-center">Animal: {{$results->animal->nome_animal}}</h3>
+        <div class="box-header" style="background-color: tomato; color: white;">
+            <h3 class="text-center">Situação do requerimento para <strong> {{$results->animal->nome_animal}} </strong></h3>
         </div>
 
-        <div class="box-body">
+        <div class="box-body" style="background-color: #dd4b39; color: white;">
             @if($results)
                 @php
                     $foto = url("images/foto-icon.png");
@@ -28,11 +28,14 @@
 
                     $stat = StatusController::last_status($results->status);
                 @endphp
-                <div class="im">
-                    <img  src="{{$foto}}" alt="User profile picture" >
-                </div>
 
                 <div class="form-group col-md-6">
+                  <img  src="{{$foto}}" alt="User profile picture"/>
+                </div>
+
+
+                <div class="form-group col-md-6">
+                  <h4><b>DADOS DO ADOTANTE</b></h4>
                     <label for="name">Nome </label>
                 <input type="text" class="form-control" value="{{$results->nome_adocao}}" disabled>
                 </div>
@@ -87,6 +90,14 @@
                         <label>Moro em</label>
                         <input type="text" class="form-control" value="{{$moro}}" disabled>
                     </div>
+
+                     <div class="form-group col-md-6">
+                        <label>Situação</label></br>
+                        <button type="button" class="btn btn-success">Aprovar</button>
+                        <button type="button" class="btn btn-info">Análisar</button>
+                        <button type="button" class="btn btn-primary">Recusar</button>
+                    </div>
+
                 @endgerencia
 
             @else
@@ -167,7 +178,7 @@
 
 div img {
   max-width: 100%;
-  height: 150px;
+  height: 100%;
  
 }
 </style>
