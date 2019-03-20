@@ -14,6 +14,7 @@ class AdotaValidacaoFormRequest extends FormRequest
     public function rules()
     {
         return [
+            'id_animal'         => 'bail| required',
             'nome_adocao'       => 'bail| required | max:60 |',
             'telefone_adocao'   => 'bail| required |',
             'email_adocao'      => 'bail| required | max:60 |',
