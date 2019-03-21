@@ -11,12 +11,15 @@ class StatusController extends Controller
     {
         switch($status->last()->status_adocao){
             case 0:
-                $stat = 'Novo';
+                $stat = '<span class="bg-green">Novo</span>';
                 break;
             
             case 1:
-                $stat = 'Visualizado';
+                $stat = '<span class="bg-blue">Visualizado</span>';
                 break;
+            
+            case 2:
+                $stat = '<span class="bg-red">Avaliando</span>';
 
             default:
                 $stat = 'Error';

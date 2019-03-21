@@ -279,13 +279,25 @@
             var x = document.getElementById("paste");
             var temp = x.innerHTML;
             x.innerHTML = info + temp;
+            console.log('criado');
+            
         }
 
         function editar(tipo)
         {
             $.getJSON('config/box/' + tipo, function (data) {
                 criarBox(tipo, data);
+                load_js();
             });
+        }
+
+        function load_js()
+        {
+            console.log('carregar');
+            var head= document.getElementsByTagName('head')[0];
+            var script= document.createElement('script');
+            script.src= '/vendor/jquery/dist/jquery.min.js';
+            head.appendChild(script);
         }
     </script>
 @stop
