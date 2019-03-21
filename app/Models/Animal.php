@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Animal extends Model{
+class Animal extends Model
+{
 
     protected $table = 'animals';
 
@@ -17,11 +18,13 @@ class Animal extends Model{
 
     public $timestamps = true;
 
-    public function foto(){
-        return $this->hasMany('Foto_animals');
+    public function foto()
+    {
+        return $this->hasMany('App\Models\Foto_animals', 'id_animal');
     }
 
-    public function adocao(){
-        return $this->hasMany('Adocao');
+    public function adocao()
+    {
+        return $this->hasMany('App\Models\Adocao', 'id_animal');
     }
 }

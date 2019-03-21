@@ -1,5 +1,6 @@
 <?php
 
+
     //Rotas Principais
 Route::group(['namespace' => 'Site'], function(){
   Route::get('/', 'SiteController@index')->name('home');
@@ -18,4 +19,4 @@ include "usuarios/rotas_usuarios.php";
 
 Auth::routes();
 
-Route::get('/session', 'Usuarios\UsuariosController@show')->name('info');
+Route::get('/home', 'HomeController@index')->name('home');
