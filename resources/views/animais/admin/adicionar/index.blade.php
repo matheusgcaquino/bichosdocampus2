@@ -102,7 +102,7 @@
         </div>
 
         <div class="form-group">
-            <div class="pull-left">
+            <div class="pull-left" id="card-adocao">
                 <img id="img-adocao" class="profile-user-img img-circle"
                 src="{{asset('images/foto-icon.png')}}" alt="User profile picture">
             </div>
@@ -122,22 +122,23 @@
   <script src="{{asset('js/JavaScript-Load-Image-2.20.1/js/load-image.all.min.js')}}"></script>
   <script type="text/javascript">
 
-
           document.getElementById('file-input').onchange = function (e) {
             loadImage(
               e.target.files[0],
-              function (img) {
-                // document.getElementById('img-adocao').appendChild(img);
+              function (img) {                
+                
+                $('#card-adocao').empty();
+                document.getElementById('card-adocao').appendChild(img);
 
-                console.log(img.src);
-                // console.log(img);
-                // var urlCreator = window.URL || window.webkitURL;
-                // var imageUrl = urlCreator.createObjectURL(img.src);
-                // document.querySelector("#file-input").src = imageUrl;
+                $('#card-adocao img').attr('class', 'profile-user-img img-circle');
 
               },
-              {maxWidth: 600} // Options
-            );
+              {
+                maxWidth: 90,
+                maxHeight: 90,
+                // orientation: 2,
+              } // Options
+            );            
           };
 
 
