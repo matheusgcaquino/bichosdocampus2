@@ -124,7 +124,13 @@ return [
             'url'  => 'usuários',
             'icon'  => 'user',
             'can'   =>  'admin-only',
-        ]
+        ],
+        [
+            'text' => 'Configurações',
+            'url'  => 'config',
+            'icon'  => 'bomb',
+            'can'   =>  'admin-only',
+        ],
     ],
 
     /*

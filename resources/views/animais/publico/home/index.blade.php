@@ -60,7 +60,7 @@
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
 
-              <p class="text-muted text-center">{{$result->raca_animal}}</p>
+              <p class="text-muted text-center">{{$result->raca->raca}}</p>
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
@@ -94,10 +94,11 @@
                 data-target="#information" 
                 data-solict-foto="{{$foto}}"
                 data-solict-idade="{{$idade}}" 
-                data-solict-nome="{{$result->nome_animal}}" 
-                data-solict-especie="{{$result->especie_animal}}"
-                data-solict-raca="{{$result->raca_animal}}"
-                data-solict-pelagem="{{$result->pelagem_animal}}" 
+                data-solict-nome="{{$result->nome_animal}}"
+                data-solict-local="{{$result->local->local}}" 
+                data-solict-especie="{{$result->raca->especie->especie}}"
+                data-solict-raca="{{$result->raca->raca}}"
+                data-solict-pelagem="{{$result->pelagem->pelagem}}" 
                 data-solict-comportamento="{{$result->comportamento_animal}}" 
                 data-solict-sexo="{{$sexo_animal}}"
                 data-solict-descricao="{{$result->descricao_animal}}"
@@ -220,6 +221,11 @@
             </div>
 
             <div class="form-group col-md-6">
+              <label for="race">Local </label>
+              <input type="text" class="form-control" id="local" disabled>
+            </div>
+
+            <div class="form-group col-md-6">
               <label for="race">Idade </label>
               <input type="text" class="form-control" id="idade" disabled>
             </div>
@@ -289,6 +295,7 @@
       var button = $(event.relatedTarget) // Button that triggered the modal
       var nome = button.data('solict-nome')
       var idade = button.data('solict-idade')
+      var local = button.data('solict-local')
       var raca = button.data('solict-raca')
       var especie = button.data('solict-especie')
       var pelagem = button.data('solict-pelagem')
@@ -301,6 +308,7 @@
       modal.find('.modal-title').text("Informações de " + nome)
       $('#nome').val(nome)
       $('#idade').val(idade)
+      $('#local').val(local)
       $('#raca').val(raca)
       $('#especie').val(especie)
       $('#pelagem').val(pelagem)

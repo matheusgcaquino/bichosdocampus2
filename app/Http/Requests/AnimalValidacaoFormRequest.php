@@ -30,17 +30,17 @@ class AnimalValidacaoFormRequest extends FormRequest
         // max -> quantidade maxima da string
 
         return [
-            'nome'          => 'bail| required | max:60 |',
-            'especie'       => 'bail| required | max:60 |',
-            'raca'          => 'bail| required | max:30 |',
+            'nome'          => 'bail| required  | min:1 | max:60 |',
+            'especie'       => 'bail| required  | max:60 |',
+            'raca'          => 'bail| required  | max:30 |',
             'numeromeses'   => '',
             'numeroano'     => '',
-            'sexo'          => 'bail| required |',
-            'pelagem'       => 'bail| required | max:50 |',
-            'comportamento' => 'bail| required | max:150 |',
-            'castrado'      => 'bail| required |',
-            'descricao'     => 'bail| max:150 |',
-            'foto'          => 'bail| max:7000 |'
+            'sexo'          => 'bail| required  |',
+            'pelagem'       => 'bail| required  | max:50 |',
+            'comportamento' => 'bail| max:50   |',
+            'castrado'      => 'bail| required  |',
+            'descricao'     => 'bail| max:300   |',
+            'foto'          => 'bail| max:1200  |'
         ];
     }
 }
