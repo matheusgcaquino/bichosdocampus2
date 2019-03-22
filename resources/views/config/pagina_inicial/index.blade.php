@@ -15,20 +15,19 @@
             <div class="box-header">
                 <h3>Configuração de <b>Quem somos</b></h3>
             </div>
-
-            <div class="box-body">
-                <form>
+            <form action="{{route('config.animal.editar')}}" method="POST">
+                <div class="box-body">
                     <textarea class="textarea" placeholder="Place some text here"
                         style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;
-                        border: 1px solid #dddddd; padding: 10px;">
+                        border: 1px solid #dddddd; padding: 10px;" name="text">
                         {{$results->sobre}}
                     </textarea>
-                </form>
-            </div>
+                </div>
 
-            <div class="box-footer">
-                <button type="submit" class="btn btn-outline">Confirmar</button>
-            </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-outline">Confirmar</button>
+                </div>
+            </form>
         </div>
     @else
         <div class="box">
@@ -37,17 +36,23 @@
             </div>
 
             <div class="box-body">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" 
+                        data-toggle="modal" data-target="#adicionar">
+                        <b>Adicionar nova</b>
+                    </button>
+                </div>
                 @foreach($results as $result)
                     <div class="col-md-3">
                         <div class="box box-primary">
                             <div class="box-body box-profile">
                                 <div class="im">
-                                    <img  src="{{url("uploads/home/".$result->home_imagem)}}" 
+                                    <img  src="{{url("uploads/".$result->home_imagem)}}" 
                                         alt="User profile picture" >
                                 </div>
                                 @if ($result->selecionada)
                                     <center>
-                                        Foto selecionada!
+                                        <span class="bg-green">Foto selecionada</span>
                                     </center>
                                 @else
                                     <button type="button" class="btn btn-success btn-block" 
@@ -93,7 +98,6 @@
                         {{ csrf_field() }}
                         <div class="modal-body">
                             <input type="hidden" name="idHome" id="idHome"/>
-                            <input type="hidden" name="tipo" value="{{$tipo}}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline pull-left" 
@@ -116,16 +120,58 @@
                         <h4 class="modal-title" id="exampleModalLabel">Selecionar Imagem</h4>
                     </div>
             
-                    <form action="{{route('config.paginaInicial.editar')}}" method="POST">
+                    <form action="{{route('config.paginaInicial.selecionar')}}" method="POST">
                         {{ csrf_field() }}
                         <div class="modal-body">
-                            <input type="hidden" name="idHome" id="idHome"/>
-                            <input type="hidden" name="tipo" value="{{$tipo}}">
+                            <input type="hidden" name="idHome" id="idHome2"/>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline pull-left" 
                             data-dismiss="modal">Cancelar</button>
                             <button type="submit" class="btn btn-outline">Confirmar</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+        <div class="modal modal-default fade" id="adicionar" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Adicionar nova Imagem</h4>
+                    </div>
+            
+                    <form action="{{route('config.paginaInicial.adicionar')}}" method="POST"
+                    enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="pull-left">
+                                    <img class="profile-user-img img-circle" 
+                                    src="{{asset('images/foto-icon.png')}}" alt="User profile picture">
+                                </div>
+                                <div class="pull-left" style="margin-left: 1%">
+                                    <label for="foto">Escolher Imagem</label>
+                                    <input type="file" id="foto" name="foto">
+                                </div>
+                        
+                                <div class="checkbox">
+                                    <label>
+                                    <input type="checkbox" name="selecionada"> Selecionar
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" 
+                            data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Confirmar</button>
                         </div>
                     </form>
                 </div>

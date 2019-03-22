@@ -23,7 +23,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>{{$nome}}</th>
-                                <th>Ação</th>
+                                <th></th>
                             </tr>
                         </thead>
                         
@@ -32,7 +32,7 @@
                                 <tr>
                                     <td>{{$result->id}}</td>
                                     <td>{{$result->text}}</td>
-                                    <td>
+                                    <td class="pull-right">
                                         <button type="button" class="btn btn-primary" 
                                             data-toggle="modal" data-target="#editar"  
                                             data-solict-id="{{$result->id}}"
@@ -59,7 +59,7 @@
                                 <th>Id</th>
                                 <th>Espécie</th>
                                 <th>Raça</th>
-                                <th>Ação</th>
+                                <th></th>
                             </tr>
                         </thead>
                         
@@ -69,7 +69,7 @@
                                     <td>{{$result->id}}</td>
                                     <td>{{$result->especie}}</td>
                                     <td>{{$result->text}}</td>
-                                    <td>
+                                    <td class="pull-right">
                                         <button type="button" class="btn btn-primary" 
                                             data-toggle="modal" data-target="#editar"  
                                             data-solict-id="{{$result->id}}"
@@ -152,7 +152,7 @@
 
                         <div class="form-group">
                             <label>Conteúdo </label>
-                            <input type="text" class="form-control" id="text-editar">
+                            <input type="text" class="form-control" id="text-editar" name="text">
                         </div>
                     </div>
 
@@ -186,7 +186,7 @@
             var id = button.data('solict-id')
             var modal = $(this)
             modal.find('.modal-title').text("Editar " + text)
-            $('#idExcluir').val(id)
+            $('#idEditar').val(id)
             $('#text-editar').val(text)
         });
     </script>

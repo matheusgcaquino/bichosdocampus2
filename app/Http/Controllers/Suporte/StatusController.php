@@ -9,17 +9,50 @@ class StatusController extends Controller
 {
     public static function last_status($status)
     {
-        switch($status->last()->status_adocao){
+        dd($status);
+        $last = $status->last();
+        switch($last->status_adocao){
             case 0:
                 $stat = '<span class="bg-green">Novo</span>';
                 break;
             
             case 1:
-                $stat = '<span class="bg-blue">Visualizado</span>';
+                $stat = '
+                <a data-toggle="tooltip" title="Por: '.$last->user->nome_user.'">
+                    <span class="bg-blue">Visualizado</span>
+                </a>';
                 break;
             
             case 2:
-                $stat = '<span class="bg-red">Avaliando</span>';
+                $stat = '
+                <a data-toggle="tooltip" title="'.$last->comentario.' - Por: '.
+                    $last->user->nome_user.'">
+                    <span class="bg-red">Avaliando</span>
+                </a>';
+                break;
+
+            case 3:
+                $stat = '
+                <a data-toggle="tooltip" title="'.$last->comentario.' - Por: '.
+                    $last->user->nome_user.'">
+                    <span class="bg-blue">Aprovado</span>
+                </a>';
+                break;
+
+            case 4:
+                $stat = '
+                <a data-toggle="tooltip" title="'.$last->comentario.' - Por: '.
+                    $last->user->nome_user.'">
+                    <span class="bg-blue">Recusado</span>
+                </a>';
+                break;
+
+            case 5:
+                $stat = '
+                <a data-toggle="tooltip" title="Animal já adotado">
+                    <span class="bg-blue">Cancelado</span>
+                </a>';
+                break;
 
             default:
                 $stat = 'Error';
