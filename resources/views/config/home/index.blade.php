@@ -30,37 +30,37 @@
                         <tr>
                             <td>Espécie</td>
                             <td>
-                                <button type="button" class="btn btn-primary pull-right" 
-                                onclick="editar('especie');">
-                                <span class="fa fa-cog"></span>
-                                </button>
+                                <a href="{{route('config.animal', ['tipo' => 'especie'])}}" 
+                                    class="btn btn-primary pull-right" target="_blank">
+                                    Editar
+                                </a>
                             </td>
                         </tr>
                         <tr>
                             <td>Raça</td>
                             <td>
-                                <button type="button" class="btn btn-primary pull-right" 
-                                onclick="editar('raca');">
-                                <span class="fa fa-cog"></span>
-                                </button>
+                                <a href="{{route('config.animal', ['tipo' => 'raca'])}}" 
+                                    class="btn btn-primary pull-right" target="_blank">
+                                    Editar
+                                </a>
                             </td>
                         </tr>
                         <tr>
                             <td>Pelagem</td>
                             <td>
-                                <button type="button" class="btn btn-primary pull-right" 
-                                onclick="editar('pelagem');">
-                                <span class="fa fa-cog"></span>
-                                </button>
+                                <a href="{{route('config.animal', ['tipo' => 'pelagem'])}}" 
+                                    class="btn btn-primary pull-right" target="_blank">
+                                    Editar
+                                </a>
                             </td>
                         </tr>
                         <tr>
                             <td>Localização</td>
                             <td>
-                                <button type="button" class="btn btn-primary pull-right" 
-                                onclick="editar('local');">
-                                <span class="fa fa-cog"></span>
-                                </button>
+                                <a href="{{route('config.animal', ['tipo' => 'local'])}}" 
+                                    class="btn btn-primary pull-right" target="_blank">
+                                    Editar
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -96,10 +96,20 @@
                         <tr>
                             <td>Imagem principal</td>
                             <td>
-                                <button type="button" class="btn btn-primary pull-right" 
-                                onclick="editar('im_pricipal');">
-                                <span class="fa fa-cog"></span>
-                                </button>
+                                <a href="{{route('config.paginaInicial', ['tipo' => 'imagem'])}}" 
+                                    class="btn btn-primary pull-right" target="_blank">
+                                    Editar
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Quem somos</td>
+                            <td>
+                                <a href="{{route('config.paginaInicial', ['tipo' => 'sobre'])}}" 
+                                    class="btn btn-primary pull-right" target="_blank">
+                                    Editar
+                                </a>
                             </td>
                         </tr>
                     </tbody>
@@ -113,96 +123,9 @@
 
     <div id="paste"></div>
 
-    <!-- Modais -->
-    <div class="modal modal-danger fade" id="excluir" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel"></h4>
-                </div>
-
-                <form action="{{route('config.excluir')}}" method="POST">
-                    {{ csrf_field() }}
-                    <div class="modal-body" id="modal_excluir">
-                        <input type="hidden" id="idExcluir">
-                        <input type="hidden" id="tipoExcluir">
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline pull-left" 
-                            data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-outline">Confirmar</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-
-    <div class="modal modal-default fade" id="editar" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel"></h4>
-                </div>
-
-                <form action="{{route('config.editar')}}" method="POST">
-                    {{ csrf_field() }}
-                    <div class="modal-body" id="modal_editar">
-                        <input type="hidden" id="idEditar">
-                        <input type="hidden" id="tipoEditar">
-
-                        <div class="form-group col-md-6">
-                            <label>Conteúdo </label>
-                            <input type="text" id="text">
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline pull-left" 
-                            data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-outline">Confirmar</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-
 @stop
 
 @section('js')
-    <script>
-        $('#excluir').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) // Button that triggered the modal
-            var text = button.data('solict-name')
-            var tipo = button.data('solict-tipo')
-            var id = button.data('solict-id')
-            var modal = $(this)
-            modal.find('.modal-title').text("Deseja excluir " + text + "?")
-            $('#idExcluir').val(id)
-            $('#tipoExcluir').val(tipo)
-        });
-
-        $('#editar').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) // Button that triggered the modal
-            var text = button.data('solict-name')
-            var tipo = button.data('solict-tipo')
-            var id = button.data('solict-id')
-            var modal = $(this)
-            modal.find('.modal-title').text("Editar " + text + " - " + tipo)
-            $('#idExcluir').val(id)
-            $('#text').val(idExcluir)
-            $('#tipoEditar').val(tipo)
-        });
-    </script>
-    
     <script>
 
         function criarTabela(tipo, data) 

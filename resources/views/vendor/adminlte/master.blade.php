@@ -28,6 +28,9 @@
         <link rel="stylesheet" href="//cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css">
     @endif
 
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap3-wysihtml5.min.css') }}">
+
     @yield('adminlte_css')
 
     <!--[if lt IE 9]>
@@ -60,6 +63,9 @@
     <!-- ChartJS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
 @endif
+
+<!-- Bootstrap WYSIHTML5 -->
+<script href="{{ asset('js/bootstrap3-wysihtml5.all.min.js') }}"></script>
 
 @yield('adminlte_js')
 

@@ -52,15 +52,11 @@ class BuscarController extends Controller
                 return $query->where('sexo_animal', '=', $sexo);
             })
             ->when($request->status, function ($query, $status) {
-                if ($status == 2) {
-                    $status = 0;
-                }
+                $status--;
                 return $query->where('status_animal', '=', $status);
             })
             ->when($request->castrado, function ($query, $castrado) {
-                if ($castrado == 2) {
-                    $castrado = 0;
-                }
+                $castrado--;
                 return $query->where('castracao_animal', '=', $castrado);
             })
             ->when($request, function ($query, $request) {

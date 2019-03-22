@@ -283,12 +283,12 @@
               <div class="form-group col-md-6">
                 <label>Nome </label>
                 <input type="text" class="form-control" id="S_nome" name="nome" 
-                  placeholder="Buscar por nome">
+                  placeholder="Buscar por nome(opcional)">
               </div>
   
               <div class="form-group col-md-6">
                 <label>Espécie</label>
-                <select class="form-control select2" id="S_especie" name="especie" 
+                <select class="form-control" id="S_especie" name="especie" 
                   onchange="addRaca(this.value)">
                   <option selected="selected" value="">Todas</option>
                 </select>
@@ -296,7 +296,8 @@
 
               <div class="form-group col-md-6" id="div_raca" style="display: none;">
                 <label>Raça </label>
-                <select class="form-control select2" id="S_raca" name="raca">
+                <select class="form-control select2" id="S_raca" name="raca"
+                  style="width: 100%;">
                   <option selected="selected" value="">Todas</option>
                 </select>
               </div>
@@ -304,7 +305,8 @@
               @gerencia('local')
                 <div class="form-group col-md-6">
                   <label>Localidade </label>
-                  <select class="form-control select2" id="S_local" name="local">
+                  <select class="form-control select2" id="S_local" name="local"
+                    style="width: 100%;">
                     <option selected="selected" value="">Todas</option>
                   </select>
                 </div>
@@ -312,14 +314,15 @@
               
               <div class="form-group col-md-6">
                 <label>Pelagem</label>
-                <select class="form-control select2" id="S_pelagem" name="pelagem">
+                <select class="form-control select2" id="S_pelagem" name="pelagem"
+                  style="width: 100%;">
                   <option selected="selected" value="">Todas</option>
                 </select>
               </div>
   
               <div class="form-group col-md-6">
                 <label>Sexo</label>
-                <select class="form-control select2" id="S_sexo" name="sexo">
+                <select class="form-control" id="S_sexo" name="sexo"">
                     <option selected="selected" value="">Todos</option>
                     <option value="M">Macho</option>
                     <option value="F">Fêmea</option>
@@ -328,16 +331,16 @@
   
               <div class="form-group col-md-6">
                 <label for="race">Castrado</label>
-                <select class="form-control select2" id="S_castrado" name="castrado">
-                  <option selected="selected" value="">Todos</option>
-                  <option value="1">Sim</option>
-                  <option value="2">Não</option>
+                <select class="form-control" id="S_castrado" name="castrado">
+                  <option selected="selected" value="">Ambos</option>
+                  <option value="2">Sim</option>
+                  <option value="1">Não</option>
                 </select>
               </div>
 
               <div class="form-group col-md-6">
                 <label for="race">Idade</label>
-                <select class="form-control select2" id="S_idade" name="idade">
+                <select class="form-control" id="S_idade" name="idade">
                   <option selected="selected" value="">Todas</option>
                   <option value="1">Até 2 meses</option>
                   <option value="2">De 2 á 5 meses</option>
@@ -350,10 +353,11 @@
               @gerencia('local')
                 <div class="form-group col-md-6">
                   <label for="race">Status</label>
-                  <select class="form-control select2" id="S_status" name="status">
+                  <select class="form-control" id="S_status" name="status">
                     <option selected="selected" value="">Todos</option>
-                    <option value="1">Ativado</option>
-                    <option value="2">Desativado</option>
+                    <option value="2">Ativado</option>
+                    <option value="1">Desativado</option>
+                    <option value="3">Adotados</option>
                   </select>
                 </div>
               @endgerencia
@@ -374,8 +378,13 @@
 
 @section('js')
   {{-- <script src="{{asset('js/buscar/buscar_animal.js')}}"></script> --}}
-
+  
   <script>
+
+    $(document).ready(function() {
+      $('.select2').select2();
+    });
+
     function addSelect(select, id, text)
     {
       var x = document.getElementById(select);

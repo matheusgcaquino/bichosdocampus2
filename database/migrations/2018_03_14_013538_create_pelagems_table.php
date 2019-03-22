@@ -26,6 +26,6 @@ class CreatePelagemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pelagems');
+        Schema::dropIfExists('pelagem');
     }
 }

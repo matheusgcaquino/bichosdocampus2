@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocalsTable extends Migration
+class CreateSobresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateLocalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('local', function (Blueprint $table) {
-            $table->increments('id_local');
-            $table->string('local', 50)->nullable(false);
+        Schema::create('sobre', function (Blueprint $table) {
+            $table->increments('id_sobre');
+            $table->string('sobre', 300)->nullable(false);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateLocalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('local');
+        Schema::dropIfExists('sobre');
     }
 }
