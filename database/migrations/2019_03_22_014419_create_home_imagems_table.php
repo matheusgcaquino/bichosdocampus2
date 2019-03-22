@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocalsTable extends Migration
+class CreateHomeImagemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateLocalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('local', function (Blueprint $table) {
-            $table->increments('id_local');
-            $table->string('local', 50)->nullable(false);
+        Schema::create('home_imagems', function (Blueprint $table) {
+            $table->increments('id_home');
+            $table->string('home_imagem', 1200);
+            $table->boolean('selecionada');
         });
     }
 
@@ -26,6 +27,6 @@ class CreateLocalsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('local');
+        Schema::dropIfExists('home_imagems');
     }
 }

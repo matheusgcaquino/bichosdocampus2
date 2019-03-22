@@ -29,6 +29,6 @@ class CreateRacasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('racas');
+        Schema::dropIfExists('raca');
     }
 }
