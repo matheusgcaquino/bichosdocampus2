@@ -16,5 +16,4 @@ Route::prefix('adoções')->group(function(){
         Route::get('/{id}', 'RequisiçõesController@index')->where(['id' => '[0-9]+'])
             ->name('adocoes.requisições');
     });
-
 });

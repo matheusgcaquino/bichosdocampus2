@@ -58,8 +58,8 @@ $(document).ready(function () {
 
 		// Verifica se a RUA é valido.
 		var rua = document.getElementById("rua_adocao");
-		if (!verificaTamanho(1, 30, rua.value)) {
-			rua.setCustomValidity("Rua com até 30 caracteres.");
+		if (!verificaTamanho(1, 150, rua.value)) {
+			rua.setCustomValidity("Rua com até 150 caracteres.");
 		}
 		rua.oninput = function (e) {
 			rua.setCustomValidity("");
@@ -67,8 +67,8 @@ $(document).ready(function () {
 
 		// Verifica se a NUMERO é valido.
 		var numero = document.getElementById("numero_adocao");
-		if (!verificaTamanho(1, 10, numero.value)) {
-			numero.setCustomValidity("Numero com até 10 caracteres.");
+		if (!verificaTamanho(1, 5, numero.value)) {
+			numero.setCustomValidity("Numero com até 5 caracteres.");
 		}
 		numero.oninput = function (e) {
 			numero.setCustomValidity("");

@@ -21,6 +21,7 @@ class Adocao extends Model
         'cpf_adocao',
         'rua_adocao',
         'numero_adocao',
+        'complemento_adocao',
         'bairro_adocao',
         'cidade_adocao',
         'estado_adocao',
