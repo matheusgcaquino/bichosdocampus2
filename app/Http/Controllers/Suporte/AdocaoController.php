@@ -9,7 +9,7 @@ class AdocaoController extends Controller
 {
     public static function validarData($data)
     {
-        $data = explode("/","$dat"); // fatia a string $dat em pedados, usando / como referência
+        $data = explode("/","$data"); // fatia a string $dat em pedados, usando / como referência
         $d = $data[0];
         $m = $data[1];
         $y = $data[2];

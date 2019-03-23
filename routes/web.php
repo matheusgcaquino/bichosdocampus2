@@ -21,5 +21,3 @@ include "usuarios/rotas_usuarios.php";
 include "config/rotas_config.php";
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

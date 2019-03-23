@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdotaValidacaoFormRequest;
 use App\Http\Controllers\Suporte\CpfController;
+use App\Http\Controllers\Suporte\AdocaoController;
 use App\Models\Adocao;
 use App\Models\StatusAdocao;
 use App\Models\Animal;
@@ -52,10 +53,11 @@ class AdotarAnimalController extends Controller
       'telefone_adocao'   =>  $request->telefone_adocao,
       'email_adocao'      =>  $request->email_adocao,
       'cpf_adocao'        =>  $request->cpf_adocao,
-      'rua_adocao'        =>  $request->logradouro_adocao,
-      'numero_adocao'     =>  $request->numero_adocao,
-      'bairro_adocao'     =>  $request->bairro_adocao,
       'cep_adocao'        =>  $request->cep_adocao,
+      'rua_adocao'        =>  $request->rua_adocao,
+      'complemento_adocao'=>  $request->complemento_adocao, 
+      'numero_adocao'     =>  $request->numero_adocao,
+      'bairro_adocao'     =>  $request->bairro_adocao,      
       'cidade_adocao'     =>  $request->cidade_adocao,
       'estado_adocao'     =>  $request->estado_adocao,
       'residencia_adocao' =>  $request->moro_adocao,

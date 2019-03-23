@@ -21,14 +21,15 @@ class CreateAdocaosTable extends Migration
             $table->string('telefone_adocao', 20)->nullable(false);
             $table->string('email_adocao', 50)->nullable(false);
             $table->string('cpf_adocao', 20)->nullable(false);
-            $table->string('cep_adocao', 150)->nullable(false);
-            $table->string('rua_adocao', 10)->nullable(false);
-            $table->string('numero_adocao', 150)->nullable(false);
+            $table->string('cep_adocao', 20)->nullable(false);
+            $table->string('rua_adocao', 150)->nullable(false);
+            $table->string('complemento_adocao', 50)->nullable(true);
+            $table->string('numero_adocao', 5)->nullable(false);
             $table->string('bairro_adocao', 150)->nullable(false);   
             $table->string('cidade_adocao', 150)->nullable(false);
             $table->string('estado_adocao', 150)->nullable(false);            
             $table->string('codigo_adocao')->nullable(true);
-            $table->string('residencia_adocao', 150)->nullable(false);
+            $table->string('residencia_adocao', 15)->nullable(false);
             $table->timestamps();
 
             $table->foreign('id_animal')->references('id_animal')->on('animals')->onDelete('cascade');

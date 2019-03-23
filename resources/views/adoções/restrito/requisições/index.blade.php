@@ -41,7 +41,8 @@
                     <tbody>
                         @foreach($results as $result)
                             @php
-                                $stat = StatusController::last_status($result->status);
+                                //$stat = StatusController::last_status($result->status);
+                                $stat = null;
                             @endphp
                             <tr>
                                 <td>{{$result->nome_adocao}}</td>

@@ -53,9 +53,14 @@
             <input type="text" class="form-control" id="rua_adocao" name="rua_adocao" placeholder="Logradouro" required>
           </div>
 
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-3">
             <label for="race"> Nº <font color="red"> * <font color="black"> </label>
             <input type="text" class="form-control" id="numero_adocao" name="numero_adocao" placeholder="Nº" required>
+          </div>
+
+          <div class="form-group col-md-3">
+            <label for="race"> Complemento </label>
+            <input type="text" class="form-control" id="complemento_adocao" name="complemento_adocao" placeholder="AP, Bloco, Próximo de...">
           </div>
           
           <div class="form-group col-md-6">
@@ -74,21 +79,21 @@
           </div>
 
           <div class="form-group col-md-6">
-          <label>Moro em </label>
-          <div class="radio">
-            <label>
-              <input type="radio" name="moro_adocao" id="moro1" value="casa" checked="">
-              Casa
-            </label>
+            <label>Moro em </label>
+            <div class="radio">
+              <label>
+                <input type="radio" name="moro_adocao" id="moro1" value="casa" checked="">
+                Casa
+              </label>
+            </div>
+            
+            <div class="radio">
+              <label>
+                <input type="radio" name="moro_adocao" id="moro2" value="apartamento">
+                Apartamento
+              </label>
+            </div>
           </div>
-          
-          <div class="radio">
-            <label>
-              <input type="radio" name="moro_adocao" id="moro2" value="apartamento">
-              Apartamento
-            </label>
-          </div>
-        </div>
         </div>
 
         <div class="box-footer">
@@ -97,8 +102,9 @@
         </div>
       </form>
 
-      <script src="{{asset('js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
+  <script src="{{asset('js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
   <script src="{{asset('js/jquery.mask.js')}}" type="text/javascript"></script>
+  <script src="{{asset('js/modulos/adocao/formulario/formulario.js')}}"></script>
 
   <script>
     $(document).ready(function($) {
@@ -107,9 +113,7 @@
       $('input[name="cpf_adocao"]').mask('000.000.000-00');
       $('input[name="cep_adocao"]').mask('00.000-000');
     });
-  </script>
-
-  <script src="{{asset('js/modulos/adocao/formulario/formulario.js')}}"></script>
-    
-  </div>
+  </script> 
+  
+</div>
 @stop
