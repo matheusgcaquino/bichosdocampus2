@@ -47,7 +47,7 @@
                                 <td>{{$result->nome_adocao}}</td>
                                 <td>{{$result->email_adocao}}</td>
                                 <td>{{$result->created_at->format('d/m/y')}}</td>
-                                <td>{{$stat}}</td>
+                                <td>{!!$stat!!}</td>
                                 <td>
                                     <a href="{{route('adocoes.requisição', 
                                         ['codigo' => $result->codigo_adocao])}}" 

@@ -128,7 +128,7 @@ return [
         [
             'text' => 'Configurações',
             'url'  => 'config',
-            'icon'  => 'bomb',
+            'icon'  => 'cog',
             'can'   =>  'admin-only',
         ],
     ],
@@ -167,6 +167,6 @@ return [
     'plugins' => [
         'datatables' => true,
         'select2'    => true,
-        'chartjs'    => true,
+        // 'chartjs'    => true,
     ],
 ];

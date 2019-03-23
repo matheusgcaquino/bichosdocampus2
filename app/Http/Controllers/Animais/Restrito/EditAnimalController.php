@@ -47,11 +47,11 @@ class EditAnimalController extends Controller
     
     if($request->foto || $request->excluirFoto){
       Storage::delete($animal->foto_perfil);
-      if($request->foto){
+      if($request->excluirFoto){
+        $animal->foto_perfil = null;
+      }else{
         $path = $request->foto->store('animais/'.$animal->id_animal);
         $animal->foto_perfil = $path;
-      }else{
-        $animal->foto_perfil = null;
       }
     }
     $animal->save();
