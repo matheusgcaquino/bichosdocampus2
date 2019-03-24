@@ -1,6 +1,6 @@
 @component('mail::message')
-# Convite - Bichos do Campus
-
+<div style="text-align: center;">
+	<h3>Convite Usuário - Bichos do Campus</h3>
 Você foi convidade a se cadastrar no site do Bichos do Campus.
 
 @component('mail::button', [
@@ -9,5 +9,5 @@ Cadastra-se
 @endcomponent
 
 Obrigado,<br>
-{{ config('app.name') }}
+</div>
 @endcomponent

@@ -38,8 +38,8 @@
             <div class="box-body">
                 <div class="form-group">
                     <button type="button" class="btn btn-success" 
-                        data-toggle="modal" data-target="#adicionar">
-                        <b>Adicionar nova</b>
+                        data-toggle="modal" data-target="#adicionar"><span class="fa fa-plus"></span>
+                        <b>Adicionar Imagem</b>
                     </button>
                 </div>
                 @foreach($results as $result)
@@ -151,8 +151,8 @@
                         {{ csrf_field() }}
                         <div class="modal-body">
                             <div class="form-group">
-                                <div class="pull-left">
-                                    <img class="profile-user-img img-circle" 
+                                <div class="col-md-3">
+                                    <img class="im" 
                                     src="{{asset('images/foto-icon.png')}}"/>
                                 </div>
                                 <div class="form-group" style="margin-left: 1%">
@@ -227,7 +227,7 @@
 
 div img {
   max-width: 100%;
-  height: 150px;
+  max-height: 100%;
  
 }
 </style>
