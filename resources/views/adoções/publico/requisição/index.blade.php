@@ -41,8 +41,8 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label>Status</label>
-                    <input type="text" class="form-control" value="{{$stat}}" disabled>
+                    <label>Status: </label>
+                    {!!$stat!!}
                 </div>
 
                 @gerencia('local')

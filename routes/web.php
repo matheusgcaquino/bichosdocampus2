@@ -17,8 +17,9 @@ include "adoções/rotas_adoções.php";
     //Rotas de Usuarios
 include "usuarios/rotas_usuarios.php";
 
-Auth::routes();
+    //Rotas de Configurações
+include "config/rotas_config.php";
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();

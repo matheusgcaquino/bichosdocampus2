@@ -8,6 +8,10 @@
 @section('content_header')
 @stop
 
+@php
+    use App\Http\Controllers\Suporte\StatusController;
+@endphp
+
 @section('content')
     <div class="box">
         <div class="box-header">
@@ -23,6 +27,7 @@
                             ->exists($result->foto_perfil)){
                             $foto = url("uploads/".$result->foto_perfil);
                         }
+                        $status = StatusController::status_num($result->adocao);
                     @endphp
                     <div class="col-md-3">
                         <div class="box box-primary" style="border: solid 2px #f1f1f1; border-top: 2px solid #dd4b39;">
@@ -35,7 +40,19 @@
                     
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
-                                        <b>Requisições</b> 
+                                        <b>Novas requisições</b> 
+                                        <a class="pull-right">{{$status[0]}}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Requisições em espera</b> 
+                                        <a class="pull-right">{{$status[1]}}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Requisições em avaliação</b> 
+                                        <a class="pull-right">{{$status[2]}}</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Total de requisições</b> 
                                         <a class="pull-right">{{$result->adocao->count()}}</a>
                                     </li>
                                 </ul>
@@ -58,49 +75,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Modais -->
-
-    <div class="modal modal-default fade" id="requisicoes" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel"></h4>
-                </div>
-        
-                <form action="{{route('deletar.animais')}}" method="POST">
-                {{ csrf_field() }}
-                <div class="modal-body">
-                    <input type="hidden" name="idAnimal" id="idAnimal"/>
-                    Mostrar Requisições aki
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" 
-                        data-dismiss="modal">Voltar</button>
-                    {{-- <button type="submit" class="btn btn-outline">Confirmar</button> --}}
-                </div>
-                </form>
-            </div>
-          <!-- /.modal-content -->
-        </div>
-    <!-- /.modal-dialog -->
-    </div>
-@stop
-
-@section('js')
-    <script>
-        $('#requisicoes').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) // Button that triggered the modal
-            var name = button.data('solict-name')
-            var id = button.data('solict-id')
-            var modal = $(this)
-            modal.find('.modal-title').text("Requisições de " + name)
-            $('#idAnimal').val(id)
-        });
-
-    </script>
 @stop
 
 @section('css')

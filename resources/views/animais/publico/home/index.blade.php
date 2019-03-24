@@ -11,7 +11,7 @@
   @include('site.includes.alerts')
 
   @php
-    use App\Http\Controllers\Suporte\DataController;  
+    use App\Http\Controllers\Suporte\DataController; 
   @endphp
 
   <div class="box">
@@ -24,14 +24,15 @@
            <span class="fa fa-plus"></span> ADICIONAR</a>
         </div> 
       @endgerencia
-      <div class="input-group pull-right col-md-3">
-        <input type="text" class="form-control" name="buscar" id="buscar" 
-      value="{{(isset($buscar) ? $buscar : '')}}"
-            placeholder="Buscar Animais"> <span class="input-group-btn">
-            <button id="btn-buscar" type="submit" class="btn btn-default">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-        </span>
+      <div class="form-group pull-right"> 
+        @if (isset($buscar))
+          <a href="{{route('site.animais')}}" class="btn btn-danger ">
+            Limpar Busca</a>
+        @endif
+        <button type="button" class="btn btn-default" data-toggle="modal" 
+          data-target="#buscar">
+          <span class="fa fa-search"></span><b> Buscar Animal</b>
+        </button>
       </div>
     </div>   
 
@@ -60,7 +61,7 @@
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
 
-              <p class="text-muted text-center">{{$result->raca_animal}}</p>
+              <p class="text-muted text-center">{{$result->raca->raca}}</p>
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
@@ -94,10 +95,11 @@
                 data-target="#information" 
                 data-solict-foto="{{$foto}}"
                 data-solict-idade="{{$idade}}" 
-                data-solict-nome="{{$result->nome_animal}}" 
-                data-solict-especie="{{$result->especie_animal}}"
-                data-solict-raca="{{$result->raca_animal}}"
-                data-solict-pelagem="{{$result->pelagem_animal}}" 
+                data-solict-nome="{{$result->nome_animal}}"
+                data-solict-local="{{$result->local->local}}" 
+                data-solict-especie="{{$result->raca->especie->especie}}"
+                data-solict-raca="{{$result->raca->raca}}"
+                data-solict-pelagem="{{$result->pelagem->pelagem}}" 
                 data-solict-comportamento="{{$result->comportamento_animal}}" 
                 data-solict-sexo="{{$sexo_animal}}"
                 data-solict-descricao="{{$result->descricao_animal}}"
@@ -219,6 +221,13 @@
               <input type="text" class="form-control" id="raca" disabled>
             </div>
 
+            @gerencia('local')
+              <div class="form-group col-md-6">
+                <label for="race">Localidade </label>
+                <input type="text" class="form-control" id="local" disabled>
+              </div>
+            @endgerencia
+
             <div class="form-group col-md-6">
               <label for="race">Idade </label>
               <input type="text" class="form-control" id="idade" disabled>
@@ -258,10 +267,226 @@
     </div>
     <!-- /.modal-dialog -->
   </div>
+
+  <div class="modal modal-default fade" id="buscar" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">Buscar Animal</h4>
+        </div>
+        <form action="{{route('buscar.animais')}}" method="POST">
+            {{ csrf_field() }}
+          <div class="modal-body">
+            <div class="box-body">
+              <div class="form-group col-md-6">
+                <label>Nome </label>
+                <input type="text" class="form-control" id="S_nome" name="nome" 
+                  placeholder="Buscar por nome(opcional)">
+              </div>
+  
+              <div class="form-group col-md-6">
+                <label>Espécie</label>
+                <select class="form-control" id="S_especie" name="especie" 
+                  onchange="addRaca(this.value)">
+                  <option selected="selected" value="">Todas</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6" id="div_raca" style="display: none;">
+                <label>Raça </label>
+                <select class="form-control select2" id="S_raca" name="raca"
+                  style="width: 100%;">
+                  <option selected="selected" value="">Todas</option>
+                </select>
+              </div>
+  
+              @gerencia('local')
+                <div class="form-group col-md-6">
+                  <label>Localidade </label>
+                  <select class="form-control select2" id="S_local" name="local"
+                    style="width: 100%;">
+                    <option selected="selected" value="">Todas</option>
+                  </select>
+                </div>
+              @endgerencia
+              
+              <div class="form-group col-md-6">
+                <label>Pelagem</label>
+                <select class="form-control select2" id="S_pelagem" name="pelagem"
+                  style="width: 100%;">
+                  <option selected="selected" value="">Todas</option>
+                </select>
+              </div>
+  
+              <div class="form-group col-md-6">
+                <label>Sexo</label>
+                <select class="form-control" id="S_sexo" name="sexo"">
+                    <option selected="selected" value="">Todos</option>
+                    <option value="M">Macho</option>
+                    <option value="F">Fêmea</option>
+                  </select>
+              </div>
+  
+              <div class="form-group col-md-6">
+                <label for="race">Castrado</label>
+                <select class="form-control" id="S_castrado" name="castrado">
+                  <option selected="selected" value="">Ambos</option>
+                  <option value="2">Sim</option>
+                  <option value="1">Não</option>
+                </select>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="race">Idade</label>
+                <select class="form-control" id="S_idade" name="idade">
+                  <option selected="selected" value="">Todas</option>
+                  <option value="1">Até 2 meses</option>
+                  <option value="2">De 2 á 5 meses</option>
+                  <option value="3">De 5 á 12 meses</option>
+                  <option value="4">De 1 á 2 anos</option>
+                  <option value="5">Acima de 2 anos</option>
+                </select>
+              </div>
+
+              @gerencia('local')
+                <div class="form-group col-md-6">
+                  <label for="race">Status</label>
+                  <select class="form-control" id="S_status" name="status">
+                    <option selected="selected" value="">Todos</option>
+                    <option value="2">Ativado</option>
+                    <option value="1">Desativado</option>
+                    <option value="3">Adotados</option>
+                  </select>
+                </div>
+              @endgerencia
+
+            </div>
+          </div>
+  
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success">Confirmar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   
 @stop
 
 @section('js')
+  {{-- <script src="{{asset('js/buscar/buscar_animal.js')}}"></script> --}}
+  
+  <script>
+
+    $(document).ready(function() {
+      $('.select2').select2();
+    });
+
+    function addSelect(select, id, text)
+    {
+      var x = document.getElementById(select);
+      var option = document.createElement("option");
+      option.text = text;
+      option.value = id;
+      x.add(option);
+    }
+
+    function buscar(data, callback)
+    {
+      $.each(data['especie'], function (i, item) {
+        const {id_especie, especie} = item;
+        addSelect("S_especie", id_especie, especie);
+      });
+
+      $.each(data['pelagem'], function (i, item) {
+        const {id_pelagem, pelagem} = item;
+        addSelect("S_pelagem", id_pelagem, pelagem);
+      });
+
+      if ('local' in data) {
+        $.each(data['local'], function (i, item) {
+          const {id_local, local} = item;
+          addSelect("S_local", id_local, local);
+        }); 
+      }
+
+      @if (isset($raca))
+        var raca = {!! json_encode($raca, JSON_HEX_TAG) !!};        
+        $.each(raca, function (i, item) {
+          const {id_raca, raca} = item;
+          addSelect("S_raca", id_raca, raca);
+        });
+        var div = document.getElementById("div_raca");
+        div.style.display = "block";
+      @endif
+      callback();  
+    }
+
+    function cleanRaca() {
+      var x = document.getElementById("S_raca");
+      while (x.options[1] != null) {
+        x.options.remove(1);
+      }
+    }
+
+    function addRaca(value)
+    {
+      var div = document.getElementById("div_raca");
+      if (value == '') {
+        div.style.display = "none";
+        cleanRaca();
+      } else {
+        if (div.style.display == "block") {
+          cleanRaca();
+        } else {
+          div.style.display = "block";
+        }
+        $.getJSON("/animais/ajax_raca/" + value, function (data) {
+          $.each(data, function (i, item) {
+            const {id_raca, id_especie, raca} = item;
+            addSelect("S_raca", id_raca, raca);
+          });
+        });
+      } 
+    }
+
+    function buscar_option()
+    {
+      @if (isset($buscar))
+        var busca = {!! json_encode($buscar, JSON_HEX_TAG) !!};
+        $.each(busca, function (i, item) {
+          if (i == 'nome') {
+            var x = document.getElementById("S_nome");
+            x.value = item;
+          } else {
+            var x = document.getElementById("S_" + i);
+            var j = 1;
+            while (x.options[j] != null) {
+              if (x.options[j].value == item) {
+                x.options[j].selected = true;
+                break;
+              }
+              j++;
+            }
+          }
+        });
+      @endif
+    }
+
+    function buscar_modal(callback) 
+    {
+      $.getJSON("{{route('buscar.ajax')}}", function (data) {
+        buscar(data, buscar_option);
+      });
+    }
+
+    window.onload = buscar_modal;
+  </script>
+
+
   <script>
     $('#excluir').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget) // Button that triggered the modal
@@ -289,6 +514,7 @@
       var button = $(event.relatedTarget) // Button that triggered the modal
       var nome = button.data('solict-nome')
       var idade = button.data('solict-idade')
+      var local = button.data('solict-local')
       var raca = button.data('solict-raca')
       var especie = button.data('solict-especie')
       var pelagem = button.data('solict-pelagem')
@@ -301,6 +527,7 @@
       modal.find('.modal-title').text("Informações de " + nome)
       $('#nome').val(nome)
       $('#idade').val(idade)
+      $('#local').val(local)
       $('#raca').val(raca)
       $('#especie').val(especie)
       $('#pelagem').val(pelagem)
@@ -310,35 +537,6 @@
       $('#castrado').val(castrado)
       $('#foto').val(foto)
     });
-
-    $(this).on('keyup', function (e) {
-        if (e.keyCode == 13) {
-          if ($('#buscar').val() !== '') {
-            let busca = $('#buscar').val();
-            // console.log(window.location.href);
-            window.location.href = getBaseAnimalUrl() + '/buscar/' + busca;
-          }else{
-            window.location.href = getBaseAnimalUrl();
-          }
-        }
-    });
-
-    $('#btn-buscar').on('click', function () {
-      let busca = $('#buscar').val();
-      // console.log(window.location.href);
-      if ($('#buscar').val() !== '') {
-        let busca = $('#buscar').val();
-        // console.log(window.location.href);
-        window.location.href = getBaseAnimalUrl() + '/buscar/' + busca;
-      }else{
-        window.location.href = getBaseAnimalUrl();
-      }
-      
-    });
-
-    function getBaseAnimalUrl() {
-      return '/animais';
-    }
   </script>
 @stop
 

@@ -9,7 +9,6 @@
     use App\Http\Controllers\Suporte\StatusController;
 @endphp
 
-
 @section('content')
     <div class="box">
         <div class="box-header">
@@ -51,7 +50,7 @@
                                 <td>{{$result->nome_adocao}}</td>
                                 <td>{{$result->email_adocao}}</td>
                                 <td>{{$result->created_at->format('d/m/y')}}</td>
-                                <td>{{$stat}}</td>
+                                <td>{!!$stat!!}</td>
                                 <td>
                                     <a href="{{route('adocoes.requisição', 
                                         ['codigo' => $result->codigo_adocao])}}" 
