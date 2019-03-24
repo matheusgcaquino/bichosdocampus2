@@ -9,7 +9,6 @@ class StatusController extends Controller
 {
     public static function last_status($status)
     {
-        dd($status);
         $last = $status->last();
         switch($last->status_adocao){
             case 0:
@@ -18,7 +17,7 @@ class StatusController extends Controller
             
             case 1:
                 $stat = '
-                <a data-toggle="tooltip" title="Por: '.$last->user->nome_user.'">
+                <a data-toggle="tooltip" title="Por: '.$last->user->name_user.'">
                     <span class="bg-blue">Visualizado</span>
                 </a>';
                 break;
@@ -26,7 +25,7 @@ class StatusController extends Controller
             case 2:
                 $stat = '
                 <a data-toggle="tooltip" title="'.$last->comentario.' - Por: '.
-                    $last->user->nome_user.'">
+                    $last->user->name_user.'">
                     <span class="bg-red">Avaliando</span>
                 </a>';
                 break;
@@ -34,7 +33,7 @@ class StatusController extends Controller
             case 3:
                 $stat = '
                 <a data-toggle="tooltip" title="'.$last->comentario.' - Por: '.
-                    $last->user->nome_user.'">
+                    $last->user->name_user.'">
                     <span class="bg-blue">Aprovado</span>
                 </a>';
                 break;
@@ -42,7 +41,7 @@ class StatusController extends Controller
             case 4:
                 $stat = '
                 <a data-toggle="tooltip" title="'.$last->comentario.' - Por: '.
-                    $last->user->nome_user.'">
+                    $last->user->name_user.'">
                     <span class="bg-blue">Recusado</span>
                 </a>';
                 break;
@@ -60,5 +59,15 @@ class StatusController extends Controller
         }
 
         return $stat;
+    }
+
+    public static function status_num($adocoes)
+    {
+        $status = [0, 0, 0];
+        foreach ($adocoes as $adocao) {
+            $last = $adocao->status->last();
+            $status[$last->status_adocao]++;
+        }
+        return $status;
     }
 }

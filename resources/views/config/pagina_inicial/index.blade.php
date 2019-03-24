@@ -15,17 +15,17 @@
             <div class="box-header">
                 <h3>Configuração de <b>Quem somos</b></h3>
             </div>
-            <form action="{{route('config.animal.editar')}}" method="POST">
+            <form action="{{route('config.paginaInicial.editar')}}" method="POST">
+                {{ csrf_field() }}
                 <div class="box-body">
-                    <textarea class="textarea" placeholder="Place some text here"
-                        style="width: 100%; height: 200px; font-size: 14px; line-height: 18px;
-                        border: 1px solid #dddddd; padding: 10px;" name="text">
-                        {{$results->sobre}}
-                    </textarea>
+                    <div class="form-group">
+                        <textarea id="editor1" name="text" class="form-control"
+                        rows="10" cols="80">{{$results->sobre}}</textarea>
+                    </div>
                 </div>
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-outline">Confirmar</button>
+                    <button type="submit" class="btn btn-success">Confirmar</button>
                 </div>
             </form>
         </div>
@@ -153,17 +153,16 @@
                             <div class="form-group">
                                 <div class="pull-left">
                                     <img class="profile-user-img img-circle" 
-                                    src="{{asset('images/foto-icon.png')}}" alt="User profile picture">
+                                    src="{{asset('images/foto-icon.png')}}"/>
                                 </div>
-                                <div class="pull-left" style="margin-left: 1%">
+                                <div class="form-group" style="margin-left: 1%">
                                     <label for="foto">Escolher Imagem</label>
                                     <input type="file" id="foto" name="foto">
-                                </div>
-                        
-                                <div class="checkbox">
-                                    <label>
-                                    <input type="checkbox" name="selecionada"> Selecionar
-                                    </label>
+                                    <div class="checkbox">
+                                        <label>
+                                        <input type="checkbox" name="selecionada"> Selecionar
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -186,10 +185,13 @@
     <!-- Bootstrap WYSIHTML5 -->
     <script href="{{ asset('js/bootstrap3-wysihtml5.all.min.js') }}"></script>
 
+    <script href="{!! asset('js/ckeditor.js') !!}"></script>
+
     <script>
         $(function () {
-          //bootstrap WYSIHTML5 - text editor
-          $('.textarea').wysihtml5()
+            CKEDITOR.replace('editor1')
+            //bootstrap WYSIHTML5 - text editor
+            $('.textarea').wysihtml5()
         })
 
         $('#excluir').on('show.bs.modal', function (event) {
@@ -211,6 +213,9 @@
 @stop
 
 @section('css')
+<!-- bootstrap wysihtml5 - text editor -->
+<link rel="stylesheet" href="{{ asset('css/bootstrap3-wysihtml5.min.css') }}">
+
 <style type="text/css">
 .im {
       max-width: 100%;

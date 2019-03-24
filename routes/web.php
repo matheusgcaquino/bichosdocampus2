@@ -23,5 +23,3 @@ include "config/rotas_config.php";
 Auth::routes();
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -9,7 +9,6 @@
     use App\Http\Controllers\Suporte\StatusController;
 @endphp
 
-
 @section('content')
     <div class="box">
         <div class="box-header">

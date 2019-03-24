@@ -8,6 +8,10 @@
 @section('content_header')
 @stop
 
+@php
+    use App\Http\Controllers\Suporte\StatusController;
+@endphp
+
 @section('content')
     <div class="box">
         <div class="box-header">
@@ -23,6 +27,7 @@
                             ->exists($result->foto_perfil)){
                             $foto = url("uploads/".$result->foto_perfil);
                         }
+                        $status = StatusController::status_num($result->adocao);
                     @endphp
                     <div class="col-md-3">
                         <div class="box box-primary">
@@ -36,19 +41,19 @@
                                 <ul class="list-group list-group-unbordered">
                                     <li class="list-group-item">
                                         <b>Novas requisições</b> 
-                                        <a class="pull-right">{{$result->novo}}</a>
+                                        <a class="pull-right">{{$status[0]}}</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Requisições em espera</b> 
-                                        <a class="pull-right">{{$result->visualizada}}</a>
+                                        <a class="pull-right">{{$status[1]}}</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Requisições em avaliação</b> 
-                                        <a class="pull-right">{{$result->avaliacao}}</a>
+                                        <a class="pull-right">{{$status[2]}}</a>
                                     </li>
                                     <li class="list-group-item">
                                         <b>Total de requisições</b> 
-                                        <a class="pull-right">{{$result->adocao_count}}</a>
+                                        <a class="pull-right">{{$result->adocao->count()}}</a>
                                     </li>
                                 </ul>
 
