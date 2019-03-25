@@ -13,3 +13,4 @@ yarn-error.log
 /public/storage/animals
 /public/uploads
 composer.lock
+htaccess

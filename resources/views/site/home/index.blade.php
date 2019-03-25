@@ -7,32 +7,32 @@
 
 @section('content')
 <div class="container-fluid bg-1 text-center">
-  <div class="jumbotron" style=" background-image: url(images/home2.jpg);background-size: cover; box-shadow: 5px 5px 5px rgba(0,0,0,0.5);">
-    <img src="images/logo.png" style="padding: 5%" class="img-responsive">
+  <div class="jumbotron" style=" background-image: url(uploads/{{$imagem->home_imagem}});background-size: cover; box-shadow: 5px 5px 5px rgba(0,0,0,0.5);">
+    <img src="imagens/logo.png" style="padding: 5%;" class="img-responsive">
   </div>
 </div>
   <div class="col-md-12">
     <div class="box">
-      <div class="box-header with-border" style="background-color: #f53a0c;">
+      <div class="box-header with-border" style="background-color: #dd4b39;">
         <h3 class="box-title" style="color: white;">PRECISO DE UM LAR!</h3></div>
           <div class="box-body">
         <div class="col-sm-4">
-          <img src="images/05.jpg" class="img-responsive margin">
+          <img src="imagens/05.jpg" class="img-responsive margin">
         </div>
         <div class="col-sm-4">
-          <img src="images/06.jpg" class="img-responsive margin">
+          <img src="imagens/06.jpg" class="img-responsive margin">
         </div>
         <div class="col-sm-4">
-          <img src="images/07.jpg" class="img-responsive margin">
+          <img src="imagens/07.jpg" class="img-responsive margin">
         </div>
          <div class="col-sm-4">
-          <img src="images/08.jpg" class="img-responsive margin">
+          <img src="imagens/08.jpg" class="img-responsive margin">
         </div>
         <div class="col-sm-4">
-          <img src="images/09.jpg" class="img-responsive margin">
+          <img src="imagens/09.jpg" class="img-responsive margin">
         </div>
         <div class="col-sm-4">
-          <img src="images/10.jpg" class="img-responsive margin">
+          <img src="imagens/10.jpg" class="img-responsive margin">
         </div>
     </div>
     </div>
@@ -92,10 +92,10 @@
       <!-- /.col -->    
     </div>
 
-<div class="box-footer" style="background-color: #f53a0c;">
+<div class="box-footer" style="background-color: #dd4b39;">
   <div class="col-md-6" style="text-align: left;">
     <h3 style="color: white;">QUEM SOMOS?</h3>
-    <h4 style="color: white;"> texto texto texto texto texto</h4>
+    <h4 style="color: white;">{{$sobre->sobre}}</h4>
   </div>
   <div class="col-md-6" style="text-align: right;">
     <h3 style="color: white;">SIGA-NOS</h3>
