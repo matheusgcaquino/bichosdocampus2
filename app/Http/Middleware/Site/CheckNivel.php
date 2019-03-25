@@ -15,8 +15,8 @@ class CheckNivel
      */
     public function handle($request, Closure $next, $nivel)
     {
-        if ($request->user()->nivel_user > $nivel){
-            return redirect()->route('home');
+        if ((!$request->user()->status_user) || $request->user()->nivel_user > $nivel){
+            return redirect('/');
         }
 
         return $next($request);
