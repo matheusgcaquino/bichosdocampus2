@@ -73,7 +73,7 @@
                 
                 <div class="box-footer with-border">
                     <button type="submit" class="btn btn-primary">Enviar</button>
-                    <a href="{{route('site.usuarios')}}" class="btn btn-default">Cancelar</a> 
+                    <a href="{{route('home')}}" class="btn btn-default">Cancelar</a> 
                 </div>
             </form>  
         @else

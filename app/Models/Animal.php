@@ -12,8 +12,8 @@ class Animal extends Model
 
     protected $primaryKey = 'id_animal';
 
-    protected $fillable = ['nome_animal','especie_animal', 'raca_animal', 'foto_perfil',
-        'idade_animal', 'sexo_animal', 'pelagem_animal', 'comportamento_animal', 
+    protected $fillable = ['nome_animal','id_local', 'id_raca', 'foto_perfil',
+        'idade_animal', 'sexo_animal', 'id_pelagem', 'comportamento_animal', 
         'castracao_animal', 'descricao_animal', 'status_animal'];
 
     public $timestamps = true;
@@ -26,5 +26,20 @@ class Animal extends Model
     public function adocao()
     {
         return $this->hasMany('App\Models\Adocao', 'id_animal');
+    }
+
+    public function raca()
+    {
+        return $this->belongsto('App\Models\Raca', 'id_raca');
+    }
+
+    public function pelagem()
+    {
+        return $this->belongsto('App\Models\Pelagem', 'id_pelagem');
+    }
+
+    public function local()
+    {
+        return $this->belongsto('App\Models\Local', 'id_local');
     }
 }
