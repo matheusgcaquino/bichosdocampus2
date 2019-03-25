@@ -26,8 +26,7 @@
 
                     $moro = ($results->residencia_adocao == 0) ? 'Casa' : 'Apartamento';
 
-                    // -$stat = StatusController::last_status($results->status);
-                    $stat = null;
+                    $stat = StatusController::last_status($results->status);
                 @endphp
 
                 <div class="form-group col-md-6">
