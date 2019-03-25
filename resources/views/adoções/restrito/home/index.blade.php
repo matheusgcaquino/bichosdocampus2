@@ -14,7 +14,8 @@
 
 @section('content')
     <div class="box">
-        <div class="box-header">
+        <div class="box-header" style="text-align: center;">
+            <h3>Gerenciamento de Requisições de <STRONG>Adoção</STRONG></h3>
         </div>
 
         <div class="box-body">

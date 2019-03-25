@@ -14,7 +14,7 @@
   <div class="col-md-12">
     <div class="box">
       <div class="box-header with-border" style="background-color: #dd4b39;">
-        <h3 class="box-title" style="color: white;">PRECISO DE UM LAR!</h3></div>
+        <h3 class="box-title" style="color: white;">Finais <strong>Felizes</strong></h3></div>
           <div class="box-body">
         <div class="col-sm-4">
           <img src="images/05.jpg" class="img-responsive margin">
@@ -95,7 +95,8 @@
 <div class="box-footer" style="background-color: #dd4b39;">
   <div class="col-md-6" style="text-align: left;">
     <h3 style="color: white;">QUEM SOMOS?</h3>
-    <h4 style="color: white;"> texto texto texto texto texto</h4>
+    <h4 style="color: white;">A <strong>Bichos do Campus</strong>, nasceu como um grupo de pessoas
+    que visa o bem-estar animal e acredita que todo animal precisa de um lar cheio de amor e carinho!</h4>
   </div>
   <div class="col-md-6" style="text-align: right;">
     <h3 style="color: white;">SIGA-NOS</h3>
