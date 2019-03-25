@@ -103,14 +103,14 @@
         </div>
 
         <div class="form-group">
-            <div class="pull-left" id="card-adocao">
-                <img id="img-adocao" class="profile-user-img img-circle"
-                src="{{asset('images/foto-icon.png')}}" alt="User profile picture">
-            </div>
-            <div class="pull-left" style="margin-left: 1%">
+          <div class="pull-left" id="card-adocao">
+            <img id="img-adocao" class="profile-user-img img-circle"
+            src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+          </div>
+          <div class="pull-left" style="margin-left: 1%">
             <label for="foto"> Adicionar Imagem </label>
             <input type="file" name="foto" id="file-input">
-            </div>
+          </div>
         </div>
       </div>
       <div class="box-footer with-border">
@@ -126,26 +126,23 @@
 
   <script src="{{asset('js/JavaScript-Load-Image-2.20.1/js/load-image.all.min.js')}}"></script>
   <script type="text/javascript">
+    document.getElementById('file-input').onchange = function (e) {
+      loadImage(
+        e.target.files[0],
+        function (img) {                
+          
+          $('#card-adocao').empty();
+          document.getElementById('card-adocao').appendChild(img);
 
-          document.getElementById('file-input').onchange = function (e) {
-            loadImage(
-              e.target.files[0],
-              function (img) {                
-                
-                $('#card-adocao').empty();
-                document.getElementById('card-adocao').appendChild(img);
+          $('#card-adocao img').attr('class', 'profile-user-img img-circle');
 
-                $('#card-adocao img').attr('class', 'profile-user-img img-circle');
-
-              },
-              {
-                maxWidth: 90,
-                maxHeight: 90,
-                // orientation: 2,
-              } // Options
-            );            
-          };
-
-
+        },
+        {
+          maxWidth: 90,
+          maxHeight: 90,
+          // orientation: 2,
+        } // Options
+      );            
+    };
   </script>
 @stop

@@ -52,7 +52,7 @@
                                 </div>
                                 @if ($result->selecionada)
                                     <center>
-                                        <span class="bg-green">Foto selecionada</span>
+                                        <span class="bg-green label">Foto selecionada</span>
                                     </center>
                                 @else
                                     <button type="button" class="btn btn-success btn-block" 
@@ -150,10 +150,10 @@
                     enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="modal-body">
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <div class="col-md-3">
                                     <img class="im" 
-                                    src="{{asset('images/foto-icon.png')}}"/>
+                                    src="{{asset('imagens/foto-icon.png')}}"/>
                                 </div>
                                 <div class="form-group" style="margin-left: 1%">
                                     <label for="foto">Escolher Imagem</label>
@@ -164,7 +164,18 @@
                                         </label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
+
+                            <div class="form-group">
+                                <div class="pull-left" id="card-adocao">
+                                  <img id="img-adocao" class="profile-user-img img-circle"
+                                  src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+                                </div>
+                                <div class="pull-left" style="margin-left: 1%">
+                                  <label for="foto"> Adicionar Imagem </label>
+                                  <input type="file" name="foto" id="file-input">
+                                </div>
+                              </div>
                         </div>
 
                         <div class="modal-footer">
@@ -187,12 +198,14 @@
 
     <script href="{!! asset('js/ckeditor.js') !!}"></script>
 
+    <script src="{{asset('js/JavaScript-Load-Image-2.20.1/js/load-image.all.min.js')}}"></script>
+
     <script>
-        $(function () {
-            CKEDITOR.replace('editor1')
-            //bootstrap WYSIHTML5 - text editor
-            $('.textarea').wysihtml5()
-        })
+        // $(function () {
+        //     CKEDITOR.replace('editor1')
+        //     //bootstrap WYSIHTML5 - text editor
+        //     $('.textarea').wysihtml5()
+        // })
 
         $('#excluir').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
@@ -209,6 +222,24 @@
             var modal = $(this)
             $('#idHome2').val(id)
         });
+
+        document.getElementById('file-input').onchange = function (e) {
+            loadImage(
+                e.target.files[0],
+                function (img) {                
+                    $('#card-adocao').empty();
+                    document.getElementById('card-adocao').appendChild(img);
+                    $('#card-adocao img').attr('class', 'profile-user-img img-circle');
+
+                },
+                {
+                    maxWidth: 90,
+                    maxHeight: 90,
+                    // orientation: 2,
+                } // Options
+            );            
+        };
+
     </script>
 @stop
 
