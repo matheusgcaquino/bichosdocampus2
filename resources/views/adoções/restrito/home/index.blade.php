@@ -15,13 +15,22 @@
 @section('content')
     <div class="box">
         <div class="box-header">
+            <div class="input-group pull-right col-md-3">
+                <input type="text" class="form-control" name="buscar" id="buscar" 
+                placeholder="Buscar por Animal" value="{{(isset($buscar) ? $buscar : '')}}"> 
+                <span class="input-group-btn">
+                    <button id="btn-buscar" type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
         </div>
 
         <div class="box-body">
             @if(!$results->isEmpty())
                 @foreach($results as $result)
                     @php                     
-                        $foto = url("images/foto-icon.png");
+                        $foto = url("imagens/foto-icon.png");
             
                         if($result->foto_perfil && Storage::disk('public_uploads')
                             ->exists($result->foto_perfil)){
@@ -75,6 +84,39 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('js')
+    <script>
+         $(this).on('keyup', function (e) {
+            if (e.keyCode == 13) {
+            if ($('#buscar').val() !== '') {
+                let busca = $('#buscar').val();
+                // console.log(window.location.href);
+                window.location.href = getBaseAnimalUrl() + '/buscar/' + busca;
+            }else{
+                window.location.href = getBaseAnimalUrl();
+            }
+            }
+        });
+
+        $('#btn-buscar').on('click', function () {
+        let busca = $('#buscar').val();
+        // console.log(window.location.href);
+        if ($('#buscar').val() !== '') {
+            let busca = $('#buscar').val();
+            // console.log(window.location.href);
+            window.location.href = getBaseAnimalUrl() + '/buscar/' + busca;
+        }else{
+            window.location.href = getBaseAnimalUrl();
+        }
+        
+        });
+
+        function getBaseAnimalUrl() {
+            return '/adoções';
+        }
+    </script>
 @stop
 
 @section('css')

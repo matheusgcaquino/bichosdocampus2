@@ -11,7 +11,7 @@
     
     $idade = DataController::getData($result->idade_animal);
     
-    $foto = url("images/foto-icon.png");
+    $foto = url("imagens/foto-icon.png");
 
     if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
       $foto = url("uploads/".$result->foto_perfil);
