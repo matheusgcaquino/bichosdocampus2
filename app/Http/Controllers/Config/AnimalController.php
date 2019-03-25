@@ -16,8 +16,6 @@ class AnimalController extends Controller
         switch ($tipo) {
             case 'especie':
                 $response = Especie::select(['id_especie as id','especie as text'])
-                //with not working
-                ->with('raca')
                 ->paginate(15);
                 $nome = 'Espécie';
                 break;
@@ -33,9 +31,8 @@ class AnimalController extends Controller
                 break;
             
             case 'raca':
-                $response = Raca::select(['id_raca as id','raca as text'])->has('especie')
-                //with not working
-                ->with('especie:especie')->get(15);
+                $response = Raca::select(['id_raca as id','raca as text', 'id_especie'])
+                ->with('especie')->paginate(15);
                 $nome = 'Raça';
                 break;
             

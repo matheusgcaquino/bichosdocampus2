@@ -57,16 +57,22 @@
                 <div class="navbar-custom-menu">
 
                     <ul class="nav navbar-nav">
-                        <li>
-                            @gerencia('local')
+                        @auth
+                            @if (!Auth::user()->status_user)
+                                <li>
+                                <i data-toggle="tooltip" data-placement="bottom"
+                                    title="Sua conta esta desativada, para mais informações 
+                                    entre em contato com o administrador do sistema" 
+                                    class="fa fa-fw fa-exclamation-triangle"></i>
+                                </li>
+                            @endif
+                            <li>
                                 @if(config('adminlte.logout_method') == 'GET' || !config('adminlte.logout_method') && version_compare(\Illuminate\Foundation\Application::VERSION, '5.3.0', '<'))
                                     <a href="{{ url(config('adminlte.logout_url', 'auth/logout')) }}">
                                         <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
                                     </a>
                                 @else
-                                    <a href="#"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                    >
+                                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         <i class="fa fa-fw fa-power-off"></i> {{ trans('adminlte::adminlte.log_out') }}
                                     </a>
                                     <form id="logout-form" action="{{ url(config('adminlte.logout_url', 'auth/logout')) }}" method="POST" style="display: none;">
@@ -76,11 +82,12 @@
                                         {{ csrf_field() }}
                                     </form>
                                 @endif
-                            @else
-                            <a href="{{ route('login') }}"><i class="fa fa-fw fa-sign-in"></i> Login</a>
-                            @endgerencia
-
-                        </li>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ route('login') }}"><i class="fa fa-fw fa-sign-in"></i> Login</a>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
                 @if(config('adminlte.layout') == 'top-nav')

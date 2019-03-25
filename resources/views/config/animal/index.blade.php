@@ -5,10 +5,6 @@
 @section('content_header')
 @stop
 
-@php
-    // dd($results);
-@endphp
-
 @section('content')
     <div class="box">
         <div class="box-header">
@@ -67,7 +63,7 @@
                             @foreach($results as $result)
                                 <tr>
                                     <td>{{$result->id}}</td>
-                                    <td>{{$result->especie}}</td>
+                                    <td>{{$result->especie->especie}}</td>
                                     <td>{{$result->text}}</td>
                                     <td class="pull-right">
                                         <button type="button" class="btn btn-primary" 

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Usuários - Bichos do Campus')
+@section('title', 'Configurações - Bichos do Campus')
 
 @section('content_header')
 @stop
