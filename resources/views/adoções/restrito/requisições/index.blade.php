@@ -18,7 +18,7 @@
         <div class="box-body">
             @if(!$results->isEmpty())
                 @php
-                    $foto = url("images/foto-icon.png");
+                    $foto = url("imagens/foto-icon.png");
                     if($animal->foto_perfil && Storage::disk('public_uploads')->exists($animal->foto_perfil)){
                         $foto = url("uploads/".$animal->foto_perfil);
                     }
