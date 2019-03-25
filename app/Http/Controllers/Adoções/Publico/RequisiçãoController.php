@@ -13,7 +13,7 @@ class RequisiçãoController extends Controller
     public function index($codigo)
     {
         $adocao = Adocao::where('codigo_adocao', $codigo)->with(['animal', 'status', 
-            'status.user:name_user'])
+            'status.user'])
         ->first();
         // dd($adocao);
         if(Auth::check() && $adocao->status->count() == 1){
@@ -23,7 +23,7 @@ class RequisiçãoController extends Controller
                 'status_adocao' =>  1,
             ]);
             $adocao = Adocao::where('codigo_adocao', $codigo)
-                ->with(['animal', 'status', 'status.user:name_user'])->first();
+                ->with(['animal', 'status', 'status.user'])->first();
         }
         return view('adoções.publico.requisição.index')
             ->with("results", $adocao);

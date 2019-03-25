@@ -66,7 +66,7 @@ class PaginaInicialController extends Controller
                 $selecionada = false;
             }
             Home_imagem::create([
-                'home_imagem'        =>  $path,
+                'home_imagem'   =>  $path,
                 'selecionada'   =>  $selecionada,
             ]);
         }
