@@ -17,4 +17,15 @@ class AdoçõesController extends Controller
         ->paginate(16);
         return view('adoções.restrito.home.index')->with("results", $adocao);
     }
+
+    public function buscar($buscar)
+    {
+        $adocao = Animal::has('adocao')->with('adocao.status')
+        ->where('nome_animal', 'like', '%'.$buscar.'%')
+        ->paginate(16);
+        return view('adoções.restrito.home.index')->with([
+            "results"   =>  $adocao,
+            "buscar"    =>  $buscar
+        ]);
+    }
 }
