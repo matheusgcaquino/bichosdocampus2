@@ -124,7 +124,13 @@ return [
             'url'  => 'usuários',
             'icon'  => 'user',
             'can'   =>  'admin-only',
-        ]
+        ],
+        [
+            'text' => 'Configurações',
+            'url'  => 'config',
+            'icon'  => 'cog',
+            'can'   =>  'admin-only',
+        ],
     ],
 
     /*
@@ -161,6 +167,6 @@ return [
     'plugins' => [
         'datatables' => true,
         'select2'    => true,
-        'chartjs'    => true,
+        // 'chartjs'    => true,
     ],
 ];

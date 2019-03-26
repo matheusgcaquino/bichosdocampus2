@@ -10,7 +10,6 @@ class DataController extends Controller
 {
     public static function getData($data)
     {
-        // $data = date("2017-04-14");
         $born = new DateTime($data);
         $today = new DateTime(date("Y-m-d"));
         $idade = $today->diff($born);
@@ -19,7 +18,6 @@ class DataController extends Controller
 
     public static function putData($data)
     {
-        // $data = [0, 1];
         $idade = new DateTime(date("Y-m-d"));
         if($data[0] > 0){
             ($mes = $data[0] > 1 ? $data[0]." months" : $data[0]." month");
@@ -53,5 +51,42 @@ class DataController extends Controller
         }else{
             return "Recém Nascido";
         }
+    }
+
+    public static function buscarData($buscar)
+    {
+        switch ($buscar) {
+            case 1:
+                $idade = new DateTime(date("Y-m-d"));
+                $idade->modify('- 2 months');
+                break;
+
+            case 2:
+                $idade[0] = new DateTime(date("Y-m-d"));
+                $idade[0]->modify('- 2 months');
+                $idade[1] = new DateTime(date("Y-m-d"));
+                $idade[1]->modify('- 5 months');
+                break;
+
+            case 3:
+                $idade[0] = new DateTime(date("Y-m-d"));
+                $idade[0]->modify('- 5 months');
+                $idade[1] = new DateTime(date("Y-m-d"));
+                $idade[1]->modify('- 12 months');
+                break;
+
+            case 4:
+                $idade[0] = new DateTime(date("Y-m-d"));
+                $idade[0]->modify('- 1 year');
+                $idade[1] = new DateTime(date("Y-m-d"));
+                $idade[1]->modify('- 2 years');
+                break;
+
+            case 5:
+                $idade = new DateTime(date("Y-m-d"));
+                $idade->modify('- 2 years');
+                break;
+        }
+        return $idade;
     }
 }

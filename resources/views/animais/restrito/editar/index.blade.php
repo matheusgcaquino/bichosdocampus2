@@ -11,7 +11,7 @@
     
     $idade = DataController::getData($result->idade_animal);
     
-    $foto = url("images/foto-icon.png");
+    $foto = url("imagens/foto-icon.png");
 
     if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
       $foto = url("uploads/".$result->foto_perfil);
@@ -28,12 +28,12 @@
       <div class="box-body">
         <div class="form-group col-md-6">
           <label for="name">Nome <font color="red"> * <font color="black"> </label>
-          <input type="text" class="form-control" name="nome" value="{{$result->nome_animal}}">
+          <input type="text" class="form-control" id="nome" name="nome" value="{{$result->nome_animal}}">
         </div>
         
         <div class="form-group col-md-6">
           <label for="especie"> Espécie <font color="red"> * <font color="black"> </label>
-          <input type="text" class="form-control" name="especie" value="{{$result->especie_animal}}">
+          <input type="text" class="form-control" id="especie" name="especie" value="{{$result->especie_animal}}">
         </div>
 
         <div class="form-group col-md-6">
@@ -44,11 +44,11 @@
         <div class="form-group col-md-6">
           <label> Idade </label><br>
           <div class="form-input col-md-3">
-          <input type="number" value="{{$idade[0]}}" min="0" class="form-control" name="numeroano">
+          <input type="number" value="{{$idade[0]}}" min="0" class="form-control" id="numeroano" name="numeroano">
           </div>
         
           <div class="form-input col-md-3">
-            <input type="number" value="{{$idade[1]}}" min="0" class="form-control" name="numeromeses">
+            <input type="number" value="{{$idade[1]}}" min="0" class="form-control" id="numeromeses" name="numeromeses">
           </div> 
         </div>
         
@@ -115,21 +115,21 @@
             
             <div class="radio">
               <label>
-                <input type="radio" name="castrado" value="0">
+                <input type="radio" name="castrado" id="castrado2" value="0">
                 Não
               </label>
             </div>
           @else
             <div class="radio">
               <label>
-                <input type="radio" name="castrado"  value="1">
+                <input type="radio" name="castrado" id="castrado1" value="1">
                 Sim
               </label>
             </div>
             
             <div class="radio">
               <label>
-                <input type="radio" name="castrado" value="0" checked="">
+                <input type="radio" name="castrado" id="castrado2" value="0" checked="">
                 Não
               </label>
             </div>
@@ -161,15 +161,19 @@
 
           <div class="checkbox">
             <label>
-              <input type="checkbox" name="excluirFoto"> Excluir Foto
+              <input type="checkbox" id="excluirFoto" name="excluirFoto"> Excluir Foto
             </label>
           </div>
       </div>
       
       <div class="box-footer with-border">
-        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="submit" id="btnConfirmar" class="btn btn-primary">Salvar</button>
         <a href="{{route('site.animais')}}" class="btn btn-default">Cancelar</a>
       </div>
     </form>
+
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('js/modulos/animais/formulario/formulario.js')}}"></script>
+
   </div>
 @stop
