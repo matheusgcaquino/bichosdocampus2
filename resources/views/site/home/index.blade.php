@@ -95,7 +95,7 @@
 <div class="box-footer" style="background-color: #dd4b39;">
   <div class="col-md-6" style="text-align: left;">
     <h3 style="color: white;">QUEM SOMOS?</h3>
-    <h4 style="color: white;">{{$sobre->sobre}}</h4>
+    <h4 style="color: white;">{!!$sobre->sobre!!}</h4>
   </div>
   <div class="col-md-6" style="text-align: right;">
     <h3 style="color: white;">SIGA-NOS</h3>

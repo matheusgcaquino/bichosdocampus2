@@ -55,7 +55,9 @@ class StatusController extends Controller
         $status = [0, 0, 0];
         foreach ($adocoes as $adocao) {
             $last = $adocao->status->last();
-            $status[$last->status_adocao]++;
+            if ($last->status_adocao < 3) {
+                $status[$last->status_adocao]++;
+            }
         }
         return $status;
     }
