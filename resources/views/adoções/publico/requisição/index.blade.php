@@ -66,10 +66,32 @@
                         <label>CPF</label>
                         <input type="text" class="form-control" value="{{$results->cpf_adocao}}" disabled>
                     </div>
-        
+                    
                     <div class="form-group col-md-6">
-                        <label>Logradouro</label>
-                        <input type="text" class="form-control" value="{{$results->logradouro_adocao}}" disabled>
+                        <label>Cep</label>
+                        <input type="text" class="form-control" value="{{$results->cep_adocao}}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Rua</label>
+                        <input type="text" class="form-control" value="{{$results->rua_adocao}}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Nº</label>
+                        <input type="text" class="form-control" value="{{$results->numero_adocao}}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Complemento</label>
+                        @php
+                            if (isset($results->complemento_adocao)){
+                                $complemento = $results->complemento_adocao;
+                            } else {
+                                $complemento = 'Sem complemento';
+                            }
+                        @endphp
+                        <input type="text" class="form-control" value="{{$complemento}}" disabled>
                     </div>
         
                     <div class="form-group col-md-6">

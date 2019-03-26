@@ -50,7 +50,7 @@
           
           <div class="form-group col-md-6">
             <label for="race"> Rua <font color="red"> * <font color="black"> </label>
-            <input type="text" class="form-control" id="rua_adocao" name="rua_adocao" placeholder="Logradouro" required>
+            <input type="text" class="form-control" id="rua_adocao" name="rua_adocao" placeholder="rua" required>
           </div>
 
           <div class="form-group col-md-3">
