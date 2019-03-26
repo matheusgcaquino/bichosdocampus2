@@ -67,7 +67,6 @@ class AddAnimalController extends Controller
     // Insere os dados
     $animal = Animal::create([
       'nome_animal'           => $request->nome,
-      'id_especie'            => $idespecie,
       'id_raca'               => $idraca,
       'idade_animal'          => $data,
       'sexo_animal'           => $request->sexo,
