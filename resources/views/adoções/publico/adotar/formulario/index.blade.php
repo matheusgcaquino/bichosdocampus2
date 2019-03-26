@@ -157,10 +157,6 @@
       //Valida o formato do CEP.
       if(validacep.test(cep)) {
         //Preenche os campos com "..." enquanto consulta webservice.
-        document.getElementById('rua_adocao').value="...";
-        document.getElementById('bairro_adocao').value="...";
-        document.getElementById('cidade_adocao').value="...";
-        document.getElementById('estado_adocao').value="...";
 
         //Cria um elemento javascript.
         var script = document.createElement('script');

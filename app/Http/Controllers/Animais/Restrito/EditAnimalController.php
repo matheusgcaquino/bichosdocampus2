@@ -34,6 +34,7 @@ class EditAnimalController extends Controller
     // Atualizando no banco de dados -> [EikE]
   public function atualizar(Request $request)
   {
+    //dd($request->all());
     // Armazena os ids
     $idespecie = $request->especie;
     $idraca = $request->raca;
@@ -73,18 +74,22 @@ class EditAnimalController extends Controller
 
     $animal = Animal::find($request->id);    
     
+    //dd($idraca);
+
     // Calcula a data do animal 
     $data = DataController::putData([$request->numeromeses, $request->numeroano]);
     
-    $animal->nome_animal == $request->nome ?: $animal->nome_animal = $request->nome;
+    $animal->nome_animal == $request->nome    ?: $animal->nome_animal = $request->nome;
 
-    $animal->id_raca == $idraca ?: $animal->id_raca = $request->idraca;
+    $animal->id_raca == $idraca               ?: $animal->id_raca = $idraca;
 
-    $animal->idade_animal == $data ?: $animal->idade_animal = $data;
+    $animal->idade_animal == $data            ?: $animal->idade_animal = $data;
 
-    $animal->sexo_animal == $request->sexo ?: $animal->sexo_animal = $request->sexo;
+    $animal->sexo_animal == $request->sexo    ?: $animal->sexo_animal = $request->sexo;
 
-    $animal->id_pelagem == $idpelagem ?: $animal->id_pelagem = $idpelagem;
+    $animal->id_pelagem == $idpelagem         ?: $animal->id_pelagem = $idpelagem;
+
+    $animal->id_local == $idlocal             ?: $animal->id_local = $idlocal;
 
     $animal->comportamento_animal == $request->comportamento ?: 
         $animal->comportamento_animal = $request->comportamento;
