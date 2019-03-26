@@ -7,13 +7,28 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Suporte\DataController;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Animal;
+use App\Models\Raca;
+use App\Models\Pelagem;
+use App\Models\Especie;
+use App\Models\Local;
 
 class EditAnimalController extends Controller
 {
   public function index($id)
   {
-    $animal = Animal::find($id);
-    return view('animais.restrito.editar.index') -> with("result", $animal);
+    $animal = Animal::with('raca.especie')->find($id);
+    $especie = Especie::get();
+    $raca = Raca::where('id_especie', $animal->raca->especie->id_especie)->get();
+    $pelagem = Pelagem::get();
+    $local = Local::get();
+    return view('animais.restrito.editar.index', 
+      [
+        "result" => $animal,
+        "resultsespecie"   =>  $especie, 
+        "resultsraca"   =>  $raca, 
+        "resultspelagem"   =>  $pelagem, 
+        "resultslocalizacao"   =>  $local
+      ]);
   }
 
     // Atualizando no banco de dados -> [EikE]

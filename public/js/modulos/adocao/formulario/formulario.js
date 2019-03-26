@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
 
 	$('#btnConfirmar').click(function () {
@@ -174,6 +176,7 @@ function preencheEndereco(conteudo) {
 		document.getElementById('bairro_adocao').value = (conteudo.bairro);
 		document.getElementById('cidade_adocao').value = (conteudo.localidade);
 		document.getElementById('estado_adocao').value = (conteudo.uf);
+		document.getElementById('complemento_adocao').value = '(conteudo.uf)';
 	} //end if.
 	else {
 		//CEP não Encontrado.
@@ -195,12 +198,6 @@ function pesquisaCEP(valor) {
 
 		//Valida o formato do CEP.
 		if (validacep.test(cep)) {
-
-			//Preenche os campos com "..." enquanto consulta webservice.
-			document.getElementById('rua_adocao').value = "...";
-			document.getElementById('bairro_adocao').value = "...";
-			document.getElementById('cidade_adocao').value = "...";
-			document.getElementById('estado_adocao').value = "...";
 
 			//Cria um elemento javascript.
 			var script = document.createElement('script');
@@ -233,3 +230,4 @@ function verificaTamanho(min, max, texto) {
 		return false;
 	}
 };
+

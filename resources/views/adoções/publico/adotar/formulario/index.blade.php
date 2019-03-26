@@ -74,9 +74,9 @@
           </div>
 
           <div class="form-group col-md-6">
-            <label for="race"> Estado <font color="red"> * <font color="black"> </label>
-            <input type="text" class="form-control" id="estado_adocao" name="estado_adocao" placeholder="Estado" required>
-          </div>
+              <label for="race"> Estado <font color="red"> * <font color="black"> </label>
+              <input type="text" class="form-control" id="estado_adocao" name="estado_adocao" placeholder="Estado" required>
+            </div>
 
           <div class="form-group col-md-6">
             <label>Moro em </label>
