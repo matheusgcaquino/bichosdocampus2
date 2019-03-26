@@ -14,10 +14,8 @@
 
 @section('content')
     <div class="box">
-<<<<<<< HEAD
         <div class="box-header" style="text-align: center;">
             <h3>Gerenciamento de Requisições de <STRONG>Adoção</STRONG></h3>
-=======
         <div class="box-header">
             <div class="input-group pull-right col-md-3">
                 <input type="text" class="form-control" name="buscar" id="buscar" 
@@ -28,7 +26,6 @@
                     </button>
                 </span>
             </div>
->>>>>>> f5c1f2ea7fd800d050673c21c4e5952dcfc0fd55
         </div>
 
         <div class="box-body">
