@@ -444,7 +444,7 @@
         } else {
           div.style.display = "block";
         }
-        $.getJSON("/animais/ajax_raca/" + value, function (data) {
+        $.getJSON("animais/ajax_raca/" + value, function (data) {
           $.each(data, function (i, item) {
             const {id_raca, id_especie, raca} = item;
             addSelect("S_raca", id_raca, raca);

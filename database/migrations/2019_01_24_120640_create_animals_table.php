@@ -18,7 +18,7 @@ class CreateAnimalsTable extends Migration
             $table->increments('id_animal');
             $table->integer('id_raca')->unsigned()->nullable(false);
             $table->integer('id_pelagem')->unsigned()->nullable(false);
-            $table->integer('id_local')->unsigned()->nullable(false);
+            $table->integer('id_local')->unsigned()->nullable(true);
             $table->string('nome_animal', 60)->nullable(false);          
             $table->date('idade_animal')->nullable(false);
             $table->enum('sexo_animal', ['M', 'F'])->nullable(false);

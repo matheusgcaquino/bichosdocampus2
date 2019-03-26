@@ -11,11 +11,11 @@
 
 @section('content')
     <div class="box">
-        <div class="box-header" style="background-color: tomato; color: white;">
+        <div class="box-header" style="background-color: #dd4b39; color:azure;">
             <h3 class="text-center">Situação do requerimento para <strong> {{$results->animal->nome_animal}} </strong></h3>
         </div>
 
-        <div class="box-body" style="background-color: #dd4b39; color: white;">
+        <div class="box-body" style="border: 2px solid #dd4b39;">
             @if($results)
                 @php
                     $foto = url("imagens/foto-icon.png");
@@ -102,9 +102,6 @@
             @else
                 <center><h3>Nenhuma Adoção encontrada!</h3></br>
             @endif
-        </div>
-
-        <div class="box-footer">
         </div>
     </div>
 
