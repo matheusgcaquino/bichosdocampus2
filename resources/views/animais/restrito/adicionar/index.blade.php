@@ -99,7 +99,7 @@
           <select class="form-control" rows="2" id="localizacao" name="localizacao" placeholder="Localização do Animal" style="width: 100%;">
             <option selected="selected" value=""> Escolha uma localizacao. </option>
             @foreach ($resultslocalizacao as $resultlocalizacao)
-              <option value="{{ $resultlocalizacao->id_localizacao }}"> {{ $resultlocalizacao->local }} </option>
+              <option value="{{ $resultlocalizacao->id_local }}"> {{ $resultlocalizacao->local }} </option>
             @endforeach
           </select>
           <input type="checkbox" id="novalocalizacao" name="novalocalizacao" value="" style="display:none" checked="checked" />
@@ -208,7 +208,7 @@
           } else {
             div.style.display = "block";
           }
-          $.getJSON("animais/ajax_raca/" + value, function (data) {
+          $.getJSON("/animais/ajax_raca/" + value, function (data) {
             $.each(data, function (i, item) {
               const {id_raca, id_especie, raca} = item;
               addSelect("raca", id_raca, raca);
