@@ -21,7 +21,7 @@ class HomeSeeder extends Seeder
         
         Sobre::create([
             'sobre' =>  '<h4 style="color: white;">A <strong>Bichos do Campus</strong>, nasceu como um grupo de pessoas
-            que visa o bem-estar animal e acredita que todo animal precisa de um lar cheio de amor e carinho!</h4>';
+            que visa o bem-estar animal e acredita que todo animal precisa de um lar cheio de amor e carinho!</h4>'
         ]);
     }
 }
