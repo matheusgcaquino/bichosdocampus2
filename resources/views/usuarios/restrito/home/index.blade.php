@@ -7,22 +7,23 @@
 
 @section('content')
     <div class="box">
-            
+            <div class="box-header" style="text-align: center;">
+                <h3>Gerenciamento de <strong>Usuários</strong> <button  type="button" class="btn btn-success" data-toggle="modal" style="text-align: right;" 
+                data-target="#adicionar"><span class="fa fa-plus"></span></button></h3>
+                
+            </div>
         @include('site.includes.alerts')
         
         <div class="box-header">
-            <div class="form-group col-md-6">
-                <button  type="button" class="btn btn-success" data-toggle="modal" 
-                data-target="#adicionar"><span class="fa fa-plus"></span> ADICIONAR</button>
-            </div> 
+            
         </div>
         
         <div class="box-body">
             @if(!$results->isEmpty())
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
+                <table class="table">
+                    <thead style="background-color: #f1f1f1">
+                        <tr >
+                            <th>Nome</th>
                             <th>Email</th>
                             <th>Nivel</th>
                             <th>Status</th>
@@ -45,20 +46,20 @@
                             <td>{{$result->email}}</td>
                             <td>{{$nivel_user}}</td>
                             <td>{{$status_user}}</td>
-                            <td>
-                                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" 
+                            <td style="text-align: center;">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" 
                                     data-target="#editar" data-solict-id="{{$result->id_user}}" 
                                     data-solict-nivel="{{$result->nivel_user}}" 
                                     data-solict-name="{{ $result->name_user }}" 
                                     data-solict-email="{{ $result->email }}" 
                                     data-solict-status="{{ $result->status_user}}">
-                                    <span class="fa fa-edit"></span><b> Editar</b>
+                                    <span class="fa fa-edit"></span>
                                 </button>
                 
-                                <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
+                                <button type="button" class="btn btn-danger" data-toggle="modal" 
                                     data-target="#excluir" data-solict-id="{{$result->id_user}}" 
                                     data-solict-name="{{ $result->name_user }}">
-                                    <span class="fa fa-minus-circle"></span><b> Excluir</b>
+                                    <span class="fa fa-minus-circle"></span>
                                 </button>
                             </td>
                         </tr>
