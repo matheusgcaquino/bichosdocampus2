@@ -8,14 +8,9 @@ use App\Models\StatusAdocao;
 
 class AdocaoSeeder extends Seeder
 {
-    //public $status;
-    //public $comentario ;
-
-    public function addAdocao($adocao)
-    {     
-
-      //$path = Storage::putFile('home', new \Illuminate\Http\File(public_path($animal['foto_perfil'])));
-      #Adicionar o animal
+  public function addAdocao($adocao)
+    {   
+      #Adicionar o Adocao
       $adocaoV = Adocao::create([
 
         'id_animal'              => $adocao['id_animal'],
@@ -31,8 +26,6 @@ class AdocaoSeeder extends Seeder
         'cidade_adocao'          => $adocao['cidade_adocao'],
         'estado_adocao'          => $adocao['estado_adocao'],
         'cep_adocao'             => $adocao['cep_adocao'],
-        //'status_adocao'          => $adocao['status_adocao'],
-        //'codigo_adocao'          => $adocao['codigo_adocao'],
         'residencia_adocao'      => $adocao['residencia_adocao'],
       ]);
 
@@ -49,9 +42,6 @@ class AdocaoSeeder extends Seeder
 
     public function run()
     {
-     // $this->status = array(); 
-     //$this->comentario = array();           
-
         $adocoes = 
         [
           // Adocao 1         

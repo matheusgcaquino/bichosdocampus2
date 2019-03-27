@@ -11,11 +11,11 @@
 
 @section('content')
     <div class="box">
-        <div class="box-header" style="background-color: tomato; color: white;">
+        <div class="box-header" style="background-color: #dd4b39; color:azure;">
             <h3 class="text-center">Situação do requerimento para <strong> {{$results->animal->nome_animal}} </strong></h3>
         </div>
 
-        <div class="box-body" style="background-color: #dd4b39; color: white;">
+        <div class="box-body" style="border: 2px solid #dd4b39;">
             @if($results)
                 @php
                     $foto = url("imagens/foto-icon.png");
@@ -66,10 +66,32 @@
                         <label>CPF</label>
                         <input type="text" class="form-control" value="{{$results->cpf_adocao}}" disabled>
                     </div>
-        
+                    
                     <div class="form-group col-md-6">
-                        <label>Logradouro</label>
-                        <input type="text" class="form-control" value="{{$results->logradouro_adocao}}" disabled>
+                        <label>Cep</label>
+                        <input type="text" class="form-control" value="{{$results->cep_adocao}}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Rua</label>
+                        <input type="text" class="form-control" value="{{$results->rua_adocao}}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Nº</label>
+                        <input type="text" class="form-control" value="{{$results->numero_adocao}}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Complemento</label>
+                        @php
+                            if (isset($results->complemento_adocao)){
+                                $complemento = $results->complemento_adocao;
+                            } else {
+                                $complemento = 'Sem complemento';
+                            }
+                        @endphp
+                        <input type="text" class="form-control" value="{{$complemento}}" disabled>
                     </div>
         
                     <div class="form-group col-md-6">
@@ -102,9 +124,6 @@
             @else
                 <center><h3>Nenhuma Adoção encontrada!</h3></br>
             @endif
-        </div>
-
-        <div class="box-footer">
         </div>
     </div>
 
