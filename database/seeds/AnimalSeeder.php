@@ -231,140 +231,140 @@ class AnimalSeeder extends Seeder
           // ----------------------------------------------------------------------- //
           // cao //
           //21
-          ['nome_animal' => 'Dog', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Dogao', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/21/animal_21.jpg','idade_animal' => '2015-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#1'
           ],
           //22
-          ['nome_animal' => 'Thor', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Thor', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/22/animal_22.jpg','idade_animal' => '2013-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#1'
           ],
           //23
-          ['nome_animal' => 'Luke', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Luke', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/23/animal_23.jpg','idade_animal' => '2017-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#1'
           ],
           //24
-          ['nome_animal' => 'Apolo', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Apolo', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/24/animal_24.jpg','idade_animal' => '2018-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#1'
           ],
           //25
-          ['nome_animal' => 'Billy', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Billy', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/25/animal_25.jpg','idade_animal' => '2019-01-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#2'
           ],
           //26
-          ['nome_animal' => 'Joy', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Joy', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/26/animal_26.jpg','idade_animal' => '2017-10-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#2'
           ],
           //27
-          ['nome_animal' => 'Pingo', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Pingo', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/27/animal_27.jpg','idade_animal' => '2015-12-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#2'
           ],
           //28
-          ['nome_animal' => 'Azul', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Azul', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/28/animal_28.jpg','idade_animal' => '2017-11-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#2'
           ],
           //29
-          ['nome_animal' => 'Jimmy', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Jimmy', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/29/animal_29.jpg','idade_animal' => '2016-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#2'
           ],
           //30
-          ['nome_animal' => 'Zeus', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Zeus', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/30/animal_30.jpg','idade_animal' => '2016-04-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#3'
           ],
           //31
-          ['nome_animal' => 'Boris', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Boris', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/31/animal_31.jpg','idade_animal' => '2016-03-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#3'
           ],
           //32
-          ['nome_animal' => 'Scott', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Scott', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/32/animal_32.jpg','idade_animal' => '2014-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#3'
           ],
           //33
-          ['nome_animal' => 'Bob', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Bob', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/33/animal_33.jpg','idade_animal' => '2016-02-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#3'
           ],
           //34
-          ['nome_animal' => 'Andre', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Andre', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/34/animal_34.jpg','idade_animal' => '2011-12-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 0, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#3'
           ],
           //35
-          ['nome_animal' => 'Salgueiro', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Salgueiro', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/35/animal_35.jpg','idade_animal' => '2013-04-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 0, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#4'
           ],
           //36
-          ['nome_animal' => 'Lili', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Lili', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/36/animal_36.jpg','idade_animal' => '2015-08-17', 'sexo_animal' => 'F', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#4'
           ],
           //37
-          ['nome_animal' => 'Pandora', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Pandora', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Dog' , 
           'foto_perfil'=>'imagens/animais/37/animal_37.jpg','idade_animal' => '2016-01-17', 'sexo_animal' => 'F', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#4'
           ],
           //38
-          ['nome_animal' => 'Plutos', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Plutos', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Pastor Alemao' , 
           'foto_perfil'=>'imagens/animais/38/animal_38.jpg','idade_animal' => '2016-09-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#4'
           ],
           //39
-          ['nome_animal' => 'Minnie', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Minnie', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Pastor Alemao' , 
           'foto_perfil'=>'imagens/animais/39/animal_39.jpg','idade_animal' => '2015-08-17', 'sexo_animal' => 'F', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#4'
           ],
           //40
-          ['nome_animal' => 'Nego Ney', 'especie_animal' => 'Cao', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Nego Ney', 'especie_animal' => 'Cachorro', 'raca_animal' => 'Pastor Alemao' , 
           'foto_perfil'=>'imagens/animais/40/animal_40.jpg','idade_animal' => '2018-12-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Branco com manchas pretas', 'comportamento_animal' => 'Bagunceiro e brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'É um cao que está sempre atento a novas diversões', 
@@ -373,42 +373,42 @@ class AnimalSeeder extends Seeder
           // --------------------------------------------------------------//
           // Aves //          
           //41
-          ['nome_animal' => 'Trovao', 'especie_animal' => 'Ave', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Trovao', 'especie_animal' => 'Ave', 'raca_animal' => 'Passaro' , 
           'foto_perfil'=>'imagens/animais/41/animal_41.jpg','idade_animal' => '2017-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Nao informado', 'comportamento_animal' => 'Brincalhão', 
           'castracao_animal' => 1, 'descricao_animal' => 'Canta e contagia com sua alegria', 
           'status_animal' => 1, 'local_animal' => '#4'
           ],
           //42
-          ['nome_animal' => 'Falcao', 'especie_animal' => 'Ave', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Falcao', 'especie_animal' => 'Ave', 'raca_animal' => 'Passaro' , 
           'foto_perfil'=>'imagens/animais/42/animal_42.jpg','idade_animal' => '2015-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Nao informado', 'comportamento_animal' => 'Rápido', 
           'castracao_animal' => 1, 'descricao_animal' => 'Canta e contagia com sua alegria', 
           'status_animal' => 1, 'local_animal' => '#4'
           ],
           //43
-          ['nome_animal' => 'Azulao', 'especie_animal' => 'Ave', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Azulao', 'especie_animal' => 'Ave', 'raca_animal' => 'Passaro' , 
           'foto_perfil'=>'imagens/animais/43/animal_43.jpg','idade_animal' => '2018-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Nao informado', 'comportamento_animal' => 'Esperta', 
           'castracao_animal' => 1, 'descricao_animal' => 'Canta e contagia com sua alegria', 
           'status_animal' => 1, 'local_animal' => '#4'
           ],
           //44
-          ['nome_animal' => 'Trovador', 'especie_animal' => 'Ave', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Trovador', 'especie_animal' => 'Ave', 'raca_animal' => 'Passaro' , 
           'foto_perfil'=>'imagens/animais/44/animal_44.jpg','idade_animal' => '2014-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Nao informado', 'comportamento_animal' => 'Canto', 
           'castracao_animal' => 1, 'descricao_animal' => 'Canta e contagia com sua alegria', 
           'status_animal' => 1, 'local_animal' => '#4'
           ],
           //45
-          ['nome_animal' => 'Mozart', 'especie_animal' => 'Ave', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Mozart', 'especie_animal' => 'Ave', 'raca_animal' => 'Passaro' , 
           'foto_perfil'=>'imagens/animais/45/animal_45.jpg','idade_animal' => '2016-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Nao informado', 'comportamento_animal' => 'Canto', 
           'castracao_animal' => 1, 'descricao_animal' => 'Canta e contagia com sua alegria', 
           'status_animal' => 1, 'local_animal' => '#4'
           ],
           //46
-          ['nome_animal' => 'Chopin', 'especie_animal' => 'Ave', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Chopin', 'especie_animal' => 'Ave', 'raca_animal' => 'Passaro' , 
           'foto_perfil'=>'imagens/animais/46/animal_46.jpg','idade_animal' => '2015-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'Nao informado', 'comportamento_animal' => 'Canto', 
           'castracao_animal' => 1, 'descricao_animal' => 'Canta e contagia com sua alegria', 
@@ -416,28 +416,28 @@ class AnimalSeeder extends Seeder
           ],
           //Jabutis
           //47
-          ['nome_animal' => 'Mary Jane', 'especie_animal' => 'Jabuti', 'raca_animal' => 'Piranga' , 
+          ['nome_animal' => 'Mary Jane', 'especie_animal' => 'Jabuti', 'raca_animal' => 'Jabuti Piranga' , 
           'foto_perfil'=>'imagens/animais/47/animal_47.jpg','idade_animal' => '2017-10-17', 'sexo_animal' => 'F', 
           'pelagem_animal' =>'A carapaça alongada e polígonos', 'comportamento_animal' => 'Bagunceiro e dorminhoco', 
           'castracao_animal' => 1, 'descricao_animal' => 'Gosta de comer, dormir mas sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#3'
           ],
           //48
-          ['nome_animal' => 'Fumaça', 'especie_animal' => 'Jabuti', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Bolinha', 'especie_animal' => 'Jabuti', 'raca_animal' => 'Jabuti Piranga' , 
           'foto_perfil'=>'imagens/animais/48/animal_48.jpg','idade_animal' => '2016-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'A carapaça alongada e polígonos', 'comportamento_animal' => 'Bagunceiro e dorminhoco', 
           'castracao_animal' => 1, 'descricao_animal' => 'Gosta de comer, dormir mas sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#3'
           ],
           //49
-          ['nome_animal' => 'Fumaça', 'especie_animal' => 'Jabuti', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Soneca', 'especie_animal' => 'Jabuti', 'raca_animal' => 'Jabuti Piranga' , 
           'foto_perfil'=>'imagens/animais/49/animal_49.jpg','idade_animal' => '2016-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'A carapaça alongada e polígonos', 'comportamento_animal' => 'Bagunceiro e dorminhoco', 
           'castracao_animal' => 1, 'descricao_animal' => 'Gosta de comer, dormir mas sempre atento a novas diversões', 
           'status_animal' => 1, 'local_animal' => '#4'
           ],
           //50
-          ['nome_animal' => 'Fumaça', 'especie_animal' => 'Jabuti', 'raca_animal' => 'sem Raça' , 
+          ['nome_animal' => 'Mestre dos Magos', 'especie_animal' => 'Jabuti', 'raca_animal' => 'Jabuti Piranga' , 
           'foto_perfil'=>'imagens/animais/50/animal_50.jpg','idade_animal' => '2016-08-17', 'sexo_animal' => 'M', 
           'pelagem_animal' =>'A carapaça alongada e polígonos', 'comportamento_animal' => 'Bagunceiro e dorminhoco', 
           'castracao_animal' => 1, 'descricao_animal' => 'Gosta de comer, dormir mas sempre atento a novas diversões', 
