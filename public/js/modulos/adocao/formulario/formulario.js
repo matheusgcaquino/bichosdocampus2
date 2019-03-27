@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
 
 	$('#btnConfirmar').click(function () {
@@ -159,73 +161,6 @@ function validarCPF(cpf) {
 	return true;
 }
 
-function limpaFormularioEndereco() {
-	//Limpa valores do formulário de cep.
-	document.getElementById('rua_adocao').value = ("");
-	document.getElementById('bairro_adocao').value = ("");
-	document.getElementById('cidade_adocao').value = ("");
-	document.getElementById('estado_adocao').value = ("");
-}
-
-function preencheEndereco(conteudo) {
-	if (!("erro" in conteudo)) {
-		//Atualiza os campos com os valores.
-		document.getElementById('rua_adocao').value = (conteudo.logradouro);
-		document.getElementById('bairro_adocao').value = (conteudo.bairro);
-		document.getElementById('cidade_adocao').value = (conteudo.localidade);
-		document.getElementById('estado_adocao').value = (conteudo.uf);
-	} //end if.
-	else {
-		//CEP não Encontrado.
-		limpaFormularioEndereco();
-		return false;
-	}
-}
-
-function pesquisaCEP(valor) {
-
-	//Nova variável "cep" somente com dígitos.
-	var cep = valor.replace(/\D/g, '');
-
-	//Verifica se campo cep possui valor informado.
-	if (cep != "") {
-
-		//Expressão regular para validar o CEP.
-		var validacep = /^[0-9]{8}$/;
-
-		//Valida o formato do CEP.
-		if (validacep.test(cep)) {
-
-			//Preenche os campos com "..." enquanto consulta webservice.
-			document.getElementById('rua_adocao').value = "...";
-			document.getElementById('bairro_adocao').value = "...";
-			document.getElementById('cidade_adocao').value = "...";
-			document.getElementById('estado_adocao').value = "...";
-
-			//Cria um elemento javascript.
-			var script = document.createElement('script');
-
-			//Sincroniza com o callback.
-			script.src = 'https://viacep.com.br/ws/' + cep + '/json/?callback=preencheEndereco';
-
-			//Insere script no documento e carrega o conteúdo.
-			document.body.appendChild(script);
-
-			return true;
-
-		} //end if.
-		else {
-			//cep é inválido.
-			limpaFormularioEndereco();
-			return false
-		}
-	} //end if.
-	else {
-		//cep sem valor, limpa formulário.
-		limpaFormularioEndereco();
-	}
-}
-
 function verificaTamanho(min, max, texto) {
 	if ((texto.length >= min) && (texto.length <= max)) {
 		return true;
@@ -233,3 +168,4 @@ function verificaTamanho(min, max, texto) {
 		return false;
 	}
 };
+
