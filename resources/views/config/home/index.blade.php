@@ -55,7 +55,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Localização</td>
+                            <td>Localização (Colônia)</td>
                             <td>
                                 <a href="{{route('config.animal', ['tipo' => 'local'])}}" 
                                     class="btn btn-primary pull-right" target="_blank">

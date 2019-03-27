@@ -31,12 +31,12 @@ class AnimalValidacaoFormRequest extends FormRequest
 
         return [
             'nome'          => 'bail| required  | min:1 | max:60 |',
-            'especie'       => 'bail| required  | max:60 |',
-            'raca'          => 'bail| required  | max:30 |',
+            'especie'       => 'bail| required  | min:1 | max:60 |',
+            'raca'          => 'bail| required  | min:1 | max:30 |',
             'numeromeses'   => '',
             'numeroano'     => '',
             'sexo'          => 'bail| required  |',
-            'pelagem'       => 'bail| required  | max:50 |',
+            'pelagem'       => 'bail| required  | min:1 | max:50 |',
             'comportamento' => 'bail| max:50   |',
             'castrado'      => 'bail| required  |',
             'descricao'     => 'bail| max:300   |',

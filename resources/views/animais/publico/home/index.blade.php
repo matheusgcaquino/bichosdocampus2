@@ -20,8 +20,8 @@
 
       @gerencia('local')
         <div class="form-group col-md-6">
-          <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">
-           <span class="fa fa-plus"></span> ADICIONAR</a>
+          <h3>Gerenciamento de <strong>Animais </strong> <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">
+           <span class="fa fa-plus"></span>  NOVO  </a></h3>
         </div> 
       @endgerencia
       <div class="form-group pull-right"> 
@@ -29,7 +29,7 @@
           <a href="{{route('site.animais')}}" class="btn btn-danger ">
             Limpar Busca</a>
         @endif
-        <button type="button" class="btn btn-default" data-toggle="modal" 
+        <button type="button" class="btn btn-info" data-toggle="modal" 
           data-target="#buscar">
           <span class="fa fa-search"></span><b> Buscar Animal</b>
         </button>

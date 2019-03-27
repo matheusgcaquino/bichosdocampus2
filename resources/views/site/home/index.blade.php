@@ -14,7 +14,7 @@
   <div class="col-md-12">
     <div class="box">
       <div class="box-header with-border" style="background-color: #dd4b39;">
-        <h3 class="box-title" style="color: white;">PRECISO DE UM LAR!</h3></div>
+        <h3 class="box-title" style="color: white;">Finais <strong>Felizes</strong></h3></div>
           <div class="box-body">
         <div class="col-sm-4">
           <img src="imagens/05.jpg" class="img-responsive margin">
