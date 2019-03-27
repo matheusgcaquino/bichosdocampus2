@@ -21,7 +21,8 @@ class AdoçõesController extends Controller
     public function buscar($buscar)
     {
         $adocao = Animal::has('adocao')->with('adocao.status')
-        ->where('nome_animal', 'like', '%'.$buscar.'%')
+            ->where('nome_animal', 'like', '%'.$buscar.'%')
+            ->inRandomOrder()
         ->paginate(16);
         return view('adoções.restrito.home.index')->with([
             "results"   =>  $adocao,

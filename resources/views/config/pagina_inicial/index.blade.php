@@ -3,6 +3,10 @@
 @section('title', 'Configuração da Pagina Inicial - Bichos do Campus')
 
 @section('content_header')
+<div class="callout callout-warning">
+    <h4>A Imagem da página inicial, deve estar no formato paisagem!</h4>
+    <p>Utilizar imagens que não estão nesse formato, poderá não atender às suas expectativas.</p>
+    </div>
 @stop
 
 @php
@@ -33,8 +37,8 @@
         <div class="box">
             <div class="box-header">
                 <h3>Configuração da Imagem Principal</h3>
+                <h4></h4>
             </div>
-
             <div class="box-body">
                 <div class="form-group">
                     <button type="button" class="btn btn-success" 
