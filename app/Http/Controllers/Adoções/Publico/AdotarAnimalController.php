@@ -31,6 +31,7 @@ class AdotarAnimalController extends Controller
   // Adicionando no banco de dados
   public function adotar(AdotaValidacaoFormRequest $request)
   { 
+    //dd($request->all());
     // Se resultcpf for false, quer dizer que o cpf é invalido.
     if (!AdocaoController::validarCPF($request->cpf_adocao)){
       $mensagem = 'CPF Invalido!';
