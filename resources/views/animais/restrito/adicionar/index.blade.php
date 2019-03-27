@@ -152,15 +152,16 @@
               </div>
 
         <div class="form-group col-md-6">
-            <div class="col-md-3">
-                <img class="profile-user-img img-circle" 
-                src="{{asset('images/foto-icon.png')}}" alt="User profile picture">
-            </div>
-            <div class="pull-left" style="margin-top: 1%">
-                <label for="foto"> Selecionar Imagem </label>
-            <input type="file" id="foto" name="foto">
-            </div>
+          <div class="pull-left" id="card-adocao">
+            <img id="img-adocao" class="profile-user-img img-circle"
+            src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+          </div>
+          <div class="pull-left" style="margin-left: 1%">
+            <label for="foto"> Adicionar Imagem </label>
+            <input type="file" name="foto" id="foto">
+          </div>
         </div>
+
         <div class="form-group col-md-6">
             <label for="descricao"> Descrição </label>
             <textarea class="form-control" rows="3" id="descricao" name="descricao" 
@@ -177,6 +178,7 @@
     <script src="{{asset('js/modulos/animais/formulario/formulario.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
+    <script src="{{asset('js/JavaScript-Load-Image-2.20.1/js/load-image.all.min.js')}}"></script>
     
     <script>
 
@@ -208,7 +210,7 @@
           } else {
             div.style.display = "block";
           }
-          $.getJSON("/animais/ajax_raca/" + value, function (data) {
+          $.getJSON("animais/ajax_raca/" + value, function (data) {
             $.each(data, function (i, item) {
               const {id_raca, id_especie, raca} = item;
               addSelect("raca", id_raca, raca);
@@ -218,6 +220,24 @@
       }
 
       $(document).ready(function() {
+
+        document.getElementById('foto').onchange = function (e) {
+          loadImage(
+            e.target.files[0],
+            function (img) {                
+              
+              $('#card-adocao').empty();
+              document.getElementById('card-adocao').appendChild(img);
+              $('#card-adocao img').attr('class', 'profile-user-img img-circle');
+            },
+            {
+              maxWidth: 90,
+              maxHeight: 90,
+              // orientation: 2,
+            } // Options
+          );            
+        };
+
 
         $("#especie").select2({
           tags: true,

@@ -15,7 +15,7 @@ class CreateSobresTable extends Migration
     {
         Schema::create('sobre', function (Blueprint $table) {
             $table->increments('id_sobre');
-            $table->string('sobre', 300)->nullable(false);
+            $table->string('sobre', 700)->nullable(false);
         });
     }
 
