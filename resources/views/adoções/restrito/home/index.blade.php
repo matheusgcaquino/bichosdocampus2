@@ -48,25 +48,33 @@
                                 </div>
                 
                                 <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
-                    
-                                <ul class="list-group list-group-unbordered">
-                                    <li class="list-group-item">
-                                        <b>Novas requisições</b> 
-                                        <a class="pull-right">{{$status[0]}}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Requisições em espera</b> 
-                                        <a class="pull-right">{{$status[1]}}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Requisições em avaliação</b> 
-                                        <a class="pull-right">{{$status[2]}}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Total de requisições</b> 
-                                        <a class="pull-right">{{$result->adocao->count()}}</a>
-                                    </li>
-                                </ul>
+                                @if ($result->status_animal == 2)
+                                        <div class="form-group">
+                                            <div class="bg-orange-active color-palette">
+                                                <span>Adotado</span>
+                                            </div>
+                                        </div>
+                                @else
+                                    <ul class="list-group list-group-unbordered">
+                                        <li class="list-group-item">
+                                            <b>Novas requisições</b> 
+                                            <a class="pull-right">{{$status[0]}}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Requisições em espera</b> 
+                                            <a class="pull-right">{{$status[1]}}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Requisições em avaliação</b> 
+                                            <a class="pull-right">{{$status[2]}}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Total de requisições</b> 
+                                            <a class="pull-right">{{$result->adocao->count()}}</a>
+                                        </li>
+                                    </ul>
+                                @endif
+                                
 
                                 <a href="{{route('adocoes.requisições', ['id' => $result->id_animal])}}" 
                                     class="btn btn-block btn-primary">Mostrar Requisições
