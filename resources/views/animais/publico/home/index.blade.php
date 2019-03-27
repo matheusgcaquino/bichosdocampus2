@@ -75,15 +75,21 @@
                 </li>
 
                 @gerencia('local')
-                  @if ($result->status_animal)
+                  @if ($result->status_animal == 1)
                     <li class="list-group-item">
-                      <b>Status</b> <a class="pull-right"><span class="bg-green">
+                      <b>Status</b> <a class="pull-right label"><span class="bg-green">
                         Ativado
+                      </span></a>
+                    </li>
+                  @elseif ($result->status_animal == 2)
+                    <li class="list-group-item">
+                      <b>Status</b> <a class="pull-right label"><span class="bg-blue">
+                        Adotado
                       </span></a>
                     </li>
                   @else
                     <li class="list-group-item">
-                      <b>Status</b> <a class="pull-right"><span class="bg-red">
+                      <b>Status</b> <a class="pull-right label"><span class="bg-red">
                         Desativado
                       </span></a>
                     </li>
