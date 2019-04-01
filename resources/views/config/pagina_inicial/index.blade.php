@@ -17,7 +17,10 @@
     @if ($tipo == 'sobre')
         <div class="box">
             <div class="box-header">
-                <h3>Configuração de <b>Quem somos</b></h3>
+                <center><h3>Configuração de <b>Quem somos</b></h3></center>
+                <a href="{{route('site.config')}}" class="btn btn-default">
+                    Voltar
+                </a>
             </div>
             <form action="{{route('config.paginaInicial.editar')}}" method="POST">
                 {{ csrf_field() }}
@@ -36,8 +39,10 @@
     @else
         <div class="box">
             <div class="box-header">
-                <h3>Configuração da Imagem Principal</h3>
-                <h4></h4>
+                <center><h3>Configuração da Imagem Principal</h3></center>
+                <a href="{{route('site.config')}}" class="btn btn-default">
+                    Voltar
+                </a>
             </div>
             <div class="box-body">
                 <div class="form-group">
