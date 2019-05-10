@@ -8,10 +8,13 @@
 @section('content')
     <div class="box">
         <div class="box-header">
-            <center><h3>Configuração de {{$nome}}</h3></center> 
-            <a href="{{route('site.config')}}" class="btn btn-default">
-                Voltar
-            </a>
+            <h3>
+                <center>Configuração de {{$nome}}</center> 
+                <a href="{{route('site.config')}}" class="btn btn-default">
+                    <span class="fa fa-angle-double-left"></span>
+                    Voltar
+                </a>
+            </h3>
         </div>
 
         <div class="box-body">

@@ -3,10 +3,6 @@
 @section('title', 'Configuração da Pagina Inicial - Bichos do Campus')
 
 @section('content_header')
-<div class="callout callout-warning">
-    <h4>A Imagem da página inicial, deve estar no formato paisagem!</h4>
-    <p>Utilizar imagens que não estão nesse formato, poderá não atender às suas expectativas.</p>
-    </div>
 @stop
 
 @php
@@ -17,10 +13,13 @@
     @if ($tipo == 'sobre')
         <div class="box">
             <div class="box-header">
-                <center><h3>Configuração de <b>Quem somos</b></h3></center>
-                <a href="{{route('site.config')}}" class="btn btn-default">
-                    Voltar
-                </a>
+                <h3>
+                    <center>Configuração de <b>Quem somos</b></center> 
+                    <a href="{{route('site.config')}}" class="btn btn-default">
+                        <span class="fa fa-angle-double-left"></span>
+                        Voltar
+                    </a>
+                </h3>
             </div>
             <form action="{{route('config.paginaInicial.editar')}}" method="POST">
                 {{ csrf_field() }}
@@ -39,12 +38,19 @@
     @else
         <div class="box">
             <div class="box-header">
-                <center><h3>Configuração da Imagem Principal</h3></center>
-                <a href="{{route('site.config')}}" class="btn btn-default">
-                    Voltar
-                </a>
+                <h3>
+                    <center>Configuração da Imagem Principal</center> 
+                    <a href="{{route('site.config')}}" class="btn btn-default">
+                        <span class="fa fa-angle-double-left"></span>
+                        Voltar
+                    </a>
+                </h3>
             </div>
             <div class="box-body">
+                <div class="callout callout-warning">
+                    <h4>A Imagem da página inicial, deve estar no formato paisagem!</h4>
+                    <p>Utilizar imagens que não estão nesse formato, poderá não atender às suas expectativas.</p>
+                </div>
                 <div class="form-group">
                     <button type="button" class="btn btn-success" 
                         data-toggle="modal" data-target="#adicionar"><span class="fa fa-plus"></span>

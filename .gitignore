@@ -12,4 +12,5 @@ yarn-error.log
 /public/vendor
 /public/storage/animals
 /public/uploads
+/public/imagens/animais
 composer.lock

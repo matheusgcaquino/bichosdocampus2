@@ -1,6 +1,5 @@
 <?php
 
-
     //Rotas Principais
 Route::group(['namespace' => 'Site'], function(){
   Route::get('/', 'SiteController@index')->name('home');
