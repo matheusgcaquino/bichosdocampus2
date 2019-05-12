@@ -6,6 +6,8 @@ Route::prefix('animais')->group(function(){
         Route::get('/', 'AnimaisController@index')->name('site.animais');
         Route::get('/ajax_buscar', 'BuscarController@index')->name('buscar.ajax');
         Route::get('/ajax_raca/{especie}', 'BuscarController@raca')->name('raca.ajax');
+        Route::get('adicionar/ajax_raca/{especie}', 'BuscarController@raca')->name('raca.ajax.adicioanr');
+        Route::get('editar/ajax_raca/{especie}', 'BuscarController@raca')->name('raca.ajax.editar');
         Route::post('/buscar', 'BuscarController@buscar')->name('buscar.animais');
     });
     
