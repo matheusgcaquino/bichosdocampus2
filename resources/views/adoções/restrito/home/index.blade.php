@@ -16,6 +16,7 @@
     <div class="box">
         <div class="box-header" style="text-align: center;">
             <h3>Gerenciamento de Requisições de <STRONG>Adoção</STRONG></h3>
+<<<<<<< HEAD
         <div class="box-header">
             <div class="input-group pull-right col-md-3">
                 <input type="text" class="form-control" name="buscar" id="buscar" 
@@ -26,6 +27,8 @@
                     </button>
                 </span>
             </div>
+=======
+>>>>>>> sincronizando...
         </div>
 
         <div class="box-body">
