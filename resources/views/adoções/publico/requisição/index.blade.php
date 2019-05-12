@@ -11,14 +11,14 @@
 
 @section('content')
     <div class="box">
-        <div class="box-header">
-            <h3 class="text-center">Animal: {{$results->animal->nome_animal}}</h3>
+        <div class="box-header" style="background-color: #dd4b39; color:azure;">
+            <h3 class="text-center">Situação do requerimento para <strong> {{$results->animal->nome_animal}} </strong></h3>
         </div>
 
-        <div class="box-body">
+        <div class="box-body" style="border: 2px solid #dd4b39;">
             @if($results)
                 @php
-                    $foto = url("images/foto-icon.png");
+                    $foto = url("imagens/foto-icon.png");
                     if($results->animal->foto_perfil && Storage::disk('public_uploads')
                         ->exists($results->animal->foto_perfil)){
                         $foto = url("uploads/".$results->animal->foto_perfil);
@@ -27,19 +27,23 @@
                     $moro = ($results->residencia_adocao == 0) ? 'Casa' : 'Apartamento';
 
                     $stat = StatusController::last_status($results->status);
+                    $acao = StatusController::acao($results->status);
                 @endphp
-                <div class="im">
-                    <img  src="{{$foto}}" alt="User profile picture" >
-                </div>
 
                 <div class="form-group col-md-6">
+                  <img  src="{{$foto}}" alt="User profile picture"/>
+                </div>
+
+
+                <div class="form-group col-md-6">
+                  <h4><b>DADOS DO ADOTANTE</b></h4>
                     <label for="name">Nome </label>
                 <input type="text" class="form-control" value="{{$results->nome_adocao}}" disabled>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label>Status</label>
-                    <input type="text" class="form-control" value="{{$stat}}" disabled>
+                    <label>Status: </label>
+                    {!!$stat!!}
                 </div>
 
                 @gerencia('local')
@@ -62,10 +66,32 @@
                         <label>CPF</label>
                         <input type="text" class="form-control" value="{{$results->cpf_adocao}}" disabled>
                     </div>
-        
+                    
                     <div class="form-group col-md-6">
-                        <label>Logradouro</label>
-                        <input type="text" class="form-control" value="{{$results->logradouro_adocao}}" disabled>
+                        <label>Cep</label>
+                        <input type="text" class="form-control" value="{{$results->cep_adocao}}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label>Rua</label>
+                        <input type="text" class="form-control" value="{{$results->rua_adocao}}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Nº</label>
+                        <input type="text" class="form-control" value="{{$results->numero_adocao}}" disabled>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label>Complemento</label>
+                        @php
+                            if (isset($results->complemento_adocao)){
+                                $complemento = $results->complemento_adocao;
+                            } else {
+                                $complemento = 'Sem complemento';
+                            }
+                        @endphp
+                        <input type="text" class="form-control" value="{{$complemento}}" disabled>
                     </div>
         
                     <div class="form-group col-md-6">
@@ -87,20 +113,23 @@
                         <label>Moro em</label>
                         <input type="text" class="form-control" value="{{$moro}}" disabled>
                     </div>
+
+                     <div class="form-group col-md-6">
+                        <label>Ações</label></br>
+                        {!!$acao!!}
+                    </div>
+
                 @endgerencia
 
             @else
                 <center><h3>Nenhuma Adoção encontrada!</h3></br>
             @endif
         </div>
-
-        <div class="box-footer">
-        </div>
     </div>
 
     <!-- Modais -->
 
-    <div class="modal modal-info fade" id="information" style="display: none;">
+    <div class="modal modal-default fade" id="modal" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -108,14 +137,25 @@
                     <span aria-hidden="true">×</span></button>
                     <h4 class="modal-title" id="exampleModalLabel"></h4>
                 </div>
-                <div class="modal-body">
-                    <div class="box-body">
-                        
+                <form action="{{route('requisição.status')}}" method="POST">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <div class="box-body">
+                            <input type="hidden" name="id" value="{{$results->id_adocao}}">
+                            <input type="hidden" name="acao" id="acao">
+                            <input type="hidden" name="codigo" value="{{$results->codigo_adocao}}">
+                            <div class="form-group">
+                                <label>Comentário</label>
+                                <textarea class="form-control" name="comentario" rows="10"></textarea>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Voltar</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" 
+                        data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success">Confirmar</button>
+                    </div>
+                </form>
             </div>
             <!-- /.modal-content -->
         </div>
@@ -125,32 +165,13 @@
 
 @section('js')
   <script>
-    $('#information').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget) // Button that triggered the modal
-      var nome = button.data('solict-nome')
-      var data = button.data('solict-data')
-      var telefone = button.data('solict-telefone')
-      var email = button.data('solict-email')
-      var cpf = button.data('solict-cpf')
-      var bairro = button.data('solict-bairro')
-      var cidade = button.data('solict-cidade')
-      var estado = button.data('solict-estado')
-      var status = button.data('solict-status')
-      var moro = button.data('solict-moro')
-      var logradouro = button.data('solict-logradouro')
-      var modal = $(this)
-      modal.find('.modal-title').text("Informações de " + nome)
-      $('#nome').val(nome)
-      $('#data').val(data)
-      $('#tel').val(telefone)
-      $('#email').val(email)
-      $('#cpf').val(cpf)
-      $('#bairro').val(bairro)
-      $('#cidade').val(cidade)
-      $('#estado').val(estado)
-      $('#status').val(status)
-      $('#moro').val(moro)
-      $('#logradouro').val(logradouro)
+    $('#modal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var acao = button.data('solict-acao')
+        var nome = button.data('solict-nome')
+        var modal = $(this)
+        modal.find('.modal-title').text(nome)
+        $('#acao').val(acao)
     });
   </script>
 @stop
@@ -167,7 +188,7 @@
 
 div img {
   max-width: 100%;
-  height: 150px;
+  max-height: 100%;
  
 }
 </style>

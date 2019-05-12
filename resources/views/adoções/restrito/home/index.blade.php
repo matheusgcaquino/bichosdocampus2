@@ -8,37 +8,73 @@
 @section('content_header')
 @stop
 
+@php
+    use App\Http\Controllers\Suporte\StatusController;
+@endphp
+
 @section('content')
     <div class="box">
+        <div class="box-header" style="text-align: center;">
+            <h3>Gerenciamento de Requisições de <STRONG>Adoção</STRONG></h3>
         <div class="box-header">
+            <div class="input-group pull-right col-md-3">
+                <input type="text" class="form-control" name="buscar" id="buscar" 
+                placeholder="Buscar por Animal" value="{{(isset($buscar) ? $buscar : '')}}"> 
+                <span class="input-group-btn">
+                    <button id="btn-buscar" type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
         </div>
 
         <div class="box-body">
             @if(!$results->isEmpty())
                 @foreach($results as $result)
                     @php                     
-                        $foto = url("images/foto-icon.png");
+                        $foto = url("imagens/foto-icon.png");
             
                         if($result->foto_perfil && Storage::disk('public_uploads')
                             ->exists($result->foto_perfil)){
                             $foto = url("uploads/".$result->foto_perfil);
                         }
+                        $status = StatusController::status_num($result->adocao);
                     @endphp
                     <div class="col-md-3">
-                        <div class="box box-primary">
-                            <div class="box-body box-profile">
+                        <div class="box box-primary" style="border: solid 2px #f1f1f1; border-top: 2px solid #dd4b39;">
+                            <div class="box-body box-profile" style="border: solid 2px #f1f1f1;">
                                 <div class="im">
                                     <img  src="{{$foto}}" alt="User profile picture" >
                                 </div>
                 
                                 <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
-                    
-                                <ul class="list-group list-group-unbordered">
-                                    <li class="list-group-item">
-                                        <b>Requisições</b> 
-                                        <a class="pull-right">{{$result->adocao->count()}}</a>
-                                    </li>
-                                </ul>
+                                @if ($result->status_animal == 2)
+                                        <div class="form-group">
+                                            <div class="bg-orange-active color-palette">
+                                                <span>Adotado</span>
+                                            </div>
+                                        </div>
+                                @else
+                                    <ul class="list-group list-group-unbordered">
+                                        <li class="list-group-item">
+                                            <b>Novas requisições</b> 
+                                            <a class="pull-right">{{$status[0]}}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Requisições em espera</b> 
+                                            <a class="pull-right">{{$status[1]}}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Requisições em avaliação</b> 
+                                            <a class="pull-right">{{$status[2]}}</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <b>Total de requisições</b> 
+                                            <a class="pull-right">{{$result->adocao->count()}}</a>
+                                        </li>
+                                    </ul>
+                                @endif
+                                
 
                                 <a href="{{route('adocoes.requisições', ['id' => $result->id_animal])}}" 
                                     class="btn btn-block btn-primary">Mostrar Requisições
@@ -58,48 +94,38 @@
             </div>
         </div>
     </div>
-
-    <!-- Modais -->
-
-    <div class="modal modal-default fade" id="requisicoes" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel"></h4>
-                </div>
-        
-                <form action="{{route('deletar.animais')}}" method="POST">
-                {{ csrf_field() }}
-                <div class="modal-body">
-                    <input type="hidden" name="idAnimal" id="idAnimal"/>
-                    Mostrar Requisições aki
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left" 
-                        data-dismiss="modal">Voltar</button>
-                    {{-- <button type="submit" class="btn btn-outline">Confirmar</button> --}}
-                </div>
-                </form>
-            </div>
-          <!-- /.modal-content -->
-        </div>
-    <!-- /.modal-dialog -->
-    </div>
 @stop
 
 @section('js')
     <script>
-        $('#requisicoes').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) // Button that triggered the modal
-            var name = button.data('solict-name')
-            var id = button.data('solict-id')
-            var modal = $(this)
-            modal.find('.modal-title').text("Requisições de " + name)
-            $('#idAnimal').val(id)
+         $(this).on('keyup', function (e) {
+            if (e.keyCode == 13) {
+            if ($('#buscar').val() !== '') {
+                let busca = $('#buscar').val();
+                // console.log(window.location.href);
+                window.location.href = getBaseAnimalUrl() + '/buscar/' + busca;
+            }else{
+                window.location.href = getBaseAnimalUrl();
+            }
+            }
         });
 
+        $('#btn-buscar').on('click', function () {
+        let busca = $('#buscar').val();
+        // console.log(window.location.href);
+        if ($('#buscar').val() !== '') {
+            let busca = $('#buscar').val();
+            // console.log(window.location.href);
+            window.location.href = getBaseAnimalUrl() + '/buscar/' + busca;
+        }else{
+            window.location.href = getBaseAnimalUrl();
+        }
+        
+        });
+
+        function getBaseAnimalUrl() {
+            return '/adoções';
+        }
     </script>
 @stop
 

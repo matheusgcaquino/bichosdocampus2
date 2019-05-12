@@ -28,4 +28,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $visible = ['name_user', 'email', 'nivel_user', 'status_user'];
+
 }

@@ -1,0 +1,41 @@
+<?php
+namespace App\Http\Controllers\Adoções\Restrito;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\StatusAdocao;
+use App\Models\Animal;
+use App\Models\Adocao;
+use Illuminate\Support\Facades\Auth;
+
+class StatusController extends Controller
+{
+    public function index(Request $request)
+    {
+        if ($request->acao == 3) {
+            $adocao = Adocao::select('id_animal')->find($request->id);
+            Animal::where('id_animal', $adocao->id_animal)->update(['status_animal' => 2]);
+            $adocaos = Adocao::where('id_animal', $adocao->id_animal)
+                ->where('id_adocao', '<>', $request->id)
+            ->get();
+            foreach ($adocaos as $adocao) {
+                $status = StatusAdocao::where('id_adocao', $adocao->id_adocao)->get();
+                if ($status->last()->status_adocao < 4) {
+                    StatusAdocao::create([
+                        'id_adocao'     =>  $adocao->id_adocao,
+                        'id_user'       =>  Auth::user()->id_user,
+                        'status_adocao' =>  5,
+                    ]);
+                }
+            }
+        }
+        StatusAdocao::create([
+            'id_adocao'     =>  $request->id,
+            'id_user'       =>  Auth::user()->id_user,
+            'status_adocao' =>  $request->acao,
+            'comentario'    =>  $request->comentario,
+        ]);
+
+        return redirect()->route('adocoes.requisição', ['codigo' => $request->codigo]);
+    }
+}
