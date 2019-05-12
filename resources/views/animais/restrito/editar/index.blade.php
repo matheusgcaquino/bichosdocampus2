@@ -140,12 +140,20 @@
         <div class="form-group col-md-6">
             <label> Status </label>
             <select class="form-control" name="status">
-              @if($result->status_animal)
+              @if($result->status_animal == '0')              
                 <option value="1">Ativado</option>
-                <option value="0">Desativado</option>
+                <option selected="selected" value="0">Desativado</option>
+                <option value="2">Adotado</option>
               @else
-                <option value="0">Desativado</option>
-                <option value="1">Ativado</option>
+                @if($result->status_animal == '1')
+                  <option selected="selected" value="1">Ativado</option>
+                  <option value="0">Desativado</option>
+                  <option value="2">Adotado</option>
+                @else
+                  <option value="1">Ativado</option>
+                  <option value="0">Desativado</option>
+                  <option selected="selected" value="2">Adotado</option>
+                @endif
               @endif
             </select>
           </div>
@@ -280,7 +288,7 @@
         } else {
           div.style.display = "block";
         }
-        $.getJSON("/animais/ajax_raca/" + value, function (data) {
+        $.getJSON("animais/ajax_raca/" + value, function (data) {
           $.each(data, function (i, item) {
             const {id_raca, id_especie, raca} = item;
             addSelect("raca", id_raca, raca);
