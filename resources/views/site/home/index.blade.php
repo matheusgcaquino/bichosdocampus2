@@ -95,12 +95,7 @@
 <div class="box-footer" style="background-color: #dd4b39;">
   <div class="col-md-6" style="text-align: left;">
     <h3 style="color: white;">QUEM SOMOS?</h3>
-<<<<<<< HEAD
     <h4 style="color: white;">{!!$sobre->sobre!!}</h4>
-=======
-    <h4 style="color: white;">A <strong>Bichos do Campus</strong>, nasceu como um grupo de pessoas
-    que visa o bem-estar animal e acredita que todo animal precisa de um lar cheio de amor e carinho!</h4>
->>>>>>> sincronizando...
   </div>
   <div class="col-md-6" style="text-align: right;">
     <h3 style="color: white;">SIGA-NOS</h3>
