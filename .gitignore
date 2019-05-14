@@ -12,3 +12,4 @@ yarn-error.log
 /public/vendor
 /public/storage/animals
 composer.lock
+htaccess
