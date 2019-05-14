@@ -20,8 +20,11 @@
 
       @gerencia('local')
         <div class="form-group col-md-6">
-          <h3>Gerenciamento de <strong>Animais </strong> <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">
-           <span class="fa fa-plus"></span>  NOVO  </a></h3>
+          <h3>Gerenciamento de <strong>Animais </strong> 
+            <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">
+              <span class="fa fa-plus"></span>  NOVO  
+            </a>
+          </h3>
         </div> 
       @endgerencia
       <div class="form-group pull-right"> 

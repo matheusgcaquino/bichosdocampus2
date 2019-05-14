@@ -18,9 +18,10 @@ class HomeSeeder extends Seeder
             'home_imagem'   =>  $path,
             'selecionada'   =>  true,
         ]);
-        
+
         Sobre::create([
-            'sobre' =>  'O Bichos do Campus é uma iniciativa de voluntários, com objetivo de amparar os animais domésticos abandonados no Campus da UFS de São Cristóvão, visando sua adoção. Atualmente vivem cerca de 400 animais no Campus, e contamos apenas com doações para mantê-los.'
+            'sobre' =>  '<h4 style="color: white;">A <strong>Bichos do Campus</strong>, nasceu como um grupo de pessoas
+            que visa o bem-estar animal e acredita que todo animal precisa de um lar cheio de amor e carinho!</h4>'
         ]);
     }
 }
