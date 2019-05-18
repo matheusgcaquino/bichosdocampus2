@@ -20,14 +20,14 @@ class AdocaoConfirmada extends Mailable
 
     public function __construct(Adocao $adocao)
     {
-        $this->introLines = ["A BICHOS DO CAMPUS RECEBEU O SEU REQUERIMENTO E 
-        IRÁ ANÁLISAR O MAIS RÁPIDO POSSÍVEL. UTILIZAREMOS AS INFORMAÇÕES DE CONTATO FORNECIDAS 
-        PARA CONTATÁ-LO.", 
-        "VOCÊ PODERÁ ACOMPANHAR O ANDAMENTO DA SUA REQUISIÇÃO CLICANDO NO BOTÃO ABAIXO."];
+        $this->introLines = ["A Bichos do Campus recebeu o seu requerimento e 
+        irá análisar o mais rápido possível. utilizaremos as informações de contato fornecidas 
+        para contatá-lo.", 
+        "você poderá acompanhar o andamento da sua requisição clicando no botão abaixo."];
         $this->level = 'success';
-        $this->actionText = "ACOMPANHAR ADOÇÃO";
+        $this->actionText = "Acompanhar Adoção";
         $this->actionUrl = url("/adoções/requisição/{$adocao->codigo_adocao}");
-        $this->outroLines = ["OBRIGADO POR APOIAR ESSA CAUSA!"];
+        $this->outroLines = ["Obrigado por apoiar essa causa!"];
     }
 
     public function build()

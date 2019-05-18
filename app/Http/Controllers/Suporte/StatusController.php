@@ -50,18 +50,6 @@ class StatusController extends Controller
         return $stat;
     }
 
-    public static function status_num($adocoes)
-    {
-        $status = [0, 0, 0];
-        foreach ($adocoes as $adocao) {
-            $last = $adocao->status->last();
-            if ($last->status_adocao < 3) {
-                $status[$last->status_adocao]++;
-            }
-        }
-        return $status;
-    }
-
     public static function acao($status)
     {
         $last = $status->last();
