@@ -11,7 +11,7 @@ FORNECIDAS PARA CONTATÁ-LO.</h4>
 ACOMPANHAR ADOÇÃO
 @endcomponent
 <div>
-<p><strong>OBRIGADO POR APOIAR ESSA CAUSA!</strong></p>
+<h4><strong>OBRIGADO POR APOIAR ESSA CAUSA!</strong></h4>
 </div>
 </div>
 @endcomponent
