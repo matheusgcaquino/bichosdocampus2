@@ -12,15 +12,25 @@ class UserConvite extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $convite;
+    public $introLines;
+    public $level;
+    public $actionText;
+    public $actionUrl;
+    public $outroLines;
 
     public function __construct(Convite $convite)
     {
-        $this->convite = $convite;
+        $this->introLines = ["Você foi convidado a se cadastrar no site do Bichos do Campus.",
+            "Clique no botão abaixo para registrar-se e fazer parte dessa nossa equipe."];
+        $this->level = 'success';
+        $this->actionText = "Cadastra-se";
+        $this->actionUrl = url("/usuários/novo/convidado/{$convite->key}");
+        $this->outroLines = ["Confirmando o seu cadastro, você poderá ajudar os animais a encontrar um novo"];
     }
 
     public function build()
     {
-        return $this->markdown('emails.convite.index');
+        return $this->markdown('vendor.notifications.email')
+        ->subject('Faça parte da nossa equipe!');
     }
 }

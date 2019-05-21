@@ -13,14 +13,17 @@ class PaginaInicialController extends Controller
     {
         if ($tipo == "sobre") {
             $response = Sobre::first();
+            return view('config.pagina_inicial.sobre.index', [
+                "results"   =>  $response
+            ]); 
         } else {
             $response = Home_imagem::paginate(15);
+            return view('config.pagina_inicial.imagem.index', [
+                "results"   =>  $response
+            ]); 
         }
         
-        return view('config.pagina_inicial.index', [
-            "results"   =>  $response,
-            'tipo'      =>  $tipo
-        ]); 
+        
     }
     
     public function editarSobre(Request $request)

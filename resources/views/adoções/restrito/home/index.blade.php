@@ -1,6 +1,3 @@
-@php
-    // dd($results);
-@endphp
 @extends('adminlte::page')
 
 @section('title', 'Adoções de Animais - Bichos do Campus')
@@ -8,15 +5,15 @@
 @section('content_header')
 @stop
 
-@php
-    use App\Http\Controllers\Suporte\StatusController;
-@endphp
-
 @section('content')
     <div class="box">
         <div class="box-header" style="text-align: center;">
             <h3>Gerenciamento de Requisições de <STRONG>Adoção</STRONG></h3>
         <div class="box-header">
+            @if (isset($buscar))
+                <a href="{{route('site.adocoes')}}" class="btn btn-danger pull-left">
+                Limpar Busca</a>
+            @endif
             <div class="input-group pull-right col-md-3">
                 <input type="text" class="form-control" name="buscar" id="buscar" 
                 placeholder="Buscar por Animal" value="{{(isset($buscar) ? $buscar : '')}}"> 
@@ -38,7 +35,6 @@
                             ->exists($result->foto_perfil)){
                             $foto = url("uploads/".$result->foto_perfil);
                         }
-                        $status = StatusController::status_num($result->adocao);
                     @endphp
                     <div class="col-md-3">
                         <div class="box box-primary" style="border: solid 2px #f1f1f1; border-top: 2px solid #dd4b39;">
@@ -57,20 +53,36 @@
                                 @else
                                     <ul class="list-group list-group-unbordered">
                                         <li class="list-group-item">
-                                            <b>Novas requisições</b> 
-                                            <a class="pull-right">{{$status[0]}}</a>
+                                            <b>Requisições em avaliação</b> 
+                                            <a class="pull-right">
+                                                <span class="label" style="background-color: #9f0bba;">
+                                                    {{$result->avaliando}}
+                                                </span>
+                                            </a>
                                         </li>
                                         <li class="list-group-item">
                                             <b>Requisições em espera</b> 
-                                            <a class="pull-right">{{$status[1]}}</a>
+                                            <a class="pull-right">
+                                                <span class="label" style="background-color: #0400FF;">
+                                                    {{$result->visualizado}}
+                                                </span>
+                                            </a>
                                         </li>
                                         <li class="list-group-item">
-                                            <b>Requisições em avaliação</b> 
-                                            <a class="pull-right">{{$status[2]}}</a>
-                                        </li>
+                                            <b>Novas requisições</b> 
+                                            <a class="pull-right">
+                                                <span class="label" style="background-color: #26FF00;">
+                                                    {{$result->novo}}
+                                                </span>
+                                            </a>
+                                        </li>                                        
                                         <li class="list-group-item">
                                             <b>Total de requisições</b> 
-                                            <a class="pull-right">{{$result->adocao->count()}}</a>
+                                            <a class="pull-right">
+                                                <span class="label" style="background-color: #000000;">
+                                                    {{$result->adocao_count}}
+                                                </span>
+                                            </a>
                                         </li>
                                     </ul>
                                 @endif

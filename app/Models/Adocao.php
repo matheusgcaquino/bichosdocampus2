@@ -35,7 +35,7 @@ class Adocao extends Model
 
     public function animal()
     {
-        return $this->belongsto('App\Models\Animal', 'id_animal');
+        return $this->belongsTo('App\Models\Animal', 'id_animal');
     }
 
     public function status()
