@@ -15,7 +15,7 @@ return [
 
     'title' => 'BICHOS DO CAMPUS',
 
-    'title_prefix' => ' ',
+    'title_prefix' => '',
 
     'title_postfix' => '',
 

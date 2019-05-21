@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/font-awesome/css/font-awesome.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/Ionicons/css/ionicons.min.css') }}">
-    <link rel="shortcut icon" href="imagens/icon.png" />
+    {{-- Icone da projeto --}}
+    <link rel="shortcut icon" href="{{ asset('imagens/favicon.ico') }}">
 
     @if(config('adminlte.plugins.select2'))
         <!-- Select2 -->
@@ -39,7 +40,7 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition @yield('body_class')">
+<body class="hold-transition  @yield('body_class')" style="background: linear-gradient(to right, #ed213a, #93291e);">
 
 @yield('body')
 

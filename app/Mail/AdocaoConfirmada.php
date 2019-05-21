@@ -12,15 +12,27 @@ class AdocaoConfirmada extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $adocao;
+    public $introLines;
+    public $level;
+    public $actionText;
+    public $actionUrl;
+    public $outroLines;
 
     public function __construct(Adocao $adocao)
     {
-        $this->adocao = $adocao;
+        $this->introLines = ["A Bichos do Campus recebeu o seu requerimento e 
+        irá análisar o mais rápido possível. utilizaremos as informações de contato fornecidas 
+        para contatá-lo.", 
+        "você poderá acompanhar o andamento da sua requisição clicando no botão abaixo."];
+        $this->level = 'success';
+        $this->actionText = "Acompanhar Adoção";
+        $this->actionUrl = url("/adoções/requisição/{$adocao->codigo_adocao}");
+        $this->outroLines = ["Obrigado por apoiar essa causa!"];
     }
 
     public function build()
     {
-        return $this->markdown('emails.adocao.index')->subject('BICHOS DO CAMPUS - Seu requerimento de adoção foi enviado!');
+        return $this->markdown('vendor.notifications.email')
+            ->subject('Requerimento de adoção');
     }
 }

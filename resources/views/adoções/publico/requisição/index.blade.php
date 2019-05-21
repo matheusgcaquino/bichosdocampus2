@@ -13,6 +13,12 @@
     <div class="box">
         <div class="box-header" style="background-color: #dd4b39; color:azure;">
             <h3 class="text-center">Situação do requerimento para <strong> {{$results->animal->nome_animal}} </strong></h3>
+            @gerencia('local')
+                <a href="javascript:history.back()" class="btn btn-default">
+                    <span class="fa fa-angle-double-left"></span>
+                    Voltar
+                </a>
+            @endgerencia
         </div>
 
         <div class="box-body" style="border: 2px solid #dd4b39;">
