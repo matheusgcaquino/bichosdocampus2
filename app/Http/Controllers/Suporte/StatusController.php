@@ -98,4 +98,72 @@ class StatusController extends Controller
         }
         return $acao;
     }
+
+    public static function timeline($status){
+        switch ($status->status_adocao) {
+            case 0:
+                $icon = '<i class="fa fa-plus-square bg-aqua"></i>';
+                $titulo = 'Recebido';
+                $messagem = 'Recebemos sua requisição.';
+                break;
+            
+            case 1:
+            $icon = '<i class="fa fa-eye bg-blue"></i>';
+            $titulo = 'Visualizado';
+            $messagem = 'Seu requerimento foi visualizado.';
+                break;
+            
+            case 2:
+            $icon = '<i class="fa fa-search bg-yellow"></i>';
+            $titulo = 'Avaliando';
+            $messagem = 'Seu requerimento está em avaliação.';
+                break;
+
+            case 3:
+            $icon = '<i class="fa fa-check bg-green"></i>';
+            $titulo = 'Aprovado';
+            $messagem = 'Seu requerimento foi aprovado.';
+                break;
+
+            case 4:
+            $icon = '<i class="fa fa-thumbs-down bg-maroon"></i>';
+            $titulo = 'Recusado';
+            $messagem = 'Seu requerimento foi recusado.</br>';
+                break;
+
+            case 5:
+            $icon = '<i class="fa fa-close bg-red"></i>';
+            $titulo = 'Cancelado';
+            $messagem = 'Seu requerimento foi cancelado, porque o animal foi adotado.';
+                break;
+        }
+
+        return '
+        <ul class="timeline">
+
+            <!-- timeline time label -->
+            <li class="time-label">
+                <span class="bg-red">
+                    '.$status->created_at.'
+                </span>
+            </li>
+            <!-- /.timeline-label -->
+        
+            <!-- timeline item -->
+            <li>
+                <!-- timeline icon -->
+                '.$icon.'
+                <div class="timeline-item">
+        
+                    <h3 class="timeline-header"><a href="#">'.$titulo.'</a></h3>
+        
+                    <div class="timeline-body">
+                        '.$messagem.'
+                    </div>
+        
+                </div>
+            </li>
+            <!-- END timeline item -->
+        </ul>';
+    }
 }
