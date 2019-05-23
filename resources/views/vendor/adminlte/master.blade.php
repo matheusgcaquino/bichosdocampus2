@@ -15,7 +15,7 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/Ionicons/css/ionicons.min.css') }}">
     {{-- Icone da projeto --}}
-    <link rel="shortcut icon" href="{{ asset('imagens/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('imagens/icon.png') }}">
 
     @if(config('adminlte.plugins.select2'))
         <!-- Select2 -->

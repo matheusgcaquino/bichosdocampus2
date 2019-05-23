@@ -11,17 +11,17 @@
 
 @section('content')
     <div class="box">
-        <div class="box-header" style="background-color: #dd4b39; color:azure;">
+        <div class="box-header" style="background: linear-gradient(to right, #ed213a, #93291e); color:azure;">
             <h3 class="text-center">Situação do requerimento para <strong> {{$results->animal->nome_animal}} </strong></h3>
             @gerencia('local')
-                <a href="javascript:history.back()" class="btn btn-default">
-                    <span class="fa fa-angle-double-left"></span>
+                <a href="javascript:history.back()" class="btn btn-outline">
+                    <span class="fa fa-arrow-circle-left"></span>
                     Voltar
                 </a>
             @endgerencia
         </div>
 
-        <div class="box-body" style="border: 2px solid #dd4b39;">
+        <div class="box-body">
             @if($results)
                 @php
                     $foto = url("imagens/foto-icon.png");
@@ -47,12 +47,21 @@
                 <input type="text" class="form-control" value="{{$results->nome_adocao}}" disabled>
                 </div>
 
-                <div class="form-group col-md-6">
-                    <label>Status: </label>
-                    {!!$stat!!}
+                @guest
+                 <div class="col-md-12">
+                    <ul class="timeline">
+                        @foreach ($results->status as $status)
+                            {!! StatusController::timeline($status) !!}
+                        @endforeach
+                    </ul>  
                 </div>
+                @endguest
 
                 @gerencia('local')
+                    <div class="form-group col-md-6">
+                        <label>Status: </label>
+                        {!!$stat!!}
+                    </div>
                     <div class="form-group col-md-6">
                         <label for="especie"> Data de Nascimento </label>
                         <input type="text" class="form-control" value="{{$results->nascimento_adocao}}" disabled>

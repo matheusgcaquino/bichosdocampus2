@@ -10,8 +10,8 @@
         <div class="box-header">
             <h3>
                 <center>Configuração de <b>Quem somos</b></center> 
-                <a href="{{route('site.config')}}" class="btn btn-default">
-                    <span class="fa fa-angle-double-left"></span>
+                <a href="{{route('site.config')}}" class="btn btn-danger">
+                    <span class="fa fa-arrow-circle-left"></span>
                     Voltar
                 </a>
             </h3>
