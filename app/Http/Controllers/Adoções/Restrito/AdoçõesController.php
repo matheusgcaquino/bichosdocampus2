@@ -40,7 +40,7 @@ class AdoçõesController extends Controller
             ->orderBy('visualizado', 'desc')
             ->orderBy('novo', 'desc')
         ->paginate(16);
- 
+        // dd($animal);
         return view('adoções.restrito.home.index')->with("results", $animal);
     }
 

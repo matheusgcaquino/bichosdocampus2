@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Suporte;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DateTime;
 
 class StatusController extends Controller
 {
@@ -103,32 +104,35 @@ class StatusController extends Controller
         switch ($status->status_adocao) {
             case 0:
                 $icon = '<i class="fa fa-plus-square bg-aqua"></i>';
-                $titulo = 'Recebido';
-                $messagem = 'Recebemos sua requisição.';
+                $titulo = 'Requerimento Registrado';
+                $messagem = 'Recebemos sua requisição, em breve teremos uma resposta.';
                 break;
             
             case 1:
             $icon = '<i class="fa fa-eye bg-blue"></i>';
             $titulo = 'Visualizado';
-            $messagem = 'Seu requerimento foi visualizado.';
+            $messagem = 'Visualizamos sua requisição, em seguida iremos analisar seus dados
+             e em breve daremos um retorno.';
                 break;
             
             case 2:
             $icon = '<i class="fa fa-search bg-yellow"></i>';
             $titulo = 'Avaliando';
-            $messagem = 'Seu requerimento está em avaliação.';
+            $messagem = 'Estamos avaliando seus dados e das demais solicitações de adoção
+             para este animal, em breve daremos um retorno.';
                 break;
 
             case 3:
             $icon = '<i class="fa fa-check bg-green"></i>';
             $titulo = 'Aprovado';
-            $messagem = 'Seu requerimento foi aprovado.';
+            $messagem = 'Sua requisição foi aprovada, fique atento ao seu e-mail e/ou
+             telefone porque entraremos em contato em breve para finalizar a adoção.';
                 break;
 
             case 4:
             $icon = '<i class="fa fa-thumbs-down bg-maroon"></i>';
             $titulo = 'Recusado';
-            $messagem = 'Seu requerimento foi recusado.</br>';
+            $messagem = 'Seu requerimento foi recusado pelo seguinte motivo:</br>'. $status->comentario;
                 break;
 
             case 5:
@@ -144,7 +148,7 @@ class StatusController extends Controller
             <!-- timeline time label -->
             <li class="time-label">
                 <span class="bg-red">
-                    '.$status->created_at.'
+                    '.date_format($status->created_at, 'd/m/y - H:i').'h
                 </span>
             </li>
             <!-- /.timeline-label -->
