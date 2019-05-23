@@ -13,19 +13,70 @@ class AdoçõesController extends Controller
     
     public function index()
     {
-        $adocao = Animal::has('adocao')->with('adocao.status')
+        $animal = Animal::select(['id_animal', 'nome_animal', 'foto_perfil', 'status_animal'])
+            ->has('adocao')
+            ->withCount([
+                'adocao',
+                'adocao as novo' => function($query) {
+                    $query->has('status', 1)
+                    ->whereHas('status', function ($q) {
+                        $q->where('status_adocao', 0);
+                    });
+                },
+                'adocao as visualizado' => function($query) {
+                    $query->has('status', '<', 3)
+                    ->whereHas('status', function ($q) {
+                        $q->where('status_adocao', 1);
+                    });
+                },
+                'adocao as avaliando' => function($query) {
+                    $query->has('status', '<', 4)
+                    ->whereHas('status', function ($q) {
+                        $q->where('status_adocao', 2);
+                    });
+                }
+            ])
+            ->orderBy('avaliando', 'desc')
+            ->orderBy('visualizado', 'desc')
+            ->orderBy('novo', 'desc')
         ->paginate(16);
-        return view('adoções.restrito.home.index')->with("results", $adocao);
+        // dd($animal);
+        return view('adoções.restrito.home.index')->with("results", $animal);
     }
 
     public function buscar($buscar)
     {
-        $adocao = Animal::has('adocao')->with('adocao.status')
+        $animal = Animal::select(['id_animal', 'nome_animal', 'foto_perfil', 'status_animal'])
+            ->has('adocao')
             ->where('nome_animal', 'like', '%'.$buscar.'%')
-            ->inRandomOrder()
+            ->withCount([
+                'adocao',
+                'adocao as novo' => function($query) {
+                    $query->has('status', 1)
+                    ->whereHas('status', function ($q) {
+                        $q->where('status_adocao', 0);
+                    });
+                },
+                'adocao as visualizado' => function($query) {
+                    $query->has('status', '<', 3)
+                    ->whereHas('status', function ($q) {
+                        $q->where('status_adocao', 1);
+                    });
+                },
+                'adocao as avaliando' => function($query) {
+                    $query->has('status', '<', 4)
+                    ->whereHas('status', function ($q) {
+                        $q->where('status_adocao', 2);
+                    });
+                }
+            ])
+            ->orderBy('avaliando', 'desc')
+            ->orderBy('visualizado', 'desc')
+            ->orderBy('novo', 'desc')
         ->paginate(16);
+        
         return view('adoções.restrito.home.index')->with([
-            "results"   =>  $adocao,
+            "results"   =>  $animal,
             "buscar"    =>  $buscar
         ]);
     }

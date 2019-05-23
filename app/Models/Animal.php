@@ -42,4 +42,16 @@ class Animal extends Model
     {
         return $this->belongsto('App\Models\Local', 'id_local');
     }
+
+    public function status_adocao()
+    {
+        return $this->hasManyThrough(
+            'App\Models\StatusAdocao', 
+            'App\Models\Adocao', 
+            'id_animal',    // Foreign key on adocao table..
+            'id_adocao',    // Foreign key on status table..
+            'id_animal',    // Local key on animal table...
+            'id_adocao'     // Local key on adocao table...
+        );
+    }
 }

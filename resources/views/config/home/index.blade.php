@@ -93,7 +93,7 @@
                     </thead>
                     
                     <tbody>
-                        <tr>
+                        {{-- <tr>
                             <td>Imagem principal</td>
                             <td>
                                 <a href="{{route('config.paginaInicial', ['tipo' => 'imagem'])}}" 
@@ -101,7 +101,7 @@
                                     Editar
                                 </a>
                             </td>
-                        </tr>
+                        </tr> --}}
 
                         <tr>
                             <td>Quem somos</td>

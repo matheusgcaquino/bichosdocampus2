@@ -13,6 +13,10 @@
     <div class="box">
         <div class="box-header">
             <h3 class="text-center">Requisições para <strong> {{$animal->nome_animal}} </strong></h3>
+            <a href="javascript:history.back()" class="btn btn-danger">
+                <span class="fa fa-arrow-circle-left"></span>
+                Voltar
+            </a>
         </div>
 
         <div class="box-body">
