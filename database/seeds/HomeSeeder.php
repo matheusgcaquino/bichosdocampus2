@@ -13,10 +13,25 @@ class HomeSeeder extends Seeder
      */
     public function run()
     {
+        $path = Storage::putFile('home', new \Illuminate\Http\File(public_path('imagens/home1.jpg')));
+        Home_imagem::create([
+            'home_imagem'   =>  $path,
+            'posicao'   =>  1,
+        ]);
         $path = Storage::putFile('home', new \Illuminate\Http\File(public_path('imagens/home2.jpg')));
         Home_imagem::create([
             'home_imagem'   =>  $path,
-            'selecionada'   =>  true,
+            'posicao'   =>  2,
+        ]);
+        $path = Storage::putFile('home', new \Illuminate\Http\File(public_path('imagens/home3.jpg')));
+        Home_imagem::create([
+            'home_imagem'   =>  $path,
+            'posicao'   =>  3,
+        ]);
+        $path = Storage::putFile('home', new \Illuminate\Http\File(public_path('imagens/home5.jpg')));
+        Home_imagem::create([
+            'home_imagem'   =>  $path,
+            'posicao'   =>  4,
         ]);
 
         Sobre::create([

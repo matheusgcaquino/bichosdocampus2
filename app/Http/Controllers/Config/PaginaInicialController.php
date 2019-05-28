@@ -59,7 +59,7 @@ class PaginaInicialController extends Controller
         if ($request->foto) {
             $path = $request->foto->store('home');
             if ($request->selecionada) {
-                $response = Home_imagem::where('selecionada', true)->first();
+                $response = Home_imagem::where('posicao', true)->first();
                 if ($response) {
                     $response->selecionada = false;
                     $response->save();

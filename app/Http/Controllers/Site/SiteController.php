@@ -11,7 +11,7 @@ class SiteController extends Controller
 {
     public function index()
     {
-      $imagem = Home_imagem::where('selecionada', true)->first();
+      $imagem = Home_imagem::where('posicao', '>', 0)->get();
       $sobre = Sobre::first();
       return view('site.home.index',[
         'imagem'  =>  $imagem,

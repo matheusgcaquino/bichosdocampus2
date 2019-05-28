@@ -16,7 +16,7 @@ class CreateHomeImagemsTable extends Migration
         Schema::create('home_imagems', function (Blueprint $table) {
             $table->increments('id_home');
             $table->string('home_imagem', 1200);
-            $table->boolean('selecionada');
+            $table->tinyInteger('posicao');
         });
     }
 

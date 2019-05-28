@@ -39,9 +39,9 @@
                                 <img  src="{{url("uploads/".$result->home_imagem)}}" 
                                     alt="User profile picture" >
                             </div>
-                            @if ($result->selecionada)
+                            @if ($result->posicao > 0)
                                 <center>
-                                    <span class="bg-green label">Foto selecionada</span>
+                                    <span class="bg-green label">Foto #{{$result->posicao}}</span>
                                 </center>
                             @else
                                 <button type="button" class="btn btn-success btn-block" 
