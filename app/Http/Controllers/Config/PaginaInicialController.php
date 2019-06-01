@@ -21,9 +21,7 @@ class PaginaInicialController extends Controller
             return view('config.pagina_inicial.imagem.index', [
                 "results"   =>  $response
             ]); 
-        }
-        
-        
+        }        
     }
     
     public function editarSobre(Request $request)
@@ -42,15 +40,17 @@ class PaginaInicialController extends Controller
 
     public function selecionar(Request $request)
     {
-        $response = Home_imagem::where('selecionada', true)->first();
-        if ($response) {
-            $response->selecionada = false;
+        if ($request->posicao > 0) {
+            $response = Home_imagem::where('posicao', '=', $request->posicao)->first();
+            if ($response) {
+                $response->posicao = 0;
+                $response->save();
+            }
+
+            $response = Home_imagem::find($request->idHome);
+            $response->posicao = $request->posicao;
             $response->save();
         }
-
-        $response = Home_imagem::find($request->idHome);
-        $response->selecionada = true;
-        $response->save();
         return redirect()->route('config.paginaInicial', ['tipo' => 'imagem']);
     }
 
@@ -58,21 +58,35 @@ class PaginaInicialController extends Controller
     {
         if ($request->foto) {
             $path = $request->foto->store('home');
-            if ($request->selecionada) {
-                $response = Home_imagem::where('posicao', true)->first();
+            if ($request->posicao > 0) {
+                $response = Home_imagem::where('posicao', '=', $request->posicao)->first();
                 if ($response) {
-                    $response->selecionada = false;
+                    $response->posicao = 0;
                     $response->save();
                 }
-                $selecionada = true;
-            } else {
-                $selecionada = false;
             }
             Home_imagem::create([
                 'home_imagem'   =>  $path,
-                'selecionada'   =>  $selecionada,
+                'posicao'   =>  $request->posicao,
             ]);
         }
         return redirect()->route('config.paginaInicial', ['tipo' => 'imagem']);
+    }
+
+    public function editar(Request $request)
+    {
+        $response = Home_imagem::where('posicao', '=', $request->posicao)->first();
+        if ($response) {
+            $r2 = Home_imagem::find($request->idHome);
+            $response->posicao = $r2->posicao;
+            $r2->posicao = $request->posicao;
+            $response->save();
+            $r2->save();
+        } else {
+            $response = Home_imagem::find($request->idHome);
+            $response->posicao = $request->posicao;
+            $response->save();   
+        }
+        return redirect()->route('config.paginaInicial', ['tipo' => 'imagem']);        
     }
 }

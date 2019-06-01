@@ -20,6 +20,8 @@ Route::prefix('config')->group(function(){
         ->name('config.paginaInicial.selecionar');
         Route::post('/pagina_inicial_adicionar', 'PaginaInicialController@adicionar')
         ->name('config.paginaInicial.adicionar');
+        Route::post('/pagina_inicial_editar', 'PaginaInicialController@editar')
+        ->name('config.paginaInicial.editar');
     });
 
 });
