@@ -22,7 +22,7 @@
         </div>
         <div class="box-body">
             <div class="callout callout-warning">
-                <h4>A Imagem da página inicial, deve estar no formato paisagem!</h4>
+                <h4>A Imagem da página inicial, deve estar preferencialmente no formato paisagem!</h4>
                 <p>Utilizar imagens que não estão nesse formato, poderá não atender às suas expectativas.</p>
             </div>
             <div class="form-group">
@@ -33,7 +33,7 @@
             </div>
             @foreach($results as $result)
                 <div class="col-md-3">
-                    <div class="box box-primary">
+                    <div class="box box-danger" style="border-box: 1px solid #fffff;">
                         <div class="box-body box-profile">
                             <div class="im">
                                 <img  src="{{url("uploads/".$result->home_imagem)}}" 
