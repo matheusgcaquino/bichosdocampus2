@@ -19,13 +19,14 @@
     <div class="box-header">
 
       @gerencia('local')
-        <div class="form-group col-md-6">
-          <h3>Gerenciamento de <strong>Animais </strong> 
+        <h3>
+          <center>
+            Gerenciamento de <strong>Animais </strong>
             <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">
               <span class="fa fa-plus"></span>  NOVO  
             </a>
-          </h3>
-        </div> 
+          </center>
+        </h3>
       @endgerencia
       <div class="form-group pull-right"> 
         @if (isset($buscar))
@@ -453,7 +454,7 @@
         } else {
           div.style.display = "block";
         }
-        $.getJSON("animais/ajax_raca/" + value, function (data) {
+        $.getJSON("/animais/ajax_raca/" + value, function (data) {
           $.each(data, function (i, item) {
             const {id_raca, id_especie, raca} = item;
             addSelect("S_raca", id_raca, raca);

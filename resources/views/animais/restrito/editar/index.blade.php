@@ -25,7 +25,13 @@
       <input type="hidden" name="id" value="{{$result->id_animal}}">
 
       <div class="box-header">
-        <h3 class="box-title">Editar Animal</h3>
+        <h3>
+            <center>Editar <b>Animal</b></center> 
+            <a href="javascript:history.back()" class="btn btn-danger">
+              <span class="fa fa-arrow-circle-left"></span>
+              Voltar
+            </a>
+          </h3>
       </div>
       
       <div class="box-body">
@@ -91,7 +97,7 @@
           <select class="form-control" id="raca" name="raca" placeholder="Raça do Animal" style="width: 100%;" required>
             <option value=""> Escolha uma raça. </option>
             @foreach ($resultsraca as $resultraca)            
-              @if ($result->raca->id_raca == $resultraca->id_especie)
+              @if ($result->raca->id_raca == $resultraca->id_raca)
                 <option selected="selected" value="{{ $resultraca->id_raca }}"> {{ $resultraca->raca }} </option>
               @else
                 <option value="{{ $resultraca->id_raca }}"> {{ $resultraca->raca }} </option>
@@ -138,128 +144,129 @@
         </div>
     
         <div class="form-group col-md-6">
-            <label> Status </label>
-            <select class="form-control" name="status">
-              @if($result->status_animal == '0')              
-                <option value="1">Ativado</option>
-                <option selected="selected" value="0">Desativado</option>
+          <label> Status </label>
+          <select class="form-control" name="status">
+            @if($result->status_animal == '0')              
+              <option value="1">Ativado</option>
+              <option selected="selected" value="0">Desativado</option>
+              <option value="2">Adotado</option>
+            @else
+              @if($result->status_animal == '1')
+                <option selected="selected" value="1">Ativado</option>
+                <option value="0">Desativado</option>
                 <option value="2">Adotado</option>
               @else
-                @if($result->status_animal == '1')
-                  <option selected="selected" value="1">Ativado</option>
-                  <option value="0">Desativado</option>
-                  <option value="2">Adotado</option>
-                @else
-                  <option value="1">Ativado</option>
-                  <option value="0">Desativado</option>
-                  <option selected="selected" value="2">Adotado</option>
-                @endif
+                <option value="1">Ativado</option>
+                <option value="0">Desativado</option>
+                <option selected="selected" value="2">Adotado</option>
               @endif
-            </select>
-          </div>
+            @endif
+          </select>
+        </div>
     
         <div class="form-group col-md-6">
-            <label>Sexo</label>
-            @if ($result->sexo_animal == 'M')
-              <div class="radio">
-                <label>
-                  <input type="radio" name="sexo" id="sexo1" value="M" checked="">
-                  Macho
-                </label>
-              </div>
-              
-              <div class="radio">
-                <label>
-                  <input type="radio" name="sexo" id="sexo2" value="F">
-                  Fêmea
-                </label>
-              </div>
-            @else
-              <div class="radio">
-                <label>
-                  <input type="radio" name="sexo" id="sexo1" value="M">
-                  Macho
-                </label>
-              </div>
-              
-              <div class="radio">
-                <label>
-                  <input type="radio" name="sexo" id="sexo2" value="F" checked="">
-                  Fêmea
-                </label>
-              </div>
-            @endif
+          <label>Sexo</label>
+          @if ($result->sexo_animal == 'M')
+            <div class="radio">
+              <label>
+                <input type="radio" name="sexo" id="sexo1" value="M" checked="">
+                Macho
+              </label>
+            </div>
+            
+            <div class="radio">
+              <label>
+                <input type="radio" name="sexo" id="sexo2" value="F">
+                Fêmea
+              </label>
+            </div>
+          @else
+            <div class="radio">
+              <label>
+                <input type="radio" name="sexo" id="sexo1" value="M">
+                Macho
+              </label>
+            </div>
+            
+            <div class="radio">
+              <label>
+                <input type="radio" name="sexo" id="sexo2" value="F" checked="">
+                Fêmea
+              </label>
+            </div>
+          @endif
+        </div>
+    
+        <div class="form-group col-md-6">
+          <label>Castrado</label>
+          @if ($result->castracao_animal)
+            <div class="radio">
+              <label>
+                <input type="radio" name="castrado" id="castrado1" value="1" checked="">
+                Sim
+              </label>
+            </div>
+            
+            <div class="radio">
+              <label>
+                <input type="radio" name="castrado" id="castrado2" value="0">
+                Não
+              </label>
+            </div>
+          @else
+            <div class="radio">
+              <label>
+                <input type="radio" name="castrado" id="castrado1" value="1">
+                Sim
+              </label>
+            </div>
+            
+            <div class="radio">
+              <label>
+                <input type="radio" name="castrado" id="castrado2" value="0" checked="">
+                Não
+              </label>
+            </div>
+          @endif
+        </div>
+  
+        <div class="form-group">
+          <div class="pull-left">
+            <img class="profile-user-img img-responsive img-circle" 
+            src="{{$foto}}" alt="User profile picture">
+        
           </div>
-    
-          <div class="form-group col-md-6">
-              <label>Castrado</label>
-              @if ($result->castracao_animal)
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="castrado" id="castrado1" value="1" checked="">
-                    Sim
-                  </label>
-                </div>
-                
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="castrado" id="castrado2" value="0">
-                    Não
-                  </label>
-                </div>
-              @else
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="castrado" id="castrado1" value="1">
-                    Sim
-                  </label>
-                </div>
-                
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="castrado" id="castrado2" value="0" checked="">
-                    Não
-                  </label>
-                </div>
-              @endif
-            </div>
-    
-            <div class="form-group">
-                <div class="pull-left">
-                    <img class="profile-user-img img-responsive img-circle" 
-                    src="{{$foto}}" alt="User profile picture">
-                
-                  </div>
-                  <label for="foto">Alterar Imagem</label>
-                  <input type="file" id="foto" name="foto">
-                </div>
-      
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" id="excluirFoto" name="excluirFoto"> Excluir Foto
-                  </label>
-                </div>
-            </div>
+            <label for="foto">Alterar Imagem</label>
+            <input type="file" id="foto" name="foto">
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="excluirFoto" name="excluirFoto"> Excluir Foto
+            </label>
+          </div>
+        </div>
 
         <div class="form-group col-md-6">
           <label for="descricao"> Descrição </label>
           <textarea class="form-control" rows="3" id="descricao" name="descricao" 
             placeholder="Descrição do Animal"> {{$result->descricao_animal}} </textarea>
         </div>
+
+      </div>
       
       <div class="box-footer with-border">
         <button type="submit" id="btnConfirmar" class="btn btn-primary">Salvar</button>
         <a href="{{route('site.animais')}}" class="btn btn-default">Cancelar</a>
       </div>
     </form>
-
-    <script src="{{asset('js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('js/modulos/animais/formulario/formulario.js')}}"></script>
-
   </div>
-   
-  <script>
 
+@stop
+
+@section('js')
+  <script src="{{asset('js/modulos/animais/formulario/formulario.js')}}"></script>
+
+  <script>
     function cleanRaca() {
       var x = document.getElementById("raca");
       while (x.options[1] != null) {
@@ -288,7 +295,7 @@
         } else {
           div.style.display = "block";
         }
-        $.getJSON("animais/ajax_raca/" + value, function (data) {
+        $.getJSON("/animais/ajax_raca/" + value, function (data) {
           $.each(data, function (i, item) {
             const {id_raca, id_especie, raca} = item;
             addSelect("raca", id_raca, raca);
@@ -393,5 +400,4 @@
 
     });
   </script>
-
-@stop
+@endsection

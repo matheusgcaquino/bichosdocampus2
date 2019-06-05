@@ -32,7 +32,6 @@ class BuscarController extends Controller
     public function raca($especie)
     {
         $raca = Raca::where("id_especie", "=", $especie)->get();
-
         return response()->json($raca);
     }
 

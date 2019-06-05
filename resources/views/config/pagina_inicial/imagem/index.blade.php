@@ -13,7 +13,7 @@
     <div class="box">
         <div class="box-header">
             <h3>
-                <center>Configuração da Imagem Principal</center> 
+                <center>Configuração da <b>Imagem Principal</b></center> 
                 <a href="{{route('site.config')}}" class="btn btn-danger">
                     <span class="fa fa-arrow-circle-left"></span>
                     Voltar
