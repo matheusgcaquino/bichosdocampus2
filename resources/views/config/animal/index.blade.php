@@ -9,7 +9,7 @@
     <div class="box">
         <div class="box-header">
             <h3>
-                <center>Configuração de {{$nome}}</center> 
+                <center>Configuração de <b>{{$nome}}</b></center> 
                 <a href="{{route('site.config')}}" class="btn btn-danger">
                     <span class="fa fa-arrow-circle-left"></span>
                     Voltar

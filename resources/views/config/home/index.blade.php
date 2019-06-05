@@ -17,7 +17,6 @@
             </div>
         
             <div class="box-body">
-                <label>Editar Caracteristicas</label>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -83,7 +82,6 @@
             </div>
 
             <div class="box-body">
-                <label>Editar Caracteristicas</label>
                 <table class="table table-striped">
                     <thead>
                         <tr>

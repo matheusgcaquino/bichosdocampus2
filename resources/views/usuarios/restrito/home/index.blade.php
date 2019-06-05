@@ -8,8 +8,13 @@
 @section('content')
     <div class="box">
             <div class="box-header" style="text-align: center;">
-                <h3>Gerenciamento de <strong>Usuários</strong> <button  type="button" class="btn btn-success" data-toggle="modal" style="text-align: right;" 
-                data-target="#adicionar"><span class="fa fa-plus"></span></button></h3>
+                <h3>
+                    Gerenciamento de <strong>Usuários</strong> 
+                    <button  type="button" class="btn btn-success" data-toggle="modal" 
+                    data-target="#adicionar">
+                        <span class="fa fa-plus"></span> NOVO
+                    </button>
+                </h3>
                 
             </div>
         @include('site.includes.alerts')
