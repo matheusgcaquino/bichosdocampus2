@@ -20,8 +20,9 @@
             {{ csrf_field() }}
             <div class="box-body">
                 <div class="form-group">
-                    <textarea id="editor1" name="text" class="form-control"
-                    rows="10" cols="80">{{$results->sobre}}</textarea>
+                <textarea id="product-body" name="text" class="form-control">
+                    {{$results->sobre}}
+                </textarea>                      
                 </div>
             </div>
 
@@ -30,24 +31,19 @@
             </div>
         </form>
     </div>
+
+    
 @stop
 
 @section('js')
-    <!-- Bootstrap WYSIHTML5 -->
-    <script href="{{ asset('js/bootstrap3-wysihtml5.all.min.js') }}"></script>
-
-    {{-- <script href="{!! asset('js/ckeditor.js') !!}"></script> --}}
-
+    <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')}}"></script>
+    
     <script>
-        $(function () {
-            // CKEDITOR.replace('editor1')
-            //bootstrap WYSIHTML5 - text editor
-            $('.textarea').wysihtml5()
-        })
+        CKEDITOR.replace('product-body', {
+            extraPlugins: 'autogrow',
+            autoGrow_maxHeight: 400,
+            autoGrow_minHeight: 200,
+            removePlugins: 'resize'
+        });
     </script>
-@stop
-
-@section('css')
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap3-wysihtml5.min.css') }}">
-@stop
+@append
