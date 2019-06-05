@@ -70,7 +70,29 @@
     })
 </script>
 
+
+
 @yield('adminlte_js')
+
+<style type="text/css">
+    .im {
+          max-width: 100%;
+          background-repeat: no-repeat;
+          padding: 5%;
+          display:flex;
+          align-items: center;
+          justify-content: center;}
+    
+    div img {
+      max-width: 100%;
+      height: 150px;
+     
+    }
+
+    .cardA{
+        border: solid 2px #f1f1f1; border-top: 2px solid #dd4b39; font-weight: bolder;
+    }
+    </style>
 
 </body>
 </html>

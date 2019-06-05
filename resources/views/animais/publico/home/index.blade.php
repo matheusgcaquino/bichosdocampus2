@@ -56,7 +56,7 @@
           }
         @endphp
         <div class="col-md-3">
-          <div class="box box-primary" style="border: solid 2px #f1f1f1; border-top: 2px solid #dd4b39; font-weight: bolder;">
+          <div class="box box-danger cardA">
             <div class="box-body box-profile" style="border: solid 2px #f1f1f1;">
               <div class="im">
                 <img  src="{{$foto}}" alt="User profile picture" >
@@ -547,22 +547,4 @@
       $('#foto').val(foto)
     });
   </script>
-@stop
-
-@section('css')
-<style type="text/css">
-.im {
-      max-width: 100%;
-      background-repeat: no-repeat;
-      padding: 5%;
-      display:flex;
-      align-items: center;
-      justify-content: center;}
-
-div img {
-  max-width: 100%;
-  height: 150px;
- 
-}
-</style>
 @stop

@@ -22,7 +22,7 @@
         </div>
         <div class="box-body">
             <div class="callout callout-warning">
-                <h4>A Imagem da página inicial, deve estar no formato paisagem!</h4>
+                <h4>A Imagem da página inicial, deve estar preferencialmente no formato paisagem!</h4>
                 <p>Utilizar imagens que não estão nesse formato, poderá não atender às suas expectativas.</p>
             </div>
             <div class="form-group">
@@ -33,16 +33,26 @@
             </div>
             @foreach($results as $result)
                 <div class="col-md-3">
-                    <div class="box box-primary">
+                    <div class="box box-danger" style="border-box: 1px solid #fffff;">
                         <div class="box-body box-profile">
                             <div class="im">
                                 <img  src="{{url("uploads/".$result->home_imagem)}}" 
                                     alt="User profile picture" >
                             </div>
-                            @if ($result->selecionada)
+                            @if ($result->posicao > 0)
                                 <center>
-                                    <span class="bg-green label">Foto selecionada</span>
+                                    <h4>
+                                        <span class="bg-green label">Foto #{{$result->posicao}}</span>
+                                    </h4>
                                 </center>
+                                <button type="button" class="btn btn-primary btn-block" 
+                                    data-toggle="modal" 
+                                    data-target="#editar" 
+                                    data-solict-foto="{{$result->home_imagem}}"
+                                    data-solict-id="{{$result->id_home}}"
+                                    data-solict-posicao="{{$result->posicao}}">
+                                    <b>Editar</b>
+                                </button>
                             @else
                                 <button type="button" class="btn btn-success btn-block" 
                                     data-toggle="modal" 
@@ -100,6 +110,41 @@
         <!-- /.modal-dialog -->
     </div>
 
+    <div class="modal modal-primary fade" id="editar" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Editar Imagem</h4>
+                </div>
+        
+                <form action="{{route('config.paginaInicial.editar')}}" method="POST">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <input type="hidden" name="idHome" id="idHome3"/>
+                        <div class="form-group">
+                            <label> Posição </label>
+                            <select class="form-control" name="posicao" id="posicao">
+                                <option id="p1" value="1">Foto #1</option>
+                                <option id="p2" value="2">Foto #2</option>
+                                <option id="p3" value="3">Foto #3</option>
+                                <option id="p4" value="4">Foto #4</option>              
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline pull-left" 
+                        data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-outline">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
     <div class="modal modal-success fade" id="selecionar" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -113,6 +158,16 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <input type="hidden" name="idHome" id="idHome2"/>
+                        <div class="form-group">
+                            <label> Posição </label>
+                            <select class="form-control" name="posicao">
+                                <option selected="selected" value="0">Não selecionar</option>
+                                <option value="1">Foto #1</option>
+                                <option value="2">Foto #2</option>
+                                <option value="3">Foto #3</option>
+                                <option value="4">Foto #4</option>              
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline pull-left" 
@@ -132,7 +187,7 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel">Adicionar nova Imagem</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">Adicionar Nova Imagem</h4>
                 </div>
         
                 <form action="{{route('config.paginaInicial.adicionar')}}" method="POST"
@@ -140,21 +195,31 @@
                     {{ csrf_field() }}
                     <div class="modal-body">
                         <div class="form-group">
-                            <div class="pull-left" id="card-adocao">
+                            <div class="col-md-3" id="card-adocao">
                                 <img id="img-adocao" class="profile-user-img img-circle"
                                 src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
                             </div>
-                            <div class="pull-left" style="margin-left: 1%">
-                                <label for="foto"> Adicionar Imagem </label>
+                            <div class="col-md-6" style="margin-left: 1%">
+                                <label for="foto">Adicionar Imagem </label>
                                 <input type="file" name="foto" id="file-input">
+                                <label> Posição </label>
+                                <select class="form-control" name="posicao">
+                                    <option selected="selected" value="0">Não selecionar</option>
+                                    <option value="1">Foto #1</option>
+                                    <option value="2">Foto #2</option>
+                                    <option value="3">Foto #3</option>
+                                    <option value="4">Foto #4</option>              
+                                </select>
                             </div>
-                            </div>
+                        </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default pull-left" 
-                        data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Confirmar</button>
+                        <div class="form-group col-md-12">
+                            <button type="button" class="btn btn-default pull-left" 
+                            data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Confirmar</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -182,6 +247,16 @@
             var id = button.data('solict-id')
             var modal = $(this)
             $('#idHome2').val(id)
+        });
+
+        $('#editar').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var foto = button.data('solict-foto')
+            var id = button.data('solict-id')
+            var posicao = button.data('solict-posicao')
+            var modal = $(this)
+            $('#idHome3').val(id)
+            // $('#p'+posicao).selected = true;
         });
 
         document.getElementById('file-input').onchange = function (e) {
