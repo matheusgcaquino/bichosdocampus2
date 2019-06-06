@@ -63,19 +63,19 @@ class StatusController extends Controller
             case 1:
                 $acao = '<button type="button" class="btn btn-primary" data-toggle="modal" 
                     data-target="#modal" data-solict-acao="2" data-solict-nome="Avaliando">
-                    Avaliando</button>
+                    <span class="fa fa-eye"></span> Avaliando</button>
                     <button type="button" class="btn btn-danger" data-toggle="modal" 
                     data-target="#modal" data-solict-acao="4" data-solict-nome="Recusar">
-                    Recusar</button>';
+                    <span class="fa fa-close"></span>  Recusar</button>';
                 break;
             
             case 2:
                 $acao = '<button type="button" class="btn btn-success" data-toggle="modal" 
                     data-target="#modal" data-solict-acao="3" data-solict-nome="Aprovar">
-                    Aprovar</button>
+                    <span class="fa fa-check"></span> Aprovar</button>
                     <button type="button" class="btn btn-danger" data-toggle="modal" 
                     data-target="#modal" data-solict-acao="4" data-solict-nome="Recusar">
-                    Recusar</button>';
+                    <span class="fa fa-close"></span> Recusar</button>';
                 break;
 
             case 3:

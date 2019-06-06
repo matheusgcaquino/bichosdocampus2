@@ -30,7 +30,7 @@
                             <td>Espécie</td>
                             <td>
                                 <a href="{{route('config.animal', ['tipo' => 'especie'])}}" 
-                                    class="btn btn-primary pull-right">
+                                    class="btn btn-primary pull-right"><span class="fa fa-edit"></span>
                                     Editar
                                 </a>
                             </td>
@@ -39,7 +39,7 @@
                             <td>Raça</td>
                             <td>
                                 <a href="{{route('config.animal', ['tipo' => 'raca'])}}" 
-                                    class="btn btn-primary pull-right">
+                                    class="btn btn-primary pull-right"><span class="fa fa-edit"></span>
                                     Editar
                                 </a>
                             </td>
@@ -48,7 +48,7 @@
                             <td>Pelagem</td>
                             <td>
                                 <a href="{{route('config.animal', ['tipo' => 'pelagem'])}}" 
-                                    class="btn btn-primary pull-right">
+                                    class="btn btn-primary pull-right"><span class="fa fa-edit"></span>
                                     Editar
                                 </a>
                             </td>
@@ -57,7 +57,7 @@
                             <td>Localização (Colônia)</td>
                             <td>
                                 <a href="{{route('config.animal', ['tipo' => 'local'])}}" 
-                                    class="btn btn-primary pull-right">
+                                    class="btn btn-primary pull-right"><span class="fa fa-edit"></span>
                                     Editar
                                 </a>
                             </td>
@@ -95,7 +95,7 @@
                             <td>Imagem principal</td>
                             <td>
                                 <a href="{{route('config.paginaInicial', ['tipo' => 'imagem'])}}" 
-                                    class="btn btn-primary pull-right">
+                                    class="btn btn-primary pull-right"><span class="fa fa-edit"></span>
                                     Editar
                                 </a>
                             </td>
@@ -105,7 +105,7 @@
                             <td>Quem somos</td>
                             <td>
                                 <a href="{{route('config.paginaInicial', ['tipo' => 'sobre'])}}" 
-                                    class="btn btn-primary pull-right">
+                                    class="btn btn-primary pull-right"><span class="fa fa-edit"></span>
                                     Editar
                                 </a>
                             </td>

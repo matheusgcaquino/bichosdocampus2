@@ -51,6 +51,7 @@
                                     data-solict-foto="{{$result->home_imagem}}"
                                     data-solict-id="{{$result->id_home}}"
                                     data-solict-posicao="{{$result->posicao}}">
+                                    <span class="fa fa-edit"></span>
                                     <b>Editar</b>
                                 </button>
                             @else
@@ -66,6 +67,7 @@
                                     data-target="#excluir" 
                                     data-solict-foto="{{$result->home_imagem}}"
                                     data-solict-id="{{$result->id_home}}">
+                                    <span class="fa fa-trash"></span>
                                     <b>Excluir</b>
                                 </button>                                    
                             @endif

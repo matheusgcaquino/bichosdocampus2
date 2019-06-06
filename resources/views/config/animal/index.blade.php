@@ -40,6 +40,7 @@
                                             data-solict-id="{{$result->id}}"
                                             data-solict-text="{{$result->text}}"
                                             data-solict-tipo='editar'>
+                                            <span class="fa fa-edit"></span>
                                             <b>Editar</b>
                                         </button>
                                         <button type="button" class="btn btn-danger" 
@@ -47,6 +48,7 @@
                                             data-solict-id="{{$result->id}}"
                                             data-solict-text="{{$result->text}}"
                                             data-solict-tipo='excluir'>
+                                            <span class="fa fa-trash"></span>
                                             <b>Excluir</b>
                                         </button>
                                     </td>
@@ -77,6 +79,7 @@
                                             data-solict-id="{{$result->id}}"
                                             data-solict-text="{{$result->text}}"
                                             data-solict-tipo='editar'>
+                                            <span class="fa fa-edit"></span>
                                             <b>Editar</b>
                                         </button>
                                         <button type="button" class="btn btn-danger" 
@@ -84,6 +87,7 @@
                                             data-solict-id="{{$result->id}}"
                                             data-solict-text="{{$result->text}}"
                                             data-solict-tipo='excluir'>
+                                            <span class="fa fa-trash"></span>
                                             <b>Excluir</b>
                                         </button>
                                     </td>

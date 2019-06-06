@@ -167,8 +167,8 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" 
-                        data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-success">Confirmar</button>
+                        data-dismiss="modal"><span class="fa fa-close"></span>  Cancelar</button>
+                        <button type="submit" class="btn btn-success"><span class="fa fa-check"></span>  Confirmar</button>
                     </div>
                 </form>
             </div>
@@ -194,7 +194,7 @@
 @section('css')
 <style type="text/css">
 .im {
-      max-width: 100%;
+      width: 100%;
       background-repeat: no-repeat;
       padding: 5%;
       display:flex;
