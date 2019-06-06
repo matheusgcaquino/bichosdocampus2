@@ -42,7 +42,7 @@ class StatusController extends Controller
         //dd($request->all());
         $adocao = Adocao::select(['email_adocao', 'codigo_adocao'])->find($request->id);
 
-        Mail::to($adocao->email_adocao)->send(new MudancaStatus($adocao, $status_adocao));
+        // Mail::to($adocao->email_adocao)->send(new MudancaStatus($adocao, $status_adocao));
 
         return redirect()->route('adocoes.requisição', ['codigo' => $request->codigo]);
     }

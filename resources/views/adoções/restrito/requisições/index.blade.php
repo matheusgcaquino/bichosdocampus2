@@ -7,6 +7,7 @@
 
 @php
     use App\Http\Controllers\Suporte\StatusController;
+    // dd($results);
 @endphp
 
 @section('content')
