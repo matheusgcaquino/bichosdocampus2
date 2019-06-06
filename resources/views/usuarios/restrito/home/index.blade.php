@@ -25,9 +25,10 @@
         
         <div class="box-body">
             @if(!$results->isEmpty())
-                <table class="table">
+            <div class="table-responsive">
+                <table class="table table-bordered">
                     <thead style="background-color: #f1f1f1">
-                        <tr >
+                        <tr>
                             <th>Nome</th>
                             <th>Email</th>
                             <th>Nivel</th>
@@ -71,6 +72,7 @@
                         @endforeach
                     </tbody>
                 </table> 
+            </div>
             @else
                 <center><h3>Nenhuma Adoção encontrada!</h3></br>
             @endif

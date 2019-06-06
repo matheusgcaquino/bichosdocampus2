@@ -159,12 +159,12 @@
 
         <div class="form-group col-md-6">
           <div class="pull-left" id="card-adocao">
-            <img id="img-adocao" class="profile-user-img img-circle"
+            <img id="img-adocao" class="profile-user-img img-circle" style="max-height: 100px;" 
             src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
           </div>
           <div class="pull-left" style="margin-left: 1%">
             <label for="foto"> Adicionar Imagem </label>
-            <input type="file" name="foto" id="foto">
+            <input type="file" name="foto" id="foto" style="max-width: : 50%;">
           </div>
         </div>
 
@@ -237,8 +237,8 @@
               $('#card-adocao img').attr('class', 'profile-user-img img-circle');
             },
             {
-              maxWidth: 90,
-              maxHeight: 90,
+              maxWidth: 100,
+              maxHeight: 100,
               // orientation: 2,
             } // Options
           );            

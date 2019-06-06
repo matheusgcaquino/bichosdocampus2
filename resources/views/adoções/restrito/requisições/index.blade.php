@@ -32,16 +32,16 @@
                     <img  src="{{$foto}}" alt="User profile picture"/>
                 </div>
 
-                <div class="form-group col-md-8">
+                <div class="table-responsive">
                 
-                <table class="table table-striped">
-                    <thead>
+                <table class="table table-bordered">
+                    <thead style="background-color: #f1f1f1">
                         <tr>
-                            <th>Adotante</th>
-                            <th>Email</th>
                             <th>Data</th>
                             <th>Status</th>
+                            <th>Adotante</th>
                             <th>Ação</th>
+                            <th>Email</th>
                         </tr>
                     </thead>
                     
@@ -58,7 +58,7 @@
                                 <td>
                                     <a href="{{route('adocoes.requisição', 
                                         ['codigo' => $result->codigo_adocao])}}" 
-                                        class="btn btn-block btn-primary">Visualizar
+                                        class="btn btn-block btn-primary"><span class="fa fa-eye"></span>  Visualizar
                                     </a>
                                 </td>
                             </tr>

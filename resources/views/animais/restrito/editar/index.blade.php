@@ -232,12 +232,12 @@
   
         <div class="form-group">
           <div class="pull-left">
-            <img class="profile-user-img img-responsive img-circle" 
+            <img class="profile-user-img img-responsive img-circle" style="max-height: 100px;" 
             src="{{$foto}}" alt="User profile picture">
         
           </div>
             <label for="foto">Alterar Imagem</label>
-            <input type="file" id="foto" name="foto">
+            <input type="file" id="foto" name="foto" style="max-width: : 50%;">
 
           <div class="checkbox">
             <label>

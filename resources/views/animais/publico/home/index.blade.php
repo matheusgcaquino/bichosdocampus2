@@ -122,7 +122,7 @@
                 <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
                   data-target="#excluir" data-solict-id="{{$result->id_animal}}" 
                   data-solict-name="{{ $result->nome_animal }}">
-                  <span class="fa fa-minus-circle"></span><b> Excluir</b>
+                  <span class="fa fa-trash"></span><b> Excluir</b>
                 </button>
               @else
                 <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 

@@ -3345,6 +3345,7 @@ table.text-center th {
   width: 100px;
   padding: 3px;
   border: 3px solid #d2d6de;
+  height: 100px;
 }
 .profile-username {
   font-size: 21px;
