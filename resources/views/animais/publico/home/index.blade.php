@@ -54,13 +54,35 @@
           $foto = url("imagens/foto-icon.png");
           if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
             $foto = url("uploads/".$result->foto_perfil);
+
+            $id = 1;
           }
         @endphp
         <div class="col-md-3">
           <div class="box box-danger cardA">
             <div class="box-body box-profile" style="border: solid 2px #f1f1f1;">
-              <div class="im">
-                <img  src="{{$foto}}" alt="User profile picture" >
+              <div>
+              <div id="carousel-example-generic{{$result->id_animal}}" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" style="height: 200px;">
+                  <div class="item im">
+                      <img  src="{{$foto}}" alt="User profile picture">
+
+                  </div>
+                  <div class="item active im">
+                      <img  src="{{$foto}}" alt="User profile picture">
+                  </div>
+                  <div class="item im">
+                      <img  src="{{$foto}}" alt="User profile picture">
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-example-generic{{$result->id_animal}}" data-slide="prev">
+                  <span class="fa fa-angle-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic{{$result->id_animal}}" data-slide="next">
+                  <span class="fa fa-angle-right"></span>
+                </a>
+              </div>
+                
               </div>
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
