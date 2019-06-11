@@ -54,7 +54,7 @@ Para iniciar o projeto pela primeira vez, deve seguir esses passos para todos os
 composer update
 ```
 
-OBS: Caso não dê o composer update alguns arquivos necessarios não serão instalados na maquina. Provavelmente ocorrerá esse erro.
+**OBS: Caso não dê o composer update alguns arquivos necessarios não serão instalados na maquina. Provavelmente ocorrerá esse erro.**
 
 ![alt text](https://i.imgur.com/rJ36tVE.png)
 
@@ -68,7 +68,7 @@ OBS: Caso não dê o composer update alguns arquivos necessarios não serão ins
 php artisan key:generate
 ```
 
-OBS: Caso não faça esses passos haverá um problema de configuração. Ocorrerá esse error.
+**OBS: Caso não faça esses passos haverá um problema de configuração. Ocorrerá esse error.**
 
 ![alt text](https://i.imgur.com/F37iMGy.png)
 
