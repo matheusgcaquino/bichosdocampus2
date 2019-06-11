@@ -25,23 +25,14 @@ No projeto foi utilizado o Laragon (ambiente de desenvolvimento isolado), pois e
 
 ![alt text](https://i.imgur.com/kOMoYBo.jpg)
 
-### a) Diagrama de Classe
+## 4) Documentação
 
-![alt text](https://i.imgur.com/GUjSrvX.jpg)
+* [Diagrama de Classe](https://i.imgur.com/GUjSrvX.jpg)
+* [Diagrama de Casos de Uso](https://i.imgur.com/ObRbLDY.jpg)
+* [Diagrama de Estados](https://i.imgur.com/ZeqpIDG.jpg)
+* [Modelagem do Banco](https://i.imgur.com/Yg2jiZy.jpg)
 
-### b) Diagrama de Casos de Uso
-
-![alt text](https://i.imgur.com/ObRbLDY.jpg)
-
-### c) Diagrama de Estados
-
-![alt text](https://i.imgur.com/ZeqpIDG.jpg)
-
-### d) Modelagem do Banco
-
-![alt text](https://i.imgur.com/Yg2jiZy.jpg)
-
-## 4) Iniciar o Projeto
+## 5) Iniciar o Projeto
 
 Para iniciar o projeto pela primeira vez, deve seguir esses passos para todos os arquivos e todas as configurações sejam atualizadas.
 
