@@ -38,8 +38,8 @@
                     @endphp
                     <div class="col-md-3">
                         <div class="box box-danger cardA">
-                            <div class="box-body box-profile" style="border: solid 2px #f1f1f1;">
-                                <div class="im">
+                            <div class="box-body box-profile" style="border: solid 2px #f1f1f1; padding: 0;">
+                                <div style="width: 100%;" >
                                     <img  src="{{$foto}}" alt="User profile picture" >
                                 </div>
                 
@@ -51,7 +51,7 @@
                                             </div>
                                         </div>
                                 @else
-                                    <ul class="list-group list-group-unbordered">
+                                    <ul class="list-group list-group-unbordered" style="padding: 4%; font-size: 0.9em;">
                                         <li class="list-group-item">
                                             <b>Requisições em avaliação</b> 
                                             <a class="pull-right">
@@ -152,7 +152,7 @@
       justify-content: center;}
 
 div img {
-  max-width: 100%;
+  width: 100%;
   height: 150px;
  
 }
