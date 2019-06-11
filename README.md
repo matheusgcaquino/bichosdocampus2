@@ -21,7 +21,7 @@ Um programa capaz de gerenciar todos animais para adoção e todas as informaç�
 
 ## 3) Escopo do Projeto
 
-No projeto foi utilizado o Laragon (ambiente de desenvolvimento isolado), pois ele vinha com os softwares necessarios para o projeto (Laravel, Git, Banco de Dados, Servidor Web) sem conflitos.
+No projeto foi utilizado o * [Laragon](https://laragon.org/download/) (ambiente de desenvolvimento isolado), pois ele vinha com os softwares necessarios para o projeto (Laravel, Git, Banco de Dados, Servidor Web) sem conflitos.
 
 ![alt text](https://i.imgur.com/kOMoYBo.jpg)
 
