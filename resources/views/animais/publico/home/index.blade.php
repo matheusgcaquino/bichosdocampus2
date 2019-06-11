@@ -54,20 +54,38 @@
           $foto = url("imagens/foto-icon.png");
           if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
             $foto = url("uploads/".$result->foto_perfil);
+
+            $id = 1;
           }
         @endphp
         <div class="col-md-3">
           <div class="box box-danger cardA">
-            <div class="box-body box-profile" style="border: solid 2px #f1f1f1;">
-              <div class="im">
-                <img  src="{{$foto}}" alt="User profile picture" >
+            <div class="box-body box-profile" style="border: solid 2px #f1f1f1;padding: 0;">
+              <div style="width: 100%; height: 100%;">
+              <div id="carousel-example-generic{{$result->id_animal}}" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" style="height: 200px;">
+                  <div class="item im" style="background-image: url('{{$foto}}'); background-position: center; height: 100%; background-size: cover; "> 
+                  </div>
+                  <div class="item active im" style="background-image: url('{{$foto}}'); background-position: center; height: 100%; background-size: cover; "> 
+                  </div>
+                  <div class="item im" style="background-image: url('{{$foto}}'); background-position: center; height: 100%; background-size: cover; "> 
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#carousel-example-generic{{$result->id_animal}}" data-slide="prev">
+                  <span class="fa fa-angle-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic{{$result->id_animal}}" data-slide="next">
+                  <span class="fa fa-angle-right"></span>
+                </a>
+              </div>
+                
               </div>
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
 
               <p class="text-muted text-center">{{$result->raca->raca}}</p>
 
-              <ul class="list-group list-group-unbordered">
+              <ul class="list-group list-group-unbordered" style="padding: 10px;">
                 <li class="list-group-item">
                   <b>Sexo</b> <a class="pull-right">{{$sexo_animal}}</a>
                 </li>

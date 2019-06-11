@@ -1776,7 +1776,6 @@ a:focus {
   border-top-right-radius: 0;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
-  padding: 10px;
 }
 .no-header .box-body {
   border-top-right-radius: 3px;
@@ -4664,8 +4663,7 @@ table.text-center th {
   border-left: 0;
   border-right: 0;
   border-radius: 0;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 10px;
 }
 .flat {
   border-radius: 0 !important;
