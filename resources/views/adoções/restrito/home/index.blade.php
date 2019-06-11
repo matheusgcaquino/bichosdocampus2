@@ -45,8 +45,8 @@
                 
                                 <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
                                 @if ($result->status_animal == 2)
-                                        <div class="form-group">
-                                            <div class="bg-orange-active color-palette">
+                                        <div class="form-group" style="height: 180px; padding-top: 35%;">
+                                            <div class="bg-orange-active color-palette" style=" font-size:20px;">
                                                 <span>Adotado</span>
                                             </div>
                                         </div>
