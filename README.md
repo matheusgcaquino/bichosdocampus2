@@ -47,9 +47,12 @@ Para iniciar o projeto pela primeira vez, deve seguir esses passos para todos os
 
 ### a) Atualizar o composer
 
-1 - Faça o git clone.
-2 - Abra o terminal.
-3 - Digite "composer update".
+* 1 - Faça o git clone.
+* 2 - Abra o terminal.
+* 3 - Digite:
+```sh
+composer update
+```
 
 OBS: Caso não dê o composer update alguns arquivos necessarios não serão instalados na maquina. Provavelmente ocorrerá esse erro.
 
@@ -57,10 +60,13 @@ OBS: Caso não dê o composer update alguns arquivos necessarios não serão ins
 
 ### b) Criar o arquivo .env
 
-1 - Duplique o arquivo ".env.example".
-2 - Renomei o arquivo para ".env".
-3 - Abra o terminal.
-4 - Digite o comando "php artisan key:generate".
+* 1 - Duplique o arquivo ".env.example".
+* 2 - Renomei o arquivo para ".env".
+* 3 - Abra o terminal.
+* 4 - Digite o comando:
+```sh
+php artisan key:generate
+```
 
 OBS: Caso não faça esses passos haverá um problema de configuração. Ocorrerá esse error.
 
@@ -68,16 +74,31 @@ OBS: Caso não faça esses passos haverá um problema de configuração. Ocorrer
 
 ### c) Criar e Povoar o Banco de Dados
 
-1 - Crie o banco de dados.
-2 - Modifique a configuração de banco de dados no arquivo ".env".
-3 - Modifique a configuração de banco de dados no arquivo "config/database.php".
-4 - Abra o terminal.
-5 - Digite o comando "php artisan migrate".
-6 - Digite o comando "php artisan db:seed".
+* 1 - Crie o banco de dados.
+* 2 - Modifique a configuração de banco de dados no arquivo ".env".
+* 3 - Modifique a configuração de banco de dados no arquivo "config/database.php".
+* 4 - Abra o terminal.
+* 5 - Digite o comando:
+```sh
+php artisan migrate
+```
+* 6 - Digite o comando:
+```sh
+php artisan db:seed
+```
 
 ### d) Atualizar alguns componentes
 
-1 - Abra o terminal.
-2 - Digite o comando "composer require unisharp/laravel-ckeditor".
-3 - Digite o comando "php artisan vendor:publish-tag=ckeditor".
-4 - Digite o comando "npm install".
+* 1 - Abra o terminal.
+* 2 - Digite o comando:
+```sh
+composer require unisharp/laravel-ckeditor
+```
+* 3 - Digite o comando:
+```sh
+php artisan vendor:publish-tag=ckeditor
+```
+* 4 - Digite o comando:
+```sh
+npm install
+```
