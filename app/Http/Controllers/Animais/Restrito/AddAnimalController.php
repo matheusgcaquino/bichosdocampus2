@@ -9,6 +9,8 @@ use App\Models\Raca;
 use App\Models\Pelagem;
 use App\Models\Especie;
 use App\Models\Local;
+use App\Models\Foto_animal;
+
 class AddAnimalController extends Controller
 {  
   public function index()
@@ -79,10 +81,26 @@ class AddAnimalController extends Controller
     ]);
     
     if($animal){
-      if($request->foto){
-        $path = $request->foto->store('animais/'.$animal->id_animal);
-        $animal->foto_perfil = $path;
+      if($request->foto_1){
+        $path_1 = $request->foto_1->store('animais/'.$animal->id_animal.'-1');
+        $animal->foto_perfil = $path_1;
         $animal->save(); 
+      }
+      if($request->foto_2){
+        $path_2 = $request->foto_2->store('animais/'.$animal->id_animal.'-2');
+        $foto_2 = Foto_animal::create([
+          'id_animal'         => $animal->id_animal,
+          'foto_animal'       => $path_2
+        ]);
+        $foto_2->save(); 
+      }
+      if($request->foto_3){
+        $path_3 = $request->foto_3->store('animais/'.$animal->id_animal.'-3');
+        $foto_3 = Foto_animal::create([
+          'id_animal'         => $animal->id_animal,
+          'foto_animal'       => $path_3
+        ]);
+        $foto_3->save();
       }
     }else{
       $mensagem = 'Erro ao adicionar.';

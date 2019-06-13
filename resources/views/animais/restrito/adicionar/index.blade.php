@@ -157,18 +157,40 @@
                 </div>
               </div>
 
-        <div class="form-group col-md-6">
-          <div class="pull-left" id="card-adocao">
-            <img id="img-adocao" class="profile-user-img img-circle" style="max-height: 100px;" 
+        <div class="form-group col-md-4" id="div_foto_1">
+          <div class="pull-left" id="card-adocao-1">
+            <img id="img-adocao-1"  height="150" width="150"
             src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
           </div>
           <div class="pull-left" style="margin-left: 1%">
-            <label for="foto"> Adicionar Imagem </label>
-            <input type="file" name="foto" id="foto" style="max-width: : 50%;">
+            <label for="foto"> Adicionar Foto Perfil </label>
+            <input type="file" name="foto_1" id="foto_1" style="max-width: : 50%;">
           </div>
         </div>
 
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4" id="div_foto_2">
+          <div class="pull-left" id="card-adocao-2">
+            <img id="img-adocao-2" height="150" width="150" 
+            src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+          </div>
+          <div class="pull-left" style="margin-left: 1%">
+            <label for="foto"> Adicionar Foto 01 </label>
+            <input type="file" name="foto_2" id="foto_2" style="max-width: : 50%;">
+          </div>
+        </div>
+
+        <div class="form-group col-md-4" id="div_foto_3">
+          <div class="pull-left" id="card-adocao-3">
+            <img id="img-adocao-3"  height="150" width="150"
+            src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+          </div>
+          <div class="pull-left" style="margin-left: 1%">
+            <label for="foto"> Adicionar Foto 02 </label>
+            <input type="file" name="foto_3" id="foto_3" style="max-width: : 50%;">
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
             <label for="descricao"> Descrição </label>
             <textarea class="form-control" rows="3" id="descricao" name="descricao" 
               placeholder="Descrição do Animal"></textarea>
@@ -187,6 +209,17 @@
     <script src="{{asset('js/JavaScript-Load-Image-2.20.1/js/load-image.all.min.js')}}"></script>
     
     <script>
+
+      $('#div_foto_2').hide();
+      $('#div_foto_3').hide();
+
+      $('#foto_1').change(function() {
+        $('#div_foto_2').show();
+      });
+
+      $('#foto_2').change(function() {
+        $('#div_foto_3').show();
+      });
 
       function cleanRaca() {
         var x = document.getElementById("raca");
@@ -227,18 +260,52 @@
 
       $(document).ready(function() {
 
-        document.getElementById('foto').onchange = function (e) {
+        document.getElementById('foto_1').onchange = function (e) {
           loadImage(
             e.target.files[0],
             function (img) {                
               
-              $('#card-adocao').empty();
-              document.getElementById('card-adocao').appendChild(img);
-              $('#card-adocao img').attr('class', 'profile-user-img img-circle');
+              $('#card-adocao-1').empty();
+              document.getElementById('card-adocao-1').appendChild(img);
+              $('#card-adocao-1 img').attr('class', '');
             },
             {
-              maxWidth: 100,
-              maxHeight: 100,
+              maxWidth: 150,
+              maxHeight: 150,
+              // orientation: 2,
+            } // Options
+          );            
+        };
+
+        document.getElementById('foto_2').onchange = function (e) {
+          loadImage(
+            e.target.files[0],
+            function (img) {                
+              
+              $('#card-adocao-2').empty();
+              document.getElementById('card-adocao-2').appendChild(img);
+              $('#card-adocao-2 img').attr('class', '');
+            },
+            {
+              maxWidth: 150,
+              maxHeight: 150,
+              // orientation: 2,
+            } // Options
+          );            
+        };
+
+        document.getElementById('foto_3').onchange = function (e) {
+          loadImage(
+            e.target.files[0],
+            function (img) {                
+              
+              $('#card-adocao-3').empty();
+              document.getElementById('card-adocao-3').appendChild(img);
+              $('#card-adocao-3 img').attr('class', '');
+            },
+            {
+              maxWidth: 150,
+              maxHeight: 150,
               // orientation: 2,
             } // Options
           );            
