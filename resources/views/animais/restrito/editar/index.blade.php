@@ -259,7 +259,7 @@
           </div>
           <div class="pull-left" style="margin-left: 1%">
             <label for="foto">Alterar Foto Perfil</label>
-            <input type="file" id="foto_1" name="foto_1" style="max-width: : 50%;">
+            <input type="file" accept="image/*" id="foto_1" name="foto_1" style="max-width: : 50%;">
           </div>
         </div>
 
@@ -270,7 +270,7 @@
           </div>
           <div class="pull-left" style="margin-left: 1%">
             <label for="foto">Alterar Foto 01</label>
-            <input type="file" id="foto_2" name="foto_2" style="max-width: : 50%;">
+            <input type="file" id="foto_2" accept="image/*" name="foto_2" style="max-width: : 50%;">
             <div class="checkbox">
               <label>
                 <input type="checkbox" id="excluirFoto_2" name="excluirFoto_2"> Excluir Foto
@@ -286,7 +286,7 @@
           </div>
           <div class="pull-left" style="margin-left: 1%">
             <label for="foto">Alterar Foto 02</label>
-            <input type="file" id="foto_3" name="foto_3" style="max-width: : 50%;">
+            <input type="file" id="foto_3" accept="image/*" name="foto_3" style="max-width: : 50%;">
             <div class="checkbox">
               <label>
                 <input type="checkbox" id="excluirFoto_3" name="excluirFoto_3"> Excluir Foto
