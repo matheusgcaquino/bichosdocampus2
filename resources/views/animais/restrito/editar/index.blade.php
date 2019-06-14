@@ -10,12 +10,34 @@
     use App\Http\Controllers\Suporte\DataController; 
     
     $idade = DataController::getData($result->idade_animal);
+
+    $qtdfotos = $resultsfotos->count();
     
-    $foto = url("imagens/foto-icon.png");
+    $foto_1 = url("imagens/foto-icon.png");
+    $foto_2 = url("imagens/foto-icon.png");
+    $foto_3 = url("imagens/foto-icon.png");
 
     if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
-      $foto = url("uploads/".$result->foto_perfil);
+      $foto_1 = url("uploads/".$result->foto_perfil);
     }
+    
+    if($qtdfotos == 1)
+    {
+      if($resultsfotos[0]->foto_animal && Storage::disk('public_uploads')->exists($resultsfotos[0]->foto_animal)){
+        $foto_2 = url("uploads/".$resultsfotos[0]->foto_animal);
+      }
+    }
+    
+    if($qtdfotos > 1)
+    {
+      if($resultsfotos[0]->foto_animal && Storage::disk('public_uploads')->exists($resultsfotos[0]->foto_animal)){
+        $foto_2 = url("uploads/".$resultsfotos[0]->foto_animal);
+      }
+      if($resultsfotos[1]->foto_animal && Storage::disk('public_uploads')->exists($resultsfotos[1]->foto_animal)){
+        $foto_3 = url("uploads/".$resultsfotos[1]->foto_animal);
+      }
+    }
+
   @endphp
 
   <div class="box">
@@ -229,24 +251,51 @@
             </div>
           @endif
         </div>
-  
-        <div class="form-group">
-          <div class="pull-left">
-            <img class="profile-user-img img-responsive img-circle" style="max-height: 100px;" 
-            src="{{$foto}}" alt="User profile picture">
-        
+        <div class="form-group col-md-12" style="padding: 2% 10%;">
+        <div class="form-group col-md-4" id="foto_1">
+          <div class="pull-left" id="card-adocao-1">
+            <img id="img-adocao-1"  height="150" width="150"
+            src="{{$foto_1}}" alt="User profile picture">
           </div>
-            <label for="foto">Alterar Imagem</label>
-            <input type="file" id="foto" name="foto" style="max-width: : 50%;">
-
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" id="excluirFoto" name="excluirFoto"> Excluir Foto
-            </label>
+          <div class="pull-left" style="margin-left: 1%">
+            <label for="foto">Alterar Foto Perfil</label>
+            <input type="file" accept="image/*" id="foto_1" name="foto_1" style="max-width: : 50%;">
           </div>
         </div>
 
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4" id="foto_2">
+          <div class="pull-left" id="card-adocao-2">
+            <img id="img-adocao-2"  height="150" width="150" 
+            src="{{$foto_2}}" alt="User profile picture">
+          </div>
+          <div class="pull-left" style="margin-left: 1%">
+            <label for="foto">Alterar Foto 01</label>
+            <input type="file" id="foto_2" accept="image/*" name="foto_2" style="max-width: : 50%;">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="excluirFoto_2" name="excluirFoto_2"> Excluir Foto
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" id="foto_3">
+          <div class="pull-left" id="card-adocao-3">
+            <img id="img-adocao-3"  height="150" width="150"
+            src="{{$foto_3}}" alt="User profile picture">
+          </div>
+          <div class="pull-left" style="margin-left: 1%">
+            <label for="foto">Alterar Foto 02</label>
+            <input type="file" id="foto_3" accept="image/*" name="foto_3" style="max-width: : 50%;">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="excluirFoto_3" name="excluirFoto_3"> Excluir Foto
+              </label>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="form-group col-md-12">
           <label for="descricao"> Descrição </label>
           <textarea class="form-control" rows="3" id="descricao" name="descricao" 
             placeholder="Descrição do Animal"> {{$result->descricao_animal}} </textarea>
@@ -265,6 +314,7 @@
 
 @section('js')
   <script src="{{asset('js/modulos/animais/formulario/formulario.js')}}"></script>
+  <script src="{{asset('js/JavaScript-Load-Image-2.20.1/js/load-image.all.min.js')}}"></script>
 
   <script>
     function cleanRaca() {
@@ -313,6 +363,57 @@
       var mes = document.getElementById('numeromeses');
       ano.value = ValorAno;
       mes.value = ValorMes;
+
+      document.getElementById('foto_1').onchange = function (e) {
+        loadImage(
+            e.target.files[0],
+            function (img) {                
+              
+              $('#card-adocao-1').empty();
+              document.getElementById('card-adocao-1').appendChild(img);
+              $('#card-adocao-1 img').attr('class', '');
+            },
+            {
+              maxWidth: 150,
+              maxHeight: 150,
+              // orientation: 2,
+            } // Options
+        );            
+      };
+
+      document.getElementById('foto_2').onchange = function (e) {
+        loadImage(
+            e.target.files[0],
+            function (img) {                
+              
+              $('#card-adocao-2').empty();
+              document.getElementById('card-adocao-2').appendChild(img);
+              $('#card-adocao-2 img').attr('class', '');
+            },
+            {
+              maxWidth: 150,
+              maxHeight: 150,
+              // orientation: 2,
+            } // Options
+        );            
+      };
+
+      document.getElementById('foto_3').onchange = function (e) {
+        loadImage(
+            e.target.files[0],
+            function (img) {                
+              
+              $('#card-adocao-3').empty();
+              document.getElementById('card-adocao-3').appendChild(img);
+              $('#card-adocao-3 img').attr('class', '');
+            },
+            {
+              maxWidth: 150,
+              maxHeight: 150,
+              // orientation: 2,
+            } // Options
+        );            
+      };
 
       $("#especie").select2({
         tags: true,
@@ -397,6 +498,8 @@
           $(novalocalizacao).val('1');
         }
       }); 
+
+      
 
     });
   </script>
