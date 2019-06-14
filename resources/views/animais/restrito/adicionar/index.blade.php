@@ -157,7 +157,7 @@
                 </div>
               </div>
 
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-12" style="padding: 2% 10%;">
           <div class="form-group col-md-4" id="div_foto_1">
             <div class="pull-left" id="card-adocao-1">
               <img id="img-adocao-1"  height="150" width="150"
@@ -165,7 +165,7 @@
             </div>
             <div class="pull-left" style="margin-left: 1%">
               <label for="foto"> Adicionar Foto Perfil </label>
-              <input type="file" name="foto_1" id="foto_1" style="max-width: : 50%;">
+              <input type="file" name="foto_1" accept="image/*" id="foto_1" style="max-width: : 50%;">
             </div>
           </div>
 
@@ -176,7 +176,7 @@
             </div>
             <div class="pull-left" style="margin-left: 1%">
               <label for="foto"> Adicionar Foto 01 </label>
-              <input type="file" name="foto_2" id="foto_2" style="max-width: : 50%;">
+              <input type="file" name="foto_2" accept="image/*" id="foto_2" style="max-width: : 50%;">
             </div>
           </div>
 
@@ -187,7 +187,7 @@
             </div>
             <div class="pull-left" style="margin-left: 1%">
               <label for="foto"> Adicionar Foto 02 </label>
-              <input type="file" name="foto_3" id="foto_3" style="max-width: : 50%;">
+              <input type="file" name="foto_3" accept="image/*" id="foto_3" style="max-width: : 50%;">
             </div>
           </div>
         </div>

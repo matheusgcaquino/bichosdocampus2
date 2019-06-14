@@ -251,7 +251,7 @@
             </div>
           @endif
         </div>
-  
+        <div class="form-group col-md-12" style="padding: 2% 10%;">
         <div class="form-group col-md-4" id="foto_1">
           <div class="pull-left" id="card-adocao-1">
             <img id="img-adocao-1"  height="150" width="150"
@@ -278,7 +278,7 @@
             </div>
           </div>
         </div>
-
+        
         <div class="form-group col-md-4" id="foto_3">
           <div class="pull-left" id="card-adocao-3">
             <img id="img-adocao-3"  height="150" width="150"
@@ -294,7 +294,7 @@
             </div>
           </div>
         </div>
-
+        </div>
         <div class="form-group col-md-12">
           <label for="descricao"> Descrição </label>
           <textarea class="form-control" rows="3" id="descricao" name="descricao" 
