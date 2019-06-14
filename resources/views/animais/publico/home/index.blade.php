@@ -50,13 +50,13 @@
           ($castracao_animal = $result->castracao_animal ? "Sim" : "Não");
           
           $idade = DataController::convertData($result->idade_animal);
-          
+
           $foto = url("imagens/foto-icon.png");
+
           if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
             $foto = url("uploads/".$result->foto_perfil);
-
-            $id = 1;
           }
+  
         @endphp
         <div class="col-md-3">
           <div class="box box-danger cardA">
@@ -64,12 +64,15 @@
               <div style="width: 100%; height: 100%;">
               <div id="carousel-example-generic{{$result->id_animal}}" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner" style="height: 200px;">
-                  <div class="item im" style="background-image: url('{{$foto}}'); background-position: center; height: 100%; background-size: cover; "> 
+                <div class="item active im" style="background-image: url({{"$foto"}}); background-position: center; height: 100%; background-size: cover; "> 
                   </div>
-                  <div class="item active im" style="background-image: url('{{$foto}}'); background-position: center; height: 100%; background-size: cover; "> 
+                @foreach ($resultsfotos as $resultfoto)            
+                  @if ($result->id_animal == $resultfoto->id_animal)
+                    <div class="item im" style="background-image: url({{"uploads/$resultfoto->foto_animal"}}); background-position: center; height: 100%; background-size: cover; "> 
                   </div>
-                  <div class="item im" style="background-image: url('{{$foto}}'); background-position: center; height: 100%; background-size: cover; "> 
-                  </div>
+                  @endif              
+                @endforeach  
+                  
                 </div>
                 <a class="left carousel-control" href="#carousel-example-generic{{$result->id_animal}}" data-slide="prev">
                   <span class="fa fa-angle-left"></span>

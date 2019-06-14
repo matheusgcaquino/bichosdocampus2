@@ -82,12 +82,12 @@ class AddAnimalController extends Controller
     
     if($animal){
       if($request->foto_1){
-        $path_1 = $request->foto_1->store('animais/'.$animal->id_animal.'-1');
+        $path_1 = $request->foto_1->store('animais/'.$animal->id_animal);
         $animal->foto_perfil = $path_1;
         $animal->save(); 
       }
       if($request->foto_2){
-        $path_2 = $request->foto_2->store('animais/'.$animal->id_animal.'-2');
+        $path_2 = $request->foto_2->store('animais/'.$animal->id_animal);
         $foto_2 = Foto_animal::create([
           'id_animal'         => $animal->id_animal,
           'foto_animal'       => $path_2
@@ -95,7 +95,7 @@ class AddAnimalController extends Controller
         $foto_2->save(); 
       }
       if($request->foto_3){
-        $path_3 = $request->foto_3->store('animais/'.$animal->id_animal.'-3');
+        $path_3 = $request->foto_3->store('animais/'.$animal->id_animal);
         $foto_3 = Foto_animal::create([
           'id_animal'         => $animal->id_animal,
           'foto_animal'       => $path_3

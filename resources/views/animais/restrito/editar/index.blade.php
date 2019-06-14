@@ -10,6 +10,8 @@
     use App\Http\Controllers\Suporte\DataController; 
     
     $idade = DataController::getData($result->idade_animal);
+
+    $qtdfotos = $resultsfotos->count();
     
     $foto_1 = url("imagens/foto-icon.png");
     $foto_2 = url("imagens/foto-icon.png");
@@ -18,6 +20,24 @@
     if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
       $foto_1 = url("uploads/".$result->foto_perfil);
     }
+    
+    if($qtdfotos == 1)
+    {
+      if($resultsfotos[0]->foto_animal && Storage::disk('public_uploads')->exists($resultsfotos[0]->foto_animal)){
+        $foto_2 = url("uploads/".$resultsfotos[0]->foto_animal);
+      }
+    }
+    
+    if($qtdfotos > 1)
+    {
+      if($resultsfotos[0]->foto_animal && Storage::disk('public_uploads')->exists($resultsfotos[0]->foto_animal)){
+        $foto_2 = url("uploads/".$resultsfotos[0]->foto_animal);
+      }
+      if($resultsfotos[1]->foto_animal && Storage::disk('public_uploads')->exists($resultsfotos[1]->foto_animal)){
+        $foto_3 = url("uploads/".$resultsfotos[1]->foto_animal);
+      }
+    }
+
   @endphp
 
   <div class="box">
@@ -478,6 +498,8 @@
           $(novalocalizacao).val('1');
         }
       }); 
+
+      
 
     });
   </script>

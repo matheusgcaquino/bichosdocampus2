@@ -157,36 +157,38 @@
                 </div>
               </div>
 
-        <div class="form-group col-md-4" id="div_foto_1">
-          <div class="pull-left" id="card-adocao-1">
-            <img id="img-adocao-1"  height="150" width="150"
-            src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+        <div class="form-group col-md-12">
+          <div class="form-group col-md-4" id="div_foto_1">
+            <div class="pull-left" id="card-adocao-1">
+              <img id="img-adocao-1"  height="150" width="150"
+              src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+            </div>
+            <div class="pull-left" style="margin-left: 1%">
+              <label for="foto"> Adicionar Foto Perfil </label>
+              <input type="file" name="foto_1" id="foto_1" style="max-width: : 50%;">
+            </div>
           </div>
-          <div class="pull-left" style="margin-left: 1%">
-            <label for="foto"> Adicionar Foto Perfil </label>
-            <input type="file" name="foto_1" id="foto_1" style="max-width: : 50%;">
-          </div>
-        </div>
 
-        <div class="form-group col-md-4" id="div_foto_2">
-          <div class="pull-left" id="card-adocao-2">
-            <img id="img-adocao-2" height="150" width="150" 
-            src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+          <div class="form-group col-md-4" id="div_foto_2">
+            <div class="pull-left" id="card-adocao-2">
+              <img id="img-adocao-2" height="150" width="150" 
+              src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+            </div>
+            <div class="pull-left" style="margin-left: 1%">
+              <label for="foto"> Adicionar Foto 01 </label>
+              <input type="file" name="foto_2" id="foto_2" style="max-width: : 50%;">
+            </div>
           </div>
-          <div class="pull-left" style="margin-left: 1%">
-            <label for="foto"> Adicionar Foto 01 </label>
-            <input type="file" name="foto_2" id="foto_2" style="max-width: : 50%;">
-          </div>
-        </div>
 
-        <div class="form-group col-md-4" id="div_foto_3">
-          <div class="pull-left" id="card-adocao-3">
-            <img id="img-adocao-3"  height="150" width="150"
-            src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
-          </div>
-          <div class="pull-left" style="margin-left: 1%">
-            <label for="foto"> Adicionar Foto 02 </label>
-            <input type="file" name="foto_3" id="foto_3" style="max-width: : 50%;">
+          <div class="form-group col-md-4" id="div_foto_3">
+            <div class="pull-left" id="card-adocao-3">
+              <img id="img-adocao-3"  height="150" width="150"
+              src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+            </div>
+            <div class="pull-left" style="margin-left: 1%">
+              <label for="foto"> Adicionar Foto 02 </label>
+              <input type="file" name="foto_3" id="foto_3" style="max-width: : 50%;">
+            </div>
           </div>
         </div>
 
@@ -209,17 +211,6 @@
     <script src="{{asset('js/JavaScript-Load-Image-2.20.1/js/load-image.all.min.js')}}"></script>
     
     <script>
-
-      $('#div_foto_2').hide();
-      $('#div_foto_3').hide();
-
-      $('#foto_1').change(function() {
-        $('#div_foto_2').show();
-      });
-
-      $('#foto_2').change(function() {
-        $('#div_foto_3').show();
-      });
 
       function cleanRaca() {
         var x = document.getElementById("raca");
