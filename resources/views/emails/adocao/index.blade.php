@@ -1,6 +1,6 @@
 @component('mail::message')
-<div style="text-align: center;">
-	<h3>REQUERIMENTO DE ADOÇÃO RECEBIDO</h3>
+<div style="text-align: justify;">
+	<h4>REQUERIMENTO DE ADOÇÃO RECEBIDO</h4>
 	<h4>OLÁ, A <strong>BICHOS DO CAMPUS</strong> RECEBEU O SEU REQUERIMENTO E 
 	IRÁ ANÁLISAR O MAIS RÁPIDO POSSÍVEL. UTILIZAREMOS AS INFORMAÇÕES DE CONTATO
 FORNECIDAS PARA CONTATÁ-LO.</h4>
