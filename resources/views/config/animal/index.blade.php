@@ -8,7 +8,13 @@
 @section('content')
     <div class="box">
         <div class="box-header">
-            <h3>Configuração de {{$nome}}</h3>
+            <h3>
+                <center>Configuração de <b>{{$nome}}</b></center> 
+                <a href="{{route('site.config')}}" class="btn btn-danger">
+                    <span class="fa fa-arrow-circle-left"></span>
+                    Voltar
+                </a>
+            </h3>
         </div>
 
         <div class="box-body">
@@ -34,6 +40,7 @@
                                             data-solict-id="{{$result->id}}"
                                             data-solict-text="{{$result->text}}"
                                             data-solict-tipo='editar'>
+                                            <span class="fa fa-edit"></span>
                                             <b>Editar</b>
                                         </button>
                                         <button type="button" class="btn btn-danger" 
@@ -41,6 +48,7 @@
                                             data-solict-id="{{$result->id}}"
                                             data-solict-text="{{$result->text}}"
                                             data-solict-tipo='excluir'>
+                                            <span class="fa fa-trash"></span>
                                             <b>Excluir</b>
                                         </button>
                                     </td>
@@ -71,6 +79,7 @@
                                             data-solict-id="{{$result->id}}"
                                             data-solict-text="{{$result->text}}"
                                             data-solict-tipo='editar'>
+                                            <span class="fa fa-edit"></span>
                                             <b>Editar</b>
                                         </button>
                                         <button type="button" class="btn btn-danger" 
@@ -78,6 +87,7 @@
                                             data-solict-id="{{$result->id}}"
                                             data-solict-text="{{$result->text}}"
                                             data-solict-tipo='excluir'>
+                                            <span class="fa fa-trash"></span>
                                             <b>Excluir</b>
                                         </button>
                                     </td>

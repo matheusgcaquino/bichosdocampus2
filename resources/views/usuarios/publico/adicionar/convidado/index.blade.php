@@ -15,7 +15,11 @@
                 autocomplete="off" id="formulario">
                 {{ csrf_field() }}
                 <div class="box-header">
-                    <h3 class="box-title">CADASTRA-SE</h3>
+                   <h3>
+                      <center>
+                        Realizar <strong>Cadastro </strong>
+                    </center>
+                    </h3>
                 </div>
                 
                 <!-- Mensagem de Alerta -->

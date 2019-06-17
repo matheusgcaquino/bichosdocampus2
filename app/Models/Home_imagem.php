@@ -10,7 +10,7 @@ class Home_imagem extends Model
 
     protected $primaryKey = 'id_home';
 
-    protected $fillable = ['home_imagem', 'selecionada'];
+    protected $fillable = ['home_imagem', 'posicao'];
 
     public $timestamps = false;
 }

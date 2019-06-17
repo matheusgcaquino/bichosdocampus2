@@ -3,105 +3,141 @@
 @section('title', 'BEM-VINDO - BICHOS DO CAMPUS')
 
 @section('content_header')
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 @stop
 
+@php
+  foreach ($imagem as $im) {
+    $pic[$im->posicao] = $im->home_imagem;
+  }
+@endphp
+
 @section('content')
-<div class="container-fluid bg-1 text-center">
-  <div class="jumbotron" style=" background-image: url(uploads/{{$imagem->home_imagem}});background-size: cover; box-shadow: 5px 5px 5px rgba(0,0,0,0.5);">
-    <img src="imagens/logo.png" style="padding: 5%;" class="img-responsive">
+  <div class="col-md-12" style="background: linear-gradient(to right, #ed213a, #93291e); 
+    padding: 2%; text-align: center; color: white;">
+    <h2>BICHOS DO <b>CAMPUS</b></h2>
+      <i class="fa fa-paw" style="font-size: 25px;"></i>
+      <h4>SEJA <b>BEM-VINDO</b></h4>
   </div>
-</div>
-  <div class="col-md-12">
-    <div class="box">
-      <div class="box-header with-border" style="background-color: #dd4b39;">
-        <h3 class="box-title" style="color: white;">Finais <strong>Felizes</strong></h3></div>
-          <div class="box-body">
+
+  <div class="col-sm-12" style="background-image: url(uploads/{{$pic[1]}}); height: 400px; 
+    background-position: center; background-size: cover;">
+  </div>
+
+  <div class="col-md-12" style="background: linear-gradient(to right, #ed213a, #93291e); 
+    padding: 5%; text-align: center; color: white;">
+      <div class="col-sm-12">
         <div class="col-sm-4">
-          <img src="imagens/05.jpg" class="img-responsive margin">
+          <h3><b>ADOTE</b></h3>
+          <i class="fa fa-heart" style="font-size: 25px;"></i>
+          <h4>Existem cerca de <b>400 gatos</b> vivendo na UFS.</h4>
+            <a href="#adotar" class="btn btn-block btn bg-purple btn-lg" style="color: white;">
+              Como adotar?</a>
+        </div>
+
+        <div class="col-sm-4">
+          <h3><b>DOE</b></h3>
+          <i class="fa fa-heart-o" style="font-size: 25px;"></i>
+          <h4>São gastos cerca de <b>20KGs</b> de ração diariamente.</h4>
+            <a href="#doacao" class="btn btn-block btn bg-olive btn-lg" style="color: white;">
+              Como doar?</a>
         </div>
         <div class="col-sm-4">
-          <img src="imagens/06.jpg" class="img-responsive margin">
+          <h3><b>QUEM SOMOS?</b></h3>
+          <i class="fa fa-bank" style="font-size: 25px;"></i>
+          <h4>Saiba um pouco mais da nossa <b>história</b>.</h4>
+          <a href="#sobre" class="btn btn-block btn-warning btn-lg" style="color: white;">Sobre nós</a>
         </div>
-        <div class="col-sm-4">
-          <img src="imagens/07.jpg" class="img-responsive margin">
-        </div>
-         <div class="col-sm-4">
-          <img src="imagens/08.jpg" class="img-responsive margin">
-        </div>
-        <div class="col-sm-4">
-          <img src="imagens/09.jpg" class="img-responsive margin">
-        </div>
-        <div class="col-sm-4">
-          <img src="imagens/10.jpg" class="img-responsive margin">
-        </div>
+      </div>
+  </div>
+
+  <div class="col-sm-12" style="background-image: url(uploads/{{$pic[2]}}); height: 400px; 
+    background-position: center; background-size: cover;">
+  </div>
+
+  <div id="adotar" class="col-md-12" style="background: linear-gradient(to right, #ed213a, #93291e); 
+    padding: 5%; text-align: center; color: white;">
+    <h2>Como <b>adotar?</b></h2>
+
+    <div class="col-sm-12">
+      <h3><b>1º PASSO</b></h3>
+      <i class="fa fa-paw" style="font-size: 25px;"></i>
+      <h4>Escolha o <b>PET</b> ideal para você.</h4>
+      <a href="/animais" class="btn bg-orange btn-lg" style="color: white;">Quero adotar</a>
     </div>
+    
+    <div class="col-sm-12" >
+      <h3><b>2º PASSO</b></h3>
+      <i class="fa fa-check-square-o" style="font-size: 25px;"></i>
+      <h4>Após escolher o seu <b>PET</b>, preencha o formulário com seus dados.</h4>
+    </div>
+
+    <div class="col-sm-12">
+      <h3><b>3º PASSO</b></h3>
+      <i class="fa fa-check-square" style="font-size: 25px;"></i>
+      <h4>Aguarde enquanto análisamos seu <b>pedido</b>.</h4>
+    </div>
+    <div class="col-sm-12">
+      <h3><b>4º PASSO</b></h3>
+      <i class="fa fa-heart" style="font-size: 25px;"></i>
+      <h4>Caso o pedido seja <b>aceito</b>, entraremos em contato para finalizar a <b>adoção.</b></h4>
     </div>
   </div>
-    </div>
+
+  <div class="col-sm-12" style="background-image: url(uploads/{{$pic[3]}}); height: 400px; 
+    background-position: center; background-size: cover;">
+  </div>
   
+  <div id="doacao" class="col-md-12" style="background: linear-gradient(to right, #ed213a, #93291e); 
+    padding: 5%; text-align: center; color: white;">
+    <h2><b>Doações</b></h2>
+    
+    <h3>O que posso <b>doar?</b></h3>
+    <i class="fa fa-paw" style="font-size: 25px;"></i>
+    
+    <h4>Ração</h4>
+    <i class="fa fa-eyedropper" style="font-size: 25px;"></i>
+    
+    <h4>Vacinas</h4>
+    <i class="fa fa-medkit" style="font-size: 25px;"></i>
+    
+    <h4>Remédios</h4>
+    
+    <h3>Como <b>doar?</b></h3>
+    
+    <h4>Entrando em contato conosco, através das <b>rede sociais</b>.</h4>
+    
+    <a href="https://pt-br.facebook.com/pages/category/Community/Bichos-do-Campus-1525354857687682/" class="btn btn-social-icon btn-facebook">
+      <i class="fa fa-facebook"></i>
+    </a>
+    
+    <a href="https://instagram.com/bichosdocampus"class="btn btn-social-icon btn-instagram">
+      <i class="fa fa-instagram"></i>
+    </a>
+    
+    <h4>Deixando no <b>NGA - Núcleo de Gestão Ambiental</b>, que fica na <b>UFS - Universidade Federal de Sergipe</b> no prédio da <b>prefeitura</b>.</h4>
+  </div>
 
+  <div class="col-sm-12" style="background-image: url(uploads/{{$pic[4]}}); height: 400px; 
+    background-position: center; background-size: cover;">
+  </div>
 
-    <div class="box-body" style="text-align: center;">
-      <h2>COMO <strong>ADOTAR?</strong></h2>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-aqua"><i class="fa fa-paw"></i></span>
-
-          <div class="info-box-content"> 
-            <span class="info-box-number" style="text-align: center;">ESCOLHA PET IDEAL PARA VOCÊ!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-green"><i class="fa fa-file-text"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-number" style="text-align: center;">PREENCHA O FORMULÁRIO DE ADOÇÃO!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-yellow"><i class="fa fa-check"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-number" style="text-align: center;">AGUARDE A APROVAÇÃO DA ADOÇÃO!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="info-box">
-          <span class="info-box-icon bg-red"><i class="fa fa-heart"></i></span>
-
-          <div class="info-box-content">
-            <span class="info-box-number" style="text-align: center;">SEJA FELIZ COM SEU PET!</span>
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->    
+  <div id="sobre" class="box-footer" style="background: linear-gradient(to right, #ed213a, #93291e); 
+    margin-top: 5%;">
+    <div class="col-md-6" style="text-align: left;">
+      <h3 style="color: white;"><b>QUEM SOMOS?</b></h3>
+      <h4 style="color: white;">{!!$sobre->sobre!!}</h4>
     </div>
 
-<div class="box-footer" style="background-color: #dd4b39;">
-  <div class="col-md-6" style="text-align: left;">
-    <h3 style="color: white;">QUEM SOMOS?</h3>
-    <h4 style="color: white;">{!!$sobre->sobre!!}</h4>
+    <div class="col-md-6" style="text-align: right;">
+      <h3 style="color: white;"><b>SIGA-NOS</b></h3>
+      <a href="https://pt-br.facebook.com/pages/category/Community/Bichos-do-Campus-1525354857687682/" 
+        class="btn btn-social-icon btn-facebook">
+        <i class="fa fa-facebook"></i>
+      </a>
+      <a href="https://instagram.com/bichosdocampus"class="btn btn-social-icon btn-instagram">
+        <i class="fa fa-instagram"></i>
+      </a>
+    </div>
   </div>
-  <div class="col-md-6" style="text-align: right;">
-    <h3 style="color: white;">SIGA-NOS</h3>
-    <a href="https://pt-br.facebook.com/pages/category/Community/Bichos-do-Campus-1525354857687682/" class="btn btn-social-icon btn-facebook">
-      <i class="fa fa-facebook"></i></a>
-    <a href="https://instagram.com/bichosdocampus"class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></a>
-  </div>
-</div>
 @stop

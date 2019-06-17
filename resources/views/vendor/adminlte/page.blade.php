@@ -19,8 +19,8 @@
         <!-- Main Header -->
         <header class="main-header">
             @if(config('adminlte.layout') == 'top-nav')
-            <nav class="navbar navbar-static-top">
-                <div class="container">
+            <nav class="navbar navbar-static-top" style="background:linear-gradient(to right, #ed213a, #93291e);">
+                <div class="container" >
                     <div class="navbar-header">
                         <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}" class="navbar-brand">
                             {!! config('adminlte.logo', '<b>Admin</b>LTE') !!}
@@ -116,7 +116,7 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             @if(config('adminlte.layout') == 'top-nav')
-            <div class="container">
+            <div class="container" >
             @endif
 
             <!-- Content Header (Page header) -->
@@ -125,7 +125,7 @@
             </section>
 
             <!-- Main content -->
-            <section class="content">
+            <section class="content" >
 
                 @yield('content')
 

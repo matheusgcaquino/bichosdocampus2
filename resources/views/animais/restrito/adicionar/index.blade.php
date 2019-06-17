@@ -17,7 +17,13 @@
     <form action = "{{ route('adicionar.animais') }}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="box-header">
-        <h3 class="box-title">ADICIONAR ANIMAL</h3>
+        <h3>
+          <center>Adicionar <b>Animal</b></center> 
+          <a href="javascript:history.back()" class="btn btn-danger">
+            <span class="fa fa-arrow-circle-left"></span>
+            Voltar
+          </a>
+        </h3>
       </div>
 
       <div class="box-body">
@@ -151,24 +157,48 @@
                 </div>
               </div>
 
-        <div class="form-group col-md-6">
-          <div class="pull-left" id="card-adocao">
-            <img id="img-adocao" class="profile-user-img img-circle"
-            src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+        <div class="form-group col-md-12" style="padding: 2% 10%;">
+          <div class="form-group col-md-4" id="div_foto_1">
+            <div class="pull-left" id="card-adocao-1">
+              <img id="img-adocao-1"  height="150" width="150"
+              src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+            </div>
+            <div class="pull-left" style="margin-left: 1%">
+              <label for="foto"> Adicionar Foto Perfil </label>
+              <input type="file" name="foto_1" accept="image/*" id="foto_1" style="max-width: : 50%;">
+            </div>
           </div>
-          <div class="pull-left" style="margin-left: 1%">
-            <label for="foto"> Adicionar Imagem </label>
-            <input type="file" name="foto" id="foto">
+
+          <div class="form-group col-md-4" id="div_foto_2">
+            <div class="pull-left" id="card-adocao-2">
+              <img id="img-adocao-2" height="150" width="150" 
+              src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+            </div>
+            <div class="pull-left" style="margin-left: 1%">
+              <label for="foto"> Adicionar Foto 01 </label>
+              <input type="file" name="foto_2" accept="image/*" id="foto_2" style="max-width: : 50%;">
+            </div>
+          </div>
+
+          <div class="form-group col-md-4" id="div_foto_3">
+            <div class="pull-left" id="card-adocao-3">
+              <img id="img-adocao-3"  height="150" width="150"
+              src="{{asset('imagens/foto-icon.png')}}" alt="User profile picture">
+            </div>
+            <div class="pull-left" style="margin-left: 1%">
+              <label for="foto"> Adicionar Foto 02 </label>
+              <input type="file" name="foto_3" accept="image/*" id="foto_3" style="max-width: : 50%;">
+            </div>
           </div>
         </div>
 
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-12">
             <label for="descricao"> Descrição </label>
             <textarea class="form-control" rows="3" id="descricao" name="descricao" 
               placeholder="Descrição do Animal"></textarea>
           </div>
       </div>      
-      <div class="box-footer with-border">
+      <div class="box-footer with-border col-md-12">
         <button type="submit" id="btnConfirmar" class="btn btn-primary">Enviar</button>
         <a href="{{route('site.animais')}}" class="btn btn-default">Cancelar</a> 
       </div>
@@ -210,7 +240,7 @@
           } else {
             div.style.display = "block";
           }
-          $.getJSON("animais/ajax_raca/" + value, function (data) {
+          $.getJSON("/animais/ajax_raca/" + value, function (data) {
             $.each(data, function (i, item) {
               const {id_raca, id_especie, raca} = item;
               addSelect("raca", id_raca, raca);
@@ -221,18 +251,52 @@
 
       $(document).ready(function() {
 
-        document.getElementById('foto').onchange = function (e) {
+        document.getElementById('foto_1').onchange = function (e) {
           loadImage(
             e.target.files[0],
             function (img) {                
               
-              $('#card-adocao').empty();
-              document.getElementById('card-adocao').appendChild(img);
-              $('#card-adocao img').attr('class', 'profile-user-img img-circle');
+              $('#card-adocao-1').empty();
+              document.getElementById('card-adocao-1').appendChild(img);
+              $('#card-adocao-1 img').attr('class', '');
             },
             {
-              maxWidth: 90,
-              maxHeight: 90,
+              maxWidth: 150,
+              maxHeight: 150,
+              // orientation: 2,
+            } // Options
+          );            
+        };
+
+        document.getElementById('foto_2').onchange = function (e) {
+          loadImage(
+            e.target.files[0],
+            function (img) {                
+              
+              $('#card-adocao-2').empty();
+              document.getElementById('card-adocao-2').appendChild(img);
+              $('#card-adocao-2 img').attr('class', '');
+            },
+            {
+              maxWidth: 150,
+              maxHeight: 150,
+              // orientation: 2,
+            } // Options
+          );            
+        };
+
+        document.getElementById('foto_3').onchange = function (e) {
+          loadImage(
+            e.target.files[0],
+            function (img) {                
+              
+              $('#card-adocao-3').empty();
+              document.getElementById('card-adocao-3').appendChild(img);
+              $('#card-adocao-3 img').attr('class', '');
+            },
+            {
+              maxWidth: 150,
+              maxHeight: 150,
               // orientation: 2,
             } // Options
           );            

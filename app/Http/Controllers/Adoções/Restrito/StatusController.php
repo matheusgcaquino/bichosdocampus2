@@ -7,6 +7,8 @@ use App\Models\StatusAdocao;
 use App\Models\Animal;
 use App\Models\Adocao;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\MudancaStatus;
+use Mail;
 
 class StatusController extends Controller
 {
@@ -29,12 +31,18 @@ class StatusController extends Controller
                 }
             }
         }
-        StatusAdocao::create([
+
+        $status_adocao = StatusAdocao::create([
             'id_adocao'     =>  $request->id,
             'id_user'       =>  Auth::user()->id_user,
             'status_adocao' =>  $request->acao,
             'comentario'    =>  $request->comentario,
         ]);
+
+        //dd($request->all());
+        $adocao = Adocao::select(['email_adocao', 'codigo_adocao'])->find($request->id);
+
+        Mail::to($adocao->email_adocao)->send(new MudancaStatus($adocao, $status_adocao));
 
         return redirect()->route('adocoes.requisição', ['codigo' => $request->codigo]);
     }

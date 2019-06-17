@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/font-awesome/css/font-awesome.min.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/Ionicons/css/ionicons.min.css') }}">
+    {{-- Icone da projeto --}}
+    <link rel="shortcut icon" href="{{ asset('imagens/icon.png') }}">
 
     @if(config('adminlte.plugins.select2'))
         <!-- Select2 -->
@@ -38,7 +40,7 @@
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition @yield('body_class')">
+<body class="hold-transition  @yield('body_class')" style="background: linear-gradient(to right, #ed213a, #93291e);">
 
 @yield('body')
 
@@ -68,7 +70,29 @@
     })
 </script>
 
+
+
 @yield('adminlte_js')
+
+<style type="text/css">
+    .im {
+          max-width: 100%;
+          background-repeat: no-repeat;
+          padding: 5%;
+          display:flex;
+          align-items: center;
+          justify-content: center;}
+    
+    div img {
+      max-width: 100%;
+      height: 150px;
+     
+    }
+
+    .cardA{
+        border: solid 2px #f1f1f1; border-top: 2px solid #dd4b39; font-weight: bolder;
+    }
+    </style>
 
 </body>
 </html>

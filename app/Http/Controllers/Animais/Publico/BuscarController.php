@@ -11,6 +11,7 @@ use App\Models\Raca;
 use App\Models\Pelagem;
 use App\Models\Local;
 use App\Models\Animal;
+use App\Models\Foto_animal;
 
 class BuscarController extends Controller
 {
@@ -32,7 +33,6 @@ class BuscarController extends Controller
     public function raca($especie)
     {
         $raca = Raca::where("id_especie", "=", $especie)->get();
-
         return response()->json($raca);
     }
 
@@ -93,10 +93,13 @@ class BuscarController extends Controller
             }
         }
 
+        $fotoanimal = Foto_animal::get();
+
         return view('animais.publico.home.index',[
             "results"   =>  $animal,
             "buscar"    =>  $buscar,
-            "raca"      => $raca
+            "raca"      => $raca,
+            "resultsfotos"      =>  $fotoanimal
         ]);
     }
 }

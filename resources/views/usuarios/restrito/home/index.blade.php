@@ -8,8 +8,13 @@
 @section('content')
     <div class="box">
             <div class="box-header" style="text-align: center;">
-                <h3>Gerenciamento de <strong>Usuários</strong> <button  type="button" class="btn btn-success" data-toggle="modal" style="text-align: right;" 
-                data-target="#adicionar"><span class="fa fa-plus"></span></button></h3>
+                <h3>
+                    Gerenciamento de <strong>Usuários</strong> 
+                    <button  type="button" class="btn btn-success" data-toggle="modal" 
+                    data-target="#adicionar">
+                        <span class="fa fa-plus"></span> NOVO
+                    </button>
+                </h3>
                 
             </div>
         @include('site.includes.alerts')
@@ -20,9 +25,10 @@
         
         <div class="box-body">
             @if(!$results->isEmpty())
-                <table class="table">
+            <div class="table-responsive">
+                <table class="table table-bordered">
                     <thead style="background-color: #f1f1f1">
-                        <tr >
+                        <tr>
                             <th>Nome</th>
                             <th>Email</th>
                             <th>Nivel</th>
@@ -66,6 +72,7 @@
                         @endforeach
                     </tbody>
                 </table> 
+            </div>
             @else
                 <center><h3>Nenhuma Adoção encontrada!</h3></br>
             @endif

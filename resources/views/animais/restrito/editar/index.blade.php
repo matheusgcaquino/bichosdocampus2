@@ -10,12 +10,34 @@
     use App\Http\Controllers\Suporte\DataController; 
     
     $idade = DataController::getData($result->idade_animal);
+
+    $qtdfotos = $resultsfotos->count();
     
-    $foto = url("imagens/foto-icon.png");
+    $foto_1 = url("imagens/foto-icon.png");
+    $foto_2 = url("imagens/foto-icon.png");
+    $foto_3 = url("imagens/foto-icon.png");
 
     if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
-      $foto = url("uploads/".$result->foto_perfil);
+      $foto_1 = url("uploads/".$result->foto_perfil);
     }
+    
+    if($qtdfotos == 1)
+    {
+      if($resultsfotos[0]->foto_animal && Storage::disk('public_uploads')->exists($resultsfotos[0]->foto_animal)){
+        $foto_2 = url("uploads/".$resultsfotos[0]->foto_animal);
+      }
+    }
+    
+    if($qtdfotos > 1)
+    {
+      if($resultsfotos[0]->foto_animal && Storage::disk('public_uploads')->exists($resultsfotos[0]->foto_animal)){
+        $foto_2 = url("uploads/".$resultsfotos[0]->foto_animal);
+      }
+      if($resultsfotos[1]->foto_animal && Storage::disk('public_uploads')->exists($resultsfotos[1]->foto_animal)){
+        $foto_3 = url("uploads/".$resultsfotos[1]->foto_animal);
+      }
+    }
+
   @endphp
 
   <div class="box">
@@ -25,7 +47,13 @@
       <input type="hidden" name="id" value="{{$result->id_animal}}">
 
       <div class="box-header">
-        <h3 class="box-title">Editar Animal</h3>
+        <h3>
+            <center>Editar <b>Animal</b></center> 
+            <a href="javascript:history.back()" class="btn btn-danger">
+              <span class="fa fa-arrow-circle-left"></span>
+              Voltar
+            </a>
+          </h3>
       </div>
       
       <div class="box-body">
@@ -91,7 +119,7 @@
           <select class="form-control" id="raca" name="raca" placeholder="Raça do Animal" style="width: 100%;" required>
             <option value=""> Escolha uma raça. </option>
             @foreach ($resultsraca as $resultraca)            
-              @if ($result->raca->id_raca == $resultraca->id_especie)
+              @if ($result->raca->id_raca == $resultraca->id_raca)
                 <option selected="selected" value="{{ $resultraca->id_raca }}"> {{ $resultraca->raca }} </option>
               @else
                 <option value="{{ $resultraca->id_raca }}"> {{ $resultraca->raca }} </option>
@@ -138,128 +166,157 @@
         </div>
     
         <div class="form-group col-md-6">
-            <label> Status </label>
-            <select class="form-control" name="status">
-              @if($result->status_animal == '0')              
-                <option value="1">Ativado</option>
-                <option selected="selected" value="0">Desativado</option>
+          <label> Status </label>
+          <select class="form-control" name="status">
+            @if($result->status_animal == '0')              
+              <option value="1">Ativado</option>
+              <option selected="selected" value="0">Desativado</option>
+              <option value="2">Adotado</option>
+            @else
+              @if($result->status_animal == '1')
+                <option selected="selected" value="1">Ativado</option>
+                <option value="0">Desativado</option>
                 <option value="2">Adotado</option>
               @else
-                @if($result->status_animal == '1')
-                  <option selected="selected" value="1">Ativado</option>
-                  <option value="0">Desativado</option>
-                  <option value="2">Adotado</option>
-                @else
-                  <option value="1">Ativado</option>
-                  <option value="0">Desativado</option>
-                  <option selected="selected" value="2">Adotado</option>
-                @endif
+                <option value="1">Ativado</option>
+                <option value="0">Desativado</option>
+                <option selected="selected" value="2">Adotado</option>
               @endif
-            </select>
-          </div>
-    
-        <div class="form-group col-md-6">
-            <label>Sexo</label>
-            @if ($result->sexo_animal == 'M')
-              <div class="radio">
-                <label>
-                  <input type="radio" name="sexo" id="sexo1" value="M" checked="">
-                  Macho
-                </label>
-              </div>
-              
-              <div class="radio">
-                <label>
-                  <input type="radio" name="sexo" id="sexo2" value="F">
-                  Fêmea
-                </label>
-              </div>
-            @else
-              <div class="radio">
-                <label>
-                  <input type="radio" name="sexo" id="sexo1" value="M">
-                  Macho
-                </label>
-              </div>
-              
-              <div class="radio">
-                <label>
-                  <input type="radio" name="sexo" id="sexo2" value="F" checked="">
-                  Fêmea
-                </label>
-              </div>
             @endif
-          </div>
+          </select>
+        </div>
     
-          <div class="form-group col-md-6">
-              <label>Castrado</label>
-              @if ($result->castracao_animal)
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="castrado" id="castrado1" value="1" checked="">
-                    Sim
-                  </label>
-                </div>
-                
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="castrado" id="castrado2" value="0">
-                    Não
-                  </label>
-                </div>
-              @else
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="castrado" id="castrado1" value="1">
-                    Sim
-                  </label>
-                </div>
-                
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="castrado" id="castrado2" value="0" checked="">
-                    Não
-                  </label>
-                </div>
-              @endif
-            </div>
-    
-            <div class="form-group">
-                <div class="pull-left">
-                    <img class="profile-user-img img-responsive img-circle" 
-                    src="{{$foto}}" alt="User profile picture">
-                
-                  </div>
-                  <label for="foto">Alterar Imagem</label>
-                  <input type="file" id="foto" name="foto">
-                </div>
-      
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" id="excluirFoto" name="excluirFoto"> Excluir Foto
-                  </label>
-                </div>
-            </div>
-
         <div class="form-group col-md-6">
+          <label>Sexo</label>
+          @if ($result->sexo_animal == 'M')
+            <div class="radio">
+              <label>
+                <input type="radio" name="sexo" id="sexo1" value="M" checked="">
+                Macho
+              </label>
+            </div>
+            
+            <div class="radio">
+              <label>
+                <input type="radio" name="sexo" id="sexo2" value="F">
+                Fêmea
+              </label>
+            </div>
+          @else
+            <div class="radio">
+              <label>
+                <input type="radio" name="sexo" id="sexo1" value="M">
+                Macho
+              </label>
+            </div>
+            
+            <div class="radio">
+              <label>
+                <input type="radio" name="sexo" id="sexo2" value="F" checked="">
+                Fêmea
+              </label>
+            </div>
+          @endif
+        </div>
+    
+        <div class="form-group col-md-6">
+          <label>Castrado</label>
+          @if ($result->castracao_animal)
+            <div class="radio">
+              <label>
+                <input type="radio" name="castrado" id="castrado1" value="1" checked="">
+                Sim
+              </label>
+            </div>
+            
+            <div class="radio">
+              <label>
+                <input type="radio" name="castrado" id="castrado2" value="0">
+                Não
+              </label>
+            </div>
+          @else
+            <div class="radio">
+              <label>
+                <input type="radio" name="castrado" id="castrado1" value="1">
+                Sim
+              </label>
+            </div>
+            
+            <div class="radio">
+              <label>
+                <input type="radio" name="castrado" id="castrado2" value="0" checked="">
+                Não
+              </label>
+            </div>
+          @endif
+        </div>
+        <div class="form-group col-md-12" style="padding: 2% 10%;">
+        <div class="form-group col-md-4" id="foto_1">
+          <div class="pull-left" id="card-adocao-1">
+            <img id="img-adocao-1"  height="150" width="150"
+            src="{{$foto_1}}" alt="User profile picture">
+          </div>
+          <div class="pull-left" style="margin-left: 1%">
+            <label for="foto">Alterar Foto Perfil</label>
+            <input type="file" accept="image/*" id="foto_1" name="foto_1" style="max-width: : 50%;">
+          </div>
+        </div>
+
+        <div class="form-group col-md-4" id="foto_2">
+          <div class="pull-left" id="card-adocao-2">
+            <img id="img-adocao-2"  height="150" width="150" 
+            src="{{$foto_2}}" alt="User profile picture">
+          </div>
+          <div class="pull-left" style="margin-left: 1%">
+            <label for="foto">Alterar Foto 01</label>
+            <input type="file" id="foto_2" accept="image/*" name="foto_2" style="max-width: : 50%;">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="excluirFoto_2" name="excluirFoto_2"> Excluir Foto
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group col-md-4" id="foto_3">
+          <div class="pull-left" id="card-adocao-3">
+            <img id="img-adocao-3"  height="150" width="150"
+            src="{{$foto_3}}" alt="User profile picture">
+          </div>
+          <div class="pull-left" style="margin-left: 1%">
+            <label for="foto">Alterar Foto 02</label>
+            <input type="file" id="foto_3" accept="image/*" name="foto_3" style="max-width: : 50%;">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="excluirFoto_3" name="excluirFoto_3"> Excluir Foto
+              </label>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="form-group col-md-12">
           <label for="descricao"> Descrição </label>
           <textarea class="form-control" rows="3" id="descricao" name="descricao" 
             placeholder="Descrição do Animal"> {{$result->descricao_animal}} </textarea>
         </div>
+
+      </div>
       
       <div class="box-footer with-border">
         <button type="submit" id="btnConfirmar" class="btn btn-primary">Salvar</button>
         <a href="{{route('site.animais')}}" class="btn btn-default">Cancelar</a>
       </div>
     </form>
-
-    <script src="{{asset('js/jquery-3.3.1.min.js')}}" type="text/javascript"></script>
-    <script src="{{asset('js/modulos/animais/formulario/formulario.js')}}"></script>
-
   </div>
-   
-  <script>
 
+@stop
+
+@section('js')
+  <script src="{{asset('js/modulos/animais/formulario/formulario.js')}}"></script>
+  <script src="{{asset('js/JavaScript-Load-Image-2.20.1/js/load-image.all.min.js')}}"></script>
+
+  <script>
     function cleanRaca() {
       var x = document.getElementById("raca");
       while (x.options[1] != null) {
@@ -288,7 +345,7 @@
         } else {
           div.style.display = "block";
         }
-        $.getJSON("animais/ajax_raca/" + value, function (data) {
+        $.getJSON("/animais/ajax_raca/" + value, function (data) {
           $.each(data, function (i, item) {
             const {id_raca, id_especie, raca} = item;
             addSelect("raca", id_raca, raca);
@@ -306,6 +363,57 @@
       var mes = document.getElementById('numeromeses');
       ano.value = ValorAno;
       mes.value = ValorMes;
+
+      document.getElementById('foto_1').onchange = function (e) {
+        loadImage(
+            e.target.files[0],
+            function (img) {                
+              
+              $('#card-adocao-1').empty();
+              document.getElementById('card-adocao-1').appendChild(img);
+              $('#card-adocao-1 img').attr('class', '');
+            },
+            {
+              maxWidth: 150,
+              maxHeight: 150,
+              // orientation: 2,
+            } // Options
+        );            
+      };
+
+      document.getElementById('foto_2').onchange = function (e) {
+        loadImage(
+            e.target.files[0],
+            function (img) {                
+              
+              $('#card-adocao-2').empty();
+              document.getElementById('card-adocao-2').appendChild(img);
+              $('#card-adocao-2 img').attr('class', '');
+            },
+            {
+              maxWidth: 150,
+              maxHeight: 150,
+              // orientation: 2,
+            } // Options
+        );            
+      };
+
+      document.getElementById('foto_3').onchange = function (e) {
+        loadImage(
+            e.target.files[0],
+            function (img) {                
+              
+              $('#card-adocao-3').empty();
+              document.getElementById('card-adocao-3').appendChild(img);
+              $('#card-adocao-3 img').attr('class', '');
+            },
+            {
+              maxWidth: 150,
+              maxHeight: 150,
+              // orientation: 2,
+            } // Options
+        );            
+      };
 
       $("#especie").select2({
         tags: true,
@@ -391,7 +499,8 @@
         }
       }); 
 
+      
+
     });
   </script>
-
-@stop
+@endsection

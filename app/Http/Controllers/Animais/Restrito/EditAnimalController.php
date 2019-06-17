@@ -11,6 +11,7 @@ use App\Models\Raca;
 use App\Models\Pelagem;
 use App\Models\Especie;
 use App\Models\Local;
+use App\Models\Foto_animal;
 
 class EditAnimalController extends Controller
 {
@@ -21,20 +22,25 @@ class EditAnimalController extends Controller
     $raca = Raca::where('id_especie', $animal->raca->especie->id_especie)->get();
     $pelagem = Pelagem::get();
     $local = Local::get();
+    $fotoanimal = Foto_animal::where('id_animal',$id)->get();
+
+    //dd($fotoanimal->count());
+
     return view('animais.restrito.editar.index', 
       [
-        "result" => $animal,
-        "resultsespecie"   =>  $especie, 
-        "resultsraca"   =>  $raca, 
-        "resultspelagem"   =>  $pelagem, 
-        "resultslocalizacao"   =>  $local
+        "result"              =>  $animal,
+        "resultsespecie"      =>  $especie, 
+        "resultsraca"         =>  $raca, 
+        "resultspelagem"      =>  $pelagem, 
+        "resultslocalizacao"  =>  $local,
+        "resultsfotos"        =>  $fotoanimal
       ]);
   }
 
     // Atualizando no banco de dados -> [EikE]
   public function atualizar(Request $request)
   {
-    //dd($request->all());
+    
     // Armazena os ids
     $idespecie = $request->especie;
     $idraca = $request->raca;
@@ -100,15 +106,66 @@ class EditAnimalController extends Controller
 
     $animal->status_animal == $request->status ?: $animal->status_animal = $request->status;
     
-    if($request->foto || $request->excluirFoto){
-      Storage::delete($animal->foto_perfil);
-      if($request->excluirFoto){
-        $animal->foto_perfil = null;
-      }else{
-        $path = $request->foto->store('animais/'.$animal->id_animal);
+    // Busca as fotos do animal
+    $fotoanimal = Foto_animal::where('id_animal',$request->id)->get();
+    $qtdfoto = $fotoanimal->count();
+
+    //dd($fotoanimal[0]->id_foto_animals);
+    //dd($request->all());
+
+    if($request->foto_1){
+        $path = $request->foto_1->store('animais/'.$animal->id_animal);
         $animal->foto_perfil = $path;
+    }
+    
+    if($request->foto_2 || $request->excluirFoto_2){      
+      if($request->excluirFoto_2){
+        //So deleta se existir uma foto ou mais
+        if($qtdfoto > 0)
+        {
+          Foto_animal::where('id_foto_animals', $fotoanimal[0]->id_foto_animals)->delete();
+        }
+      }else{        
+        //Se nao existir foto ele cria     
+        if($qtdfoto == 0)
+        {
+          $path_2 = $request->foto_2->store('animais/'.$animal->id_animal);
+          Foto_animal::create([
+            'id_animal'         => $animal->id_animal,
+            'foto_animal'       => $path_2
+          ]);
+        //Se existir ele altera
+        } else {
+          $path_2 = $request->foto_2->store('animais/'.$animal->id_animal);
+          Foto_animal::where('id_foto_animals', $fotoanimal[0]->id_foto_animals)->update(array('foto_animal' => $path_2));
+        }
       }
     }
+
+    if($request->foto_3 || $request->excluirFoto_3){      
+      if($request->excluirFoto_3){
+        //So deleta se existir uma foto ou mais
+        if($qtdfoto > 1)
+        {
+          Foto_animal::where('id_foto_animals', $fotoanimal[1]->id_foto_animals)->delete();
+        }
+      }else{        
+        //Se nao existir foto ele cria     
+        if($qtdfoto == 1)
+        {
+          $path_3 = $request->foto_3->store('animais/'.$animal->id_animal);
+          Foto_animal::create([
+            'id_animal'         => $animal->id_animal,
+            'foto_animal'       => $path_3
+          ]);
+        //Se existir ele altera
+        } else {
+          $path_3 = $request->foto_3->store('animais/'.$animal->id_animal);
+          Foto_animal::where('id_foto_animals', $fotoanimal[1]->id_foto_animals)->update(array('foto_animal' => $path_3));
+        }
+      }
+    }
+    
     $animal->save();
 
     return redirect()->route('site.animais');

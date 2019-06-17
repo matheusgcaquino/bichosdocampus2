@@ -11,7 +11,11 @@
     <form action = "{{ route('novo.usuarios.adicionar') }}" method="POST" autocomplete="off" id="formulario">
         {{ csrf_field() }}
         <div class="box-header">
-            <h3 class="box-title">ADICIONAR NOVO USUÁRIO</h3>
+            <h3>
+              <center>
+                Adicionar <strong>Usuário</strong>
+            </center>
+        </h3>
         </div>
         
         <!-- Mensagem de Alerta -->

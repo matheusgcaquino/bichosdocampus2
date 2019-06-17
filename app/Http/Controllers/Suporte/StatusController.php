@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Suporte;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DateTime;
 
 class StatusController extends Controller
 {
@@ -50,18 +51,6 @@ class StatusController extends Controller
         return $stat;
     }
 
-    public static function status_num($adocoes)
-    {
-        $status = [0, 0, 0];
-        foreach ($adocoes as $adocao) {
-            $last = $adocao->status->last();
-            if ($last->status_adocao < 3) {
-                $status[$last->status_adocao]++;
-            }
-        }
-        return $status;
-    }
-
     public static function acao($status)
     {
         $last = $status->last();
@@ -74,19 +63,19 @@ class StatusController extends Controller
             case 1:
                 $acao = '<button type="button" class="btn btn-primary" data-toggle="modal" 
                     data-target="#modal" data-solict-acao="2" data-solict-nome="Avaliando">
-                    Avaliando</button>
+                    <span class="fa fa-eye"></span> Avaliando</button>
                     <button type="button" class="btn btn-danger" data-toggle="modal" 
                     data-target="#modal" data-solict-acao="4" data-solict-nome="Recusar">
-                    Recusar</button>';
+                    <span class="fa fa-close"></span>  Recusar</button>';
                 break;
             
             case 2:
                 $acao = '<button type="button" class="btn btn-success" data-toggle="modal" 
                     data-target="#modal" data-solict-acao="3" data-solict-nome="Aprovar">
-                    Aprovar</button>
+                    <span class="fa fa-check"></span> Aprovar</button>
                     <button type="button" class="btn btn-danger" data-toggle="modal" 
                     data-target="#modal" data-solict-acao="4" data-solict-nome="Recusar">
-                    Recusar</button>';
+                    <span class="fa fa-close"></span> Recusar</button>';
                 break;
 
             case 3:
@@ -109,5 +98,76 @@ class StatusController extends Controller
                 break;
         }
         return $acao;
+    }
+
+    public static function timeline($status){
+        switch ($status->status_adocao) {
+            case 0:
+                $icon = '<i class="fa fa-plus-square bg-aqua"></i>';
+                $titulo = 'Requerimento Registrado';
+                $messagem = 'Recebemos sua requisição, em breve teremos uma resposta.';
+                break;
+            
+            case 1:
+            $icon = '<i class="fa fa-eye bg-blue"></i>';
+            $titulo = 'Visualizado';
+            $messagem = 'Visualizamos sua requisição, em seguida iremos analisar seus dados
+             e em breve daremos um retorno.';
+                break;
+            
+            case 2:
+            $icon = '<i class="fa fa-search bg-yellow"></i>';
+            $titulo = 'Avaliando';
+            $messagem = 'Estamos avaliando seus dados e das demais solicitações de adoção
+             para este animal, em breve daremos um retorno.';
+                break;
+
+            case 3:
+            $icon = '<i class="fa fa-check bg-green"></i>';
+            $titulo = 'Aprovado';
+            $messagem = 'Sua requisição foi aprovada, fique atento ao seu e-mail e/ou
+             telefone porque entraremos em contato em breve para finalizar a adoção.';
+                break;
+
+            case 4:
+            $icon = '<i class="fa fa-thumbs-down bg-maroon"></i>';
+            $titulo = 'Recusado';
+            $messagem = 'Seu requerimento foi recusado pelo seguinte motivo:</br>'. $status->comentario;
+                break;
+
+            case 5:
+            $icon = '<i class="fa fa-close bg-red"></i>';
+            $titulo = 'Cancelado';
+            $messagem = 'Seu requerimento foi cancelado, porque o animal foi adotado.';
+                break;
+        }
+
+        return '
+        <ul class="timeline">
+
+            <!-- timeline time label -->
+            <li class="time-label">
+                <span class="bg-red">
+                    '.date_format($status->created_at, 'd/m/y - H:i').'h
+                </span>
+            </li>
+            <!-- /.timeline-label -->
+        
+            <!-- timeline item -->
+            <li>
+                <!-- timeline icon -->
+                '.$icon.'
+                <div class="timeline-item">
+        
+                    <h3 class="timeline-header"><a href="#">'.$titulo.'</a></h3>
+        
+                    <div class="timeline-body">
+                        '.$messagem.'
+                    </div>
+        
+                </div>
+            </li>
+            <!-- END timeline item -->
+        </ul>';
     }
 }

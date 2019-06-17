@@ -19,10 +19,14 @@
     <div class="box-header">
 
       @gerencia('local')
-        <div class="form-group col-md-6">
-          <h3>Gerenciamento de <strong>Animais </strong> <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">
-           <span class="fa fa-plus"></span>  NOVO  </a></h3>
-        </div> 
+        <h3>
+          <center>
+            Gerenciamento de <strong>Animais </strong>
+            <a href="{{route('adicionar.animais.index')}}" class="btn btn-success">
+              <span class="fa fa-plus"></span>  NOVO  
+            </a>
+          </center>
+        </h3>
       @endgerencia
       <div class="form-group pull-right"> 
         @if (isset($buscar))
@@ -46,24 +50,45 @@
           ($castracao_animal = $result->castracao_animal ? "Sim" : "Não");
           
           $idade = DataController::convertData($result->idade_animal);
-          
+
           $foto = url("imagens/foto-icon.png");
+
           if($result->foto_perfil && Storage::disk('public_uploads')->exists($result->foto_perfil)){
             $foto = url("uploads/".$result->foto_perfil);
           }
+  
         @endphp
         <div class="col-md-3">
-          <div class="box box-primary" style="border: solid 2px #f1f1f1; border-top: 2px solid #dd4b39;">
-            <div class="box-body box-profile" style="border: solid 2px #f1f1f1;">
-              <div class="im">
-                <img  src="{{$foto}}" alt="User profile picture" >
+          <div class="box box-danger cardA">
+            <div class="box-body box-profile" style="border: solid 2px #f1f1f1;padding: 0;">
+              <div style="width: 100%; height: 100%;">
+              <div id="carousel-example-generic{{$result->id_animal}}" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" style="height: 200px;">
+                <div class="item active im" style="background-image: url({{"$foto"}}); background-position: center; height: 100%; background-size: cover; "> 
+                  </div>
+                @foreach ($resultsfotos as $resultfoto)            
+                  @if ($result->id_animal == $resultfoto->id_animal)
+                    <div class="item im" style="background-image: url({{"uploads/$resultfoto->foto_animal"}}); background-position: center; height: 100%; background-size: cover; "> 
+                  </div>
+                  @endif              
+                @endforeach  
+                  
+                </div>
+                <a class="left carousel-control" href="#carousel-example-generic{{$result->id_animal}}" data-slide="prev">
+                  <span class="fa fa-angle-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic{{$result->id_animal}}" data-slide="next">
+                  <span class="fa fa-angle-right"></span>
+                </a>
+              </div>
+                
               </div>
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
 
               <p class="text-muted text-center">{{$result->raca->raca}}</p>
 
-              <ul class="list-group list-group-unbordered">
+              <ul class="list-group list-group-unbordered" style="padding: 10px;">
                 <li class="list-group-item">
                   <b>Sexo</b> <a class="pull-right">{{$sexo_animal}}</a>
                 </li>
@@ -118,7 +143,7 @@
                 <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
                   data-target="#excluir" data-solict-id="{{$result->id_animal}}" 
                   data-solict-name="{{ $result->nome_animal }}">
-                  <span class="fa fa-minus-circle"></span><b> Excluir</b>
+                  <span class="fa fa-trash"></span><b> Excluir</b>
                 </button>
               @else
                 <button type="button" class="btn btn-danger btn-block" data-toggle="modal" 
@@ -450,7 +475,7 @@
         } else {
           div.style.display = "block";
         }
-        $.getJSON("animais/ajax_raca/" + value, function (data) {
+        $.getJSON("/animais/ajax_raca/" + value, function (data) {
           $.each(data, function (i, item) {
             const {id_raca, id_especie, raca} = item;
             addSelect("S_raca", id_raca, raca);
@@ -544,22 +569,4 @@
       $('#foto').val(foto)
     });
   </script>
-@stop
-
-@section('css')
-<style type="text/css">
-.im {
-      max-width: 100%;
-      background-repeat: no-repeat;
-      padding: 5%;
-      display:flex;
-      align-items: center;
-      justify-content: center;}
-
-div img {
-  max-width: 100%;
-  height: 150px;
- 
-}
-</style>
 @stop
