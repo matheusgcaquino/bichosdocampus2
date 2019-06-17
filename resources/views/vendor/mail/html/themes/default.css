@@ -7,7 +7,7 @@ body, body *:not(html):not(style):not(br):not(tr):not(code) {
 
 body {
     text-align: center;
-    background: linear-gradient(to right, #ed213a, #93291e);
+    background-color: #93291e;
     color: black;
     height: 100%;
     hyphens: auto;
@@ -31,7 +31,7 @@ blockquote {
 }
 
 a {
-    color: white;
+    color: black;
 }
 
 a img {
@@ -64,12 +64,20 @@ h3 {
     text-align: center;
 }
 
+h4{
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 0;
+    text-align: justify;
+}
+
 p {
-    color: white;
+    color: black;
     font-size: 16px;
     line-height: 1.5em;
     margin-top: 0;
-    text-align: left;
+    text-align: center;
 }
 
 p.sub {
@@ -83,7 +91,7 @@ img {
 /* Layout */
 
 .wrapper {
-    background: linear-gradient(to right, #ed213a, #93291e);
+    background-color: #93291e;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -106,7 +114,7 @@ img {
 .header {
     padding: 25px 0;
     text-align: center;
-    background: linear-gradient(to right, #ed213a, #93291e);
+    background-color: #93291e;
     color: white;
 }
 
@@ -134,7 +142,7 @@ img {
 }
 
 .inner-body {
-    background-color: white;
+    background-color: #f1f1f1e5;
     margin: 0 auto;
     padding: 0;
     width: 570px;
@@ -162,7 +170,7 @@ img {
     padding: 0;
     text-align: center;
     width: 570px;
-    background: linear-gradient(to right, #ed213a, #93291e);
+    background-color: #93291e;
     -premailer-cellpadding: 0;
     -premailer-cellspacing: 0;
     -premailer-width: 570px;
