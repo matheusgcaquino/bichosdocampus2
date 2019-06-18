@@ -63,7 +63,7 @@
       <h3><b>1º PASSO</b></h3>
       <i class="fa fa-paw" style="font-size: 25px;"></i>
       <h4>Escolha o <b>PET</b> ideal para você.</h4>
-      <a href="/animais" class="btn bg-orange btn-lg" style="color: white;">Quero adotar</a>
+      <a href="{{ route('site.animais') }}" class="btn bg-orange btn-lg" style="color: white;">Quero adotar</a>
     </div>
     
     <div class="col-sm-12" >
