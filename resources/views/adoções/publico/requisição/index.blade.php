@@ -13,12 +13,12 @@
     <div class="box">
         <div class="box-header" style="background: linear-gradient(to right, #ed213a, #93291e); color:azure;">
             <h3 class="text-center">Situação do requerimento para <strong> {{$results->animal->nome_animal}} </strong></h3>
-            @gerencia('local')
+            @auth
                 <a href="javascript:history.back()" class="btn btn-outline">
                     <span class="fa fa-arrow-circle-left"></span>
                     Voltar
                 </a>
-            @endgerencia
+            @endauth
         </div>
 
         <div class="box-body">
@@ -57,7 +57,7 @@
                 </div>
                 @endguest
 
-                @gerencia('local')
+                @auth
                     <div class="form-group col-md-6">
                         <label>Status: </label>
                         {!!$stat!!}
@@ -134,7 +134,7 @@
                         {!!$acao!!}
                     </div>
 
-                @endgerencia
+                @endauth
 
             @else
                 <center><h3>Nenhuma Adoção encontrada!</h3></br>
