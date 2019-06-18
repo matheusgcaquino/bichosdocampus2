@@ -14,8 +14,8 @@ Route::prefix('config')->group(function(){
         ->name('config.paginaInicial');
         Route::post('/pagina_inicial_excluir', 'PaginaInicialController@excluir')
         ->name('config.paginaInicial.excluir');
-        Route::post('/pagina_inicial_editar', 'PaginaInicialController@editarSobre')
-        ->name('config.paginaInicial.editar');
+        Route::post('/pagina_inicial_editarSobre', 'PaginaInicialController@editarSobre')
+        ->name('config.paginaInicial.editarSobre');
         Route::post('/pagina_inicial_selecionar', 'PaginaInicialController@selecionar')
         ->name('config.paginaInicial.selecionar');
         Route::post('/pagina_inicial_adicionar', 'PaginaInicialController@adicionar')
