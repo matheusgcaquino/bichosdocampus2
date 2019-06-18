@@ -38,6 +38,7 @@ class BuscarController extends Controller
 
     public function buscar(Request $request)
     {
+        if(Auth::check()) {
         $animal = Animal::with('pelagem', 'local', 'raca', 'raca.especie')
             ->when($request->nome, function ($query, $nome) {
                 return $query->where('nome_animal', 'like', '%'.$nome.'%');
@@ -81,6 +82,52 @@ class BuscarController extends Controller
             })
             ->inRandomOrder()
         ->paginate(12);
+        } else {
+            $animal = Animal::with('pelagem', 'local', 'raca', 'raca.especie')
+            ->when($request->nome, function ($query, $nome) {
+                return $query->where('nome_animal', 'like', '%'.$nome.'%');
+            })
+            ->when($request->local, function ($query, $local) {
+                return $query->where('id_local', '=', $local);
+            })
+            ->when($request->pelagem, function ($query, $pelagem) {
+                return $query->where('id_pelagem', '=', $pelagem);
+            })
+            ->when($request->sexo, function ($query, $sexo) {
+                return $query->where('sexo_animal', '=', $sexo);
+            })
+            ->when($request->status, function ($query, $status) {
+                $status--;
+                return $query->where('status_animal', '=', $status);
+            })
+            ->when($request->castrado, function ($query, $castrado) {
+                $castrado--;
+                return $query->where('castracao_animal', '=', $castrado);
+            })
+            ->when($request, function ($query, $request) {
+                if (isset($request->raca)) {
+                    return $query->where('id_raca', '=', $request->raca);   
+                } elseif (isset($request->especie)) {
+                    return $query->whereHas('raca', function ($q) use ($request) {
+                        $q->where('id_especie', '=', $request->especie);
+                    });
+                }
+            })
+            ->when($request->idade, function ($query, $idade) {
+                $data = DataController::buscarData($idade);
+                if ($idade == 1) {
+                    return $query->whereDate('idade_animal', '>=', $data);
+                } elseif ($idade == 5) {
+                    return $query->whereDate('idade_animal', '<=', $data);
+                }else {
+                    return $query->whereDate('idade_animal', '<=', $data[0])
+                        ->whereDate('idade_animal', '>=', $data[1]);
+                }
+            })
+            ->where('status_animal', '=', '1')
+            ->inRandomOrder()
+        ->paginate(12);
+        }
         
         $buscar = [];
         $raca = null;
