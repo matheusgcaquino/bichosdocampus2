@@ -16,7 +16,7 @@
                 </a>
             </h3>
         </div>
-        <form action="{{route('config.paginaInicial.editar')}}" method="POST">
+        <form action="{{route('config.paginaInicial.editarSobre')}}" method="POST">
             {{ csrf_field() }}
             <div class="box-body">
                 <div class="form-group">
