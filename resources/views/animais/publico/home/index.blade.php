@@ -18,7 +18,7 @@
 
     <div class="box-header">
 
-      @gerencia('local')
+      @auth
         <h3>
           <center>
             Gerenciamento de <strong>Animais </strong>
@@ -27,7 +27,8 @@
             </a>
           </center>
         </h3>
-      @endgerencia
+      @endauth
+
       <div class="form-group pull-right"> 
         @if (isset($buscar))
           <a href="{{route('site.animais')}}" class="btn btn-danger ">
@@ -99,7 +100,7 @@
                   <b>Idade</b> <a class="pull-right">{{$idade}}</a>
                 </li>
 
-                @gerencia('local')
+                @auth
                   @if ($result->status_animal == 1)
                     <li class="list-group-item">
                       <b>Status</b> <a class="pull-right"><span class="bg-green label">
@@ -119,7 +120,7 @@
                       </span></a>
                     </li>
                   @endif
-                @endgerencia
+                @endauth
               </ul>
 
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" 
@@ -136,7 +137,7 @@
                 data-solict-descricao="{{$result->descricao_animal}}"
                 data-solict-castrado="{{$castracao_animal}}"><b>+ Mais Informações</b>
               </button>
-              @gerencia('local')
+              @auth
                 <a href="{{route('editar.animais.index', ['id' => $result->id_animal])}}" 
                 class="btn btn-primary btn-block"><span class="fa fa-edit"></span><b> Editar</b></a>
 
@@ -151,15 +152,15 @@
                   data-solict-name="{{ $result->nome_animal }}"><span class="fa fa-heart"></span>
                   <b>Requisitar Adoção</b>
                 </button>
-              @endgerencia
+              @endauth
             </div>
           </div>
         </div>
       @empty
       <center><h3>Nenhum Animal encontrado!</h3></br>
-        @gerencia('local')
+        @auth
           <h4>Para cadastrar um novo animal <a href="{{route('adicionar.animais.index')}}">CLIQUE AQUI!</a>
-        @endgerencia
+        @endauth
         </center>
       @endforelse
     </div>
@@ -252,12 +253,12 @@
               <input type="text" class="form-control" id="raca" disabled>
             </div>
 
-            @gerencia('local')
+            @auth
               <div class="form-group col-md-6">
                 <label for="race">Localidade </label>
                 <input type="text" class="form-control" id="local" disabled>
               </div>
-            @endgerencia
+            @endauth
 
             <div class="form-group col-md-6">
               <label for="race">Idade </label>
@@ -333,7 +334,7 @@
                 </select>
               </div>
   
-              @gerencia('local')
+              @auth
                 <div class="form-group col-md-6">
                   <label>Localidade </label>
                   <select class="form-control select2" id="S_local" name="local"
@@ -341,7 +342,7 @@
                     <option selected="selected" value="">Todas</option>
                   </select>
                 </div>
-              @endgerencia
+              @endauth
               
               <div class="form-group col-md-6">
                 <label>Pelagem</label>
@@ -381,7 +382,7 @@
                 </select>
               </div>
 
-              @gerencia('local')
+              @auth
                 <div class="form-group col-md-6">
                   <label for="race">Status</label>
                   <select class="form-control" id="S_status" name="status">
@@ -391,7 +392,7 @@
                     <option value="3">Adotados</option>
                   </select>
                 </div>
-              @endgerencia
+              @endauth
 
             </div>
           </div>
