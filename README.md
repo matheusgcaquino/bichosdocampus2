@@ -107,7 +107,7 @@ composer require unisharp/laravel-ckeditor
 ```
 * 3 - Digite o comando:
 ```sh
-php artisan vendor:publish-tag=ckeditor
+php artisan vendor:publish--tag=ckeditor
 ```
 * 4 - Digite o comando:
 ```sh
