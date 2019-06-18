@@ -114,6 +114,7 @@ class EditAnimalController extends Controller
     //dd($request->all());
 
     if($request->foto_1){
+        Storage::delete($animal->foto_perfil);
         $path = $request->foto_1->store('animais/'.$animal->id_animal);
         $animal->foto_perfil = $path;
     }
