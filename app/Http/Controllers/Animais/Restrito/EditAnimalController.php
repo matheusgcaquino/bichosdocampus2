@@ -123,6 +123,7 @@ class EditAnimalController extends Controller
         //So deleta se existir uma foto ou mais
         if($qtdfoto > 0)
         {
+          Storage::delete($fotoanimal[0]->foto_animal);
           Foto_animal::where('id_foto_animals', $fotoanimal[0]->id_foto_animals)->delete();
         }
       }else{        
@@ -134,8 +135,10 @@ class EditAnimalController extends Controller
             'id_animal'         => $animal->id_animal,
             'foto_animal'       => $path_2
           ]);
+          $qtdfoto++;
         //Se existir ele altera
         } else {
+          Storage::delete($fotoanimal[0]->foto_animal);
           $path_2 = $request->foto_2->store('animais/'.$animal->id_animal);
           Foto_animal::where('id_foto_animals', $fotoanimal[0]->id_foto_animals)->update(array('foto_animal' => $path_2));
         }
@@ -147,6 +150,7 @@ class EditAnimalController extends Controller
         //So deleta se existir uma foto ou mais
         if($qtdfoto > 1)
         {
+          Storage::delete($fotoanimal[1]->foto_animal);
           Foto_animal::where('id_foto_animals', $fotoanimal[1]->id_foto_animals)->delete();
         }
       }else{        
@@ -160,6 +164,7 @@ class EditAnimalController extends Controller
           ]);
         //Se existir ele altera
         } else {
+          Storage::delete($fotoanimal[1]->foto_animal);
           $path_3 = $request->foto_3->store('animais/'.$animal->id_animal);
           Foto_animal::where('id_foto_animals', $fotoanimal[1]->id_foto_animals)->update(array('foto_animal' => $path_3));
         }

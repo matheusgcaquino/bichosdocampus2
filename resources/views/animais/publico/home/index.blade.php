@@ -65,11 +65,14 @@
               <div style="width: 100%; height: 100%;">
               <div id="carousel-example-generic{{$result->id_animal}}" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner" style="height: 200px;">
-                <div class="item active im" style="background-image: url({{"$foto"}}); background-position: center; height: 100%; background-size: cover; "> 
+                <div class="item active im" style="background-image: url({{$foto}}); background-position: center; height: 100%; background-size: cover; "> 
                   </div>
                 @foreach ($resultsfotos as $resultfoto)            
                   @if ($result->id_animal == $resultfoto->id_animal)
-                    <div class="item im" style="background-image: url({{"uploads/$resultfoto->foto_animal"}}); background-position: center; height: 100%; background-size: cover; "> 
+                  @php
+                    $foto = url("uploads/".$resultfoto->foto_animal)
+                  @endphp
+                    <div class="item im" style="background-image: url({{$foto}}); background-position: center; height: 100%; background-size: cover; "> 
                   </div>
                   @endif              
                 @endforeach  
