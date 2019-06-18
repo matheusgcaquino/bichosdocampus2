@@ -90,9 +90,10 @@
                     </a>
                   </div>
                 @else
-                  <div class="im" >
-                    <img  src="{{$foto}}" alt="User profile picture" >
+                  <div class="im" style=" padding: 0; background-image: url({{$foto}});
+                  background-position: center; width:100%; height: 200px; background-size: cover; ">
                   </div> 
+
                 @endif                  
               </div>
 
