@@ -38,16 +38,23 @@ class NovoUsuarioController extends Controller
     {
         $key = md5($request->email);
 
-        $convite = Convite::create([
-            'key'           =>  $key,
-            'email'         =>  $request->email,
-            'nivel_user'    =>  $request->nivel,
-            'status_user'   =>  $request->status
-        ]);
+        $email = Convite::where('email',$request->email)->get();
+        $qtdemail = $email->count();
 
-        Mail::to($request->email)->send(new UserConvite($convite));
-
-        return redirect()->route('site.usuarios');
-
+        if($qtdemail == 0)
+        {
+            $convite = Convite::create([
+                'key'           =>  $key,
+                'email'         =>  $request->email,
+                'nivel_user'    =>  $request->nivel,
+                'status_user'   =>  $request->status
+            ]);
+            Mail::to($request->email)->send(new UserConvite($convite));
+            $mensagem = 'Sucesso ao convidar.';
+            return redirect()->route('site.usuarios')->with('success', $mensagem);
+        } else {
+            $mensagem = 'Convite já foi enviado e ainda não foi expirado.';
+            return redirect()->route('site.usuarios')->with('error', $mensagem);
+        }
     }
 }

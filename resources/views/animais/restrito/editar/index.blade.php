@@ -251,7 +251,7 @@
             </div>
           @endif
         </div>
-        <div class="form-group col-md-12" style="padding: 2% 10%;">
+        <div class="form-group col-md-12" style="padding: 2% 0%;">
         <div class="form-group col-md-4" id="foto_1">
           <div class="pull-left" id="card-adocao-1">
             <img id="img-adocao-1"  height="150" width="150"
