@@ -20,7 +20,7 @@ class Animal extends Model
 
     public function foto()
     {
-        return $this->hasMany('App\Models\Foto_animals', 'id_animal');
+        return $this->hasMany('App\Models\Foto_animal', 'id_animal');
     }
 
     public function adocao()
