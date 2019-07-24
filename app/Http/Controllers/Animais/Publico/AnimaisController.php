@@ -17,21 +17,18 @@ class AnimaisController extends Controller
     public function index()
     {
         if(Auth::check()){
-            $animal = Animal::with('pelagem', 'local', 'raca', 'raca.especie')->inRandomOrder()
+            $animal = Animal::with('pelagem', 'local', 'raca', 'raca.especie')
+                ->with('foto')
+                ->inRandomOrder()
             ->paginate(12);
-            $fotoanimal = Foto_animal::get();
         }else{
             $animal = Animal::with('pelagem', 'local', 'raca', 'raca.especie')
+                ->with('foto')
                 ->where('status_animal', '=', '1')
                 ->inRandomOrder()
             ->paginate(12);
-            $fotoanimal = Foto_animal::get();
         }
             //dd($animal);
-            return view('animais.publico.home.index', 
-            [
-                "results"           =>  $animal,
-                "resultsfotos"      =>  $fotoanimal
-            ]);
+            return view('animais.publico.home.index', ["results" => $animal]);
     }
 }

@@ -18,7 +18,7 @@
 
     <div class="box-header">
 
-      @auth
+      @gerencia('local')
         <h3>
           <center>
             Gerenciamento de <strong>Animais </strong>
@@ -27,7 +27,13 @@
             </a>
           </center>
         </h3>
-      @endauth
+      @else
+      <h3>
+        <center>
+          Animais <strong>para Adotar</strong>
+        </center>
+      </h3>
+      @endgerencia
 
       <div class="form-group pull-right"> 
         @if (isset($buscar))
@@ -63,29 +69,32 @@
           <div class="box box-danger cardA">
             <div class="box-body box-profile" style="border: solid 2px #f1f1f1;padding: 0;">
               <div style="width: 100%; height: 100%;">
-              <div id="carousel-example-generic{{$result->id_animal}}" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner" style="height: 200px;">
-                <div class="item active im" style="background-image: url({{$foto}}); background-position: center; height: 100%; background-size: cover; "> 
+              
+                @if ($result->foto->count() > 0)
+                  <div id="carousel-example-generic{{$result->id_animal}}" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" style="height: 200px;">
+                      <div class="item active im" style="background-image: url({{$foto}}); 
+                        background-position: center; height: 100%; background-size: cover; "> 
+                      </div>
+                      @foreach ($result->foto as $foto)            
+                          <div class="item im" style="background-image: url({{'uploads/'.$foto->foto_animal}}); 
+                            background-position: center; height: 100%; background-size: cover; "> 
+                          </div>             
+                      @endforeach  
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic{{$result->id_animal}}" data-slide="prev">
+                      <span class="fa fa-angle-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic{{$result->id_animal}}" data-slide="next">
+                      <span class="fa fa-angle-right"></span>
+                    </a>
                   </div>
-                @foreach ($resultsfotos as $resultfoto)            
-                  @if ($result->id_animal == $resultfoto->id_animal)
-                  @php
-                    $foto = url("uploads/".$resultfoto->foto_animal)
-                  @endphp
-                    <div class="item im" style="background-image: url({{$foto}}); background-position: center; height: 100%; background-size: cover; "> 
-                  </div>
-                  @endif              
-                @endforeach  
-                  
-                </div>
-                <a class="left carousel-control" href="#carousel-example-generic{{$result->id_animal}}" data-slide="prev">
-                  <span class="fa fa-angle-left"></span>
-                </a>
-                <a class="right carousel-control" href="#carousel-example-generic{{$result->id_animal}}" data-slide="next">
-                  <span class="fa fa-angle-right"></span>
-                </a>
-              </div>
-                
+                @else
+                  <div class="im" style=" padding: 0; background-image: url({{$foto}});
+                  background-position: center; width:100%; height: 200px; background-size: cover; ">
+                  </div> 
+
+                @endif                  
               </div>
 
               <h3 class="profile-username text-center">{{ $result->nome_animal }}</h3>
@@ -103,7 +112,7 @@
                   <b>Idade</b> <a class="pull-right">{{$idade}}</a>
                 </li>
 
-                @auth
+                @gerencia('local')
                   @if ($result->status_animal == 1)
                     <li class="list-group-item">
                       <b>Status</b> <a class="pull-right"><span class="bg-green label">
@@ -123,7 +132,7 @@
                       </span></a>
                     </li>
                   @endif
-                @endauth
+                @endgerencia
               </ul>
 
               <button type="button" class="btn btn-info btn-block" data-toggle="modal" 
@@ -140,7 +149,7 @@
                 data-solict-descricao="{{$result->descricao_animal}}"
                 data-solict-castrado="{{$castracao_animal}}"><b>+ Mais Informações</b>
               </button>
-              @auth
+              @gerencia('local')
                 <a href="{{route('editar.animais.index', ['id' => $result->id_animal])}}" 
                 class="btn btn-primary btn-block"><span class="fa fa-edit"></span><b> Editar</b></a>
 
@@ -155,15 +164,15 @@
                   data-solict-name="{{ $result->nome_animal }}"><span class="fa fa-heart"></span>
                   <b>Requisitar Adoção</b>
                 </button>
-              @endauth
+              @endgerencia
             </div>
           </div>
         </div>
       @empty
       <center><h3>Nenhum Animal encontrado!</h3></br>
-        @auth
+        @gerencia('local')
           <h4>Para cadastrar um novo animal <a href="{{route('adicionar.animais.index')}}">CLIQUE AQUI!</a>
-        @endauth
+        @endgerencia
         </center>
       @endforelse
     </div>
@@ -256,12 +265,12 @@
               <input type="text" class="form-control" id="raca" disabled>
             </div>
 
-            @auth
+            @gerencia('local')
               <div class="form-group col-md-6">
                 <label for="race">Localidade </label>
                 <input type="text" class="form-control" id="local" disabled>
               </div>
-            @endauth
+            @endgerencia
 
             <div class="form-group col-md-6">
               <label for="race">Idade </label>
@@ -337,7 +346,7 @@
                 </select>
               </div>
   
-              @auth
+              @gerencia('local')
                 <div class="form-group col-md-6">
                   <label>Localidade </label>
                   <select class="form-control select2" id="S_local" name="local"
@@ -345,7 +354,7 @@
                     <option selected="selected" value="">Todas</option>
                   </select>
                 </div>
-              @endauth
+              @endgerencia
               
               <div class="form-group col-md-6">
                 <label>Pelagem</label>
@@ -385,7 +394,7 @@
                 </select>
               </div>
 
-              @auth
+              @gerencia('local')
                 <div class="form-group col-md-6">
                   <label for="race">Status</label>
                   <select class="form-control" id="S_status" name="status">
@@ -395,7 +404,7 @@
                     <option value="3">Adotados</option>
                   </select>
                 </div>
-              @endauth
+              @endgerencia
 
             </div>
           </div>
