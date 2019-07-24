@@ -14,8 +14,8 @@ class CreateAdocaosTable extends Migration
     public function up()
     {
         Schema::create('adocaos', function (Blueprint $table) {
-            $table->increments('id_adocao');         
-            $table->integer('id_animal')->unsigned()->nullable(false);
+            $table->bigIncrements('id_adocao');         
+            $table->bigInteger('id_animal')->unsigned()->nullable(false);
             $table->string('nome_adocao', 60)->nullable(false);
             $table->string('nascimento_adocao', 60)->nullable(false);
             $table->string('telefone_adocao', 20)->nullable(false);

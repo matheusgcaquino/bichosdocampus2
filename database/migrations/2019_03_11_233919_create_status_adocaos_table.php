@@ -15,8 +15,8 @@ class CreateStatusAdocaosTable extends Migration
     {
         Schema::create('status_adocao', function (Blueprint $table) {
             $table->increments('id_status');
-            $table->integer('id_user')->unsigned()->nullable(true);
-            $table->integer('id_adocao')->unsigned()->nullable(false);
+            $table->bigInteger('id_user')->unsigned()->nullable(true);
+            $table->bigInteger('id_adocao')->unsigned()->nullable(false);
             $table->tinyInteger('status_adocao')->default(0)->nullable(false);
             $table->string('comentario', 150)->nullable(true);
             $table->timestamps();

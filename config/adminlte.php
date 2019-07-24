@@ -126,6 +126,18 @@ return [
             'can'   =>  'admin-only',
         ],
         [
+            'text' => 'Divulgar',
+            'url'  => 'divulgar',
+            'icon'  => 'envelope',
+            'can'   =>  'parceiro-only',
+        ],
+        [
+            'text' => 'Divulgações',
+            'url'  => 'divulgações',
+            'icon'  => 'envelope',
+            'can'   =>  'admin-only',
+        ],
+        [
             'text' => 'Configurações',
             'url'  => 'config',
             'icon'  => 'cog',

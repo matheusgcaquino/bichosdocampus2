@@ -15,7 +15,7 @@ class CreateAnimalsTable extends Migration
     {
         // Cria a tabela animal no banco de dados -> [EikE]
         Schema::create('animals', function (Blueprint $table) {
-            $table->increments('id_animal');
+            $table->bigIncrements('id_animal');
             $table->integer('id_raca')->unsigned()->nullable(false);
             $table->integer('id_pelagem')->unsigned()->nullable(false);
             $table->integer('id_local')->unsigned()->nullable(true);

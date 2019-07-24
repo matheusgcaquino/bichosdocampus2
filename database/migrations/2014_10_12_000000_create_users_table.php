@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         // Cria a tabela Usuarios -> [AdminLTE]
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id_user');
+            $table->bigIncrements('id_user');
             $table->string('name_user');
             $table->string('email')->unique();
             $table->string('password');
