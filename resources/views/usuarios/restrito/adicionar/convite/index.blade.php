@@ -33,6 +33,7 @@
             <select class="form-control" name="nivel">
                 <option value="0">Administrador</option>
                 <option value="1">Gerência</option>
+                <option value="2">Parceiro</option>
             </select>
         </div>
 

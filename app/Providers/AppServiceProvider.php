@@ -18,13 +18,19 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Blade::if('admin', function ($environment){
-            if (auth()->user() && auth()->user()->status_user && auth()->user()->nivel_user = 0) {
+            if (auth()->user() && auth()->user()->status_user && auth()->user()->nivel_user == 0) {
                 return app()->environment($environment);
             }
         });
 
         Blade::if('gerencia', function ($environment) {
             if (auth()->user() && auth()->user()->status_user && auth()->user()->nivel_user <= 1) {
+                return app()->environment($environment);
+            }
+        });
+
+        Blade::if('parceiro-only', function ($environment) {
+            if (auth()->user() && auth()->user()->status_user && auth()->user()->nivel_user == 2) {
                 return app()->environment($environment);
             }
         });

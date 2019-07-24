@@ -10,6 +10,7 @@ use App\Http\Controllers\Suporte\AdocaoController;
 use App\Models\Adocao;
 use App\Models\StatusAdocao;
 use App\Models\Animal;
+use App\Models\Email;
 use App\Mail\AdocaoConfirmada;
 use DateTime;
 use Mail;
@@ -79,6 +80,15 @@ class AdotarAnimalController extends Controller
 
         Mail::to($request->email_adocao)->send(new AdocaoConfirmada($adocao));
 
+        $get = Email::where('email', $request->email_adocao)->first();
+
+        if (Empty($get)) {
+          Email::create([
+            'email' => $request->email_adocao,
+            'ativo' => true,
+          ]);
+        }
+
         $mensagem = 'Requisição para adoção feita com sucesso.';
         return redirect()->route('site.animais')->with('success', $mensagem);
       } else {
@@ -86,7 +96,7 @@ class AdotarAnimalController extends Controller
         return redirect()->route('site.animais')->with('error', $mensagem)->withInput(Input::all());
       }
     } else {
-      $mensagem = 'Você já um requição para esse animal e não pode fazer outra.';
+      $mensagem = 'Você já uma requição para esse animal e não pode fazer outra.';
       return redirect()->route('site.animais')->with('error', $mensagem);
     }
   }       

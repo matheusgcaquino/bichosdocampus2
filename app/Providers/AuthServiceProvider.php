@@ -43,5 +43,12 @@ class AuthServiceProvider extends ServiceProvider
             }
             return false;
         });
+
+        Gate::define('parceiro-only', function ($user){
+            if($user->nivel_user == 2 && $user->status_user == 1){
+                return true;
+            }
+            return false;
+        });
     }
 }
