@@ -21,14 +21,14 @@
  
 
     <div class="box-body">
-      <div class="alert alert-warning">
-        <h3>
-            <center>
-              <i class="fa fa-wrench"></i>
-              Em construção!
-            </center>
-        </h3>
-      </div>
+    <center>
+    <div class="checkbox">
+          <label>
+              <input type="checkbox">
+                    <b>Desejo não receber mais e-mails da Bichos do Campus.</b>
+          </label>
+    </div>
+    </center>
     </div>
     
   </div>  

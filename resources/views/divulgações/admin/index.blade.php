@@ -43,8 +43,7 @@
                 <button type="submit" class="btn btn-success">Confirmar</button>
             </div>
         </form>
-    </div>
-    
+    </div>    
   </div>  
 @stop
 
