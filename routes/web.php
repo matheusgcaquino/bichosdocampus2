@@ -19,4 +19,7 @@ include "usuarios/rotas_usuarios.php";
     //Rotas de Configurações
 include "config/rotas_config.php";
 
+    //Rotas de Configurações
+include "divulgações/rotas_divulgações.php";
+
 Auth::routes();
