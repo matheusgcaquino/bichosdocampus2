@@ -35,16 +35,18 @@
       </h3>
       @endgerencia
 
-      <div class="form-group pull-right"> 
-        @if (isset($buscar))
-          <a href="{{route('site.animais')}}" class="btn btn-danger ">
-            Limpar Busca</a>
-        @endif
-        <button type="button" class="btn btn-info" data-toggle="modal" 
-          data-target="#buscar">
-          <span class="fa fa-search"></span><b> Buscar Animal</b>
-        </button>
-      </div>
+      @if (!Empty($results))
+        <div class="form-group pull-right"> 
+          @if (isset($buscar))
+            <a href="{{route('site.animais')}}" class="btn btn-danger ">
+              Limpar Busca</a>
+          @endif
+          <button type="button" class="btn btn-info" data-toggle="modal" 
+            data-target="#buscar">
+            <span class="fa fa-search"></span><b> Buscar Animal</b>
+          </button>
+        </div>
+      @endif
     </div>   
 
     <div class="box-body">
