@@ -5,6 +5,8 @@ Route::prefix('divulgações')->group(function(){
     //Rotas Admin
     Route::group(['middleware' => ['auth', 'CheckNivel:0'], 'namespace' => 'Divulgações\Admin'], function(){
         Route::get('/', 'DivulgaçõesController@index')->name('site.divulgações');
+        Route::post('/excluir', 'DivulgaçõesController@excluir')->name('divulgações.excluir'); 
+        Route::post('/enviar', 'DivulgaçõesController@enviar')->name('divulgações.enviar'); 
     });
 
     ///Rotas Publico
