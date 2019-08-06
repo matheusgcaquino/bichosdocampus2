@@ -22,6 +22,10 @@
 
     <div class="box-body">
     <center>
+    <div class="form-group">
+                  <label for="exampleInputEmail1">E-mail</label>
+                  <input type="email" class="form-control" id="email" placeholder="Informe o e-mail de cadastro">
+                </div>
     <div class="checkbox">
           <label>
               <input type="checkbox">

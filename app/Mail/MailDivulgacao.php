@@ -11,14 +11,19 @@ class MailDivulgacao extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $introLines;
+
+    public function __construct(Divlgacao $divulgacao)
     {
-        //
+        $titulo = "Divulgação de Parceiros";
+        $mensagem = "";
+
+        $this->introLines = [
+            "Olá caro(a) adotante,",
+            "A Bichos do Campus é mantida por meio de doações. Por conta disso, firmamos algumas parcerias.",
+            "Um de nossos parceiros tem um recadinho pra você:",
+            "{$mensagem}"];
+
     }
 
     /**
@@ -28,6 +33,7 @@ class MailDivulgacao extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->markdown('vendor.divulgacao.email')
+        ->subject('Obrigado por apoioar a nossa causa!');
     }
 }
