@@ -18,31 +18,26 @@
           Divulgações <strong>para Parceiros</strong>
         </center>
       </h3>
- 
+      <div class="callout callout-warning">
+        <h4>Caro(a) Parceiro(a),</h4>
+        <p>Nesta página você poderá enviar seu conteúdo para divulgação*.</p>
+        <p><b>*O conteúdo enviado estará sujeito à análise.</b></p>
+      </div>
+    </div>
 
     <div class="box-body">
-      <div class="alert alert-warning">
-        <h3>
-            <center>
-              <i class="fa fa-wrench"></i>
-              Em construção!
-            </center>
-        </h3>
-        <form action="" method="POST">
-            {{ csrf_field() }}
-            <div class="box-body">
-                <div class="form-group">
-                <textarea id="product-body" name="text" class="form-control">
-                Exemplo
-                </textarea>                      
-                </div>
-            </div>
+      <form action="" method="POST">
+        {{ csrf_field() }}
+        <div class="box-body">
+          <div class="form-group">
+          <textarea id="product-body" name="text" class="form-control"></textarea>                      
+          </div>
+        </div>
 
-            <div class="box-footer">
-                <button type="submit" class="btn btn-success">Confirmar</button>
-            </div>
-        </form>
-      </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-success">Confirmar</button>
+        </div>
+      </form>
     </div>
     
   </div>  

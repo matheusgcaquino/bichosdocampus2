@@ -43,8 +43,13 @@
                                 ($status_user = $result->status_user == 0 ? 'Desativado'
                                     : 'Ativado');
                                 
-                                ($nivel_user = $result->nivel_user == 0 ? 'Administrador' 
-                                    : 'Gerência');
+                                if ($result->nivel_user == 0) {
+                                    $nivel_user = 'Administrador';
+                                } elseif ($result->nivel_user == 1){
+                                    $nivel_user = 'Gerência';
+                                } else {
+                                    $nivel_user = 'Parceiro';
+                                }
                                                                 
                             @endphp
                         <tr>
@@ -146,6 +151,7 @@
                             <select class="form-control" name="nivel" id="nivel">
                                 <option value="0">Administrador</option>
                                 <option value="1">Gerência</option>
+                                <option value="2">Parceiro</option>
                             </select>
                         </div>
             

@@ -16,12 +16,6 @@
 
 @endforeach
 
-{{-- Outro Lines --}}
-@foreach ($outroLines as $line)
-{{ $line }}
-
-@endforeach
-
 {{-- Salutation --}}
 @if (! empty($salutation))
 {{ $salutation }}

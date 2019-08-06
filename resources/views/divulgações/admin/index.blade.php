@@ -22,11 +22,7 @@
           Divulgações <strong>de Parcerias</strong>
         </center>
       </h3>
-      <div class="callout callout-warning">
-            <h4>Caro(a) Parceiro(a),</h4>
-            <p>Nesta página você poderá enviar seu conteúdo para divulgação*.</p>
-            <p><b>*O conteúdo enviado estará sujeito à análise.</b></p>
-      </div>
+    </div>
 
     <div class="box-body">
      
