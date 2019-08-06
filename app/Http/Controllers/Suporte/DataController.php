@@ -89,4 +89,10 @@ class DataController extends Controller
         }
         return $idade;
     }
+
+    public static function diaFormat($data)
+    {
+        $day = new DateTime($data);
+        return $day->format('d/m/Y');
+    }
 }
