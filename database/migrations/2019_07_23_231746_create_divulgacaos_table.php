@@ -17,7 +17,8 @@ class CreateDivulgacaosTable extends Migration
             $table->increments('id_divulgacao');
             $table->bigInteger('id_user')->unsigned()->nullable(true);
             $table->string('conteudo', 700)->nullable(false);
-            $table->boolean('enviado')->default(false);
+            $table->tinyInteger('enviado')->default(0);
+            $table->timestamps();
 
             $table->foreign('id_user')->references('id_user')->on('users')->onDelete('set null');
         });

@@ -12,6 +12,8 @@ class Divulgacao extends Model
 
     protected $fillable = ['id_user', 'conteudo', 'enviado'];
 
+    public $timestamps = true;
+
     public function user()
     {
         return $this->belongsto('App\User', 'id_user');
