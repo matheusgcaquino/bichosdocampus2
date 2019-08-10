@@ -13,7 +13,7 @@
     <div class="box">
         <div class="box-header" style="background: linear-gradient(to right, #ed213a, #93291e); color:azure;">
             <h3 class="text-center">Situação do requerimento para <strong> {{$results->animal->nome_animal}} </strong></h3>
-            @gerencia('local')
+            @gerencia
                 <a href="javascript:history.back()" class="btn btn-outline">
                     <span class="fa fa-arrow-circle-left"></span>
                     Voltar
@@ -57,7 +57,7 @@
                 </div>
                 @endguest
 
-                @gerencia('local')
+                @gerencia
                     <div class="form-group col-md-6">
                         <label>Status: </label>
                         {!!$stat!!}
