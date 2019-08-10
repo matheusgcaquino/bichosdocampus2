@@ -18,7 +18,7 @@
 
     <div class="box-header">
 
-      @gerencia('local')
+      @gerencia
         <h3>
           <center>
             Gerenciamento de <strong>Animais </strong>
@@ -114,7 +114,7 @@
                   <b>Idade</b> <a class="pull-right">{{$idade}}</a>
                 </li>
 
-                @gerencia('local')
+                @gerencia
                   @if ($result->status_animal == 1)
                     <li class="list-group-item">
                       <b>Status</b> <a class="pull-right"><span class="bg-green label">
@@ -151,7 +151,7 @@
                 data-solict-descricao="{{$result->descricao_animal}}"
                 data-solict-castrado="{{$castracao_animal}}"><b>+ Mais Informações</b>
               </button>
-              @gerencia('local')
+              @gerencia
                 <a href="{{route('editar.animais.index', ['id' => $result->id_animal])}}" 
                 class="btn btn-primary btn-block"><span class="fa fa-edit"></span><b> Editar</b></a>
 
@@ -172,7 +172,7 @@
         </div>
       @empty
       <center><h3>Nenhum Animal encontrado!</h3></br>
-        @gerencia('local')
+        @gerencia
           <h4>Para cadastrar um novo animal <a href="{{route('adicionar.animais.index')}}">CLIQUE AQUI!</a>
         @endgerencia
         </center>
@@ -267,7 +267,7 @@
               <input type="text" class="form-control" id="raca" disabled>
             </div>
 
-            @gerencia('local')
+            @gerencia
               <div class="form-group col-md-6">
                 <label for="race">Localidade </label>
                 <input type="text" class="form-control" id="local" disabled>
@@ -348,7 +348,7 @@
                 </select>
               </div>
   
-              @gerencia('local')
+              @gerencia
                 <div class="form-group col-md-6">
                   <label>Localidade </label>
                   <select class="form-control select2" id="S_local" name="local"
@@ -396,7 +396,7 @@
                 </select>
               </div>
 
-              @gerencia('local')
+              @gerencia
                 <div class="form-group col-md-6">
                   <label for="race">Status</label>
                   <select class="form-control" id="S_status" name="status">
