@@ -26,7 +26,7 @@
     </div>
 
     <div class="box-body">
-      <form action="" method="POST">
+      <form action="{{ route('divulgar.confirmar') }}" method="POST">
         {{ csrf_field() }}
         <div class="box-body">
           <div class="form-group">

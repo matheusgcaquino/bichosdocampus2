@@ -109,8 +109,9 @@
         <form action="{{route('divulgações.enviar')}}" method="POST">
           {{ csrf_field() }}
           <div class="modal-body">
-            <textarea class="form-control" id="texto" name="texto" disabled></textarea>
+            {{-- <textarea class="form-control" id="texto" name="texto" disabled></textarea> --}}
             <input type="hidden" id="idEnviar" name="idEnviar">
+            <div id="texto"></div>
           </div>
 
           <div class="modal-footer">
@@ -140,8 +141,9 @@
         var id = button.data('solict-id')
         var modal = $(this)
         modal.find('.modal-title').text("Enviar Mensagem")
+        var divulgacao = document.getElementById("texto");
+        divulgacao.innerHTML = texto
         $('#idEnviar').val(id)
-        $('#texto').val(texto)
     });
   </script>
 @stop

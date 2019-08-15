@@ -21,6 +21,7 @@ Route::prefix('divulgar')->group(function(){
     //Rotas Parceiro
     Route::group(['middleware' => ['auth', 'CheckNivel:2'], 'namespace' => 'Divulgações\Parceiro'], function(){
         Route::get('/', 'DivulgarController@index')->name('site.divulgar');
+        Route::post('/confirmar', 'DivulgarController@confirmar')->name('divulgar.confirmar');
     });
 
 });
