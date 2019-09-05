@@ -15,9 +15,17 @@
 @section('content')
   <div class="col-md-12" style="background: linear-gradient(to right, #ed213a, #93291e); 
     padding: 2%; text-align: center; color: white;">
-    <h2>BICHOS DO <b>CAMPUS</b></h2>
-      <i class="fa fa-paw" style="font-size: 25px;"></i>
-      <h4>SEJA <b>BEM-VINDO</b></h4>
+      <div class="col-md-6"> 
+          <img src="{{url('imagens/logo.png')}}">  
+      </div>
+      
+      <div class="col-md-6">
+          <img src="{{url('imagens/logoUFS.png')}}">  
+      </div>
+      <div class="col-md-12">
+          <h3>SEJA <b>BEM-VINDO</b></h3>
+      </div>
+      
   </div>
 
   <div class="col-sm-12" style="background-image: url(uploads/{{$pic[1]}}); height: 400px; 
