@@ -13,11 +13,14 @@
 @endphp
 
 @section('content')
-  <div class="col-md-12" style="background: linear-gradient(to right, #ed213a, #93291e); 
-    padding: 2%; text-align: center; color: white;">
-    <h2>BICHOS DO <b>CAMPUS</b></h2>
-      <i class="fa fa-paw" style="font-size: 25px;"></i>
-      <h4>SEJA <b>BEM-VINDO</b></h4>
+  <div class="col-md-12" style="background: linear-gradient(to right, #ed213a, #93291e); padding: 0; text-align: center; color: white;">
+    <div class="col-md-6" style="background-color: #034ea2; padding: 2%;">
+      <img src= "imagens/logoUfs.png">
+    </div>
+    <div class="col-md-6" style="padding: 3%;">
+        <i class="fa fa-paw" style="font-size: 40px;"></i>
+        <h1>BICHOS DO <b>CAMPUS</b></h1>
+    </div>
   </div>
 
   <div class="col-sm-12" style="background-image: url(uploads/{{$pic[1]}}); height: 400px; 
@@ -140,4 +143,11 @@
       </a>
     </div>
   </div>
+  <center> <b>Desenvolvido por:</b>
+  <a href="https://www.linkedin.com/in/eike-natan-sousa-brito-8a23875b/">Eike Sousa,</a>
+  <a href="https://www.linkedin.com/in/joaomsal/">João Manoel,</a>
+  <a href="https://www.linkedin.com/in/lucas-brabec-0a3933105/">Lucas Brabec,</a>
+  <a href="https://www.linkedin.com/in/matheus-aquino-0993b2168/">Matheus Aquino</a>
+  <a href="https://www.linkedin.com/in/edson-marques-159235129/"> e Edson Marques</a>
+  </center>
 @stop
